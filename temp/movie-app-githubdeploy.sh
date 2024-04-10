@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd ~/Desktop/files/git/movie-app
+cd ~../../movie-app
 
 git add .
 
