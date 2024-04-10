@@ -1,37 +1,60 @@
 package com.cts.wishlistservice.service;
 
+import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
+import com.cts.wishlistservice.exception.ResourceNotFoundException;
+import com.cts.wishlistservice.exception.UnAuthorizedException;
+import com.cts.wishlistservice.feign.AuthenticationClient;
 import com.cts.wishlistservice.model.Movie;
 import com.cts.wishlistservice.model.Wishlist;
 import com.cts.wishlistservice.repository.WishlistRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class WishlistServiceImpl implements WishlistService {
 
     private final WishlistRepository wishlistRepository;
     private final ModelMapper modelMapper;
+    private final AuthenticationClient authenticationClient;
 
     @Autowired
-    public WishlistServiceImpl(WishlistRepository wishlistRepository, ModelMapper modelMapper) {
+    public WishlistServiceImpl(WishlistRepository wishlistRepository, ModelMapper modelMapper, AuthenticationClient authenticationClient) {
         this.wishlistRepository = wishlistRepository;
         this.modelMapper = modelMapper;
+        this.authenticationClient = authenticationClient;
     }
 
     @Override
-    public WishlistDto getWishlists(String username) {
-        return modelMapper.map(wishlistRepository.findById(username).orElseThrow(), WishlistDto.class);
+    public WishlistDto getWishlists(String token, String username) {
+        log.info(token+" : token from authentication to access getUserProfileById");
+        Map<String,String> info= authenticationClient.validateToken(token).getBody();
+        log.info("inside getUserProfileById----info: "+info);
+        if(info==null || info.containsKey(username)) {
+            log.info(token + "inside method getUserProfileById -----__---");
+            return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
+        }
+
+        throw new UnAuthorizedException("Un Authorized Please check user the details.");
     }
 
     @Override
-    public WishlistDto deleteWishlist(String username, String id) {
-
-        Wishlist wishlist = wishlistRepository.findById(username).orElseThrow();
+    public WishlistDto deleteWishlist(String token, String username, String id) {
+        log.info(token+" : token from authentication to access getUserProfileById");
+        Map<String,String> info= authenticationClient.validateToken(token).getBody();
+        log.info("inside getUserProfileById----info: "+info);
+        if(info==null || !info.containsKey(username) ) {
+            log.info(token + "inside method getUserProfileById -----__---");
+            throw new UnAuthorizedException("Un Authorized Please check user the details.");
+        }
+        Wishlist wishlist = wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found."));
 
         // Get the list of movies from the wishlist
         List<Movie> movies = wishlist.getMovies();
@@ -42,14 +65,20 @@ public class WishlistServiceImpl implements WishlistService {
         // Update the wishlist in the repository
         wishlistRepository.save(wishlist);
 
-        return modelMapper.map(wishlistRepository.findById(username).orElseThrow(), WishlistDto.class);
+        return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
     }
 
     @Override
-    public WishlistDto addWishlist(String username, Movie movie) {
-
+    public WishlistDto addWishlist(String token, String username, MovieDto movieDtp) {
+        log.info(token+" : token from authentication to access getUserProfileById");
+        Map<String,String> info= authenticationClient.validateToken(token).getBody();
+        log.info("inside getUserProfileById----info: "+info);
+        if(info==null || !info.containsKey(username)) {
+            log.info(token + "inside method getUserProfileById -----__---");
+            throw new UnAuthorizedException("Un Authorized Please check user the details.");
+        }
         Optional<Wishlist> wishListOptional = wishlistRepository.findById(username);
-
+        Movie movie = modelMapper.map(movieDtp, Movie.class);
         Wishlist wishlist;
         if (wishListOptional.isPresent()) {
             // User's wish list exists, add or update the track
@@ -61,9 +90,9 @@ public class WishlistServiceImpl implements WishlistService {
             wishlist.setUsername(username);
             wishlist.setMovies(List.of(movie));
         }
-
         return modelMapper.map(wishlistRepository.save(wishlist), WishlistDto.class);
     }
+
     private void addOrUpdateTrack(Wishlist wishList, Movie movie) {
         // Check if the track with the same ID already exists in the wish list
         boolean trackExists = wishList.getMovies().stream()

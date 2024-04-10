@@ -1,5 +1,0 @@
-spring:
-  config:
-    import: configserver:http://config2113171.eu-north-1.elasticbeanstalk.com/
-server:
-  port: 8086
