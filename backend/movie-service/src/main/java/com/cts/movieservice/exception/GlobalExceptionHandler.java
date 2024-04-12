@@ -36,6 +36,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> handleNullPointerException(NullPointerException ex, WebRequest request) {
         ErrorMessage messageResponse = new ErrorMessage();
