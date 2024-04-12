@@ -1,4 +1,4 @@
-package com.auth.authenticationservice.configuration;
+package com.auth.authenticationservice.config;
 
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;

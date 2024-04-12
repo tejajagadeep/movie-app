@@ -20,12 +20,9 @@ public class UserProfile {
     private String username;
     private String firstName;
     private String lastName;
-    @NotNull
-    private String password;
     private Date dateOfBirth;
     @NotNull
     private String email;
-    private String gender;
 
 
 }

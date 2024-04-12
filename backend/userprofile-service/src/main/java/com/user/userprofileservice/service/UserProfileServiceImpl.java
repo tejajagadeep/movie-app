@@ -1,6 +1,6 @@
 package com.user.userprofileservice.service;
 
-import com.user.userprofileservice.dto.UserDetails;
+import com.user.userprofileservice.dto.User;
 import com.user.userprofileservice.dto.UserProfileDto;
 import com.user.userprofileservice.exception.ResourceAlreadyExistsException;
 import com.user.userprofileservice.kafka.DataPublisherServiceImpl;
@@ -59,33 +59,30 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     @Observed(name = "save.user.profile")
-    public UserProfileDto saveUserProfile(UserProfile userProfile) {
+    public UserProfile saveUserProfile(UserProfileDto userProfileDto) {
 
-        UserDetails userDetails=new UserDetails();
+        User user =new User();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(userProfile.getPassword());
-        userDetails.setUsername(userProfile.getUsername());
-        userDetails.setPassword(encodedPassword);
-        userProfile.setPassword(encodedPassword);
-        log.info(encoder.matches(userProfile.getPassword(), encodedPassword)+"");
-        userDetails.setRole("User");
-        log.info("------"+userDetails+"--------");
+        user.setEmail(userProfileDto.getUsername());
+        user.setPassword(userProfileDto.getPassword());
+        user.setRole("ADMIN");
+        log.info("------"+ user +"--------");
         try {
-            producer.sendMessage(userDetails);
+            producer.sendMessage(user);
         } catch (KafkaException ex){
             log.error(ex.getMessage());
 
         }
 
-        if (usersProfileRepository.existsById(userProfile.getUsername())) {
+        if (usersProfileRepository.existsById(userProfileDto.getUsername())) {
             throw new ResourceAlreadyExistsException("Username Already exists");
         }
 
-        if (usersProfileRepository.existsByEmail(userProfile.getEmail())) {
+        if (usersProfileRepository.existsByEmail(userProfileDto.getEmail())) {
             throw new ResourceAlreadyExistsException("Email Already exists");
         }
 
-        return modelMapper.map(usersProfileRepository.save(userProfile), UserProfileDto.class);
+        return usersProfileRepository.save(modelMapper.map(userProfileDto,UserProfile.class));
     }
 
     @Override

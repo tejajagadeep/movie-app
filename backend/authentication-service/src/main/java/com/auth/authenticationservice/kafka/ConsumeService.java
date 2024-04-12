@@ -1,7 +1,8 @@
 package com.auth.authenticationservice.kafka;
 
-import com.auth.authenticationservice.model.UserDetails;
-import com.auth.authenticationservice.repository.UserRepo;
+import com.auth.authenticationservice.model.RegisterRequest;
+import com.auth.authenticationservice.model.User;
+import com.auth.authenticationservice.service.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -13,17 +14,21 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class ConsumeService 
 {
-	 @Autowired
-	 UserRepo userRepo;
-	 private UserDetails fromPublisher;
+	 private final AuthService authService;
+	 private RegisterRequest fromPublisher;
 
-	@KafkaListener(topics="MovieApp", groupId="mygroup")
+	 @Autowired
+    public ConsumeService(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @KafkaListener(topics="MovieApp", groupId="mygroup")
 
 	public void consumeFromTopic(String message) throws JsonProcessingException {
 		try {
-			UserDetails userDetails=convertToJavaObject(message);
-			userRepo.save(userDetails);
-			log.info("--------------Consumer message--------: "+ userDetails.getUsername()+"---"
+			RegisterRequest userDetails=convertToJavaObject(message);
+			authService.register(userDetails);
+			log.info("--------------Consumer message--------: "+ userDetails.getEmail()+"---"
 					+userDetails.getPassword());
 		}
 		catch (Exception e){
@@ -32,13 +37,13 @@ public class ConsumeService
 
 	}
 
-	private UserDetails convertToJavaObject(String message) throws JsonProcessingException {
-		UserDetails userDetails=new ObjectMapper().readValue(message,UserDetails.class);
+	private RegisterRequest convertToJavaObject(String message) throws JsonProcessingException {
+		RegisterRequest userDetails=new ObjectMapper().readValue(message,RegisterRequest.class);
 		log.info("from Converter"+userDetails+"-----");
 		return  userDetails;
 	}
 
-	public UserDetails getkafkaMessage(){
+	public RegisterRequest getkafkaMessage(){
 		return  fromPublisher;
 	}
 

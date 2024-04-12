@@ -13,7 +13,7 @@ public interface UserProfileService {
 
     UserProfileDto getUserProfileById(String username);
 
-    UserProfileDto saveUserProfile(UserProfile userProfile);
+    UserProfile saveUserProfile(UserProfileDto userProfileDto);
 
     UserProfileDto updateUserProfile(UserProfileDto userProfileDto, String username);
 

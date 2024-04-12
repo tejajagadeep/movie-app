@@ -1,9 +1,7 @@
 package com.user.userprofileservice.controller;
 
-import com.user.userprofileservice.dto.UserDetails;
 import com.user.userprofileservice.dto.UserProfileDto;
 import com.user.userprofileservice.exception.UnAuthorizedException;
-import com.user.userprofileservice.kafka.DataPublisherServiceImpl;
 import com.user.userprofileservice.model.UserProfile;
 import com.user.userprofileservice.service.AuthService;
 import com.user.userprofileservice.service.UserProfileService;
@@ -14,11 +12,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.KafkaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -88,9 +84,9 @@ public class UserProfileController {
             @ApiResponse(responseCode = "409", description = "User Details already Exists",
                     content = @Content) })
     @PostMapping("/addUser")
-    public ResponseEntity<Object> saveUserProfile(@RequestBody UserProfile userProfile){
+    public ResponseEntity<Object> saveUserProfile(@RequestBody UserProfileDto userProfileDto){
 
-        return new ResponseEntity<>(userProfileService.saveUserProfile(userProfile),HttpStatus.CREATED);
+        return new ResponseEntity<>(userProfileService.saveUserProfile(userProfileDto),HttpStatus.CREATED);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")

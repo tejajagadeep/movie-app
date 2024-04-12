@@ -6,10 +6,8 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 @OpenAPIDefinition(info = @Info(title = "Authentication-SERVICE API", version = "1.0", description = "Authenticator for spotify app"))
 @SecurityScheme(
 		name = "Bearer Authentication",
@@ -20,7 +18,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class AuthenticationServiceApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(AuthenticationServiceApplication.class, args);
 	}
 

@@ -3,8 +3,10 @@ package com.auth.authenticationservice.aspects;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class PerformanceTrackerHandler implements ObservationHandler<Observation.Context> {
     @Override
     public void onStart(Observation.Context context) {

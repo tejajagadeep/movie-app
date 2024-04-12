@@ -1,7 +1,7 @@
 package com.user.userprofileservice.configuration;
 
 
-import com.user.userprofileservice.dto.UserDetails;
+import com.user.userprofileservice.dto.User;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +22,7 @@ public class KafkaProducerConfig {
     String kafkaIp;
 
     @Bean
-    public ProducerFactory<String, UserDetails> producerFactory(){
+    public ProducerFactory<String, User> producerFactory(){
         Map<String,Object>  configProp=new HashMap<>();
         configProp.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaIp);
         configProp.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +31,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String,UserDetails> kafkaTemplate(){
+    public KafkaTemplate<String, User> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
 }
