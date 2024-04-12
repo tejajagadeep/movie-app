@@ -1,4 +1,4 @@
-package com.auth.authenticationservice.dto;
+package com.user.userprofileservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserProfile {
+public class UserDetails  {
 
-    private String username;
+    private  String email;
     private String password;
-
+    private  String role;
 }
