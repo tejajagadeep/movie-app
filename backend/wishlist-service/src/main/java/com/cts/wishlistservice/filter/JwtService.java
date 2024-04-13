@@ -1,10 +1,11 @@
-package com.auth.authenticationservice.service;
+package com.cts.wishlistservice.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,8 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET = "9a2f8c4e6b0d71f3e8b925a45747f894a3d6bc70fa8d5e21a15a6d8c3b9a0e7c";
+    @Value("${secret.key}")
+    private String SECRET;
     public String generateToken(UserDetails user) {
         return Jwts.builder()
                 .setSubject(user.getUsername())

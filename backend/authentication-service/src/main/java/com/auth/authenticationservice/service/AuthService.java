@@ -2,6 +2,7 @@ package com.auth.authenticationservice.service;
 
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
+import com.auth.authenticationservice.filter.JwtService;
 import com.auth.authenticationservice.model.RegisterRequest;
 import com.auth.authenticationservice.repository.UserRepository;
 import com.auth.authenticationservice.model.User;

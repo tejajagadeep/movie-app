@@ -65,7 +65,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setEmail(userProfileDto.getUsername());
         user.setPassword(userProfileDto.getPassword());
-        user.setRole("ADMIN");
+        user.setRole("MEMBER");
         log.info("------"+ user +"--------");
         try {
             producer.sendMessage(user);

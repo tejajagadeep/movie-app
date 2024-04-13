@@ -1,5 +1,6 @@
 package com.auth.authenticationservice.config;
 
+import com.auth.authenticationservice.filter.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +12,6 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.auth.authenticationservice.model.Permission.*;
-import static com.auth.authenticationservice.model.Role.ADMIN;
-import static com.auth.authenticationservice.model.Role.MEMBER;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration

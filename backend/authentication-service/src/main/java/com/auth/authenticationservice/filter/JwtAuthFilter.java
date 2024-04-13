@@ -1,7 +1,6 @@
-package com.auth.authenticationservice.config;
+package com.auth.authenticationservice.filter;
 
 
-import com.auth.authenticationservice.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -41,11 +41,11 @@ public class WishlistServiceImpl implements WishlistService {
     @Override
     public WishlistDto getWishlists(String token, String username) {
         Map<String,String> info= authenticationClient.validateToken(token).getBody();
-        if(info==null || info.containsKey(username)) {
+//        if(info==null || info.containsKey(username)) {
             return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
-        }
+//        }
 
-        throw new UnAuthorizedException("Un Authorized Please check user the details.");
+//        throw new UnAuthorizedException("Un Authorized Please check user the details.");
     }
 
     /**
