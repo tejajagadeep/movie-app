@@ -16,8 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api/v1.0/private/userProfile")
 @Slf4j
@@ -43,10 +41,9 @@ public class UserProfileController {
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
                     content = @Content) })
     @GetMapping("/getUserById/{username}")
-    public ResponseEntity<?> getUserProfileById(@RequestHeader("Authorization") String token,@PathVariable String username){
+    public ResponseEntity<Object> getUserProfileById(@RequestHeader("Authorization") String token,@PathVariable String username){
 
         if (jwtService.isTokenValid(token.substring(7),username)) {
-            log.info(token + "inside method getUserProfileById -----__---");
             return new ResponseEntity<>(userProfileService.getUserProfileById(username), HttpStatus.OK);
         }
         throw new UnAuthorizedException("Un Authorized Please check user the details.");
@@ -66,7 +63,7 @@ public class UserProfileController {
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
                     content = @Content) })
     @PutMapping("/update/{username}")
-    public ResponseEntity<?> updateUserProfile(@RequestHeader("Authorization") String token,@RequestBody UserProfileDto userProfileDto, @PathVariable String username){
+    public ResponseEntity<Object> updateUserProfile(@RequestHeader("Authorization") String token,@RequestBody UserProfileDto userProfileDto, @PathVariable String username){
 
         if (jwtService.isTokenValid(token.substring(7),username)) {
             return new ResponseEntity<>(userProfileService.updateUserProfile(userProfileDto, username),HttpStatus.OK);

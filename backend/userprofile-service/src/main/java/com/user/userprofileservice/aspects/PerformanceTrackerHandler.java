@@ -3,6 +3,9 @@ package com.user.userprofileservice.aspects;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNullApi;
+
+import java.util.Objects;
 
 @Slf4j
 public class PerformanceTrackerHandler implements ObservationHandler<Observation.Context> {
@@ -14,7 +17,7 @@ public class PerformanceTrackerHandler implements ObservationHandler<Observation
 
     @Override
     public void onError(Observation.Context context) {
-        log.error("Error occurred {}"+context.getError().getMessage());
+        log.error("Error occurred {}", Objects.requireNonNull(context.getError()).getMessage());
     }
 
     @Override

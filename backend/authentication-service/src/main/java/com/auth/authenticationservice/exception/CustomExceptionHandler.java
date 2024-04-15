@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.Date;
@@ -18,7 +17,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<Object> handleNullPointerException(NullPointerException ex, WebRequest request) {
+    public ResponseEntity<Object> handleNullPointerException(NullPointerException ex) {
         ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -27,7 +26,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
     }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ServletException.class)
-    public ResponseEntity<Object> handleServletException(ServletException ex, WebRequest request) {
+    public ResponseEntity<Object> handleServletException(ServletException ex) {
         ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.BAD_REQUEST);
@@ -36,7 +35,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
     }
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(CustomUnAuthorizedException.class)
-    public ResponseEntity<Object> handleUNAUTHORIZED(CustomUnAuthorizedException ex, WebRequest request) {
+    public ResponseEntity<Object> handleUNAUTHORIZED(CustomUnAuthorizedException ex) {
         ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
@@ -45,7 +44,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
     }
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(UsernameNotFoundException.class)
-    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex, WebRequest request) {
+    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex) {
         ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.NOT_FOUND);

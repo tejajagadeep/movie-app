@@ -40,11 +40,11 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
-    public ResponseEntity<?> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
+    public ResponseEntity<Object> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);
         }
-        throw new UnAuthorizedException("Please check your token");
+        throw new UnAuthorizedException("UnAuthorized token access Wishlist");
     }
 
     @Operation(summary = "Delete Movie from Favorite List")
@@ -56,11 +56,11 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("")
-    public ResponseEntity<?> deleteWishlist(@RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String movieId){
+    public ResponseEntity<Object> deleteWishlist(@RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String movieId){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.deleteWishlist(username, movieId),HttpStatus.OK);
         }
-        throw new UnAuthorizedException("Please check your token");
+        throw new UnAuthorizedException("UnAuthorized token access deleteWishlist");
     }
 
     @Operation(summary = "Save favorite movie to wishlist")
@@ -72,11 +72,11 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/{username}")
-    public ResponseEntity<?> addWishlist(@RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){
+    public ResponseEntity<Object> addWishlist(@RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.addWishlist(username,movie),HttpStatus.CREATED);
         }
-        throw new UnAuthorizedException("Please check your token");
+        throw new UnAuthorizedException("UnAuthorized token access add movie");
     }
 
 }

@@ -36,7 +36,10 @@ public class WishlistServiceImpl implements WishlistService {
     @Override
     @Observed(name = "get.wishlists")
     public WishlistDto getWishlists(String username) {
-            return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
+            return modelMapper.map(wishlistRepository.findById(username)
+                    .orElseThrow(
+                            ()->new ResourceNotFoundException("Username not found.")
+                    ), WishlistDto.class);
     }
 
     /**

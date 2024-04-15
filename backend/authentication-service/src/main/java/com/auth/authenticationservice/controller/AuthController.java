@@ -1,6 +1,5 @@
 package com.auth.authenticationservice.controller;
 
-import com.auth.authenticationservice.filter.JwtService;
 import com.auth.authenticationservice.service.AuthService;
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
@@ -9,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,12 +16,10 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
-    private final JwtService jwtService;
 
     @Autowired
-    public AuthController(AuthService authService, JwtService jwtService) {
+    public AuthController(AuthService authService) {
         this.authService = authService;
-        this.jwtService = jwtService;
     }
 
     @PostMapping("/authenticate")
@@ -35,7 +30,7 @@ public class AuthController {
 
     @PostMapping("/validate")
     @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")
-    public ResponseEntity<?> validate(@RequestParam String username) {
-        return new ResponseEntity<>(true, HttpStatus.ACCEPTED);
+    public ResponseEntity<Object> validate(@RequestParam String username) {
+        return new ResponseEntity<>(username+" Authorized", HttpStatus.ACCEPTED);
     }
 }

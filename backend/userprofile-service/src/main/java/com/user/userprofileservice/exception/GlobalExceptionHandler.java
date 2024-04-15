@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.Date;
@@ -30,7 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(ResourceAlreadyExistsException.class)
-    public ResponseEntity<Object> handleResourceAlreadyExistsException(ResourceAlreadyExistsException ex, WebRequest request) {
+    public ResponseEntity<Object> handleResourceAlreadyExistsException(ResourceAlreadyExistsException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.CONFLICT);
@@ -40,7 +39,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<Object> handleNullPointerException(NullPointerException ex, WebRequest request) {
+    public ResponseEntity<Object> handleNullPointerException(NullPointerException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -50,7 +49,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(UnAuthorizedException.class)
-    public ResponseEntity<Object> handleUnAuthorizedException(UnAuthorizedException ex, WebRequest request) {
+    public ResponseEntity<Object> handleUnAuthorizedException(UnAuthorizedException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
@@ -60,7 +59,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ServerConnectionException.class)
-    public ResponseEntity<Object> handleServerConnectionException(ServerConnectionException ex, WebRequest request) {
+    public ResponseEntity<Object> handleServerConnectionException(ServerConnectionException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -70,7 +69,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(MalformedJwtException.class)
-    public ResponseEntity<Object> handleMalformedJwtException(MalformedJwtException ex, WebRequest request) {
+    public ResponseEntity<Object> handleMalformedJwtException(MalformedJwtException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
@@ -79,7 +78,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
     }
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(ExpiredJwtException.class)
-    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex, WebRequest request) {
+    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
@@ -89,7 +88,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(KafkaException.class)
-    public ResponseEntity<Object> handleKafkaException(KafkaException ex, WebRequest request) {
+    public ResponseEntity<Object> handleKafkaException(KafkaException ex) {
         CustomResponse messageResponse = new CustomResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);

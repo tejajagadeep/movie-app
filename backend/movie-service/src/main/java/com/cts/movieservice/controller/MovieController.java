@@ -36,7 +36,7 @@ public class MovieController {
             @ApiResponse(responseCode = "404", description = "Movies not found",
                     content = @Content) })
     @GetMapping("/top-100-movies")
-    public ResponseEntity<?> topMovies(){
+    public ResponseEntity<Object> topMovies(){
         return new ResponseEntity<>(movieService.topMovies(), HttpStatus.OK);
     }
 
@@ -48,7 +48,7 @@ public class MovieController {
             @ApiResponse(responseCode = "404", description = "Movie Details not found",
                     content = @Content) })
     @GetMapping("/top-100-movies/{id}")
-    public ResponseEntity<?> topMoviesById(@PathVariable String id){
+    public ResponseEntity<Object> topMoviesById(@PathVariable String id){
         return new ResponseEntity<>(movieService.topMoviesById(id),HttpStatus.OK);
     }
 }

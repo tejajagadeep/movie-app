@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -30,19 +31,19 @@ public class ConsumerController
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
                     content = @Content) })
     @PostMapping(value="/login")
-    public ResponseEntity<Object> consumeLogin(@RequestBody UserProfileDto userdto)
+    public ResponseEntity<Object> consumeLogin(@RequestBody UserProfileDto userDto)
     {
         String baseUrl ="http://localhost:8083/auth/v1/login";
 
-        log.info(userdto+"----");
+        log.info("{}----", userDto);
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<Map<String,String>> result =null;
+        ResponseEntity<Map<String,String>> result;
         try
         {
 
-            result=restTemplate.exchange(baseUrl, HttpMethod.POST, getHeaders(userdto), new ParameterizedTypeReference<Map<String,String>>(){});
-           log.info(result.getBody().toString());
+            result=restTemplate.exchange(baseUrl, HttpMethod.POST, getHeaders(userDto), new ParameterizedTypeReference<>(){});
+           log.info(Objects.requireNonNull(result.getBody()).toString());
         }
         catch(Exception e)
         {
@@ -56,13 +57,13 @@ public class ConsumerController
 
 
 
-    private static HttpEntity<UserProfileDto> getHeaders(UserProfileDto userdto)
+    private static HttpEntity<UserProfileDto> getHeaders(UserProfileDto userDto)
     {
         HttpHeaders header = new HttpHeaders();
 
         header.set("Content-Type", MediaType.APPLICATION_JSON_VALUE);
         header.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-        return new HttpEntity<>(userdto, header);
+        return new HttpEntity<>(userDto, header);
     }
 
 }

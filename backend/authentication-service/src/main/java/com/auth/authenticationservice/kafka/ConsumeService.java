@@ -1,7 +1,6 @@
 package com.auth.authenticationservice.kafka;
 
 import com.auth.authenticationservice.model.RegisterRequest;
-import com.auth.authenticationservice.model.User;
 import com.auth.authenticationservice.service.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

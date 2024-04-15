@@ -60,9 +60,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    //Verify if it is whitelisted path and if yes dont do anything
+    //Verify if it is whitelisted path and if yes don't do anything
     @Override
-    protected boolean shouldNotFilter(@NonNull HttpServletRequest request) throws ServletException {
+    protected boolean shouldNotFilter(@NonNull HttpServletRequest request) {
         return request.getServletPath().contains("/api/v1.0/public/**");
     }
 

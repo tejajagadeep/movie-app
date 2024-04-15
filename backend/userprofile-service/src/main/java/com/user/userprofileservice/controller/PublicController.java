@@ -34,7 +34,7 @@ public class PublicController {
             @ApiResponse(responseCode = "409", description = "User Details already Exists",
                     content = @Content) })
     @PostMapping("/addUser")
-    public ResponseEntity<?> saveUserProfile(@RequestBody UserProfileDto userProfileDto){
+    public ResponseEntity<Object> saveUserProfile(@RequestBody UserProfileDto userProfileDto){
         return new ResponseEntity<>(userProfileService.saveUserProfile(userProfileDto), HttpStatus.CREATED);
     }
 

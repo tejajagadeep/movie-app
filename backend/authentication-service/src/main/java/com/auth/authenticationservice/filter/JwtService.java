@@ -22,7 +22,8 @@ import java.util.function.Function;
 public class JwtService {
 
     @Value("${secret.key}")
-    private String SECRET;
+    private String secret;
+
     public String generateToken(UserDetails user) {
         return Jwts.builder()
                 .setSubject(user.getUsername())
@@ -35,7 +36,7 @@ public class JwtService {
 
 
     private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+        byte[] keyBytes = Decoders.BASE64.decode(secret);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
@@ -63,11 +64,6 @@ public class JwtService {
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
-    }
-
-    public boolean isTokenValid(String token, String username) {
-        final String newUsername = extractUsername(token);
-        return (username.equals(newUsername));
     }
 
 }
