@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1.0/auth")
+@RequestMapping("/api/v1.0/public/auth")
 @Slf4j
 public class AuthController {
 

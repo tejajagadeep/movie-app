@@ -6,13 +6,13 @@ import com.cts.wishlistservice.exception.ResourceNotFoundException;
 import com.cts.wishlistservice.model.Movie;
 import com.cts.wishlistservice.model.Wishlist;
 import com.cts.wishlistservice.repository.WishlistRepository;
+import io.micrometer.observation.annotation.Observed;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -30,21 +30,23 @@ public class WishlistServiceImpl implements WishlistService {
 
     /**
      * Get All wish list of a user
-     * @param username
+     * @param username = username to access wishlist
      * @return Wishlist
      */
     @Override
+    @Observed(name = "get.wishlists")
     public WishlistDto getWishlists(String username) {
             return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
     }
 
     /**
      * Delete movie by id for user
-     * @param username
-     * @param id
+     * @param username = username to access wishlist
+     * @param id = movie id
      * @return Wishlist
      */
     @Override
+    @Observed(name = "delete.wishlist")
     public WishlistDto deleteWishlist(String username, String id) {
 
         Wishlist wishlist = wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found."));
@@ -63,15 +65,16 @@ public class WishlistServiceImpl implements WishlistService {
 
     /**
      *Add favorite movie to wishlist filtered by username
-     * @param username
-     * @param movieDtp
+     * @param username = username to access wishlist
+     * @param movieDto = movie details to be added
      * @return WishlistDto
      */
     @Override
-    public WishlistDto addWishlist(String username, MovieDto movieDtp) {
+    @Observed(name = "add.wishlist")
+    public WishlistDto addWishlist(String username, MovieDto movieDto) {
 
         Optional<Wishlist> wishListOptional = wishlistRepository.findById(username);
-        Movie movie = modelMapper.map(movieDtp, Movie.class);
+        Movie movie = modelMapper.map(movieDto, Movie.class);
         Wishlist wishlist;
         if (wishListOptional.isPresent()) {
             // User's wish list exists, add or update the track
@@ -88,20 +91,20 @@ public class WishlistServiceImpl implements WishlistService {
 
     /**
      * if movie already exists update or add to wishlist
-     * @param wishList
-     * @param movie
+     * @param wishlist = get wishlist of the user
+     * @param movie = movie details
      */
-    private void addOrUpdateTrack(Wishlist wishList, Movie movie) {
+    private void addOrUpdateTrack(Wishlist wishlist, Movie movie) {
         // Check if the track with the same ID already exists in the wish list
-        boolean trackExists = wishList.getMovies().stream()
+        boolean trackExists = wishlist.getMovies().stream()
                 .anyMatch(track -> track.getId().equals(movie.getId()));
 
         if (!trackExists) {
             // Track doesn't exist, add it to the wish list
-            wishList.getMovies().add(movie);
+            wishlist.getMovies().add(movie);
         } else {
             // Track already exists, update it (if needed)
-            wishList.getMovies().stream()
+            wishlist.getMovies().stream()
                     .filter(m -> m.getId().equals(movie.getId()))
                     .findFirst()
                     .ifPresent(existingMovie -> {

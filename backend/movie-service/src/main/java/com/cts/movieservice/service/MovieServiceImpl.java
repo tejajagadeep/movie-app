@@ -2,6 +2,7 @@ package com.cts.movieservice.service;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
+import io.micrometer.observation.annotation.Observed;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,13 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
+    @Observed(name = "top.movies")
     public Object topMovies(){
         return restTemplate.exchange(response(""), Movie[].class).getBody();
     }
 
     @Override
+    @Observed(name = "top.movies.by.id")
     public Object topMoviesById(String id) {
         return restTemplate.exchange(response(id), MovieDetails.class).getBody();
     }
