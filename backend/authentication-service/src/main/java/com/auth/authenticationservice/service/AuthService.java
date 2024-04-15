@@ -9,6 +9,7 @@ import com.auth.authenticationservice.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +50,7 @@ public class AuthService {
                 )
         );
         var user = userRepository.findById(request.getUsername())
-                .orElseThrow();
+                .orElseThrow(()-> new UsernameNotFoundException(request.getUsername()));
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().accessToken(jwtToken).build();
 

@@ -3,8 +3,6 @@ package com.cts.wishlistservice.service;
 import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
 import com.cts.wishlistservice.exception.ResourceNotFoundException;
-import com.cts.wishlistservice.exception.UnAuthorizedException;
-import com.cts.wishlistservice.feign.AuthenticationClient;
 import com.cts.wishlistservice.model.Movie;
 import com.cts.wishlistservice.model.Wishlist;
 import com.cts.wishlistservice.repository.WishlistRepository;
@@ -23,13 +21,11 @@ public class WishlistServiceImpl implements WishlistService {
 
     private final WishlistRepository wishlistRepository;
     private final ModelMapper modelMapper;
-    private final AuthenticationClient authenticationClient;
 
     @Autowired
-    public WishlistServiceImpl(WishlistRepository wishlistRepository, ModelMapper modelMapper, AuthenticationClient authenticationClient) {
+    public WishlistServiceImpl(WishlistRepository wishlistRepository, ModelMapper modelMapper) {
         this.wishlistRepository = wishlistRepository;
         this.modelMapper = modelMapper;
-        this.authenticationClient = authenticationClient;
     }
 
     /**

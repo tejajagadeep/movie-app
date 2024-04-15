@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1.0/movie")
+@RequestMapping("/api/v1.0/private/movie")
 public class MovieController {
 
     private final MovieService movieService;
@@ -36,7 +36,7 @@ public class MovieController {
             @ApiResponse(responseCode = "404", description = "Movies not found",
                     content = @Content) })
     @GetMapping("/top-100-movies")
-    public ResponseEntity<Object> topMovies(){
+    public ResponseEntity<?> topMovies(){
         return new ResponseEntity<>(movieService.topMovies(), HttpStatus.OK);
     }
 
@@ -48,7 +48,7 @@ public class MovieController {
             @ApiResponse(responseCode = "404", description = "Movie Details not found",
                     content = @Content) })
     @GetMapping("/top-100-movies/{id}")
-    public ResponseEntity<Object> topMoviesById(@PathVariable String id){
+    public ResponseEntity<?> topMoviesById(@PathVariable String id){
         return new ResponseEntity<>(movieService.topMoviesById(id),HttpStatus.OK);
     }
 }

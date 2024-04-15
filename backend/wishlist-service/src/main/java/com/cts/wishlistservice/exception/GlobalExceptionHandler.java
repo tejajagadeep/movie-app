@@ -1,6 +1,5 @@
 package com.cts.wishlistservice.exception;
 
-import feign.FeignException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.security.SignatureException;
 import java.util.Date;
 
 
@@ -56,15 +56,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
     }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(FeignException.class)
-    public ResponseEntity<Object> handleFeignException(FeignException ex, WebRequest request) {
+    @ExceptionHandler(SignatureException.class)
+    public ResponseEntity<Object> handleSignatureException(SignatureException ex, WebRequest request) {
         ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.BAD_REQUEST);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
     }
+
 
 
 

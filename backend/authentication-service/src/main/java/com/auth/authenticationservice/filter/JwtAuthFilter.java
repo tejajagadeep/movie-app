@@ -63,7 +63,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     //Verify if it is whitelisted path and if yes dont do anything
     @Override
     protected boolean shouldNotFilter(@NonNull HttpServletRequest request) throws ServletException {
-        return request.getServletPath().contains("/crackit/v1/auth");
+        return request.getServletPath().contains("/api/v1.0/public/**");
     }
 
 }

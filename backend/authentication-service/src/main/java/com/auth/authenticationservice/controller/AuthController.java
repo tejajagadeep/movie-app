@@ -4,13 +4,18 @@ import com.auth.authenticationservice.filter.JwtService;
 import com.auth.authenticationservice.service.AuthService;
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1.0/auth")
+@Slf4j
 public class AuthController {
 
     private final AuthService authService;
@@ -23,16 +28,14 @@ public class AuthController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request
-    ) {
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
        return ResponseEntity.ok(authService.authenticate(request));
     }
 
 
     @PostMapping("/validate")
     @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")
-    public Boolean post(@RequestHeader("Authorization") String token, @RequestParam String username) {
-        return jwtService.isTokenValid(token, username);
+    public ResponseEntity<?> validate(@RequestParam String username) {
+        return new ResponseEntity<>(true, HttpStatus.ACCEPTED);
     }
 }
