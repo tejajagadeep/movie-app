@@ -44,11 +44,11 @@ public class AuthService {
             //Return the token
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getUsername(),
                         request.getPassword()
                 )
         );
-        var user = userRepository.findById(request.getEmail())
+        var user = userRepository.findById(request.getUsername())
                 .orElseThrow();
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().accessToken(jwtToken).build();

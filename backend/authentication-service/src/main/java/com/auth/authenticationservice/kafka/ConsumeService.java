@@ -28,7 +28,7 @@ public class ConsumeService
 		try {
 			RegisterRequest userDetails=convertToJavaObject(message);
 			authService.register(userDetails);
-			log.info("--------------Consumer message--------: "+ userDetails.getEmail()+"---"
+			log.info("--------------Consumer message--------: "+ userDetails.getUsername()+"---"
 					+userDetails.getPassword());
 		}
 		catch (Exception e){

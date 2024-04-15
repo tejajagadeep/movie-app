@@ -3,6 +3,7 @@ package com.auth.authenticationservice.exception;
 import jakarta.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -42,5 +43,16 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.UNAUTHORIZED);
     }
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex, WebRequest request) {
+        ErrorMessage messageResponse = new ErrorMessage();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.NOT_FOUND);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.NOT_FOUND);
+    }
+
+
 
 }

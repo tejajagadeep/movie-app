@@ -12,7 +12,6 @@ import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,8 +61,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile saveUserProfile(UserProfileDto userProfileDto) {
 
         User user =new User();
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setEmail(userProfileDto.getUsername());
+        user.setUsername(userProfileDto.getUsername());
         user.setPassword(userProfileDto.getPassword());
         user.setRole("MEMBER");
         log.info("------"+ user +"--------");
