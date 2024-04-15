@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class PublicController {
             @ApiResponse(responseCode = "409", description = "User Details already Exists",
                     content = @Content) })
     @PostMapping("/addUser")
-    public ResponseEntity<Object> saveUserProfile(@RequestBody UserProfileDto userProfileDto){
+    public ResponseEntity<Object> saveUserProfile(@Valid @RequestBody UserProfileDto userProfileDto){
         return new ResponseEntity<>(userProfileService.saveUserProfile(userProfileDto), HttpStatus.CREATED);
     }
 

@@ -31,7 +31,9 @@ public class SecurityConfiguration {
                         req
                                 .requestMatchers("/api/v1.0/public/auth/*")
                                 .permitAll()
-                                .requestMatchers( "/swagger-ui/index.html")
+                                .requestMatchers( "/swagger-ui/**")
+                                .permitAll()
+                                .requestMatchers( "/actuator/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated())
