@@ -14,6 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 public class MovieDto {
 
+    @JsonProperty("imdbid")
+    private String imdbid;
+
     @JsonProperty("id")
     private String id;
 

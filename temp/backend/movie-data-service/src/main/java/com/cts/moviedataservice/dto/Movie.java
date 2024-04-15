@@ -21,6 +21,9 @@ public class Movie {
     @JsonProperty("id")
     private String id;
 
+    @JsonProperty("imdbid")
+    private String imdbid;
+
     @JsonProperty("rank")
     private int rank;
 

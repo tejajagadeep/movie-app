@@ -38,4 +38,6 @@ public class Movie {
     @JsonProperty("imdb_link")
     private String imdbLink;
 
+    @JsonProperty("imdbid")
+    private String imdbid;
 }

@@ -42,6 +42,7 @@ public class MovieServiceImpl implements MovieService{
         movieDetails.setDirector(List.of(new String[]{"Christopher Nolan"}));
         movieDetails.setWriters(List.of(new String[]{"Christopher Nolan", "Kai Bird", "Martin Sherwin"}));
         movieDetails.setImdbLink("https://www.imdb.com/title/tt15398776");
+        movieDetails.setImdbid("tt15398776");
         return movieDetails;
     }
 

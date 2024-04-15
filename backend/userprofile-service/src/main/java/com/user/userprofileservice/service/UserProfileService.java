@@ -9,7 +9,6 @@ import com.user.userprofileservice.model.UserProfile;
 import java.util.List;
 
 public interface UserProfileService {
-    List<UserProfileDto> getAllUsers();
 
     UserProfileDto getUserProfileById(String username);
 

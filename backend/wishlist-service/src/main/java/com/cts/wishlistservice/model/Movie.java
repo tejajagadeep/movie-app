@@ -17,6 +17,8 @@ import java.util.List;
 public class Movie {
 
     @Id
+    private String imdbid;
+
     private String id;
 
     private int rank;

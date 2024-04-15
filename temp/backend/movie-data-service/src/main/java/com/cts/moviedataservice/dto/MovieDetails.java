@@ -44,6 +44,9 @@ public class MovieDetails {
     @JsonProperty("imdb_link")
     private String imdbLink;
 
+    @JsonProperty("imdbid")
+    private String imdbid;
+
     @JsonProperty("trailer_embed_link")
     private String trailerEmbedLink;
 

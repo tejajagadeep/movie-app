@@ -58,7 +58,7 @@ public class WishlistServiceImpl implements WishlistService {
         List<Movie> movies = wishlist.getMovies();
 
         // Iterate over the list of movies to find the movie with the specified ID
-        movies.removeIf(movie -> movie.getId().equals(id));
+        movies.removeIf(movie -> movie.getImdbid().equals(id));
 
         // Update the wishlist in the repository
         wishlistRepository.save(wishlist);
@@ -100,7 +100,7 @@ public class WishlistServiceImpl implements WishlistService {
     private void addOrUpdateTrack(Wishlist wishlist, Movie movie) {
         // Check if the track with the same ID already exists in the wish list
         boolean trackExists = wishlist.getMovies().stream()
-                .anyMatch(track -> track.getId().equals(movie.getId()));
+                .anyMatch(track -> track.getImdbid().equals(movie.getImdbid()));
 
         if (!trackExists) {
             // Track doesn't exist, add it to the wish list
@@ -108,10 +108,11 @@ public class WishlistServiceImpl implements WishlistService {
         } else {
             // Track already exists, update it (if needed)
             wishlist.getMovies().stream()
-                    .filter(m -> m.getId().equals(movie.getId()))
+                    .filter(m -> m.getImdbid().equals(movie.getImdbid()))
                     .findFirst()
                     .ifPresent(existingMovie -> {
                         existingMovie.setId(movie.getId());
+                        existingMovie.setImdbid(movie.getImdbid());
                         existingMovie.setRank(movie.getRank());
                         existingMovie.setTitle(movie.getTitle());
                         existingMovie.setBigImage(movie.getBigImage());

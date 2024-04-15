@@ -56,9 +56,9 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("")
-    public ResponseEntity<Object> deleteWishlist(@RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String movieId){
+    public ResponseEntity<Object> deleteWishlist(@RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String id){
         if (jwtService.isTokenValid(token.substring(7),username)){
-            return new ResponseEntity<>(wishlistService.deleteWishlist(username, movieId),HttpStatus.OK);
+            return new ResponseEntity<>(wishlistService.deleteWishlist(username, id),HttpStatus.OK);
         }
         throw new UnAuthorizedException("UnAuthorized token access deleteWishlist");
     }

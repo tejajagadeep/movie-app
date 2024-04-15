@@ -14,9 +14,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Stream;
-
 @Service
 @Observed(name = "user.profile.service.impl")
 @Slf4j
@@ -33,17 +30,6 @@ public class UserProfileServiceImpl implements UserProfileService {
         this.usersProfileRepository = usersProfileRepository;
         this.modelMapper = modelMapper;
         this.producer = producer;
-    }
-
-
-    @Override
-    @Observed(name = "get.all.users")
-    public List<UserProfileDto> getAllUsers() {
-
-        return Stream.of(usersProfileRepository.findAll())
-                .flatMap(entityList -> entityList.stream()
-                        .map(entity -> modelMapper.map(entity, UserProfileDto.class))).toList();
-
     }
 
     @Override
