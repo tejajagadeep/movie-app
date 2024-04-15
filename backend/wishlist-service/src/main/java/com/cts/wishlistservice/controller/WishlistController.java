@@ -2,6 +2,8 @@ package com.cts.wishlistservice.controller;
 
 import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
+import com.cts.wishlistservice.exception.UnAuthorizedException;
+import com.cts.wishlistservice.feign.AuthenticationClient;
 import com.cts.wishlistservice.service.WishlistService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,10 +21,12 @@ import org.springframework.web.bind.annotation.*;
 public class WishlistController {
 
     private final WishlistService wishlistService;
+    private final AuthenticationClient authenticationClient;
 
     @Autowired
-    public WishlistController(WishlistService wishlistService) {
+    public WishlistController(WishlistService wishlistService, AuthenticationClient authenticationClient) {
         this.wishlistService = wishlistService;
+        this.authenticationClient = authenticationClient;
     }
 
     @Operation(summary = "Get Wishlist of User")
@@ -35,7 +39,10 @@ public class WishlistController {
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
     public ResponseEntity<Object> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
-        return new ResponseEntity<>(wishlistService.getWishlists(token, username), HttpStatus.OK);
+        if (Boolean.TRUE.equals(authenticationClient.validateToken(token, username).getBody())){
+            return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);
+        }
+        throw new UnAuthorizedException("Unauthorized");
     }
 
     @Operation(summary = "Delete Movie from Favorite List")
@@ -48,7 +55,7 @@ public class WishlistController {
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("")
     public ResponseEntity<Object> deleteWishlist(@RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String movieId){
-        return new ResponseEntity<>(wishlistService.deleteWishlist(token, username, movieId),HttpStatus.OK);
+        return new ResponseEntity<>(wishlistService.deleteWishlist(username, movieId),HttpStatus.OK);
     }
 
     @Operation(summary = "Save favorite movie to wishlist")
@@ -61,7 +68,8 @@ public class WishlistController {
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/{username}")
     public ResponseEntity<Object> addWishlist(@RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){
-        return new ResponseEntity<>(wishlistService.addWishlist(token, username,movie),HttpStatus.CREATED);
+
+        return new ResponseEntity<>(wishlistService.addWishlist(username,movie),HttpStatus.CREATED);
     }
 
 }

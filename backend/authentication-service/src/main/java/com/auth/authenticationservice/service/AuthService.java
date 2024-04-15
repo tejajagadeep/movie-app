@@ -22,7 +22,7 @@ public class AuthService {
 
     public AuthenticationResponse register(RegisterRequest registerRequest) {
         var user = User.builder()
-                .email(registerRequest.getEmail())
+                .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .role(registerRequest.getRole())
                 .build();
@@ -48,7 +48,7 @@ public class AuthService {
                         request.getPassword()
                 )
         );
-        var user = userRepository.findByEmail(request.getEmail())
+        var user = userRepository.findById(request.getEmail())
                 .orElseThrow();
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().accessToken(jwtToken).build();

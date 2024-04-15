@@ -1,9 +1,9 @@
 package com.auth.authenticationservice.controller;
 
+import com.auth.authenticationservice.filter.JwtService;
 import com.auth.authenticationservice.service.AuthService;
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
-import com.auth.authenticationservice.filter.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,7 +32,7 @@ public class AuthController {
 
     @PostMapping("/validate")
     @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")
-    public String post(@RequestParam String username) {
-        return username;
+    public Boolean post(@RequestHeader("Authorization") String token, @RequestParam String username) {
+        return jwtService.isTokenValid(token, username);
     }
 }

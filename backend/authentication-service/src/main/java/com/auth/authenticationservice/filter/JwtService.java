@@ -65,9 +65,9 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()));
+    public boolean isTokenValid(String token, String username) {
+        final String newUsername = extractUsername(token);
+        return (username.equals(newUsername));
     }
 
 }
