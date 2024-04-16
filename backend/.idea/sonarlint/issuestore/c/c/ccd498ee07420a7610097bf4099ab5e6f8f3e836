@@ -1,9 +1,13 @@
 
-š
-java:S1192"RDefine a constant instead of duplicating this literal "messageTemplate='" 4 times.(œæğ·ûÿÿÿÿ8“¡æî1J$4fbac032-ad27-4011-aa24-661b56cb51b7
-v
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¢¡æî1J$1c4b289c-e4b0-404f-b229-fd98a185a56b
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8•¸í¯î1
+`
+java:S1128"CRemove this unused import 'jakarta.validation.ValidationException'.(İÎÜÂ8•¸í¯î1
+b
+java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8–¸í¯î1
+f
+java:S1128"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8–¸í¯î1
 r
-java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8¢¡æî1J$9b974ca8-d09e-4fca-9094-4e8b2bb687a1
-y
-java:S1128"6Remove this unused import 'lombok.extern.slf4j.Slf4j'.(ûúÄ®8¢¡æî1J$613c5deb-a556-414c-95ba-cf6895aabed0
+java:S1128"URemove this unused import 'org.springframework.web.bind.annotation.ExceptionHandler'.(–Œ•¬8–¸í¯î1
+p
+java:S1128	"SRemove this unused import 'org.springframework.web.bind.annotation.ResponseStatus'.(¯×ñ8–¸í¯î1

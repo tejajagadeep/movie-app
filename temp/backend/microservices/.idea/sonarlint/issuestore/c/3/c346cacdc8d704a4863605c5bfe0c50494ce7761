@@ -1,0 +1,29 @@
+
+x
+java:S1488("]Immediately return this expression instead of assigning it to the temporary variable "token".(þ½È’øÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(ïì„¦þÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(ð¼•ð
+E	java:S106 "+Replace this use of System.out by a logger.(íàë¹þÿÿÿÿ
+V	java:S125""<This block of commented-out lines of code should be removed.(ÝäˆÜýÿÿÿÿ
+X
+java:S1117$"=Rename "secretKey" which hides the field declared at line 19.(ÈÖ¤ûÿÿÿÿ
+U
+java:S1874$":Remove this use of "SignatureAlgorithm"; it is deprecated.(ÈÖ¤ûÿÿÿÿ
+U
+java:S1874$":Remove this use of "SignatureAlgorithm"; it is deprecated.(ÈÖ¤ûÿÿÿÿ
+G
+java:S1874)"2Remove this use of "setSubject"; it is deprecated.(ï³Ðv
+P
+java:S1874,"5Remove this use of "setExpiration"; it is deprecated.(Þ½°Íùÿÿÿÿ
+N
+java:S1874."3Remove this use of "setIssuedAt"; it is deprecated.(˜œ ¡üÿÿÿÿ
+K
+java:S1874."0Remove this use of "signWith"; it is deprecated.(˜œ ¡üÿÿÿÿ
+U
+java:S1874.":Remove this use of "SignatureAlgorithm"; it is deprecated.(˜œ ¡üÿÿÿÿ
+U
+java:S1874.":Remove this use of "SignatureAlgorithm"; it is deprecated.(˜œ ¡üÿÿÿÿ
+n
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ
+[
+java:S1128"ERemove this unused import 'org.springframework.core.env.Environment'.(¹‡¨¹

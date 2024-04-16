@@ -1,0 +1,6 @@
+
+N
+java:S1874"8Remove this use of "getRawStatusCode"; it is deprecated.(õƒ÷Æ
+W
+java:S3457!"AFormat specifiers should be used instead of string concatenation.(èƒ›Õ
+@	java:S106#"+Replace this use of System.out by a logger.(ÈÇì

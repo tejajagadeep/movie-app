@@ -1,0 +1,20 @@
+
+
+java:S1488¡"cImmediately return this expression instead of assigning it to the temporary variable "top10Movies".(â¬ç³øÿÿÿÿ
+T
+java:S2589—"8Remove this expression which always evaluates to "false"(È™µÚüÿÿÿÿ
+<
+java:S1170*"!Make this final field static too.(õ’Ö±üÿÿÿÿ
+E	java:S106="+Replace this use of System.out by a logger.(ªªù…ûÿÿÿÿ
+h
+java:S6204x"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+=
+java:S1905l"'Remove this unnecessary cast to "List".(…ŽŽ
+H
+java:S1481r"2Remove this unused "genreAsString" local variable.(÷øØ
+B
+java:S1168˜"+Return an empty collection instead of null.(¥¹ï
+i
+java:S6204ž"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+i
+java:S6204£"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹

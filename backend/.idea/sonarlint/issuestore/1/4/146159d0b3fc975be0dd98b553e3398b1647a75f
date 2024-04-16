@@ -1,0 +1,11 @@
+
+ˆ	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Şï”Å8ƒ’–°î1J$a2893456-1466-426c-a381-52a2cd9c1fdd
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8’–°î1J$f25625ff-7937-487e-977a-6345bf863b72
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8’–°î1J$b79af726-8295-45e8-8c92-befc43e617e5
+~	java:S125"<This block of commented-out lines of code should be removed.(Ûªë¬8’–°î1J$3b9a538d-dbe0-4336-bbaf-43bc44aaf839
+ƒ	java:S125'"<This block of commented-out lines of code should be removed.(º®Å’üÿÿÿÿ8—’–°î1J$537ddf42-086b-4f0a-be8c-8a84bb2bcadb
+r	java:S106+"+Replace this use of System.out by a logger.(¾Şºÿÿÿÿÿ8˜’–°î1J$38d5b872-17fc-409a-b03f-fdfbf9512fcc
+Š
+java:S20943"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8š’–°î1J$6d56be3b-c14e-45c2-b703-b09ca8cc7192

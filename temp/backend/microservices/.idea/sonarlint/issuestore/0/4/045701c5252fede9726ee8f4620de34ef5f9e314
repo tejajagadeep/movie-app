@@ -1,0 +1,18 @@
+
+P
+java:S11412"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+;
+java:S1452&"&Remove usage of generic wildcard type.(ƒÉ’,
+t
+java:S2142J"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾
+E	java:S106."+Replace this use of System.out by a logger.(ùß­ıÿÿÿÿ
+t
+java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾
+@	java:S1065"+Replace this use of System.out by a logger.(ˆÅ¯ô
+Q	java:S1254"<This block of commented-out lines of code should be removed.(™ŠÏ
+P
+java:S1874B":Remove this use of "getStatusCodeValue"; it is deprecated.(¿”Şé
+>
+java:S1172O"(Remove this unused method parameter "e".(û±Ÿƒ
+T
+java:S1068"9Remove this unused "authenticationService" private field.(¦Áñúÿÿÿÿ
