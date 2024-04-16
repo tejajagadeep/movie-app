@@ -1,9 +1,9 @@
 
-t
-java:S1192"RDefine a constant instead of duplicating this literal "messageTemplate='" 4 times.(œæğ·ûÿÿÿÿ8“¡æî1
-P
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¢¡æî1
-L
-java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8¢¡æî1
-S
-java:S1128"6Remove this unused import 'lombok.extern.slf4j.Slf4j'.(ûúÄ®8¢¡æî1
+š
+java:S1192"RDefine a constant instead of duplicating this literal "messageTemplate='" 4 times.(œæğ·ûÿÿÿÿ8“¡æî1J$4fbac032-ad27-4011-aa24-661b56cb51b7
+v
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¢¡æî1J$1c4b289c-e4b0-404f-b229-fd98a185a56b
+r
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8¢¡æî1J$9b974ca8-d09e-4fca-9094-4e8b2bb687a1
+y
+java:S1128"6Remove this unused import 'lombok.extern.slf4j.Slf4j'.(ûúÄ®8¢¡æî1J$613c5deb-a556-414c-95ba-cf6895aabed0

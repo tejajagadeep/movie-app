@@ -75,8 +75,6 @@ Sauthentication-service/src/main/java/com/auth/authenticationservice/model/User.
 bauthentication-service/src/main/java/com/auth/authenticationservice/repository/UserRepository.java,6\4\64c4f31dac4df5080a0a204ca91cd6ece4885bbe
 å
 \authentication-service/src/main/java/com/auth/authenticationservice/service/AuthService.java,a\6\a603550fdc638096501e624489ba10cc5e26b7bb
-â
-Yauthentication-service/src/main/java/com/auth/authenticationservice/service/AuthServ.java,2\6\26c9dac09ec9cdd88230e69e05f5a6df246f9566
 ô
 iauthentication-service/src/main/java/com/auth/authenticationservice/AuthenticationServiceApplication.java,5\e\5e342fc3330a75fc21f70e0f7168db638b9ee737
 ê
@@ -131,14 +129,6 @@ H
 wishlist-service/pom.xml,1\0\10cbb9762a391fb26b30736705825c612a6f455c
 C
 api-gateway/pom.xml,2\b\2bfa2b108f2439e99e004f4085b58c22cf995f73
-l
-<src/main/java/com/cts/moviedataservice/dto/MovieDetails.java,5\b\5b4366cc9fc4a7bc9dc40f657977361e9ef1ec3b
-e
-5src/main/java/com/cts/moviedataservice/dto/Movie.java,8\2\8287fe1c3ae86bd84ddc63e88f9698d2e2ab8ba3
-v
-Fsrc/main/java/com/cts/moviedataservice/controller/MovieController.java,9\a\9aa2d0b6c03b62e362f9d713b3a8cf9cb04d917a
-t
-Dsrc/main/java/com/cts/moviedataservice/service/MovieServiceImpl.java,9\a\9a9b84cdc490197ba8318bcd4a6dd54a12417473
 {
 Kapi-gateway/src/main/java/com/spotify/apigateway/ApiGatewayApplication.java,7\3\734cb27a72450b002c6b99684f3e265c724b89a0
 ã
@@ -157,9 +147,5 @@ K
 userprofile-service/pom.xml,1\0\10dd25839972fc38d4f9b8849cca4e853e66ef40
 E
 config-server/pom.xml,a\2\a2f9618c8ad821b143a07a29a9805fcb0b2df470
-Ü
-Vuserprofile-service/src/main/java/com/user/userprofileservice/exception/Exception.java,8\c\8c8dc3dd97c3945665293a4d4d1694afc9da7a99
-ç
-]userprofile-service/src/main/java/com/user/userprofileservice/exception/ExceptionHandler.java,6\c\6cdc930dbc264fb2ea7fec14c940397a3ffa6853
 ï
 euserprofile-service/src/main/java/com/user/userprofileservice/exception/ValidateExceptionHandler.java,c\c\ccd498ee07420a7610097bf4099ab5e6f8f3e836
