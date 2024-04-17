@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+
+import java.util.Date;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -61,6 +63,7 @@ class UserProfileServiceImplTest {
         userProfile.setFirstName("firstName");
         userProfile.setLastName("lastName");
         userProfile.setEmail("email@email.com");
+
         System.out.println(userProfile);
         when(modelMapper.map(userProfileDto, UserProfile.class)).thenReturn(new UserProfile());
         when(userProfileRepository.existsById(userProfileDto.getUsername())).thenReturn(false);
@@ -77,6 +80,11 @@ class UserProfileServiceImplTest {
     void testSaveUserProfileWithExistingUsername() {
         UserProfileDto userProfileDto = new UserProfileDto();
         userProfileDto.setUsername("existingUser");
+        userProfileDto.setPassword("ABCabc@123");
+        userProfileDto.setEmail("teja@gmial.com");
+        userProfileDto.setLastName("jdl");
+        userProfileDto.setFirstName("shsd");
+        userProfileDto.setDateOfBirth(new Date());
         when(userProfileRepository.existsById(userProfileDto.getUsername())).thenReturn(true);
 
         assertThrows(ResourceAlreadyExistsException.class, () -> userProfileService.saveUserProfile(userProfileDto));

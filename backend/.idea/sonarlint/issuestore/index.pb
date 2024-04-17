@@ -184,3 +184,11 @@ o
 ?src/main/java/com/cts/movieservice/MovieServiceApplication.java,2\8\28ac3f0eaa166892856bcaa4a659238423958d16
 n
 >src/main/java/com/cts/movieservice/exception/ErrorMessage.java,0\f\0f779df05a18b96ab086102c1fab15e009b1149a
+
+Osrc/test/java/com/auth/authenticationservice/controller/AuthControllerTest.java,3\f\3f14adcf0624dadd686340cb5e01ad74639df61c
+}
+Msrc/test/java/com/auth/authenticationservice/service/AuthServiceImplTest.java,0\d\0dde6a46f934f3093ed14da22db2dd7b547c833d
+Å
+Qsrc/test/java/com/user/userprofileservice/UserprofileServiceApplicationTests.java,f\5\f5e5da1db0ee24e71a096bc67009fc34965249ac
+}
+Msrc/main/java/com/user/userprofileservice/service/UserProfileServiceImpl.java,e\1\e1ddc55850a94da730fed8b95e9637e51dedead2

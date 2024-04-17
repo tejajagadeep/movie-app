@@ -32,7 +32,7 @@ class AuthControllerTest {
 
         ResponseEntity<AuthenticationResponse> result = authController.authenticate(request);
 
-        assertEquals(HttpStatus.OK, result.getStatusCode());
+        assertEquals(HttpStatus.CREATED, result.getStatusCode());
         assertEquals(response, result.getBody());
     }
 
