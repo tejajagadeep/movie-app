@@ -1,13 +1,11 @@
 package com.cts.movieservice.exception;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 public class ErrorMessage {
     private Date timeStamp;
     private String message;
