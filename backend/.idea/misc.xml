@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/userprofile-service/pom.xml" />
         <option value="$PROJECT_DIR$/authentication-service/pom.xml" />
         <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>

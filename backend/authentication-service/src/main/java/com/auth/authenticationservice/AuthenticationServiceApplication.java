@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Authentication-SERVICE API", version = "1.0", description = "Authenticator for spotify app"))
+@OpenAPIDefinition(info = @Info(title = "Authentication-SERVICE API", version = "1.0", description = "Authenticator for Movie App"))
 @SecurityScheme(
 		name = "Bearer Authentication",
 		type = SecuritySchemeType.HTTP,

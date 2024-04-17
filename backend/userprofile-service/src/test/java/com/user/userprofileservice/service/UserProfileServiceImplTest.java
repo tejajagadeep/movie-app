@@ -65,10 +65,16 @@ class UserProfileServiceImplTest {
         User user = new User();
         user.setUsername(userProfileDto.getUsername());
         user.setPassword(userProfileDto.getPassword());
+        UserProfile userProfile = new UserProfile();
+        userProfile.setUsername("testUser");
+        userProfile.setFirstName("firstName");
+        userProfile.setLastName("lastName");
+        userProfile.setEmail("email@email.com");
+        System.out.println(userProfile);
         when(modelMapper.map(userProfileDto, UserProfile.class)).thenReturn(new UserProfile());
         when(userProfileRepository.existsById(userProfileDto.getUsername())).thenReturn(false);
 //        when(dataPublisherService.sendMessage(any(User.class))).thenReturn(mock(ListenableFuture.class));
-        when(userProfileRepository.save(any(UserProfile.class))).thenReturn(new UserProfile());
+        when(userProfileRepository.save(any(UserProfile.class))).thenReturn(userProfile);
 
         UserProfile result = userProfileService.saveUserProfile(userProfileDto);
         System.out.println(result);

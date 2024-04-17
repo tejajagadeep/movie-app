@@ -6,15 +6,12 @@ import jakarta.validation.ValidationException;
 import org.apache.kafka.common.KafkaException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @ControllerAdvice
@@ -22,17 +19,17 @@ public class GlobalExceptionHandler{
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        CustomResponse customResponse = new CustomResponse();
-        customResponse.setTimeStamp(new Date());
-        customResponse.setStatus(HttpStatus.BAD_REQUEST);
-        ex.getBindingResult().getAllErrors().forEach(error -> customResponse.setMessage(error.getDefaultMessage()));
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(customResponse);
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setTimeStamp(new Date());
+        errorResponse.setStatus(HttpStatus.BAD_REQUEST);
+        ex.getBindingResult().getAllErrors().forEach(error -> errorResponse.setMessage(error.getDefaultMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<CustomResponse> handleValidationException(ValidationException ex) {
+    public ResponseEntity<ErrorResponse> handleValidationException(ValidationException ex) {
 
-        CustomResponse response = new CustomResponse();
+        ErrorResponse response = new ErrorResponse();
         String message = ex.getMessage();
         String template = "messageTemplate='";
         String messageTemplate = message.substring(message.indexOf(template) + template.length(), message.indexOf("'", message.indexOf(template) + template.length()));
@@ -44,8 +41,8 @@ public class GlobalExceptionHandler{
     }
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<CustomResponse> handleInvalidUserException(ResourceNotFoundException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+    public ResponseEntity<ErrorResponse> handleInvalidUserException(ResourceNotFoundException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.NOT_FOUND);
         messageResponse.setTimeStamp(new Date());
@@ -56,7 +53,7 @@ public class GlobalExceptionHandler{
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(ResourceAlreadyExistsException.class)
     public ResponseEntity<Object> handleResourceAlreadyExistsException(ResourceAlreadyExistsException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.CONFLICT);
         messageResponse.setTimeStamp(new Date());
@@ -66,7 +63,7 @@ public class GlobalExceptionHandler{
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> handleNullPointerException(NullPointerException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());
@@ -76,7 +73,7 @@ public class GlobalExceptionHandler{
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(UnAuthorizedException.class)
     public ResponseEntity<Object> handleUnAuthorizedException(UnAuthorizedException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
         messageResponse.setTimeStamp(new Date());
@@ -86,7 +83,7 @@ public class GlobalExceptionHandler{
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ServerConnectionException.class)
     public ResponseEntity<Object> handleServerConnectionException(ServerConnectionException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());
@@ -96,16 +93,7 @@ public class GlobalExceptionHandler{
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(MalformedJwtException.class)
     public ResponseEntity<Object> handleMalformedJwtException(MalformedJwtException ex) {
-        CustomResponse messageResponse = new CustomResponse();
-        messageResponse.setMessage(ex.getMessage());
-        messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
-        messageResponse.setTimeStamp(new Date());
-        return new ResponseEntity<>(messageResponse, HttpStatus.UNAUTHORIZED);
-    }
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    @ExceptionHandler(ExpiredJwtException.class)
-    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
         messageResponse.setTimeStamp(new Date());
@@ -115,11 +103,20 @@ public class GlobalExceptionHandler{
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(KafkaException.class)
     public ResponseEntity<Object> handleKafkaException(KafkaException ex) {
-        CustomResponse messageResponse = new CustomResponse();
+        ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.BAD_REQUEST);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
+    }
 }

@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,38 +34,31 @@ public class WishlistServiceImplTest {
     private ModelMapper modelMapper;
 
     @Test
-    public void testGetWishlists_Success() throws ResourceNotFoundException {
+    void testGetWishlists_Success() throws ResourceNotFoundException {
         String username = "testUser";
         Wishlist wishlist = new Wishlist(username, List.of());
         Optional<Wishlist> optionalWishlist = Optional.of(wishlist);
 
-        // Mock repository behavior
         when(wishlistRepository.findById(username)).thenReturn(optionalWishlist);
         when(modelMapper.map(wishlist, WishlistDto.class)).thenReturn(new WishlistDto());
 
-        // Call the service method
         WishlistDto wishlistDto = wishlistService.getWishlists(username);
 
-        // Verify interactions
         verify(wishlistRepository).findById(username);
         verify(modelMapper).map(wishlist, WishlistDto.class);
 
-        // Assert response
         assertNotNull(wishlistDto);
     }
 
     @Test
-    public void testGetWishlists_UsernameNotFound() throws Exception {
+    void testGetWishlists_UsernameNotFound() throws Exception {
         String username = "testUser";
 
-        // Mock repository behavior
         when(wishlistRepository.findById(username)).thenReturn(Optional.empty());
 
-        // Expected exception
         expectedException(ResourceNotFoundException.class);
         expectedExceptionMessage("Username not found.");
 
-        // Call the service method
         assertThrows(ResourceNotFoundException.class,()->wishlistService.getWishlists(username));
 
     }
@@ -76,57 +70,69 @@ public class WishlistServiceImplTest {
     }
 
     @Test
-    public void testDeleteWishlist_UsernameNotFound() throws Exception {
+    void testDeleteWishlist_UsernameNotFound() throws Exception {
         String username = "testUser";
         String movieId = "tt1234567";
 
-        // Mock repository behavior
         when(wishlistRepository.findById(username)).thenReturn(Optional.empty());
 
-        // Expected exception
         expectedException(ResourceNotFoundException.class);
         expectedExceptionMessage("Username " + username + " not found.");
 
-        // Call the service method
         assertThrows(ResourceNotFoundException.class,()->wishlistService.deleteWishlist(username, movieId));
     }
 
     @Test
     public void testAddWishlist_NewUser() throws Exception {
-        String username = "testUser";
+        String username = "jagadeep";
         MovieDto movieDto = new MovieDto();
+        Wishlist wishlist = new Wishlist();
+        Movie movie = new Movie();
+        movie.setImdbid("123");
+        movie.setId("top1");
+        movieDto.setImdbid("123");
+        movieDto.setId("top1");
+        wishlist.setUsername(username);
+        wishlist.setMovies(List.of(movie));
 
-        // Mock repository behavior
+        // Mock repository behavior to return empty optional
         when(wishlistRepository.findById(username)).thenReturn(Optional.empty());
-        when(modelMapper.map(movieDto, Movie.class)).thenReturn(new Movie());
-//        when(wishlistRepository.save(any(Wishlist.class))).thenReturn(new Wishlist());
+        // Mock model mapper
+        when(modelMapper.map(movieDto, Movie.class)).thenReturn(movie);
+        // Mock repository save method
+        when(wishlistRepository.save(wishlist)).thenReturn(wishlist);
 
         // Call the service method
         WishlistDto wishlistDto = wishlistService.addWishlist(username, movieDto);
 
-        // Verify interactions
+        // Verify method invocations
         verify(wishlistRepository).findById(username);
         verify(modelMapper).map(movieDto, Movie.class);
-//        verify(wishlistRepository).save(any(Wishlist.class));
+        verify(wishlistRepository).save(wishlist);
 
-        // Assert response
-        System.out.println(wishlistDto);
         assertNotNull(wishlistDto);
     }
 
     @Test
-    public void testAddWishlist_ExistingUser() throws Exception {
+    void testAddWishlist_ExistingUser() throws Exception {
         String username = "testUser";
         MovieDto movieDto = new MovieDto();
-        Wishlist wishlist = new Wishlist(username, List.of());
+        movieDto.setId("123");
+        movieDto.setImdbid("123");
         Movie movie = new Movie();
-
         // Mock repository behavior
+        List<Movie> movies = new ArrayList<>();
+        Wishlist wishlist = new Wishlist(username, movies);
         when(wishlistRepository.findById(username)).thenReturn(Optional.of(wishlist));
+
         when(modelMapper.map(movieDto, Movie.class)).thenReturn(movie);
         when(wishlistRepository.save(wishlist)).thenReturn(wishlist);
 
         // Call the service method
         WishlistDto wishlistDto = wishlistService.addWishlist(username, movieDto);
+        System.out.println(wishlistDto);
+        assertEquals(wishlist.getUsername(),wishlistDto.getUsername());
+
     }
-    }
+
+}

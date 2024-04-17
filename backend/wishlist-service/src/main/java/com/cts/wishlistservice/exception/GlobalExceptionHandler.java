@@ -1,5 +1,6 @@
 package com.cts.wishlistservice.exception;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -59,6 +60,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(SignatureException.class)
     public ResponseEntity<Object> handleSignatureException(SignatureException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.BAD_REQUEST);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
         ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.BAD_REQUEST);

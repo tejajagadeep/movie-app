@@ -1,94 +1,108 @@
 package com.cts.wishlistservice.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-// FILEPATH: /C:/Users/922320/Videos/files/movie-backend/wishlist-service/src/test/java/com/cts/wishlistservice/controller/WishlistControllerTest.java
-
-import com.cts.wishlistservice.controller.WishlistController;
 import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
+import com.cts.wishlistservice.exception.UnAuthorizedException;
 import com.cts.wishlistservice.filter.JwtService;
+import com.cts.wishlistservice.model.Movie;
 import com.cts.wishlistservice.service.WishlistService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Collections;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-public class WishlistControllerTest {
+@WebMvcTest(WishlistController.class)
+class WishlistControllerTest {
 
-    @Mock
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
     private WishlistService wishlistService;
 
-    @Mock
+    @MockBean
     private JwtService jwtService;
 
-    @InjectMocks
-    private WishlistController wishlistController;
 
-    private String token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWdhZGVlcCIsImF1dGhvcml0aWVzIjoiUk9MRV9NRU1CRVIsbWFuYWdlbWVudDpyZWFkLG1hbmFnZW1lbnQ6Y3JlYXRlIiwiaWF0IjoxNzEzMTg1MDU1LCJleHAiOjE3MTMyNzE0NTV9.T9KPOkITFvhzuY6PySraVLLs30i0AnlmpuXUK2N2lCw";
-    private String username = "jagadeep";
-    private MovieDto movieDto = new MovieDto();
+    @Test
+    void testGetWishlist() throws Exception {
+        String token = "Bearer <your_token_here>";
+        String username = "testUser";
+        WishlistDto wishlistDto = new WishlistDto();
+        wishlistDto.setUsername(username);
+        MovieDto movie = new MovieDto();
+        movie.setId("1");
+        movie.setTitle("Movie 1");
 
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.openMocks(this);
+        wishlistDto.setMovies(List.of(movie));
+
         when(jwtService.isTokenValid(token.substring(7), username)).thenReturn(true);
+        when(wishlistService.getWishlists(username)).thenReturn(wishlistDto);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/private/wishlist/{username}", username)
+                        .header("Authorization", token)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.username").value(username))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].id").value("1"));
     }
 
     @Test
-    void testGetWishlist() {
-        when(wishlistService.getWishlists(username)).thenReturn((WishlistDto) Collections.emptyList());
-
-        ResponseEntity<Object> response = wishlistController.getWishlist(token, username);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        verify(wishlistService, times(1)).getWishlists(username);
-    }
-
-    @Test
-    void testGetWishlist_ValidToken_ReturnsWishlistDto() {
-        // Arrange
-        WishlistDto expectedWishlist = new WishlistDto(); // Instantiate with test data
-        when(jwtService.isTokenValid(anyString(), anyString())).thenReturn(true);
-        when(wishlistService.getWishlists(anyString())).thenReturn(expectedWishlist);
-
-        // Act
-        ResponseEntity<Object> response = wishlistController.getWishlist(token, username);
-
-        // Assert
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(expectedWishlist, response.getBody());
-    }
-
-    @Test
-    void testDeleteWishlist() {
+    public void testDeleteWishlist() throws Exception {
+        String token = "Bearer <your_token_here>";
+        String username = "testUser";
         String id = "1";
-        when(wishlistService.deleteWishlist(username, id)).thenReturn(new WishlistDto());
 
-        ResponseEntity<Object> response = wishlistController.deleteWishlist(token, username, id);
+        MovieDto movieDto = new MovieDto();
+        movieDto.setId("1");
+        movieDto.setTitle("Movie 1");
+        WishlistDto wishlistDto = new WishlistDto();
+        wishlistDto.setUsername(username);
+        wishlistDto.setMovies(List.of(movieDto));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        verify(wishlistService, times(1)).deleteWishlist(username, id);
+        when(jwtService.isTokenValid(token.substring(7), username)).thenReturn(true);
+        when(wishlistService.deleteWishlist(username, id)).thenReturn(wishlistDto);
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1.0/private/wishlist")
+                        .header("Authorization", token)
+                        .param("username", username)
+                        .param("id", id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.username").value(username))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].id").value("1"));
     }
 
     @Test
-    void testAddWishlist() {
-        when(wishlistService.addWishlist(username, movieDto)).thenReturn(new WishlistDto());
+    public void testAddWishlist() throws Exception {
+        String token = "Bearer <your_token_here>";
+        String username = "testUser";
+        MovieDto movieDto = new MovieDto();
+        movieDto.setId("1");
+        movieDto.setTitle("Movie 1");
+        WishlistDto wishlistDto = new WishlistDto();
+        wishlistDto.setUsername(username);
+        wishlistDto.setMovies(List.of(movieDto));
+        when(jwtService.isTokenValid(token.substring(7), username)).thenReturn(true);
+        when(wishlistService.addWishlist(username, movieDto)).thenReturn(wishlistDto);
 
-        ResponseEntity<Object> response = wishlistController.addWishlist(token, username, movieDto);
-
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        verify(wishlistService, times(1)).addWishlist(username, movieDto);
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1.0/private/wishlist/{username}", username)
+                        .header("Authorization", token)
+                        .content("{\"id\":\"1\",\"title\":\"Movie 1\"}")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
     }
 }

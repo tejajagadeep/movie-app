@@ -1,6 +1,5 @@
 package com.user.userprofileservice.dto;
 
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

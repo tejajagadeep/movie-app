@@ -16,7 +16,7 @@ public class PerformanceTrackerHandler implements ObservationHandler<Observation
 
     @Override
     public void onError(Observation.Context context) {
-        log.error("Error occurred {}"+context.getError().getMessage());
+        log.error("Error occurred {}{}", context.getError().getMessage());
     }
 
     @Override

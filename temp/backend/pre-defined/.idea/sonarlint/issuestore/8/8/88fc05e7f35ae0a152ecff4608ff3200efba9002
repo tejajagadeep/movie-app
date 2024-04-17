@@ -1,16 +1,16 @@
 
-	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(ïÒÑ„ÿÿÿÿÿ8«ñ²î1J$7d892481-d4c6-43fd-bfe3-922b96fbc66f
+	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(ïÒÑ„ÿÿÿÿÿ8«ñ²î1J$9a822bf3-e61f-4252-80d3-f9186c32ac87
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8°ñ²î1J$2af08b92-6c9d-4a77-8501-846117e9305b
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8°ñ²î1J$ae2a2e68-1aa5-4fc4-9cee-4d240d16b02b
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8±ñ²î1J$185ae8f4-a277-4872-86c6-b88eae52500f
-~	java:S125"<This block of commented-out lines of code should be removed.(¡©ÌÜ8³ñ²î1J$958714dc-8939-42b0-b2e5-bd2ca1aef7f5
-r	java:S106"+Replace this use of System.out by a logger.(‚±‰øÿÿÿÿ8µñ²î1J$5396c002-bdd6-4a35-b39e-44b31a0d1655
-ƒ	java:S125#"<This block of commented-out lines of code should be removed.(‹šƒøûÿÿÿÿ8·ñ²î1J$98403517-c361-4e3a-981c-799b03d18c2b
-ƒ	java:S125&"<This block of commented-out lines of code should be removed.(‹šƒøûÿÿÿÿ8·ñ²î1J$b2a314da-5da0-4e24-8483-67b3556338d3
-ƒ	java:S125("<This block of commented-out lines of code should be removed.(”ÕÇèûÿÿÿÿ8¸ñ²î1J$32a65447-0e4d-4110-ad98-6b696306749e
-m	java:S106."+Replace this use of System.out by a logger.(€ƒ×—8¸ñ²î1J$510b7376-7b0d-4efe-af15-20d4eff9d97b
-r	java:S1061"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8¸ñ²î1J$92dd0c2a-a208-4f1b-a875-58d57376a473
-r	java:S1062"+Replace this use of System.out by a logger.(Ú¢Ò‰ÿÿÿÿÿ8¸ñ²î1J$6a688fed-e4fe-4048-948d-544218740c9b
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8±ñ²î1J$43e8419d-e0c5-4b52-b48d-43aeba22a2ac
+~	java:S125"<This block of commented-out lines of code should be removed.(¡©ÌÜ8³ñ²î1J$cb9a7db0-7d83-4d2c-91a3-566481899c75
+r	java:S106"+Replace this use of System.out by a logger.(‚±‰øÿÿÿÿ8µñ²î1J$4cb94496-7762-46df-88cf-cfafeb3c9d70
+ƒ	java:S125#"<This block of commented-out lines of code should be removed.(‹šƒøûÿÿÿÿ8·ñ²î1J$89c6f17d-6da1-4b80-b73c-71fe95e311aa
+ƒ	java:S125&"<This block of commented-out lines of code should be removed.(‹šƒøûÿÿÿÿ8·ñ²î1J$856c1e4f-9ff7-4f90-a6e1-b1fe94897e5b
+ƒ	java:S125("<This block of commented-out lines of code should be removed.(”ÕÇèûÿÿÿÿ8¸ñ²î1J$407503ff-ec51-465f-864f-4072e8969dbc
+m	java:S106."+Replace this use of System.out by a logger.(€ƒ×—8¸ñ²î1J$745d0810-5569-4a48-bb2b-4f9fdbf27c78
+r	java:S1061"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8¸ñ²î1J$920a8bbf-a437-4f4f-932b-14f0163acc80
+r	java:S1062"+Replace this use of System.out by a logger.(Ú¢Ò‰ÿÿÿÿÿ8¸ñ²î1J$c71e8df5-3919-4d34-96a4-5ce946f08fdf
 Š
-java:S2094:"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8¹ñ²î1J$36784eb9-9a9d-4613-a171-8c6cc2643112
+java:S2094:"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8¹ñ²î1J$f5448470-1008-442a-b868-f70dd65a7ce1
