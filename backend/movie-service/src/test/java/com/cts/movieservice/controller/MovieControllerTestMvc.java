@@ -3,26 +3,21 @@ package com.cts.movieservice.controller;
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
 import com.cts.movieservice.service.MovieService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(MovieController.class)
-class MovieControllerTestMvc {
+class MovieControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -31,7 +26,7 @@ class MovieControllerTestMvc {
     private MovieService movieService;
 
     @Test
-    public void testTopMovies() throws Exception {
+    void testTopMovies() throws Exception {
         Movie movie = new Movie();
         movie.setId("1");
         movie.setTitle("Movie 1");
@@ -45,7 +40,7 @@ class MovieControllerTestMvc {
     }
 
     @Test
-    public void testTopMoviesById() throws Exception {
+    void testTopMoviesById() throws Exception {
         MovieDetails movieDetails = new MovieDetails();
         movieDetails.setId("1");
         movieDetails.setTitle("Movie 1");

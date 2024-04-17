@@ -2,14 +2,9 @@ package com.cts.wishlistservice.controller;
 
 import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
-import com.cts.wishlistservice.exception.UnAuthorizedException;
 import com.cts.wishlistservice.filter.JwtService;
-import com.cts.wishlistservice.model.Movie;
 import com.cts.wishlistservice.service.WishlistService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -60,7 +54,7 @@ class WishlistControllerTest {
     }
 
     @Test
-    public void testDeleteWishlist() throws Exception {
+    void testDeleteWishlist() throws Exception {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
         String id = "1";
@@ -86,7 +80,7 @@ class WishlistControllerTest {
     }
 
     @Test
-    public void testAddWishlist() throws Exception {
+    void testAddWishlist() throws Exception {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
         MovieDto movieDto = new MovieDto();

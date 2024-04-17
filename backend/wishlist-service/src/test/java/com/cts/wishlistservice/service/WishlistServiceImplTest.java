@@ -16,13 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class WishlistServiceImplTest {
+class WishlistServiceImplTest {
 
     @Mock
     private WishlistRepository wishlistRepository;
@@ -51,40 +50,29 @@ public class WishlistServiceImplTest {
     }
 
     @Test
-    void testGetWishlists_UsernameNotFound() throws Exception {
+    void testGetWishlists_UsernameNotFound(){
         String username = "testUser";
 
         when(wishlistRepository.findById(username)).thenReturn(Optional.empty());
-
-        expectedException(ResourceNotFoundException.class);
-        expectedExceptionMessage("Username not found.");
 
         assertThrows(ResourceNotFoundException.class,()->wishlistService.getWishlists(username));
 
     }
 
-    private void expectedExceptionMessage(String s) {
-    }
-
-    private void expectedException(Class<ResourceNotFoundException> resourceNotFoundExceptionClass) {
-    }
 
     @Test
-    void testDeleteWishlist_UsernameNotFound() throws Exception {
+    void testDeleteWishlist_UsernameNotFound() {
         String username = "testUser";
-        String movieId = "tt1234567";
-
+        String movieId = "testMovie";
         when(wishlistRepository.findById(username)).thenReturn(Optional.empty());
 
-        expectedException(ResourceNotFoundException.class);
-        expectedExceptionMessage("Username " + username + " not found.");
 
         assertThrows(ResourceNotFoundException.class,()->wishlistService.deleteWishlist(username, movieId));
     }
 
     @Test
-    public void testAddWishlist_NewUser() throws Exception {
-        String username = "jagadeep";
+    void testAddWishlist_NewUser() {
+        String username = "testUser";
         MovieDto movieDto = new MovieDto();
         Wishlist wishlist = new Wishlist();
         Movie movie = new Movie();
@@ -114,7 +102,7 @@ public class WishlistServiceImplTest {
     }
 
     @Test
-    void testAddWishlist_ExistingUser() throws Exception {
+    void testAddWishlist_ExistingUser() {
         String username = "testUser";
         MovieDto movieDto = new MovieDto();
         movieDto.setId("123");

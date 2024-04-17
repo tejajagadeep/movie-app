@@ -1,11 +1,8 @@
 package com.user.userprofileservice.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.user.userprofileservice.dto.User;
 import com.user.userprofileservice.dto.UserProfileDto;
 import com.user.userprofileservice.exception.ResourceAlreadyExistsException;
-import com.user.userprofileservice.kafka.DataPublisherServiceImpl;
 import com.user.userprofileservice.model.UserProfile;
 import com.user.userprofileservice.repository.UserProfileRepository;
 import org.junit.jupiter.api.Test;
@@ -14,9 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
-import org.springframework.util.concurrent.ListenableFuture;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -31,9 +25,6 @@ class UserProfileServiceImplTest {
 
     @Mock
     private ModelMapper modelMapper;
-
-    @Mock
-    private DataPublisherServiceImpl dataPublisherService;
 
     @InjectMocks
     private UserProfileServiceImpl userProfileService;
