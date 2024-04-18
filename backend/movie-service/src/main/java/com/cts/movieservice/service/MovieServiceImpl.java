@@ -6,15 +6,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.micrometer.observation.annotation.Observed;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpHeaders;
@@ -35,27 +35,24 @@ public class MovieServiceImpl implements MovieService{
     @Value(("${base.url}"))
     private String baseUrl;
 
-    private final ModelMapper modelMapper;
-    private final ResourceLoader resourceLoader;
 
     private final RestTemplate restTemplate;
 
-    public MovieServiceImpl(ModelMapper modelMapper, ResourceLoader resourceLoader, RestTemplate restTemplate) {
-        this.modelMapper = modelMapper;
-        this.resourceLoader = resourceLoader;
+    public MovieServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     @Override
     @Observed(name = "top.movies")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getAllMoviesBreakCircuit")
-    public Object topMovies(){
-        return restTemplate.exchange(response(""), Movie[].class).getBody();
+    public List<Movie> topMovies(){
+        return restTemplate.exchange(response(""), new ParameterizedTypeReference<List<Movie>>() {}).getBody();
     }
 
     @Override
     @Observed(name = "top.movies.by.id")
-    public Object topMoviesById(String id) {
+    @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMovieDetailsById")
+    public MovieDetails topMoviesById(String id) {
         return restTemplate.exchange(response(id), MovieDetails.class).getBody();
     }
 
@@ -68,14 +65,14 @@ public class MovieServiceImpl implements MovieService{
 
     private HttpHeaders httpHeaders(){
         HttpHeaders headers = new HttpHeaders();
-        headers.set("X-RapidAPI-Key", key+"dgwergh");
+        headers.set("X-RapidAPI-Key", key);
         headers.set("X-RapidAPI-Host", host);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         return headers;
     }
 
-    private Movie[] getAllMoviesBreakCircuit(Exception e) throws IOException {
-        Movie[] movies = null;
+    private List<Movie> getAllMoviesBreakCircuit(Exception e) throws IOException {
+        List<Movie> movies = new ArrayList<>();
         try {
             // Specify the path to your text file containing JSON data
             String path = "movie-data.txt";
@@ -96,5 +93,23 @@ public class MovieServiceImpl implements MovieService{
         }
 
         return movies;
+    }
+
+    private MovieDetails getMovieDetailsById(Exception e){
+        MovieDetails movieDetails = new MovieDetails();
+        movieDetails.setRank(32);
+        movieDetails.setTitle("Oppenheimer");
+        movieDetails.setRating(8.6F);
+        movieDetails.setId("top32");
+        movieDetails.setYear(2023);
+        movieDetails.setBigImage("https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_QL75_UX380_CR0,0,380,562_.jpg");
+        movieDetails.setDescription("The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.");
+        movieDetails.setTrailerEmbedLink("https://www.youtube.com/embed/uYPbbksJxIg");
+        movieDetails.setGenre(List.of("Biography", "Drama", "History"));
+        movieDetails.setDirector(List.of("Christopher Nolan"));
+        movieDetails.setWriters(List.of("Christopher Nolan", "Kai Bird", "Martin Sherwin"));
+        movieDetails.setImdbLink("https://www.imdb.com/title/tt15398776");
+        movieDetails.setImdbid("tt15398776");
+        return movieDetails;
     }
 }

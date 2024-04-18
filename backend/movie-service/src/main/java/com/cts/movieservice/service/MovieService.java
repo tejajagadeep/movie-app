@@ -1,10 +1,15 @@
 package com.cts.movieservice.service;
 
 
+import com.cts.movieservice.dto.Movie;
+import com.cts.movieservice.dto.MovieDetails;
+
+import java.util.List;
+
 public interface MovieService {
 
-    Object topMovies();
+    List<Movie> topMovies();
 
-    Object topMoviesById(String id);
+    MovieDetails topMoviesById(String id);
 
 }

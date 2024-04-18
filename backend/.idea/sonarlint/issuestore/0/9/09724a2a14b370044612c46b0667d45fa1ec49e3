@@ -1,5 +1,9 @@
 
 k
-java:S1172I"(Remove this unused method parameter "e".(‚ê¢Ö8Ä½»üî1J$792b9e73-6fae-4155-9ccf-8cf18f11aaa6
+java:S1172J"(Remove this unused method parameter "e".(‚ê¢Ö8¬óöüî1J$c58e0df2-e220-4b3c-aac9-32251354735c
+k
+java:S1172b"(Remove this unused method parameter "e".(£Ø’8½óöüî1J$b8b8d6e1-fb9e-40c4-be57-4ee747e5486b
 €
-java:S1144I"=Remove this unused private "getAllMoviesBreakCircuit" method.(‚ê¢Ö8Ù½»üî1J$1bc55f77-6c4e-4be4-98c1-8150b8063fbd
+java:S1144J"=Remove this unused private "getAllMoviesBreakCircuit" method.(‚ê¢Ö8¿óöüî1J$cbb9b50e-1b25-434a-8e98-6aac32d8c45e
+{
+java:S1144b"8Remove this unused private "getMovieDetailsById" method.(£Ø’8¿óöüî1J$de3129a7-f583-4326-b37e-0b75399c80f0
