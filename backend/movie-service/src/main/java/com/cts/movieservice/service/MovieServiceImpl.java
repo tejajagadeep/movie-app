@@ -2,6 +2,8 @@ package com.cts.movieservice.service;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.micrometer.observation.annotation.Observed;
 import org.modelmapper.ModelMapper;
@@ -85,8 +87,8 @@ public class MovieServiceImpl implements MovieService{
                 jsonString.append(scanner.nextLine());
             }
             scanner.close();
-
-            movies = modelMapper.map(jsonString, Movie[].class);
+            ObjectMapper objectMapper = new ObjectMapper();
+            movies = objectMapper.readValue(jsonString.toString(),new TypeReference<>() {});
 
 
         } catch (IOException io) {
