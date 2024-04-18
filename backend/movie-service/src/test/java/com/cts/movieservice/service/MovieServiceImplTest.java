@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -35,9 +36,9 @@ class MovieServiceImplTest {
     @Test
     void testTopMovies() {
         // Mocking the response entity
-        Movie[] movies = {new Movie(), new Movie()};
-        ResponseEntity<Movie[]> responseEntity = new ResponseEntity<>(movies, HttpStatus.OK);
-        when(restTemplate.exchange(any(), eq(Movie[].class))).thenReturn(responseEntity);
+        List<Movie> movies = List.of(new Movie(), new Movie());
+        ResponseEntity<List<Movie>> responseEntity = new ResponseEntity<>(movies, HttpStatus.OK);
+        when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
 
         // Invoking the method under test
         Object result = movieService.topMovies();
