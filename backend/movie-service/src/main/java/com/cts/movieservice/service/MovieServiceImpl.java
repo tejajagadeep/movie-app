@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.micrometer.observation.annotation.Observed;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.ClassPathResource;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
+@Slf4j
 public class MovieServiceImpl implements MovieService{
 
     @Value("${rapid.api.key}")
@@ -72,6 +74,7 @@ public class MovieServiceImpl implements MovieService{
     }
 
     private List<Movie> getAllMoviesBreakCircuit(Exception e) throws IOException {
+        log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = new ArrayList<>();
         try {
             // Specify the path to your text file containing JSON data
@@ -96,6 +99,7 @@ public class MovieServiceImpl implements MovieService{
     }
 
     private MovieDetails getMovieDetailsById(Exception e){
+        log.error("fall back method called with error {}", e.getMessage());
         MovieDetails movieDetails = new MovieDetails();
         movieDetails.setRank(32);
         movieDetails.setTitle("Oppenheimer");
