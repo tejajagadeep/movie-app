@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,7 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
+    @Cacheable(value = "wishlist", key = "#username")
     public ResponseEntity<Object> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);

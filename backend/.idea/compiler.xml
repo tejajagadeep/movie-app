@@ -14,12 +14,12 @@
         <module name="userprofile-service" />
         <module name="eureka-server" />
         <module name="wishlist-service" />
-        <module name="movie-data-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="apigateway" target="1.5" />
       <module name="authentication" target="17" />
+      <module name="movie-data-service" target="1.5" />
       <module name="userProfile" target="17" />
       <module name="wishlist-service (1)" target="17" />
     </bytecodeTargetLevel>
@@ -32,7 +32,7 @@
       <module name="authentication-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
-      <module name="movie-data-service" options="-parameters" />
+      <module name="movie-data-service" options="" />
       <module name="movie-service" options="-parameters" />
       <module name="userProfile" options="-parameters" />
       <module name="userprofile-service" options="-parameters" />
