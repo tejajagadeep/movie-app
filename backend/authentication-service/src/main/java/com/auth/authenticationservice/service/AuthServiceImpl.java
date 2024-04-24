@@ -2,6 +2,7 @@ package com.auth.authenticationservice.service;
 
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
+import com.auth.authenticationservice.exception.CustomUnAuthorizedException;
 import com.auth.authenticationservice.filter.JwtService;
 import com.auth.authenticationservice.model.RegisterRequest;
 import com.auth.authenticationservice.repository.UserRepository;
@@ -9,6 +10,7 @@ import com.auth.authenticationservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,17 +53,21 @@ public class AuthServiceImpl implements AuthService{
             //Verify whether user present in db
             //generateToken
             //Return the token
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
-                )
-        );
-        var user = userRepository.findById(request.getUsername())
-                .orElseThrow(()-> new UsernameNotFoundException(request.getUsername()));
-        String jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder().accessToken(jwtToken).build();
-
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getUsername(),
+                            request.getPassword()
+                    )
+            );
+            var user = userRepository.findById(request.getUsername())
+                    .orElseThrow(() -> new UsernameNotFoundException(request.getUsername()));
+            String jwtToken = jwtService.generateToken(user);
+            return AuthenticationResponse.builder().accessToken(jwtToken).build();
+        } catch (AuthenticationException e) {
+        // Throw CustomUnAuthorizedException if authentication fails
+        throw new CustomUnAuthorizedException("Invalid username or password");
     }
+}
 }
 
