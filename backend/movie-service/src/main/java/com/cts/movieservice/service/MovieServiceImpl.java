@@ -2,6 +2,7 @@ package com.cts.movieservice.service;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
+import com.cts.movieservice.dto.Response;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -47,8 +48,15 @@ public class MovieServiceImpl implements MovieService{
     @Override
     @Observed(name = "top.movies")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getAllMoviesBreakCircuit")
-    public List<Movie> topMovies(){
-        return restTemplate.exchange(response(""), new ParameterizedTypeReference<List<Movie>>() {}).getBody();
+    public Response topMovies(){
+        List<Movie> movies =  restTemplate.exchange(response(""), new ParameterizedTypeReference<List<Movie>>() {}).getBody();
+
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(movies);
+
+        return response;
     }
 
     @Override
@@ -73,7 +81,7 @@ public class MovieServiceImpl implements MovieService{
         return headers;
     }
 
-    private List<Movie> getAllMoviesBreakCircuit(Exception e) throws IOException {
+    private Response getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = new ArrayList<>();
         try {
@@ -95,7 +103,12 @@ public class MovieServiceImpl implements MovieService{
             throw new IOException();
         }
 
-        return movies;
+        Response response = new Response();
+        response.setStatus(false);
+        response.setMessage("Unsuccessful");
+        response.setData(movies);
+
+        return response;
     }
 
     private MovieDetails getMovieDetailsById(Exception e){
@@ -104,7 +117,7 @@ public class MovieServiceImpl implements MovieService{
         movieDetails.setRank(32);
         movieDetails.setTitle("Oppenheimer");
         movieDetails.setRating(8.6F);
-        movieDetails.setId("top32");
+        movieDetails.setId("dummy12345");
         movieDetails.setYear(2023);
         movieDetails.setBigImage("https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_QL75_UX380_CR0,0,380,562_.jpg");
         movieDetails.setDescription("The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.");
@@ -113,7 +126,7 @@ public class MovieServiceImpl implements MovieService{
         movieDetails.setDirector(List.of("Christopher Nolan"));
         movieDetails.setWriters(List.of("Christopher Nolan", "Kai Bird", "Martin Sherwin"));
         movieDetails.setImdbLink("https://www.imdb.com/title/tt15398776");
-        movieDetails.setImdbid("tt15398776");
+        movieDetails.setImdbid("tt0022100");
         return movieDetails;
     }
 }

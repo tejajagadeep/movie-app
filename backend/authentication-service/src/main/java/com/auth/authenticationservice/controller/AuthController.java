@@ -42,7 +42,7 @@ public class AuthController {
             @ApiResponse(responseCode = "403", description = "Forbidden user mis-match",
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/validate")
+    @GetMapping("/validate")
     @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")
     public ResponseEntity<Object> validate(@RequestParam String username) {
         return new ResponseEntity<>(username+" Authorized", HttpStatus.ACCEPTED);

@@ -77,9 +77,7 @@ class WishlistServiceImplTest {
         Wishlist wishlist = new Wishlist();
         Movie movie = new Movie();
         movie.setImdbid("123");
-        movie.setId("top1");
         movieDto.setImdbid("123");
-        movieDto.setId("top1");
         wishlist.setUsername(username);
         wishlist.setMovies(List.of(movie));
 
@@ -105,7 +103,6 @@ class WishlistServiceImplTest {
     void testAddWishlist_ExistingUser() {
         String username = "testUser";
         MovieDto movieDto = new MovieDto();
-        movieDto.setId("123");
         movieDto.setImdbid("123");
         Movie movie = new Movie();
         // Mock repository behavior

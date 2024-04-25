@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -26,7 +27,14 @@ public class UserProfileDto {
         @Size(max = 100)
         private String lastName;
 
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         private Date dateOfBirth;
+
+        @NotNull(message = "phone number should not be Null")
+        @NotEmpty(message = "phone number not be Empty")
+        @Min(value = 5, message = "phone number should be at least 5")
+        @Max(value = 10, message = "phone number should not be greater than 10")
+        private long phoneNumber;
 
         @NotNull(message = "emailAddress should not be Null")
         @NotEmpty(message = "emailAddress should not be Empty")
@@ -43,5 +51,5 @@ public class UserProfileDto {
         @Size(max = 100)
         private String password;
 
-    }
+}
 

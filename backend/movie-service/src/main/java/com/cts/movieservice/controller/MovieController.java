@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1.0/private/movie")
+@RequestMapping("/api/v1.0/public/movie")
 public class MovieController {
 
     private final MovieService movieService;

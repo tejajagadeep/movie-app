@@ -22,6 +22,9 @@ public class Movie {
     @JsonProperty("big_image")
     private String bigImage;
 
+    @JsonProperty("description")
+    private String description;
+
     @JsonProperty("genre")
     private List<String> genre;
 

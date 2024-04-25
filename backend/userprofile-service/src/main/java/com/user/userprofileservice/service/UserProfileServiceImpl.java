@@ -79,6 +79,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         userProfile.setFirstName(userProfileDto.getFirstName());
         userProfile.setLastName(userProfileDto.getLastName());
+        userProfile.setEmail(userProfileDto.getEmail());
+        userProfile.setPhoneNumber(userProfileDto.getPhoneNumber());
         userProfile.setDateOfBirth(userProfileDto.getDateOfBirth());
 
         usersProfileRepository.save(userProfile);

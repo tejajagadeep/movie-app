@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
+import com.cts.movieservice.dto.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,8 +44,13 @@ class MovieServiceImplTest {
         // Invoking the method under test
         Object result = movieService.topMovies();
 
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(movies);
+
         // Verifying the response
-        assertEquals(movies, result);
+        assertEquals(response, result);
     }
 
     @Test

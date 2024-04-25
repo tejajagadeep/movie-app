@@ -25,6 +25,8 @@ public class UserProfile {
 
     private String lastName;
 
+    private long phoneNumber;
+
     private Date dateOfBirth;
 
     private String email;

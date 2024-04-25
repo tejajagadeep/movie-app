@@ -51,15 +51,17 @@ class UserProfileServiceImplTest {
     void testSaveUserProfile() {
         UserProfileDto userProfileDto = new UserProfileDto();
         userProfileDto.setUsername("testUser");
-        userProfileDto.setPassword("password");
+        userProfileDto.setPassword("ABCabc@123");
         userProfileDto.setFirstName("firstName");
         userProfileDto.setLastName("lastName");
         userProfileDto.setEmail("email@email.com");
+        userProfileDto.setDateOfBirth(new Date());
         User user = new User();
         user.setUsername(userProfileDto.getUsername());
         user.setPassword(userProfileDto.getPassword());
         UserProfile userProfile = new UserProfile();
         userProfile.setUsername("testUser");
+        userProfile.setDateOfBirth(new Date());
         userProfile.setFirstName("firstName");
         userProfile.setLastName("lastName");
         userProfile.setEmail("email@email.com");
@@ -79,12 +81,13 @@ class UserProfileServiceImplTest {
     @Test
     void testSaveUserProfileWithExistingUsername() {
         UserProfileDto userProfileDto = new UserProfileDto();
-        userProfileDto.setUsername("existingUser");
+        userProfileDto.setUsername("username");
         userProfileDto.setPassword("ABCabc@123");
         userProfileDto.setEmail("teja@gmial.com");
         userProfileDto.setLastName("jdl");
         userProfileDto.setFirstName("shsd");
         userProfileDto.setDateOfBirth(new Date());
+        when(modelMapper.map(userProfileDto, UserProfile.class)).thenReturn(new UserProfile());
         when(userProfileRepository.existsById(userProfileDto.getUsername())).thenReturn(true);
 
         assertThrows(ResourceAlreadyExistsException.class, () -> userProfileService.saveUserProfile(userProfileDto));

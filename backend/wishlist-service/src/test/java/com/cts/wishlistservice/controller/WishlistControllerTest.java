@@ -37,7 +37,6 @@ class WishlistControllerTest {
         WishlistDto wishlistDto = new WishlistDto();
         wishlistDto.setUsername(username);
         MovieDto movie = new MovieDto();
-        movie.setId("1");
         movie.setTitle("Movie 1");
 
         wishlistDto.setMovies(List.of(movie));
@@ -50,7 +49,7 @@ class WishlistControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.username").value(username))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].id").value("1"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
     }
 
     @Test
@@ -60,7 +59,6 @@ class WishlistControllerTest {
         String id = "1";
 
         MovieDto movieDto = new MovieDto();
-        movieDto.setId("1");
         movieDto.setTitle("Movie 1");
         WishlistDto wishlistDto = new WishlistDto();
         wishlistDto.setUsername(username);
@@ -76,7 +74,7 @@ class WishlistControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.username").value(username))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].id").value("1"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
     }
 
     @Test
@@ -84,7 +82,6 @@ class WishlistControllerTest {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
         MovieDto movieDto = new MovieDto();
-        movieDto.setId("1");
         movieDto.setTitle("Movie 1");
         WishlistDto wishlistDto = new WishlistDto();
         wishlistDto.setUsername(username);

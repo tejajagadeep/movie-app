@@ -1,5 +1,6 @@
 package com.cts.wishlistservice.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,7 @@ public class Movie {
     @Id
     private String imdbid;
 
-    private String id;
-
-    private int rank;
+    private String description;
 
     private String title;
 

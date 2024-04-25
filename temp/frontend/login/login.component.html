@@ -1,0 +1,25 @@
+<p>login works!</p>
+<div>
+<form [formGroup]="loginForm">
+    
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" formControlName="username" maxlength="10">
+        <div *ngIf="username?.touched && username?.invalid">
+            <div *ngIf="username?.errors?.['required']">Username is required.</div>
+            <div *ngIf="username?.errors?.['minlength']">Username is not valid.</div>
+        </div>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password">
+        <div *ngIf="password?.touched && password?.invalid">
+            <div *ngIf="password?.errors?.['required']">Password is required.</div>
+            <div *ngIf="password?.errors?.['pattern'] || password?.errors?.['minLength']">Password is not valid.</div>
+        </div>
+    </div>
+    
+    <button type="submit" [disabled]="loginForm.invalid">login</button>
+</form>
+</div>
