@@ -1,0 +1,63 @@
+<div>
+    <form [formGroup]="signupForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" formControlName="username" maxlength="10">
+            <div *ngIf="username?.touched && username?.invalid">
+                <div *ngIf="username?.errors?.['required']">Username is required.</div>
+                <div *ngIf="username?.errors?.['minlength']">Username should be at least 5 characters long.</div>
+            </div>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password">
+            <div *ngIf="password?.touched && password?.invalid">
+                <div *ngIf="password?.errors?.['required']">Password is required.</div>
+                <div *ngIf="password?.errors?.['length']">Password should be at least 8 characters long.</div>
+                <div *ngIf="password?.errors?.['number']">Password should contain at least 1 number.</div>
+                <div *ngIf="password?.errors?.['upper']">Password should contain at least 1 uppercase letter.</div>
+                <div *ngIf="password?.errors?.['lower']">Password should contain at least 1 lowercase letter.</div>
+                <div *ngIf="password?.errors?.['symbol']">Password should contain at least 1 symbol.</div>
+            </div>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword">
+            <div *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
+                <div *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required.</div>
+                <div *ngIf="confirmPassword?.errors?.['confirmedValidator']">Passwords do not match.</div>
+            </div>
+        </div>
+
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" formControlName="firstName" maxlength="10">
+            <div *ngIf="firstName?.touched && firstName?.invalid">
+                <div *ngIf="firstName?.errors?.['required']">First Name is required.</div>
+            </div>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" formControlName="lastName" maxlength="10">
+            <div *ngIf="lastName?.touched && lastName?.invalid">
+                <div *ngIf="lastName?.errors?.['required']">Last Name is required.</div>
+            </div>
+        </div>
+        <div>
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+            <div *ngIf="dateOfBirth?.touched && dateOfBirth?.invalid">
+                <div *ngIf="dateOfBirth?.errors?.['required']">Date of Birth is required.</div>
+            </div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email">
+            <div *ngIf="email?.touched && email?.invalid">
+                <div *ngIf="email?.errors?.['required']">Email is required.</div>
+                <div *ngIf="email?.errors?.['invalidEmail']">Invalid email format.</div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="signupForm.invalid">Signup</button>
+    </form>
+</div>

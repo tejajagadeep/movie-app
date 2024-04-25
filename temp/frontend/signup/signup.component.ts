@@ -5,7 +5,6 @@ import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -27,7 +26,6 @@ export class SignupComponent implements OnInit {
         username: ['', [Validators.required, Validators.minLength(5)]],
         password: ['', [Validators.required, this.passwordValidator]],
         confirmPassword: ['', [Validators.required]],
-        phoneNumber: ['', [Validators.required, Validators.minLength(5)]],
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         dateOfBirth: ['', [Validators.required]],
@@ -35,16 +33,6 @@ export class SignupComponent implements OnInit {
       },
       { validators: this.matchValidator('password', 'confirmPassword') }
     );
-  }
-
-  getErrorMessage(errors: ValidationErrors): string {
-    if (errors?.['required']) {
-      return 'Email is required.';
-    } else if (errors?.['invalidEmail']) {
-      return 'Invalid email format.';
-    } else {
-      return '';
-    }
   }
 
   matchValidator(
@@ -76,11 +64,6 @@ export class SignupComponent implements OnInit {
   get username() {
     return this.signupForm.get('username');
   }
-
-  get phoneNumber() {
-    return this.signupForm.get('phoneNumber');
-  }
-
   get password() {
     return this.signupForm.get('password');
   }
