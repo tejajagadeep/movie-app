@@ -16,8 +16,8 @@ public class MovieDto {
     @JsonProperty("title")
     private String title;
 
-    @JsonProperty("big_image")
-    private String bigImage;
+    @JsonProperty("image")
+    private String image;
 
     @JsonProperty("description")
     private String description;

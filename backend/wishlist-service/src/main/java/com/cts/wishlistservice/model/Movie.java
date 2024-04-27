@@ -24,7 +24,7 @@ public class Movie {
 
     private String title;
 
-    private String bigImage;
+    private String image;
 
     private List<String> genre;
 

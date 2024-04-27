@@ -31,10 +31,12 @@ public class UserProfileDto {
         private Date dateOfBirth;
 
         @NotNull(message = "phone number should not be Null")
-        @NotEmpty(message = "phone number not be Empty")
-        @Min(value = 5, message = "phone number should be at least 5")
-        @Max(value = 10, message = "phone number should not be greater than 10")
-        private long phoneNumber;
+        @NotEmpty(message = "phone number should not be Empty")
+        @Pattern(
+                regexp = "^\\d{10,}$",
+                message = "Password must contain 10 digits"
+        )
+        private String phoneNumber;
 
         @NotNull(message = "emailAddress should not be Null")
         @NotEmpty(message = "emailAddress should not be Empty")

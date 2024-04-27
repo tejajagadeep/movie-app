@@ -5,7 +5,8 @@ import { Top100MoviesComponent } from './movie/top100-movies/top100-movies.compo
 import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'top-100-movies', component: Top100MoviesComponent },

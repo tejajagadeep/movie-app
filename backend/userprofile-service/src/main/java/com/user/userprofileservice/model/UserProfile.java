@@ -25,7 +25,7 @@ public class UserProfile {
 
     private String lastName;
 
-    private long phoneNumber;
+    private String phoneNumber;
 
     private Date dateOfBirth;
 

@@ -2,7 +2,7 @@ export class Movie {
   id!: string;
   rank!: number;
   title!: string;
-  big_image!: string;
+  image!: string;
   description!: string;
   genre!: string[];
   rating!: number;

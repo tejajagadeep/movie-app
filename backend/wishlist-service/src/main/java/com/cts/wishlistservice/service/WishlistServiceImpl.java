@@ -111,11 +111,9 @@ public class WishlistServiceImpl implements WishlistService {
                     .filter(m -> m.getImdbid().equals(movie.getImdbid()))
                     .findFirst()
                     .ifPresent(existingMovie -> {
-                        existingMovie.setId(movie.getId());
                         existingMovie.setImdbid(movie.getImdbid());
-                        existingMovie.setRank(movie.getRank());
                         existingMovie.setTitle(movie.getTitle());
-                        existingMovie.setBigImage(movie.getBigImage());
+                        existingMovie.setImage(movie.getImage());
                         existingMovie.setGenre(movie.getGenre());
                         existingMovie.setRating(movie.getRating());
                         existingMovie.setYear(movie.getYear());

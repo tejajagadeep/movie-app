@@ -1,26 +1,79 @@
-<p>login works!</p>
 <div>
-    <form [formGroup]="loginForm">
+    <div class="position">
+        <div class="container">
+            <input type="checkbox" id="flip">
+            <div class="cover">
 
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" formControlName="username" maxlength="10">
-            <div *ngIf="username?.touched && username?.invalid">
-                <div *ngIf="username?.errors?.['required']">Username is required.</div>
-                <div *ngIf="username?.errors?.['minlength']">Username is not valid.</div>
+                <div class="front">
+                    <img src="assets/images/register.jpg" alt="">
+                    <div class="text">
+                        <span class="text-1">Every new friend is a <br> new adventure</span>
+                        <span class="text-2">Let's get connected</span>
+                    </div>
+
+                </div>
+                <div class="back">
+                    <div class="text">
+                        <span class="text-1">Complete miles of journey <br> with one step</span>
+                        <span class="text-2">Let's get started</span>
+                    </div>
+                </div>
+
             </div>
-        </div>
+            <div class="forms">
+                <div class="form-content">
+                    <div class="login-form">
+                        <div class="title">Login</div>
+                        <form action="#" [formGroup]="loginForm">
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" id="username" formControlName="username" maxlength="10"
+                                        placeholder="Enter your username">
+                                    <ul *ngIf="username?.touched && username?.invalid" class="error">
+                                        <li *ngIf="username?.errors?.['required']"><span>&#8226;</span> Username is
+                                            required.</li>
+                                        <li *ngIf="!username?.errors?.['required'] && username?.errors?.['minlength']">
+                                            <span>&#8226;</span> Username is not valid.
+                                        </li>
+                                    </ul>
+                                    <ul *ngIf="loginForm.valid && statusCode === 404" class="error">
+                                        <li><span>&#8226;</span> Username does not exist.</li>
+                                    </ul>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="password" formControlName="password"
+                                        placeholder="Enter your email">
+                                    <ul *ngIf="password?.touched && password?.invalid" class="error">
+                                        <li *ngIf="password?.errors?.['required']"><span>&#8226;</span> Password is
+                                            required.</li>
+                                        <li
+                                            *ngIf="!username?.errors?.['required'] && password?.errors?.['pattern'] || password?.errors?.['minLength']">
+                                            <span>&#8226;</span> Password is not valid.
+                                        </li>
+                                    </ul>
+                                    <ul *ngIf="loginForm.valid && statusCode === 401" class="error">
+                                        <li><span>&#8226;</span> incorrect password.</li>
+                                    </ul>
+                                </div>
+                                <div class="text"><a href="#">Forgot password?</a></div>
+                                <div class="button input-box">
+                                    <input type="submit" value="submit" [disabled]="loginForm.invalid"
+                                        (click)="login()">
+                                </div>
+                                <div class="text sign-up-text">Don't have an account? <label
+                                        [routerLink]="['/signup']">Sigup
+                                        now</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-form">
 
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" formControlName="password">
-            <div *ngIf="password?.touched && password?.invalid">
-                <div *ngIf="password?.errors?.['required']">Password is required.</div>
-                <div *ngIf="password?.errors?.['pattern'] || password?.errors?.['minLength']">Password is not valid.
+                    </div>
                 </div>
             </div>
         </div>
-
-        <button type="submit" [disabled]="loginForm.invalid">login</button>
-    </form>
+    </div>
 </div>

@@ -16,7 +16,7 @@ export class AuthenticationService {
   ): Observable<AuthenticationResponse> {
     return this.http.post<AuthenticationResponse>(
       `${API_URL}/public/auth/authenticate`,
-      { auth }
+      auth
     );
   }
 

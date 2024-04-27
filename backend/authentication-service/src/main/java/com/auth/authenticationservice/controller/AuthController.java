@@ -30,7 +30,8 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-       return new ResponseEntity<>(authService.authenticate(request), HttpStatus.CREATED);
+        log.info(request.toString());
+        return new ResponseEntity<>(authService.authenticate(request), HttpStatus.CREATED);
     }
 
 

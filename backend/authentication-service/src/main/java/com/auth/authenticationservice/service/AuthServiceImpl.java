@@ -53,6 +53,8 @@ public class AuthServiceImpl implements AuthService{
             //Verify whether user present in db
             //generateToken
             //Return the token
+        userRepository.findById(request.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("Username not exist."));
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
