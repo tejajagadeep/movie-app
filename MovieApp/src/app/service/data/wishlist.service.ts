@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movie } from '../../model/Movie';
 import { Observable } from 'rxjs';
@@ -17,14 +17,16 @@ export class WishlistService {
 
   saveWishlist(username: string, movie: Movie): Observable<Wishlists> {
     return this.http.post<Wishlists>(
-      `${API_URL}/private/wishlist/${username}}`,
+      `${API_URL}/private/wishlist/${username}`,
       movie
     );
   }
 
   deleteWishlist(username: string, movieId: string): Observable<Wishlists> {
-    const params = { username, movieId };
-    const options = { params };
-    return this.http.delete<Wishlists>(`${API_URL}/private/wishlist`, options);
+    let params = new HttpParams().set('username', username).set('id', movieId);
+
+    return this.http.delete<Wishlists>(`${API_URL}/private/wishlist`, {
+      params,
+    });
   }
 }

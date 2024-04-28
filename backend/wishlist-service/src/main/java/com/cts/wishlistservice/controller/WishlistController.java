@@ -41,7 +41,7 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
-    @Cacheable(value = "wishlist", key = "#username")
+//    @Cacheable(value = "wishlist", key = "#username")
     public ResponseEntity<Object> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);
@@ -75,6 +75,7 @@ public class WishlistController {
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/{username}")
     public ResponseEntity<Object> addWishlist(@RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){
+        log.info(username);
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.addWishlist(username,movie),HttpStatus.CREATED);
         }

@@ -7,6 +7,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class WishlistDto {
     private String username;
     private List<MovieDto> movies;

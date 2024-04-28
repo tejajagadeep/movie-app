@@ -1,0 +1,10 @@
+<div class="container" *ngIf="movieDetails">
+    <div>
+        <h1>{{movieDetails.title}}</h1>
+        <h4> {{movieDetails.year}}</h4>
+        <span class="minutes">{{movieDetails.rating}}</span>
+        <p class="type" *ngFor="let g of movieDetails.genre">
+            {{g}}
+        </p>
+    </div>
+</div>

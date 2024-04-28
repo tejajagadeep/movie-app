@@ -1,3 +1,4 @@
+<app-top-bar></app-top-bar>
 <div *ngFor="let movie of movieResponse.data">
     <div class="movie_card" id="bright">
         <div class="info_section">
@@ -17,8 +18,12 @@
             </div>
             <div class="movie_social">
                 <ul>
-                    <li><i class="material-icons">play</i></li>
-                    <li><i class="material-icons pink">favorite</i></li>
+                    <li><i class="material-icons" (click)="playTrailer(movie.id)">play</i></li>
+                    <li *ngIf="imdbIds.includes(movie.imdbid); else addfavorite"><i (click)="delete(movie.imdbid)"
+                            class="material-icons pink">favorite</i></li>
+                    <ng-template #addfavorite>
+                        <li><i class="material-icons" (click)="saveWishlist(movie)">favorite</i></li>
+                    </ng-template>
                     <li><i class="material-icons" (click)="moreDetails(movie.imdb_link)">more</i></li>
                 </ul>
             </div>
@@ -26,3 +31,4 @@
         <div class="blur_back bright_back" [style.background-image]="'url(' + movie.image + ')'"></div>
     </div>
 </div>
+<app-footer></app-footer>

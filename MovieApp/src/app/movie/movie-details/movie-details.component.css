@@ -1,0 +1,16 @@
+.container {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  overflow: hidden;
+  z-index: 9999;
+}

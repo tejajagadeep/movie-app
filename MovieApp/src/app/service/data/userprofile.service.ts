@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserProfile } from '../../model/UserProfile';
 import { Observable } from 'rxjs';
@@ -8,7 +8,11 @@ import { API_URL } from '../../app.constants';
   providedIn: 'root',
 })
 export class UserprofileService {
-  constructor(private http: HttpClient) {}
+  private httpHandler: HttpClient;
+
+  constructor(private http: HttpClient, private handler: HttpBackend) {
+    this.httpHandler = new HttpClient(handler);
+  }
 
   getUserProfile(username: string): Observable<UserProfile> {
     return this.http.get<UserProfile>(
@@ -17,7 +21,7 @@ export class UserprofileService {
   }
 
   saveUserProfile(userProfile: UserProfile): Observable<UserProfile> {
-    return this.http.post<UserProfile>(
+    return this.httpHandler.post<UserProfile>(
       `${API_URL}/public/userProfile/addUser`,
       userProfile
     );

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpHandler } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthenticationRequest } from '../../model/AuthenticationRequest';
 import { Observable } from 'rxjs';
@@ -9,12 +9,16 @@ import { API_URL } from '../../app.constants';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient) {}
+  private httpHandler: HttpClient;
+
+  constructor(private http: HttpClient, private handler: HttpBackend) {
+    this.httpHandler = new HttpClient(handler);
+  }
 
   authenticate(
     auth: AuthenticationRequest
   ): Observable<AuthenticationResponse> {
-    return this.http.post<AuthenticationResponse>(
+    return this.httpHandler.post<AuthenticationResponse>(
       `${API_URL}/public/auth/authenticate`,
       auth
     );
