@@ -13,8 +13,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,33 +80,38 @@ public class MovieServiceImpl implements MovieService{
         return headers;
     }
 
-    private Response getAllMoviesBreakCircuit(Exception e) throws IOException {
+    public Response getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
-        List<Movie> movies = new ArrayList<>();
+        List<Movie> movies = null;
+
         try {
-            // Specify the path to your text file containing JSON data
-            String path = "static/movie-data.txt";
-            ClassPathResource resource = new ClassPathResource(path);
-            File file = resource.getFile();
-            StringBuilder jsonString = new StringBuilder();
-            java.util.Scanner scanner = new java.util.Scanner(file);
-            while (scanner.hasNextLine()) {
-                jsonString.append(scanner.nextLine());
+            // Load the resource stream
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("static/movie-data.txt");
+            if (inputStream != null) {
+                // Read the JSON data from the input stream
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder jsonString = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    jsonString.append(line);
+                }
+                reader.close();
+
+                // Convert JSON string to list of Movie objects
+                ObjectMapper objectMapper = new ObjectMapper();
+                movies = objectMapper.readValue(jsonString.toString(), new TypeReference<>() {});
+            } else {
+                throw new IOException("Resource not found: static/movie-data.txt");
             }
-            scanner.close();
-            ObjectMapper objectMapper = new ObjectMapper();
-            movies = objectMapper.readValue(jsonString.toString(),new TypeReference<>() {});
-
-
         } catch (IOException io) {
-            throw new IOException();
+            throw new IOException("Failed to read movie data from file", io);
         }
 
+        // Create and return the response
         Response response = new Response();
         response.setStatus(false);
-        response.setMessage("Unsuccessful");
+        response.setMessage("Unsuccessful call. Redirecting to dummy data");
         response.setData(movies);
-
         return response;
     }
 

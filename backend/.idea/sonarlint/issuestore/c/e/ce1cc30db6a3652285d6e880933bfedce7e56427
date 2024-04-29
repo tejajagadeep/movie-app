@@ -1,0 +1,130 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8­ÃºĞò1
+¤
+java:S1192³"[Define a constant instead of duplicating this literal "                \"Music\"
+" 3 times.(ÒŠÀ›üÿÿÿÿ8¼Ë°Ğò1J$08438d5f-bd3d-4878-9218-c8b51f93f941
+¥
+java:S1192%"]Define a constant instead of duplicating this literal "            \"year\": 1994,
+" 6 times.(Ûªƒêøÿÿÿÿ8¼Ë°Ğò1J$e7aa7cdd-cca2-4e94-a84e-7888611c614c
+§
+java:S1192Â"^Define a constant instead of duplicating this literal "                \"Mystery\",
+" 7 times.(½Ä‡©ûÿÿÿÿ8¼Ë°Ğò1J$9e524891-2162-493d-92c5-ff22dd782a85
+¢
+java:S1192ì"^Define a constant instead of duplicating this literal "            \"rating\": 8.7,
+" 6 times.(œÕ¸•8¼Ë°Ğò1J$7512de68-881d-4941-82e5-1cc1aceaf9f6
+ 
+java:S1192	"\Define a constant instead of duplicating this literal "                \"Comedy\"
+" 3 times.(çÂÍ—8¼Ë°Ğò1J$839bd0ed-7c5b-4e07-9cc7-c44804900e4a
+¥
+java:S1192n"]Define a constant instead of duplicating this literal "                \"Drama\",
+" 41 times.(Ñµ”ûÿÿÿÿ8½Ë°Ğò1J$a21e8415-160d-4e6d-8df6-f1a9ebeb8b2d
+¦
+java:S1192ç"]Define a constant instead of duplicating this literal "            \"year\": 2018,
+" 3 times.(ØÒÆòıÿÿÿÿ8½Ë°Ğò1J$97f979c3-85c5-4160-b76f-86fc3462575d
+£
+java:S1192¥"_Define a constant instead of duplicating this literal "            \"rating\": 8.5,
+" 22 times.(¾¾¯•8½Ë°Ğò1J$a156a2bc-98da-4014-83c1-f34387354261
+¦
+java:S1192ú"]Define a constant instead of duplicating this literal "                \"Fantasy\"
+" 6 times.(ƒ–öÊùÿÿÿÿ8½Ë°Ğò1J$d0171217-f77b-41c5-b68f-2f0ff6e723bb
+
+java:S1192""\Define a constant instead of duplicating this literal "                \"Drama\"
+" 29 times.(ŠáÂy8½Ë°Ğò1J$02214afe-32d1-4ff4-bedc-a3378caf96e5
+£
+java:S1192Ÿ
+"_Define a constant instead of duplicating this literal "            \"rating\": 8.3,
+" 18 times.(ˆ¨†º8½Ë°Ğò1J$0a0a1354-b990-4f68-9d1e-bf9e40533f2b
+ 
+java:S1192b"]Define a constant instead of duplicating this literal "            \"year\": 1957,
+" 3 times.(×ª8¾Ë°Ğò1J$2b77e761-2280-48dd-8bf6-40cfc17aa835
+ 
+java:S1192ë"]Define a constant instead of duplicating this literal "            \"year\": 2012,
+" 3 times.(íó¢8¾Ë°Ğò1J$e1c5c9ce-fd83-4f10-a447-fa48f8af0156
+¡
+java:S1192­"]Define a constant instead of duplicating this literal "                \"Western\"
+" 3 times.(òµ“8¾Ë°Ğò1J$3959a9e3-1ac4-4edd-aa52-9dc2518f91e6
+¡
+java:S1192Í"]Define a constant instead of duplicating this literal "            \"year\": 1999,
+" 4 times.(©èÂ8¾Ë°Ğò1J$d24a9077-bff0-459d-9f71-3bf57aad04aa
+¢
+java:S1192•"YDefine a constant instead of duplicating this literal "                \"War\"
+" 9 times.(°ûÇİşÿÿÿÿ8¾Ë°Ğò1J$1ba98b0c-a97a-4407-8761-4d923319829d
+¦
+java:S1192?"^Define a constant instead of duplicating this literal "                \"Action\",
+" 23 times.(—’’™ÿÿÿÿÿ8¾Ë°Ğò1J$9f487dbd-0320-4ed3-a245-e7d579ec515a
+Ÿ
+java:S1192C"\Define a constant instead of duplicating this literal "            \"rating\": 9,
+" 5 times.(çÔĞ8¾Ë°Ğò1J$d258508e-855b-4677-86ee-a63037552707
+¦
+java:S1192·"]Define a constant instead of duplicating this literal "            \"year\": 1997,
+" 3 times.(”©ºÏÿÿÿÿÿ8¾Ë°Ğò1J$c1ab9feb-e778-4844-8568-cf5f7d382ff9
+¨
+java:S1192m"`Define a constant instead of duplicating this literal "                \"Biography\",
+" 8 times.(úƒ„¶úÿÿÿÿ8¾Ë°Ğò1J$8ba68b1e-a42e-45c2-87c2-8d3e3d376f20
+¦
+java:S1192Õ"]Define a constant instead of duplicating this literal "            \"year\": 2019,
+" 3 times.(£Á£êüÿÿÿÿ8¾Ë°Ğò1J$6816109b-b5fd-43fa-87aa-74141b2c550f
+¡
+java:S1192Ú"]Define a constant instead of duplicating this literal "            \"year\": 1995,
+" 4 times.(Îâñ8¾Ë°Ğò1J$d5251857-06eb-43d7-9ad4-20ea7edd9e68
+¨
+java:S1192©"_Define a constant instead of duplicating this literal "                \"Adventure\"
+" 4 times.(ô€Íûÿÿÿÿ8¾Ë°Ğò1J$5ae007fc-0c79-4cb1-a11a-79453880663b
+¢
+java:S1192 "^Define a constant instead of duplicating this literal "            \"rating\": 8.8,
+" 5 times.(—³œš8¿Ë°Ğò1J$a9bb5fe7-391a-4158-bb3a-c384d760e83f
+¦
+java:S1192¼"]Define a constant instead of duplicating this literal "                \"Romance\"
+" 7 times.(›ÃÏûÿÿÿÿ8¿Ë°Ğò1J$adf839b7-b190-405b-be9d-d47f50112a0b
+Ÿ
+java:S1192!"\Define a constant instead of duplicating this literal "            \"genre\": [
+" 100 times.(…¬¶8¿Ë°Ğò1J$39dad386-90c4-4b01-a5e3-d67441a6df97
+£
+java:S1192É"_Define a constant instead of duplicating this literal "            \"rating\": 8.6,
+" 14 times.(¯Ï¹¹8¿Ë°Ğò1J$e6c3c38c-a662-40e6-be21-1c319b474511
+
+java:S1192("MDefine a constant instead of duplicating this literal "        },
+" 99 times.(¥ÁÊÁ8¿Ë°Ğò1J$ec951a21-0015-44ef-9b89-668f8b941932
+£
+java:S1192~"aDefine a constant instead of duplicating this literal "                \"Adventure\",
+" 23 times.(Ûíµ08¿Ë°Ğò1J$14842629-784e-4a96-be9d-cc75de504316
+£
+java:S1192ú"_Define a constant instead of duplicating this literal "            \"rating\": 8.4,
+" 27 times.(Ûß8¿Ë°Ğò1J$a0f44ea0-b852-4d86-943c-943a29866ff0
+ª
+java:S1192§"aDefine a constant instead of duplicating this literal "                \"Animation\",
+" 10 times.(èİùÿÿÿÿ8ÀË°Ğò1J$0bfe80fd-27f0-413e-bf83-2656b25f014b
+¦
+java:S1192²"]Define a constant instead of duplicating this literal "                \"Comedy\",
+" 9 times.(ÀäšÏøÿÿÿÿ8ÀË°Ğò1J$5e2e7939-670a-477e-9d44-8e099dd8381f
+¨
+java:S1192†"_Define a constant instead of duplicating this literal "                \"Thriller\"
+" 10 times.(è³ƒ¹øÿÿÿÿ8ÀË°Ğò1J$712bd7d3-85c7-4eaa-b27a-aefc82704b4b
+•
+java:S1192"MDefine a constant instead of duplicating this literal "        {
+" 100 times.(Ÿñ¼Ñÿÿÿÿÿ8ÀË°Ğò1J$5288417d-ba83-4557-8ba1-3926f59b2db5
+¦
+java:S1192”"]Define a constant instead of duplicating this literal "            \"year\": 2000,
+" 3 times.(”İûÀıÿÿÿÿ8ÀË°Ğò1J$1f1b2e43-a239-4ba9-95ac-eefc8ea46ebb
+¦
+java:S1192ê"]Define a constant instead of duplicating this literal "                \"Sci-Fi\"
+" 11 times.(İ²Ë‰ûÿÿÿÿ8ÀË°Ğò1J$1d18e12a-5be1-48aa-a541-90fe64d951aa
+¥
+java:S11920"]Define a constant instead of duplicating this literal "                \"Crime\",
+" 20 times.(±Ü¿Èúÿÿÿÿ8ÀË°Ğò1J$59384abc-9ce1-471f-95c5-0ae907977f30
+”
+java:S1192#"RDefine a constant instead of duplicating this literal "            ],
+" 100 times.(Â¥—?8ÀË°Ğò1J$6f385746-ab1a-4ecd-93a2-9fe52e1820a3
+¦
+java:S1192İ"]Define a constant instead of duplicating this literal "            \"year\": 2002,
+" 3 times.(ÆçãÇÿÿÿÿÿ8ÀË°Ğò1J$bf798907-d796-43b9-a2e7-7afe3c95fb4a
+¥
+java:S1192o"]Define a constant instead of duplicating this literal "                \"History\"
+" 3 times.(ÿ™Ó“ÿÿÿÿÿ8ÁË°Ğò1J$6a64d762-0251-4bbe-b060-c0f8d7e39397
+¦
+java:S1192×"]Define a constant instead of duplicating this literal "                \"Mystery\"
+" 7 times.(°¬îšÿÿÿÿÿ8ÁË°Ğò1J$472da6f4-b3e0-430f-81e3-ea72c9194784
+¥
+java:S1488"]Immediately return this expression instead of assigning it to the temporary variable "dummy".(°êşµúÿÿÿÿ8ÇË°Ğò1J$8699186b-607b-4774-b44c-69ff07e5a324
+z
+java:S6126"2Replace this String concatenation with Text block.(°êşµúÿÿÿÿ8ÉÌ°Ğò1J$8753f277-f142-47eb-9940-d29bfa8ed49c
