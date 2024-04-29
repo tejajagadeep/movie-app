@@ -103,7 +103,7 @@ public class WishlistServiceImpl implements WishlistService {
             // Track doesn't exist, add it to the wish list
             wishlist.getMovies().add(movie);
         } else {
-            // Track already exists, update it (if needed)
+            // Track already exists, update it
             wishlist.getMovies().stream()
                     .filter(m -> m.getImdbid().equals(movie.getImdbid()))
                     .findFirst()

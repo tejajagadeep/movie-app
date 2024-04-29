@@ -41,7 +41,7 @@ class MovieControllerTest {
 
         when(movieService.topMovies()).thenReturn(response);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/private/movie/top-100-movies")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("status").value(true));
@@ -54,7 +54,7 @@ class MovieControllerTest {
         movieDetails.setTitle("Movie 1");
         when(movieService.topMoviesById("1")).thenReturn(movieDetails);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/private/movie/top-100-movies/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"))

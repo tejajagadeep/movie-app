@@ -77,7 +77,7 @@ class AuthServiceImplTest {
                 UsernameNotFoundException.class,
                 () -> authService.authenticate(authenticationRequest)
         );
-        assertEquals("nonExistingUsername", exception.getMessage());
+        assertEquals("Username not exist.", exception.getMessage());
     }
 
 }
