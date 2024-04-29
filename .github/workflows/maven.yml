@@ -9,114 +9,105 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-      
   build_eureka_server:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build Eureka Service with Maven
-      run: mvn -B package --file backend/eureka-server/pom.xml
-      
-      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Eureka Service with Maven
+        run: mvn -B package --file backend/eureka-server/pom.xml
+
   build_config_server:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build Config Service with Maven
-      run: mvn -B package --file backend/config-server/pom.xml
-      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Config Service with Maven
+        run: mvn -B package --file backend/config-server/pom.xml
+
   build_api_gateway:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build Api Gateway with Maven
-      run: mvn -B package --file backend/api-gateway/pom.xml
-      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Api Gateway with Maven
+        run: mvn -B package --file backend/api-gateway/pom.xml
+
   build_authentication_service:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build Authentication Service with Maven
-      run: mvn -B package --file backend/authentication-service/pom.xml
-      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Authentication Service with Maven
+        run: mvn -B package --file backend/authentication-service/pom.xml
+
   build_userprofile_service:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build UserProfile Service with Maven
-      run: mvn -B package --file backend/userprofile-service/pom.xml
-      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build UserProfile Service with Maven
+        run: mvn -B package --file backend/userprofile-service/pom.xml
+
   build_movie_service:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build Movie Service with Maven
-      run: mvn -B package --file backend/movie-service/pom.xml
-      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Movie Service with Maven
+        run: mvn -B package --file backend/movie-service/pom.xml
+
   build_wishlist_service:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build Authentication Service with Maven
-      run: mvn -B package --file backend/wishlist-service/pom.xml
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Authentication Service with Maven
+        run: mvn -B package --file backend/wishlist-service/pom.xml
