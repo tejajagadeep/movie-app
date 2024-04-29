@@ -44,7 +44,7 @@ jobs:
           cache: maven
       - name: Build Config Service with Maven
         run: mvn -B package --file backend/config-server/pom.xml
-      - name: Execute Eureka Service Jar File
+      - name: Execute Config Service Jar File
         run: sudo kill -9 `sudo lsof -t -i:8888` & sudo java -jar backend/config-server/target/config-server-0.0.1-SNAPSHOT.jar
 
   build_api_gateway:
@@ -63,7 +63,7 @@ jobs:
           cache: maven
       - name: Build Api Gateway with Maven
         run: mvn -B package --file backend/api-gateway/pom.xml
-      - name: Execute Eureka Service Jar File
+      - name: Execute Api Gateway Service Jar File
         run: sudo kill -9 `sudo lsof -t -i:9000` & sudo java -jar backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar
 
   build_authentication_service:
@@ -82,7 +82,7 @@ jobs:
           cache: maven
       - name: Build Authentication Service with Maven
         run: mvn -B package --file backend/authentication-service/pom.xml
-      - name: Execute Eureka Service Jar File
+      - name: Execute Authentication Service Jar File
         run: sudo kill -9 `sudo lsof -t -i:8090` & sudo java -jar backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar
 
   build_userprofile_service:
@@ -101,7 +101,7 @@ jobs:
           cache: maven
       - name: Build UserProfile Service with Maven
         run: mvn -B package --file backend/userprofile-service/pom.xml
-      - name: Execute Eureka Service Jar File
+      - name: Execute UserProfile Service Jar File
         run: sudo kill -9 `sudo lsof -t -i:8092` & sudo java -jar backend/userprofile-service/target/userprofile-service-0.0.1-SNAPSHOT.jar
 
   build_movie_service:
@@ -120,7 +120,7 @@ jobs:
           cache: maven
       - name: Build Movie Service with Maven
         run: mvn -B package --file backend/movie-service/pom.xml
-      - name: Execute Eureka Service Jar File
+      - name: Execute Movie Service Jar File
         run: sudo kill -9 `sudo lsof -t -i:8081` & sudo java -jar backend/movie-service/target/movie-service-0.0.1-SNAPSHOT.jar
 
   build_wishlist_service:
@@ -139,5 +139,5 @@ jobs:
           cache: maven
       - name: Build Authentication Service with Maven
         run: mvn -B package --file backend/wishlist-service/pom.xml
-      - name: Execute Eureka Service Jar File
+      - name: Execute Authentication Service Jar File
         run: sudo kill -9 `sudo lsof -t -i:8082` & sudo java -jar backend/wishlist-service/target/wishlist-service-0.0.1-SNAPSHOT.jar
