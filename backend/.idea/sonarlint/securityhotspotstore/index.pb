@@ -185,3 +185,8 @@ v
 Fsrc/test/java/com/cts/movieservice/controller/MovieControllerTest.java,d\b\dbb2f2a9f3894dbdca89c21467f9da3892c7a58f
 ‡
 Wsrc/test/java/com/auth/authenticationservice/AuthenticationServiceApplicationTests.java,3\b\3b03ec72ce06331172b0d36d3e87e7c721732809
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+u
+Esrc/main/java/com/cts/wishlistservice/WishlistServiceApplication.java,6\9\699a6f783418b7e4179c9ba502d2eedf5b1d520d
