@@ -46,6 +46,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Observed(name = "save.user.profile")
     public UserProfile saveUserProfile(UserProfileDto userProfileDto) {
 
+        if (usersProfileRepository.existsById(userProfileDto.getUsername())) {
+            throw new ResourceAlreadyExistsException("Username Already exists");
+        }
+
+        if (usersProfileRepository.existsByEmail(userProfileDto.getEmail())) {
+            throw new ResourceAlreadyExistsException("Email Already exists");
+        }
+
         User user =new User();
         user.setUsername(userProfileDto.getUsername());
         user.setPassword(userProfileDto.getPassword());
@@ -57,15 +65,6 @@ public class UserProfileServiceImpl implements UserProfileService {
             log.error(ex.getMessage());
 
         }
-
-        if (usersProfileRepository.existsById(userProfileDto.getUsername())) {
-            throw new ResourceAlreadyExistsException("Username Already exists");
-        }
-
-        if (usersProfileRepository.existsByEmail(userProfileDto.getEmail())) {
-            throw new ResourceAlreadyExistsException("Email Already exists");
-        }
-
         return usersProfileRepository.save(modelMapper.map(userProfileDto,UserProfile.class));
     }
 

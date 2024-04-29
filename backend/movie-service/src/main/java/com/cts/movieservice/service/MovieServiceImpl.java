@@ -86,7 +86,7 @@ public class MovieServiceImpl implements MovieService{
         List<Movie> movies = new ArrayList<>();
         try {
             // Specify the path to your text file containing JSON data
-            String path = "movie-data.txt";
+            String path = "static/movie-data.txt";
             ClassPathResource resource = new ClassPathResource(path);
             File file = resource.getFile();
             StringBuilder jsonString = new StringBuilder();
