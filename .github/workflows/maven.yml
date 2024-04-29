@@ -49,7 +49,7 @@ jobs:
       - name: Execute Config Service Jar File
         run: |
           sudo lsof -t -i:8888 | xargs -r sudo kill -9 
-          sudo java -jar backend/config-server/target/config-server-0.0.1-SNAPSHOT.jar
+          sudo java -jar backend/config-server/target/config-server-0.0.1-SNAPSHOT.jar &
 
   build_api_gateway:
     runs-on: self-hosted
@@ -70,7 +70,7 @@ jobs:
       - name: Execute Api Gateway Service Jar File
         run: |
           sudo lsof -t -i:9000 | xargs -r sudo kill -9 
-          sudo java -jar backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar
+          sudo java -jar backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar &
 
   build_authentication_service:
     runs-on: self-hosted
@@ -91,7 +91,7 @@ jobs:
       - name: Execute Authentication Service Jar File
         run: |
           sudo lsof -t -i:8090 | xargs -r sudo kill -9 
-          sudo java -jar backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar
+          sudo java -jar backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar &
 
   build_userprofile_service:
     runs-on: self-hosted
@@ -112,7 +112,7 @@ jobs:
       - name: Execute UserProfile Service Jar File
         run: |
           sudo lsof -t -i:8092 | xargs -r sudo kill -9 
-          sudo java -jar backend/userprofile-service/target/userprofile-service-0.0.1-SNAPSHOT.jar
+          sudo java -jar backend/userprofile-service/target/userprofile-service-0.0.1-SNAPSHOT.jar &
 
   build_movie_service:
     runs-on: self-hosted
@@ -133,7 +133,7 @@ jobs:
       - name: Execute Movie Service Jar File
         run: |
           sudo lsof -t -i:8081 | xargs -r sudo kill -9 
-          sudo java -jar backend/movie-service/target/movie-service-0.0.1-SNAPSHOT.jar
+          sudo java -jar backend/movie-service/target/movie-service-0.0.1-SNAPSHOT.jar &
 
   build_wishlist_service:
     runs-on: self-hosted
@@ -154,4 +154,4 @@ jobs:
       - name: Execute Authentication Service Jar File
         run: |
           sudo lsof -t -i:8082 | xargs -r sudo kill -9 
-          sudo java -jar backend/wishlist-service/target/wishlist-service-0.0.1-SNAPSHOT.jar
+          sudo java -jar backend/wishlist-service/target/wishlist-service-0.0.1-SNAPSHOT.jar &
