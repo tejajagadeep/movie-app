@@ -8,13 +8,20 @@ import { WishlistService } from '../../service/data/wishlist.service';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { OpenDialogService } from '../../service/component/open-dialog.service';
 import { FooterComponent } from '../../navigation/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-top100-movies',
   standalone: true,
   templateUrl: './top100-movies.component.html',
   styleUrl: './top100-movies.component.css',
-  imports: [HttpClientModule, CommonModule, TopBarComponent, FooterComponent],
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    TopBarComponent,
+    FooterComponent,
+    RouterModule,
+  ],
 })
 export class Top100MoviesComponent implements OnInit {
   constructor(

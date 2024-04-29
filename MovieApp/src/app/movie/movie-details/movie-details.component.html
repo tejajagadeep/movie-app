@@ -1,10 +1,23 @@
+<p>movie-details</p>
 <div class="container" *ngIf="movieDetails">
     <div>
         <h1>{{movieDetails.title}}</h1>
-        <h4> {{movieDetails.year}}</h4>
-        <span class="minutes">{{movieDetails.rating}}</span>
-        <p class="type" *ngFor="let g of movieDetails.genre">
-            {{g}}
-        </p>
+        <div class="movie-details">
+            <div class="movie-details-image">
+                <img [src]="movieDetails.rank" alt="{{movieDetails.title}}" />
+            </div>
+            <div class="movie-details-info">
+                <p><strong>Director:</strong> {{movieDetails.director}}</p>
+                <p><strong>Genre:</strong> {{movieDetails.genre}}</p>
+                <p><strong>Release Date:</strong> {{movieDetails.year}}</p>
+                <p><strong>Rating:</strong> {{movieDetails.rating}}</p>
+                <p><strong>Trailer:</strong>{{movieDetails.trailer_embed_link}}</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <iframe width="420" height="315" *ngIf="movieDetails.trailer_embed_link"
+            [src]="''+movieDetails.trailer_embed_link">
+        </iframe>
     </div>
 </div>

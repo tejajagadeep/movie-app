@@ -18,9 +18,9 @@
             </div>
             <div class="movie_social">
                 <ul>
-                    <li><i class="material-icons" (click)="playTrailer(movie.id)">play</i></li>
+                    <li><i class="material-icons" [routerLink]="['/movie-details',movie.id]">play</i></li>
                     <li *ngIf="imdbIds.includes(movie.imdbid); else addfavorite"><i (click)="delete(movie.imdbid)"
-                            class="material-icons pink">favorite</i></li>
+                            class="material-icons pink">remove-favorite</i></li>
                     <ng-template #addfavorite>
                         <li><i class="material-icons" (click)="saveWishlist(movie)">favorite</i></li>
                     </ng-template>

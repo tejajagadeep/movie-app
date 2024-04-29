@@ -7,6 +7,7 @@ import { AuthGuard, LoginGuard } from './service/security/auth.guard';
 import { FavoriteListComponent } from './user/favorite-list/favorite-list.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UpdateProfileComponent } from './user/update-profile/update-profile.component';
+import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +22,11 @@ export const routes: Routes = [
   {
     path: 'top-100-movies',
     component: Top100MoviesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'movie-details/:id',
+    component: MovieDetailsComponent,
     canActivate: [AuthGuard],
   },
   {

@@ -13,7 +13,8 @@
                                             <img src="https://img.icons8.com/bubbles/100/000000/user.png"
                                                 class="img-radius" alt="User-Profile-Image">
                                         </div>
-                                        <h6 class="f-w-600">{{userProfile.email}}</h6>
+                                        <h6 class="f-w-600">{{userProfile.dateOfBirth |
+                                            date:'dd MMMM yyyy'}}</h6>
                                         <span>{{userProfile.username}}</span><br>
                                         <a [routerLink]="['/update-profile']">
                                             <i class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
@@ -37,9 +38,8 @@
                                                 <h6 class="text-muted f-w-400">{{ userProfile.phoneNumber}}</h6>
                                             </div>
                                             <div class="col-sm-6">
-                                                <p class="m-b-10 f-w-600">Date Of Birth</p>
-                                                <h6 class="text-muted f-w-400">{{ userProfile.dateOfBirth |
-                                                    date:'dd MMMM yyyy'}}</h6>
+                                                <p class="m-b-10 f-w-600">Email</p>
+                                                <h6 class="text-muted f-w-400">{{ userProfile.email}}</h6>
                                             </div>
                                         </div>
                                         <div *ngIf="movies; else noTracks">

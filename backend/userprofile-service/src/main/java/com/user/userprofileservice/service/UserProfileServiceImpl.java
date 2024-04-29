@@ -76,12 +76,14 @@ public class UserProfileServiceImpl implements UserProfileService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Entity not found with ID: " + username)
                        );
-
+        if (!userProfile.getEmail().equals(userProfileDto.getEmail()) && usersProfileRepository.existsByEmail(userProfileDto.getEmail())) {
+            throw new ResourceAlreadyExistsException("Email Already exists");
+        }
         userProfile.setFirstName(userProfileDto.getFirstName());
         userProfile.setLastName(userProfileDto.getLastName());
+
         userProfile.setEmail(userProfileDto.getEmail());
         userProfile.setPhoneNumber(userProfileDto.getPhoneNumber());
-        userProfile.setDateOfBirth(userProfileDto.getDateOfBirth());
 
         usersProfileRepository.save(userProfile);
 

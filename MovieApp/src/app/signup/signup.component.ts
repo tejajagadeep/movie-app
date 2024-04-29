@@ -13,7 +13,6 @@ import {
 import { UserprofileService } from '../service/data/userprofile.service';
 import { UserProfile } from '../model/UserProfile';
 import { ErrorMessage } from '../model/ErrorMessage';
-import { Observable, map, switchMap, timer } from 'rxjs';
 import { HttpStatus } from '../model/HttpStatus';
 import { Router } from '@angular/router';
 

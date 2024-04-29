@@ -87,7 +87,13 @@ class UserProfileServiceImplTest {
         userProfileDto.setLastName("jdl");
         userProfileDto.setFirstName("shsd");
         userProfileDto.setDateOfBirth(new Date());
-        when(modelMapper.map(userProfileDto, UserProfile.class)).thenReturn(new UserProfile());
+        UserProfile userProfile = new UserProfile();
+        userProfile.setUsername("testUser");
+        userProfile.setDateOfBirth(new Date());
+        userProfile.setFirstName("firstName");
+        userProfile.setLastName("lastName");
+        userProfile.setEmail("email@email.com");
+        when(modelMapper.map(userProfileDto, UserProfile.class)).thenReturn(userProfile);
         when(userProfileRepository.existsById(userProfileDto.getUsername())).thenReturn(true);
 
         assertThrows(ResourceAlreadyExistsException.class, () -> userProfileService.saveUserProfile(userProfileDto));

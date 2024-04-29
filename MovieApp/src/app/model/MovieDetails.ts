@@ -3,13 +3,13 @@ export class MovieDetails {
   rank!: number;
   title!: string;
   description!: string;
-  bigImage!: string;
+  big_image!: string;
   genre!: string[];
   rating!: number;
   year!: number;
-  imdbLink!: string;
+  imdb_link!: string;
   imdbid!: string;
-  trailerEmbedLink!: string;
+  trailer_embed_link!: string;
   director!: string[];
   writers!: string[];
 }
