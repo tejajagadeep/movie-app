@@ -26,11 +26,11 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Eureka Service with Maven
-        run: mvn -B package --file backend/eureka-server/pom.xml
+        run: mvn -B package --file movie-backend/eureka-server/pom.xml
       - name: Execute Eureka Service Jar File
         run: |
           sudo lsof -t -i:8761 | xargs -r sudo kill -9 
-          sudo java -jar backend/eureka-server/target/eureka-server-0.0.1-SNAPSHOT.jar &
+          sudo java -jar movie-backend/eureka-server/target/eureka-server-0.0.1-SNAPSHOT.jar &
 
   build_config_server:
     runs-on: self-hosted
@@ -45,11 +45,11 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Config Service with Maven
-        run: mvn -B package --file backend/config-server/pom.xml
+        run: mvn -B package --file movie-backend/config-server/pom.xml
       - name: Execute Config Service Jar File
         run: |
           sudo lsof -t -i:8888 | xargs -r sudo kill -9 
-          sudo java -jar backend/config-server/target/config-server-0.0.1-SNAPSHOT.jar &
+          sudo java -jar movie-backend/config-server/target/config-server-0.0.1-SNAPSHOT.jar &
 
   build_api_gateway:
     runs-on: self-hosted
@@ -66,11 +66,11 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Api Gateway with Maven
-        run: mvn -B package --file backend/api-gateway/pom.xml
+        run: mvn -B package --file movie-backend/api-gateway/pom.xml
       - name: Execute Api Gateway Service Jar File
         run: |
           sudo lsof -t -i:9000 | xargs -r sudo kill -9 
-          sudo java -jar backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar &
+          sudo java -jar movie-backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar &
 
   # build_authentication_service:
   #   runs-on: self-hosted
@@ -87,11 +87,11 @@ jobs:
   #         distribution: "temurin"
   #         cache: maven
   #     - name: Build Authentication Service with Maven
-  #       run: mvn -B package --file backend/authentication-service/pom.xml
+  #       run: mvn -B package --file movie-backend/authentication-service/pom.xml
   #     - name: Execute Authentication Service Jar File
   #       run: |
   #         sudo lsof -t -i:8090 | xargs -r sudo kill -9
-  #         sudo java -jar backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar &
+  #         sudo java -jar movie-backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar &
 
   build_userprofile_service:
     runs-on: self-hosted
@@ -108,11 +108,11 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build UserProfile Service with Maven
-        run: mvn -B package --file backend/userprofile-service/pom.xml
+        run: mvn -B package --file movie-backend/userprofile-service/pom.xml
       - name: Execute UserProfile Service Jar File
         run: |
           sudo lsof -t -i:8092 | xargs -r sudo kill -9 
-          sudo java -jar backend/userprofile-service/target/userprofile-service-0.0.1-SNAPSHOT.jar &
+          sudo java -jar movie-backend/userprofile-service/target/userprofile-service-0.0.1-SNAPSHOT.jar &
 
   build_movie_service:
     runs-on: self-hosted
@@ -129,11 +129,11 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Movie Service with Maven
-        run: mvn -B package --file backend/movie-service/pom.xml
+        run: mvn -B package --file movie-backend/movie-service/pom.xml
       - name: Execute Movie Service Jar File
         run: |
           sudo lsof -t -i:8081 | xargs -r sudo kill -9 
-          sudo java -jar backend/movie-service/target/movie-service-0.0.1-SNAPSHOT.jar &
+          sudo java -jar movie-backend/movie-service/target/movie-service-0.0.1-SNAPSHOT.jar &
 
   build_wishlist_service:
     runs-on: self-hosted
@@ -150,8 +150,8 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Authentication Service with Maven
-        run: mvn -B package --file backend/wishlist-service/pom.xml
+        run: mvn -B package --file movie-backend/wishlist-service/pom.xml
       - name: Execute Authentication Service Jar File
         run: |
           sudo lsof -t -i:8082 | xargs -r sudo kill -9 
-          sudo java -jar backend/wishlist-service/target/wishlist-service-0.0.1-SNAPSHOT.jar &
+          sudo java -jar movie-backend/wishlist-service/target/wishlist-service-0.0.1-SNAPSHOT.jar &

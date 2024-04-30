@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  eureka-service:
+    image: eureka-service:latest
+    build:
+      context: .
+      dockerfile: eureka-service/Dockerfile
+    ports:
+      - "8080:8080"  # Adjust the port mapping as needed
+    networks:
+      - my-network
+
+  config-service:
+    image: config-service:latest
+    build:
+      context: .
+      dockerfile: config-server/Dockerfile
+    ports:
+      - "8080:8080"  # Adjust the port mapping as needed
+    networks:
+      - my-network
+
+  authentication-service:
+    image: authentication-service:latest
+    build:
+      context: .
+      dockerfile: authentication-service/Dockerfile
+    ports:
+      - "8080:8080"  # Adjust the port mapping as needed
+    networks:
+      - my-network
+
+  userprofile-service:
+    image: userprofile-service:latest
+    build:
+      context: .
+      dockerfile: userprofile-service/Dockerfile
+    ports:
+      - "8080:8080"  # Adjust the port mapping as needed
+    networks:
+      - my-network
+
+  movie-service:
+    image: movie-service:latest
+    build:
+      context: .
+      dockerfile: movie-service/Dockerfile
+    ports:
+      - "8080:8080"  # Adjust the port mapping as needed
+    networks:
+      - my-network
+
+  wishlist-service:
+    image: wishlist-service:latest
+    build:
+      context: .
+      dockerfile: wishlist-service/Dockerfile
+    ports:
+      - "8081:8081"  # Adjust the port mapping as needed
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
