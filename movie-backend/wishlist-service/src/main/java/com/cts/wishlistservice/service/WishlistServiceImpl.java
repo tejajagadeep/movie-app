@@ -10,6 +10,9 @@ import io.micrometer.observation.annotation.Observed;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +38,7 @@ public class WishlistServiceImpl implements WishlistService {
      */
     @Override
     @Observed(name = "get.wishlists")
+    @Cacheable(value = "wishlist", key = "#username")
     public WishlistDto getWishlists(String username) {
         return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
     }
@@ -47,6 +51,10 @@ public class WishlistServiceImpl implements WishlistService {
      */
     @Override
     @Observed(name = "delete.wishlist")
+    @Caching(evict = {
+            @CacheEvict(value = "wishlist", key = "#username"),
+            @CacheEvict(value = "wishlist", key = "'all'")
+    })
     public WishlistDto deleteWishlist(String username, String id) {
 
         Wishlist wishlist = wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found."));
@@ -71,6 +79,10 @@ public class WishlistServiceImpl implements WishlistService {
      */
     @Override
     @Observed(name = "add.wishlist")
+    @Caching(evict = {
+            @CacheEvict(value = "wishlist", key = "#username"),
+            @CacheEvict(value = "wishlist", key = "'all'")
+    })
     public WishlistDto addWishlist(String username, MovieDto movieDto) {
 
         Optional<Wishlist> wishListOptional = wishlistRepository.findById(username);

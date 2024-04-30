@@ -68,7 +68,7 @@ public class AuthServiceImpl implements AuthService{
             return AuthenticationResponse.builder().accessToken(jwtToken).build();
         } catch (AuthenticationException e) {
         // Throw CustomUnAuthorizedException if authentication fails
-        throw new CustomUnAuthorizedException("Invalid username or password");
+        throw new CustomUnAuthorizedException("Invalid Password");
     }
 }
 }

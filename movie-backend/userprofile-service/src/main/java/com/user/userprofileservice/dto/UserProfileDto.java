@@ -34,7 +34,7 @@ public class UserProfileDto {
         @NotEmpty(message = "phone number should not be Empty")
         @Pattern(
                 regexp = "^\\d{10,}$",
-                message = "Password must contain 10 digits"
+                message = "phone number must contain 10 digits"
         )
         private String phoneNumber;
 

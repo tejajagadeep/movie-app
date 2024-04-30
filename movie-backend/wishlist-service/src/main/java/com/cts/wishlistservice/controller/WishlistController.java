@@ -43,7 +43,6 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
-    @Cacheable(value = "wishlist", key = "#username")
     public ResponseEntity<Object> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);
@@ -51,10 +50,6 @@ public class WishlistController {
         throw new UnAuthorizedException("UnAuthorized token access Wishlist");
     }
 
-    @Caching(evict = {
-            @CacheEvict(value = "wishlist", key = "#username"),
-            @CacheEvict(value = "wishlist", key = "'all'")
-    })
     @Operation(summary = "Delete Movie from Favorite List")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found Bill Board 100 Playlist",
@@ -71,10 +66,6 @@ public class WishlistController {
         throw new UnAuthorizedException("UnAuthorized token access deleteWishlist");
     }
 
-    @Caching(evict = {
-            @CacheEvict(value = "wishlist", key = "#username"),
-            @CacheEvict(value = "wishlist", key = "'all'")
-    })
     @Operation(summary = "Save favorite movie to wishlist")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Saved movie to wishlist",
