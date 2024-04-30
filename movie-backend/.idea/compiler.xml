@@ -22,6 +22,7 @@
       <module name="movie-data-service" target="1.5" />
       <module name="userProfile" target="17" />
       <module name="wishlist-service (1)" target="17" />
+      <module name="zipkin-server" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -38,6 +39,7 @@
       <module name="userprofile-service" options="-parameters" />
       <module name="wishlist-service" options="-parameters" />
       <module name="wishlist-service (1)" options="-parameters" />
+      <module name="zipkin-server" options="-parameters" />
     </option>
   </component>
 </project>

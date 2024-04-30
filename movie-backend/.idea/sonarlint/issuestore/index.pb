@@ -175,3 +175,11 @@ cuserprofile-service/src/main/java/com/user/userprofileservice/repository/UserPr
 guserprofile-service/src/test/java/com/user/userprofileservice/controller/UserProfileControllerTest.java,8\1\81d6d7ac98d7bfec957c2955125dc94d171a7a2c
 K
 movie-app-microservices.log,c\f\cf51f70a6024adb8237f45a26088a7a112fa8d7d
+E
+eureka-server/pom.xml,b\3\b39ae52d769ea03b699b5602439afd875433c8a7
+E
+movie-service/pom.xml,c\6\c6ee5a26a6f30c87e488e3b6002abb17033d2628
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+H
+config-server/Dockerfile,b\6\b61e3bf1cf202a99b9cf49c6d7e26c98df17134b

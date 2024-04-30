@@ -1,4 +1,4 @@
 FROM openjdk:17-alpine
 WORKDIR usr/src
-COPY /target/eureka-server-0.0.1-SNAPSHOT.jar /usr/src/eureka-server-0.0.1-SNAPSHOT.jar
+ADD /target/eureka-server-0.0.1-SNAPSHOT.jar /usr/src/eureka-server-0.0.1-SNAPSHOT.jar
 ENTRYPOINT [ "java","-jar", "eureka-server-0.0.1-SNAPSHOT.jar"]
