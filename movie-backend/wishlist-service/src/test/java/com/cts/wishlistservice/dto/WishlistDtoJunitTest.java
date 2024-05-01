@@ -18,7 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {WishlistDto.class})
 @ExtendWith(SpringExtension.class)
-class WishlistDtoDiffblueTest {
+class WishlistDtoJunitTest {
     @Autowired
     private WishlistDto wishlistDto;
 

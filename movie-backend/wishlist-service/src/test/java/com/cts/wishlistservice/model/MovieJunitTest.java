@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-class MovieDiffblueTest {
+class MovieJunitTest {
     /**
      * Methods under test:
      * <ul>

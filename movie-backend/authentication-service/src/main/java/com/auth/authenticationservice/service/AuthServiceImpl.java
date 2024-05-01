@@ -2,7 +2,8 @@ package com.auth.authenticationservice.service;
 
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
-import com.auth.authenticationservice.exception.CustomUnAuthorizedException;
+import com.auth.authenticationservice.exception.ResourceNotFoundException;
+import com.auth.authenticationservice.exception.UnAuthorizedException;
 import com.auth.authenticationservice.filter.JwtService;
 import com.auth.authenticationservice.model.RegisterRequest;
 import com.auth.authenticationservice.repository.UserRepository;
@@ -54,7 +55,7 @@ public class AuthServiceImpl implements AuthService{
             //generateToken
             //Return the token
         userRepository.findById(request.getUsername())
-                .orElseThrow(() -> new UsernameNotFoundException("Username not exist."));
+                .orElseThrow(() -> new ResourceNotFoundException("Username not exist."));
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -67,8 +68,8 @@ public class AuthServiceImpl implements AuthService{
             String jwtToken = jwtService.generateToken(user);
             return AuthenticationResponse.builder().accessToken(jwtToken).build();
         } catch (AuthenticationException e) {
-        // Throw CustomUnAuthorizedException if authentication fails
-        throw new CustomUnAuthorizedException("Invalid Password");
+        // Throw UnAuthorizedException if authentication fails
+        throw new UnAuthorizedException("Invalid Password");
     }
 }
 }

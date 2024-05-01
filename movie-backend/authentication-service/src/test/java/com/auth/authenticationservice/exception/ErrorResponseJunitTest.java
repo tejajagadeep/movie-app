@@ -1,14 +1,14 @@
-package com.cts.wishlistservice.exception;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+package com.auth.authenticationservice.exception;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
 import java.util.Date;
 
-class ErrorResponseDiffblueTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+class ErrorResponseJunitTest {
     /**
      * Method under test: default or parameterless constructor of
      * {@link ErrorResponse}

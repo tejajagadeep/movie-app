@@ -26,7 +26,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {GlobalExceptionHandler.class})
 @ExtendWith(SpringExtension.class)
-class GlobalExceptionHandlerDiffblueTest {
+class GlobalExceptionHandlerJunitTest {
     @Autowired
     private GlobalExceptionHandler globalExceptionHandler;
 

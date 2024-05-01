@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.security.SignatureException;
 import java.util.Date;
 
 
@@ -89,6 +90,16 @@ public class GlobalExceptionHandler{
         return new ResponseEntity<>(messageResponse, HttpStatus.UNAUTHORIZED);
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.BAD_REQUEST);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
+    }
+
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(MalformedJwtException.class)
     public ResponseEntity<Object> handleMalformedJwtException(MalformedJwtException ex) {
@@ -119,4 +130,13 @@ public class GlobalExceptionHandler{
         return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(SignatureException.class)
+    public ResponseEntity<Object> handleSignatureException(SignatureException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.BAD_REQUEST);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
+    }
 }

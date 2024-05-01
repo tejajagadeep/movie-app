@@ -2,11 +2,13 @@ package com.auth.authenticationservice.exception;
 
 import java.io.Serial;
 
-public class CustomUnAuthorizedException extends RuntimeException{
+public class ResourceNotFoundException extends RuntimeException{
+
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public CustomUnAuthorizedException(String message) {
+    public ResourceNotFoundException(String message) {
         super(message);
     }
+
 }

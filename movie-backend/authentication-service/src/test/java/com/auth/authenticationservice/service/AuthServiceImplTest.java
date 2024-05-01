@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
+import com.auth.authenticationservice.exception.ResourceNotFoundException;
 import com.auth.authenticationservice.model.RegisterRequest;
 import com.auth.authenticationservice.model.Role;
 import com.auth.authenticationservice.repository.UserRepository;
@@ -73,8 +74,8 @@ class AuthServiceImplTest {
         AuthenticationRequest authenticationRequest = new AuthenticationRequest("nonExistingUsername", "password");
         when(userRepository.findById("nonExistingUsername")).thenReturn(Optional.empty());
 
-        UsernameNotFoundException exception = org.junit.jupiter.api.Assertions.assertThrows(
-                UsernameNotFoundException.class,
+        ResourceNotFoundException exception = org.junit.jupiter.api.Assertions.assertThrows(
+                ResourceNotFoundException.class,
                 () -> authService.authenticate(authenticationRequest)
         );
         assertEquals("Username not exist.", exception.getMessage());

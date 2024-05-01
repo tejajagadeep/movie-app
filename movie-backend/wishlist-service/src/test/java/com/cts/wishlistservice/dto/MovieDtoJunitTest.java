@@ -17,7 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {MovieDto.class})
 @ExtendWith(SpringExtension.class)
-class MovieDtoDiffblueTest {
+class MovieDtoJunitTest {
     @Autowired
     private MovieDto movieDto;
 

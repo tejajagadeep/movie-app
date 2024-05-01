@@ -33,7 +33,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         messageResponse.setStatus(HttpStatus.NOT_FOUND);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.NOT_FOUND);
-
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

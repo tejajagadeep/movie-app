@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-class WishlistDiffblueTest {
+class WishlistJunitTest {
     /**
      * Methods under test:
      * <ul>

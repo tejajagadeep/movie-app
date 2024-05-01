@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.security.SignatureException;
 import java.util.Date;
 
 
@@ -24,6 +25,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         messageResponse.setStatus(HttpStatus.NOT_FOUND);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.BAD_REQUEST);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -45,8 +56,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
     }
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    @ExceptionHandler(CustomUnAuthorizedException.class)
-    public ResponseEntity<Object> handleUNAUTHORIZED(CustomUnAuthorizedException ex) {
+    @ExceptionHandler(UnAuthorizedException.class)
+    public ResponseEntity<Object> handleUnAuthorizedException(UnAuthorizedException ex) {
         ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.UNAUTHORIZED);
@@ -54,15 +65,23 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<>(messageResponse, HttpStatus.UNAUTHORIZED);
     }
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(UsernameNotFoundException.class)
-    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException ex) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidUserException(ResourceNotFoundException ex) {
         ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.NOT_FOUND);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.NOT_FOUND);
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(SignatureException.class)
+    public ResponseEntity<Object> handleSignatureException(SignatureException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.BAD_REQUEST);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
+    }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex) {
