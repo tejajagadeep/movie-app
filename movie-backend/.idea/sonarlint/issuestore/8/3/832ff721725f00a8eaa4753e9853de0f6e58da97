@@ -1,0 +1,57 @@
+
+„
+java:S6068E"CRemove this useless "eq(...)" invocation; pass the values directly.(ê›ÜÅùÿÿÿÿJ$bbc934bb-cb50-4582-9a06-fa6264268265
+„
+java:S6068Z"CRemove this useless "eq(...)" invocation; pass the values directly.(ê›ÜÅùÿÿÿÿJ$5cfc24af-ef7b-46d5-8568-d54546cb1667
+„
+java:S6068l"CRemove this useless "eq(...)" invocation; pass the values directly.(ê›ÜÅùÿÿÿÿJ$b0a2c88c-d26f-4e45-806c-e99a86636cdc
+€
+java:S6068‰"CRemove this useless "eq(...)" invocation; pass the values directly.(›ƒ°ÊJ$a95ef9bb-719b-4ea4-b7e7-28c03adcf823
+€
+java:S6068¤"CRemove this useless "eq(...)" invocation; pass the values directly.(›ƒ°ÊJ$7cb8aaca-6a8a-4572-90cb-ea7d60d954c4
+€
+java:S6068Í"CRemove this useless "eq(...)" invocation; pass the values directly.(›ƒ°ÊJ$b5967b07-1d21-42c6-bb81-ce136a3622c4
+€
+java:S6068‚"CRemove this useless "eq(...)" invocation; pass the values directly.(›ƒ°ÊJ$81d4599e-86e3-4775-9401-8cbf9c17ca5b
+…
+java:S6068•"CRemove this useless "eq(...)" invocation; pass the values directly.(ê›ÜÅùÿÿÿÿJ$8c507d0c-2465-4205-8824-ee618637cdd3
+Ÿ
+java:S5778§"bRefactor the code of the lambda to have only one invocation possibly throwing a runtime exception.(åîéJ$043ae220-c5f0-47fc-932f-761d744379fd
+…
+java:S6068©"CRemove this useless "eq(...)" invocation; pass the values directly.(ê›ÜÅùÿÿÿÿJ$8e40d148-00ea-4518-95f6-1b3a9c130cc8
+Œ
+java:S5961°"PRefactor this method to reduce the number of assertions from 27 to less than 25.(Ğş¬J$44319f2e-4c53-4d76-8283-efe5147af476
+Ÿ
+java:S5778ê"bRefactor the code of the lambda to have only one invocation possibly throwing a runtime exception.(åîéJ$85fd9240-5de9-4733-b0a4-7a80c34bbd49
+€
+java:S6068î"CRemove this useless "eq(...)" invocation; pass the values directly.(¯±ÇøJ$f5ad46a8-cae6-48c7-825d-fd07f0ca1122
+…
+java:S6068ï"CRemove this useless "eq(...)" invocation; pass the values directly.(šÀïùüÿÿÿÿJ$e61d5ba9-aa0c-4488-9bc2-da74c86a60c9
+…
+java:S6068ò"CRemove this useless "eq(...)" invocation; pass the values directly.(ˆïšûúÿÿÿÿJ$498a5a33-8fb6-40f8-92e2-ecb01dbd4493
+€
+java:S6068ó"CRemove this useless "eq(...)" invocation; pass the values directly.(ëößëJ$010c0c5c-313c-4cf1-826f-a8fd35a4bbf5
+€
+java:S6068ô"CRemove this useless "eq(...)" invocation; pass the values directly.(ıß¤«J$45265ff2-db1f-4cce-85b1-9e520dae81bb
+…
+java:S6068õ"CRemove this useless "eq(...)" invocation; pass the values directly.(”ó§ÿûÿÿÿÿJ$af2c25e2-010e-48fa-a1ab-95dbac2c3d46
+€
+java:S6068÷"CRemove this useless "eq(...)" invocation; pass the values directly.(¡«‡ÚJ$cb86132a-6c1f-4717-9f3a-2fe4e5bfb39d
+
+java:S6068ø"CRemove this useless "eq(...)" invocation; pass the values directly.(Å˜ñJ$f356a5a1-1e2a-48e7-9c0f-33dd58dd3dbb
+…
+java:S6068ù"CRemove this useless "eq(...)" invocation; pass the values directly.(ÑÂÕÕúÿÿÿÿJ$3f9d54c0-7910-4156-8cb2-6322e52e359a
+€
+java:S6068ú"CRemove this useless "eq(...)" invocation; pass the values directly.(šŞÎÊJ$f9275fad-fd62-479a-8549-39047a36ab10
+€
+java:S6068û"CRemove this useless "eq(...)" invocation; pass the values directly.(¢Õ—İJ$cd48fea1-2b7c-4fbb-8ab9-db7020d37c82
+
+java:S6068ü"CRemove this useless "eq(...)" invocation; pass the values directly.(¾±§3J$2a0ea0c7-2d03-4a50-932b-c897c4cc104b
+€
+java:S6068ı"CRemove this useless "eq(...)" invocation; pass the values directly.(èÉËJ$54edb41b-c223-4c15-83a3-c0d636782f6a
+€
+java:S6068"CRemove this useless "eq(...)" invocation; pass the values directly.(Ø¿åãJ$d316d3e2-e307-484f-ae1e-c43d87364438
+‡
+java:S6068‚"CRemove this useless "eq(...)" invocation; pass the values directly.(²õ²8µÕ¯ó1J$94db4b2a-a0b8-4112-85d3-be3f040b00bd
+Œ
+java:S6068„"CRemove this useless "eq(...)" invocation; pass the values directly.(ê›ÜÅùÿÿÿÿ8ä³³ó1J$3b3caab7-d5f0-4abc-b570-2ef3277c1f36
