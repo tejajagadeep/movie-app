@@ -7,15 +7,15 @@
 # documentation.
 name: Java CI with Maven
 
-# on:
-#   push:
-#     branches: ["main"]
-#   pull_request:
-#     branches: ["main"]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   build_eureka_server:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
           sudo java -jar movie-backend/eureka-server/target/eureka-server-0.0.1-SNAPSHOT.jar &
 
   build_config_server:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build_eureka_server
 
     steps:
@@ -52,7 +52,7 @@ jobs:
           sudo java -jar movie-backend/config-server/target/config-server-0.0.1-SNAPSHOT.jar &
 
   build_api_gateway:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs:
       - build_eureka_server
       - build_config_server
@@ -73,7 +73,7 @@ jobs:
           sudo java -jar movie-backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar &
 
   build_authentication_service:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs:
       - build_eureka_server
       - build_config_server
@@ -94,7 +94,7 @@ jobs:
           sudo java -jar movie-backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar &
 
   build_userprofile_service:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs:
       - build_eureka_server
       - build_config_server
@@ -115,7 +115,7 @@ jobs:
           sudo java -jar movie-backend/userprofile-service/target/userprofile-service-0.0.1-SNAPSHOT.jar &
 
   build_movie_service:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs:
       - build_eureka_server
       - build_config_server
@@ -136,7 +136,7 @@ jobs:
           sudo java -jar movie-backend/movie-service/target/movie-service-0.0.1-SNAPSHOT.jar &
 
   build_wishlist_service:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs:
       - build_eureka_server
       - build_config_server
