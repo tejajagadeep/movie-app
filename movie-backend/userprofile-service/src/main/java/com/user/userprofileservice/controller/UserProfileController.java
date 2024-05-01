@@ -46,7 +46,7 @@ public class UserProfileController {
         if (jwtService.isTokenValid(token.substring(7),username)) {
             return new ResponseEntity<>(userProfileService.getUserProfileById(username), HttpStatus.OK);
         }
-        throw new UnAuthorizedException("Un Authorized Please check user the details.");
+        throw new UnAuthorizedException("Unauthorized Please check user the details.");
 
     }
 
@@ -68,7 +68,7 @@ public class UserProfileController {
         if (jwtService.isTokenValid(token.substring(7),username)) {
             return new ResponseEntity<>(userProfileService.updateUserProfile(userProfileDto, username),HttpStatus.OK);
         }
-        throw new UnAuthorizedException("Un Authorized Please check user the details to update.");
+        throw new UnAuthorizedException("Unauthorized Please check user the details to update.");
     }
 
 }

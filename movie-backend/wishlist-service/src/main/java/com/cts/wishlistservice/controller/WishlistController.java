@@ -47,7 +47,7 @@ public class WishlistController {
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);
         }
-        throw new UnAuthorizedException("UnAuthorized token access Wishlist");
+        throw new UnAuthorizedException("Unauthorized token access Wishlist");
     }
 
     @Operation(summary = "Delete Movie from Favorite List")
@@ -63,7 +63,7 @@ public class WishlistController {
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.deleteWishlist(username, id),HttpStatus.OK);
         }
-        throw new UnAuthorizedException("UnAuthorized token access deleteWishlist");
+        throw new UnAuthorizedException("Unauthorized token access deleteWishlist");
     }
 
     @Operation(summary = "Save favorite movie to wishlist")
@@ -80,7 +80,7 @@ public class WishlistController {
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.addWishlist(username,movie),HttpStatus.CREATED);
         }
-        throw new UnAuthorizedException("UnAuthorized token access add movie");
+        throw new UnAuthorizedException("Unauthorized token access add movie");
     }
 
 }

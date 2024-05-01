@@ -17,6 +17,15 @@ import java.util.Date;
 @ControllerAdvice
 public class GlobalExceptionHandler{
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleException(Exception ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.NOT_FOUND);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
         ErrorResponse errorResponse = new ErrorResponse();
@@ -119,4 +128,5 @@ public class GlobalExceptionHandler{
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.BAD_REQUEST);
     }
+
 }

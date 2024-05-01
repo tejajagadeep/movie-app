@@ -41,8 +41,6 @@ duserprofile-service/src/main/java/com/user/userprofileservice/aspects/Performan
 cauthentication-service/src/main/java/com/auth/authenticationservice/config/KafkaConsumerConfig.java,d\4\d4dd4bea8085eebdff40bca7b7b2fcef8084ac28
 ‘
 aauthentication-service/src/main/java/com/auth/authenticationservice/config/ApplicationConfig.java,b\2\b2feb68d7d8c504ddd0af6b1a4667f098406805b
-”
-dauthentication-service/src/main/java/com/auth/authenticationservice/controller/CustomController.java,8\0\808d76334d336c6830ad70f7ea99ba7fb12f3804
 ’
 bauthentication-service/src/main/java/com/auth/authenticationservice/dto/AuthenticationRequest.java,3\4\345f867fee77e9f78f74c752a88b6c542a69414e
 “
@@ -179,7 +177,13 @@ E
 eureka-server/pom.xml,b\3\b39ae52d769ea03b699b5602439afd875433c8a7
 E
 movie-service/pom.xml,c\6\c6ee5a26a6f30c87e488e3b6002abb17033d2628
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 H
 config-server/Dockerfile,b\6\b61e3bf1cf202a99b9cf49c6d7e26c98df17134b
+‘
+auserprofile-service/src/main/java/com/user/userprofileservice/kafka/DataPublisherServiceImpl.java,9\7\97b6c8148aeca1226ac9554618f7f2f5fa80ecd6
+™
+iauthentication-service/src/main/java/com/auth/authenticationservice/exception/GlobalExceptionHandler.java,b\3\b3443235f8e7a0ee7d500e50dbb9e6fd6dd0e9be
+K
+wishlist-service/Dockerfile,4\4\4419a7f474cf95ac22926e87da9fec46f4aee219
+}
+Mmovie-service/src/main/java/com/cts/movieservice/exception/ErrorResponse.java,7\5\75b2857badc848388c6860fb1749439405ddedcc

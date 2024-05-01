@@ -59,13 +59,15 @@ public class UserProfileServiceImpl implements UserProfileService {
         user.setPassword(userProfileDto.getPassword());
         user.setRole("MEMBER");
         log.info("------"+ user +"--------");
+        UserProfile userProfile = null;
         try {
             producer.sendMessage(user);
+            userProfile = usersProfileRepository.save(modelMapper.map(userProfileDto,UserProfile.class));
         } catch (KafkaException ex){
             log.error(ex.getMessage());
 
         }
-        return usersProfileRepository.save(modelMapper.map(userProfileDto,UserProfile.class));
+        return userProfile;
     }
 
     @Override

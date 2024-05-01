@@ -24,6 +24,6 @@ public class UserProfileConfig {
     @Bean
     public NewTopic newTopic(){
 
-        return TopicBuilder.name("SpotifyApp").build();
+        return TopicBuilder.name("MovieApp").build();
     }
 }

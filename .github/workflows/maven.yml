@@ -72,26 +72,26 @@ jobs:
           sudo lsof -t -i:9000 | xargs -r sudo kill -9 
           sudo java -jar movie-backend/api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar &
 
-  # build_authentication_service:
-  #   runs-on: self-hosted
-  #   needs:
-  #     - build_eureka_server
-  #     - build_config_server
+  build_authentication_service:
+    runs-on: self-hosted
+    needs:
+      - build_eureka_server
+      - build_config_server
 
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up JDK 17
-  #       uses: actions/setup-java@v3
-  #       with:
-  #         java-version: "17"
-  #         distribution: "temurin"
-  #         cache: maven
-  #     - name: Build Authentication Service with Maven
-  #       run: mvn -B package --file movie-backend/authentication-service/pom.xml
-  #     - name: Execute Authentication Service Jar File
-  #       run: |
-  #         sudo lsof -t -i:8090 | xargs -r sudo kill -9
-  #         sudo java -jar movie-backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar &
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build Authentication Service with Maven
+        run: mvn -B package --file movie-backend/authentication-service/pom.xml
+      - name: Execute Authentication Service Jar File
+        run: |
+          sudo lsof -t -i:8090 | xargs -r sudo kill -9
+          sudo java -jar movie-backend/authentication-service/target/authentication-service-0.0.1-SNAPSHOT.jar &
 
   build_userprofile_service:
     runs-on: self-hosted
