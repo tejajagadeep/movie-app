@@ -3,7 +3,6 @@ package com.cts.movieservice.configuration;
 import com.cts.movieservice.aspects.PerformanceTrackerHandler;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;
-import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -22,8 +21,4 @@ public class AppConfig {
         return new ObservedAspect(observationRegistry);
     }
 
-    @Bean
-    public ModelMapper mapper(){
-        return new ModelMapper();
-    }
 }
