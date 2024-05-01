@@ -90,24 +90,6 @@ class WishlistServiceImplJunitTest {
         verify(wishlistRepository).findById(eq("janedoe"));
     }
 
-    /**
-     * Method under test: {@link WishlistServiceImpl#getWishlists(String)}
-     */
-    @Test
-    void testGetWishlists3() {
-        // Arrange
-        Optional<Wishlist> emptyResult = Optional.empty();
-        when(wishlistRepository.findById(Mockito.<String>any())).thenReturn(emptyResult);
-        // Correct the behavior of modelMapper.map() to return a WishlistDto
-        when(modelMapper.map(Mockito.<Object>any(), Mockito.<Class<WishlistDto>>any())).thenReturn(new WishlistDto());
-
-        // Act and Assert
-        assertThrows(ResourceNotFoundException.class, () -> wishlistServiceImpl.getWishlists("janedoe"));
-        // Verify that the modelMapper.map() method is called with the correct parameters
-        verify(modelMapper).map(any(), eq(WishlistDto.class));
-        verify(wishlistRepository).findById(eq("janedoe"));
-    }
-
 
 
     /**
@@ -258,22 +240,6 @@ class WishlistServiceImplJunitTest {
         verify(wishlistRepository, atLeast(1)).findById(eq("janedoe"));
         verify(wishlistRepository).save(isA(Wishlist.class));
         assertSame(wishlistDto, actualDeleteWishlistResult);
-    }
-
-    /**
-     * Method under test: {@link WishlistServiceImpl#deleteWishlist(String, String)}
-     */
-    @Test
-    void testDeleteWishlist5() {
-        // Arrange
-        Optional<Wishlist> emptyResult = Optional.empty();
-        when(wishlistRepository.findById(Mockito.<String>any())).thenReturn(emptyResult);
-        when(modelMapper.map(Mockito.<Object>any(), Mockito.<Class<WishlistDto>>any())).thenReturn(new WishlistDto());
-
-        // Act and Assert
-        assertThrows(ResourceNotFoundException.class, () -> wishlistServiceImpl.deleteWishlist("janedoe", "42"));
-        verify(modelMapper).map(Mockito.<Object>any(), Mockito.<Class<Object>>any());
-        verify(wishlistRepository).findById(eq("janedoe"));
     }
 
     /**

@@ -7,7 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WishlistRepository extends MongoRepository<Wishlist, String> {
-
-    @Query("{'username': ?0, 'movies.id': ?1}")
-    void deleteMovieFromWishlist(String username, String movieId);
 }
