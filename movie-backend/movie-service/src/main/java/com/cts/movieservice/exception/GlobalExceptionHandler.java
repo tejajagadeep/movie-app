@@ -13,19 +13,10 @@ import java.util.Date;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> handleException(Exception ex) {
-        ErrorResponse messageResponse = new ErrorResponse();
-        messageResponse.setMessage(ex.getMessage());
-        messageResponse.setStatus(HttpStatus.NOT_FOUND);
-        messageResponse.setTimeStamp(new Date());
-        return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleInvalidUserException(ResourceNotFoundException ex) {
-        ErrorResponse messageResponse = new ErrorResponse();
+    public ResponseEntity<ErrorMessage> handleInvalidUserException(ResourceNotFoundException ex) {
+        ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.NOT_FOUND);
         messageResponse.setTimeStamp(new Date());
@@ -35,8 +26,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleAllException(Exception ex) {
-        ErrorResponse messageResponse = new ErrorResponse();
+    public ResponseEntity<ErrorMessage> handleAllException(Exception ex) {
+        ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());
@@ -47,7 +38,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> handleNullPointerException(NullPointerException ex) {
-        ErrorResponse messageResponse = new ErrorResponse();
+        ErrorMessage messageResponse = new ErrorMessage();
         messageResponse.setMessage(ex.getMessage());
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());

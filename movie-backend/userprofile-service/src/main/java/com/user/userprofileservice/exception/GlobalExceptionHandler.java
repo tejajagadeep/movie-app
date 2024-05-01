@@ -89,16 +89,6 @@ public class GlobalExceptionHandler{
         return new ResponseEntity<>(messageResponse, HttpStatus.UNAUTHORIZED);
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(ServerConnectionException.class)
-    public ResponseEntity<Object> handleServerConnectionException(ServerConnectionException ex) {
-        ErrorResponse messageResponse = new ErrorResponse();
-        messageResponse.setMessage(ex.getMessage());
-        messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
-        messageResponse.setTimeStamp(new Date());
-        return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(MalformedJwtException.class)
     public ResponseEntity<Object> handleMalformedJwtException(MalformedJwtException ex) {

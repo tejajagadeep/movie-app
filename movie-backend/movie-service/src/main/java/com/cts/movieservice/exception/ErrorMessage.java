@@ -6,20 +6,20 @@ import org.springframework.http.HttpStatus;
 import java.util.Date;
 
 @Data
-public class ErrorResponse {
+public class ErrorMessage {
     private Date timeStamp;
     private String message;
     private HttpStatus status;
 
 
-    public ErrorResponse(Date timeStamp, String message, HttpStatus status) {
+    public ErrorMessage(Date timeStamp, String message, HttpStatus status) {
         super();
         this.timeStamp = timeStamp;
         this.message = message;
         this.status = status;
     }
 
-    public ErrorResponse() {
+    public ErrorMessage() {
         super();
     }
 

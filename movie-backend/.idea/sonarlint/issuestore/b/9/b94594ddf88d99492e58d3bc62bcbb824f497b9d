@@ -1,11 +1,11 @@
 
-e
-java:S1128"HRemove this unused import 'com.fasterxml.jackson.databind.ObjectMapper'.(´‘¨™8¼—ä“ó1
+‹
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.databind.ObjectMapper'.(´‘¨™8¼—ä“ó1J$c418639d-32b0-4627-a293-511c53a858f0
+’
+java:S1128"JRemove this unused import 'com.fasterxml.jackson.core.type.TypeReference'.(ãÐß¤ÿÿÿÿÿ8¼—ä“ó1J$3e4c5166-c687-45ea-a44e-fe79a963f1f0
 l
-java:S1128"JRemove this unused import 'com.fasterxml.jackson.core.type.TypeReference'.(ãÐß¤ÿÿÿÿÿ8¼—ä“ó1
-F
-java:S1128")Remove this unused import 'java.io.File'.(†Ð¥Å8½—ä“ó1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8½—ä“ó1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8½—ä“ó1
+java:S1128")Remove this unused import 'java.io.File'.(†Ð¥Å8½—ä“ó1J$bf029536-11d2-4261-959d-b7eb4c14466e
+x
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8½—ä“ó1J$d3140a3c-c689-407d-860c-fa24d6c4400d
+s
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8½—ä“ó1J$01897987-8c25-4538-bc74-abe36c8d67dc
