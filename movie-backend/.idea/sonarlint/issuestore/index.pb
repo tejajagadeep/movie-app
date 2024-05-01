@@ -217,3 +217,6 @@ Zuserprofile-service/src/main/java/com/user/userprofileservice/exception/ErrorRe
 Qwishlist-service/src/main/java/com/cts/wishlistservice/aspects/LoggingAspect.java,e\a\ea7de3920d36de1af873f0781343a543e5597f68
 p
 @src/main/java/com/cts/wishlistservice/aspects/LoggingAspect.java,b\3\b36fb211f01f1bd2c121890a2297a5de41b53a3b
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
