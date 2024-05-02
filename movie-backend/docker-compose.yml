@@ -37,7 +37,7 @@ services:
       - my-movie-network
 
   eureka-server:
-    image: tejajagadeep/moive-app-eureka-server
+    image: tejajagadeep/movie-app-eureka-server
     container_name: eureka-container
     build:
       context: eureka-server
@@ -65,7 +65,7 @@ services:
       - eureka-server
 
   authentication-service:
-    image: tejajagadeep/moive-app-authentication-service
+    image: tejajagadeep/movie-app-authentication-service
     container_name: authentication-container
     build:
       context: authentication-service
@@ -100,7 +100,7 @@ services:
       retries: 10
 
   userprofile-service:
-    image: tejajagadeep/moive-app-userprofile-service
+    image: tejajagadeep/movie-app-userprofile-service
     container_name: userprofile-container
     build:
       context: userprofile-service
@@ -135,7 +135,7 @@ services:
       retries: 10
 
   movie-service:
-    image: tejajagadeep/moive-app-movie-service
+    image: tejajagadeep/movie-app-movie-service
     container_name: movie-container
     build:
       context: movie-service
@@ -163,7 +163,7 @@ services:
       retries: 10
 
   wishlist-service:
-    image: tejajagadeep/moive-app-wishlist-service
+    image: tejajagadeep/movie-app-wishlist-service
     container_name: wishlist-container
     build:
       context: wishlist-service
@@ -191,7 +191,7 @@ services:
       retries: 10
 
   api-gateway:
-    image: tejajagadeep/moive-app-api-gateway
+    image: tejajagadeep/movie-app-api-gateway
     container_name: gateway-container
     build:
       context: api-gateway
@@ -219,7 +219,7 @@ services:
       retries: 10
 
   swagger-server:
-    image: tejajagadeep/moive-app-swagger-server
+    image: tejajagadeep/movie-app-swagger-server
     container_name: swagger-server
     build:
       context: swagger-server
