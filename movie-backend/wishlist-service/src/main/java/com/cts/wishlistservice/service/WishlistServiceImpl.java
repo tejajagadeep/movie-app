@@ -40,7 +40,7 @@ public class WishlistServiceImpl implements WishlistService {
     @Observed(name = "get.wishlists")
     @Cacheable(value = "wishlist", key = "#username")
     public WishlistDto getWishlists(String username) {
-        return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username "+username+" not found.")), WishlistDto.class);
+        return modelMapper.map(wishlistRepository.findById(username).orElseThrow(()->new ResourceNotFoundException("Username: "+username+" not found!")), WishlistDto.class);
     }
 
     /**

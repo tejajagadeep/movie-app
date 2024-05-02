@@ -12,6 +12,7 @@
         <module name="api-gateway" />
         <module name="movie-service" />
         <module name="userprofile-service" />
+        <module name="swagger-server" />
         <module name="eureka-server" />
         <module name="wishlist-service" />
       </profile>
@@ -21,6 +22,9 @@
       <module name="authentication" target="17" />
       <module name="movie-backend" target="1.5" />
       <module name="movie-data-service" target="1.5" />
+      <module name="swagger-server (1)" target="1.5" />
+      <module name="swagger-server (1) (com.swagger)" target="1.5" />
+      <module name="swagger-server (2)" target="17" />
       <module name="userProfile" target="17" />
       <module name="wishlist-service (1)" target="17" />
       <module name="zipkin-server" target="17" />
@@ -37,6 +41,9 @@
       <module name="movie-backend" options="" />
       <module name="movie-data-service" options="" />
       <module name="movie-service" options="-parameters" />
+      <module name="swagger-server" options="-parameters" />
+      <module name="swagger-server (1)" options="" />
+      <module name="swagger-server (2)" options="-parameters" />
       <module name="userProfile" options="-parameters" />
       <module name="userprofile-service" options="-parameters" />
       <module name="wishlist-service" options="-parameters" />

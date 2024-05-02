@@ -37,24 +37,22 @@ services:
       - my-movie-network
 
   eureka-server:
-    image: eureka-server
+    image: tejajagadeep/moive-app-eureka-server
     container_name: eureka-container
-    command: mvn clean install
     build:
-      context: /eureka-server
-      dockerfile: /Dockerfile
+      context: eureka-server
+      dockerfile: Dockerfile
     ports:
       - "8761:8761"
     networks:
       - my-movie-network
 
   config-server:
-    image: config-server
+    image: tejajagadeep/movie-app-config-server
     container_name: config-container
-    command: mvn clean install
     build:
-      context: /config-server
-      dockerfile: /Dockerfile
+      context: config-server
+      dockerfile: Dockerfile
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
     ports:
@@ -67,12 +65,11 @@ services:
       - eureka-server
 
   authentication-service:
-    image: authentication-service
+    image: tejajagadeep/moive-app-authentication-service
     container_name: authentication-container
-    command: mvn clean install
     build:
-      context: /authentication-service
-      dockerfile: /Dockerfile
+      context: authentication-service
+      dockerfile: Dockerfile
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -103,12 +100,11 @@ services:
       retries: 10
 
   userprofile-service:
-    image: userprofile-service
+    image: tejajagadeep/moive-app-userprofile-service
     container_name: userprofile-container
-    command: mvn clean install
     build:
-      context: /userprofile-service
-      dockerfile: /Dockerfile
+      context: userprofile-service
+      dockerfile: Dockerfile
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -139,12 +135,11 @@ services:
       retries: 10
 
   movie-service:
-    image: movie-service
+    image: tejajagadeep/moive-app-movie-service
     container_name: movie-container
-    command: mvn clean install
     build:
-      context: /movie-service
-      dockerfile: /Dockerfile
+      context: movie-service
+      dockerfile: Dockerfile
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -168,12 +163,11 @@ services:
       retries: 10
 
   wishlist-service:
-    image: wishlist-service
+    image: tejajagadeep/moive-app-wishlist-service
     container_name: wishlist-container
-    command: mvn clean install
     build:
-      context: /wishlist-service
-      dockerfile: /Dockerfile
+      context: wishlist-service
+      dockerfile: Dockerfile
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -197,12 +191,11 @@ services:
       retries: 10
 
   api-gateway:
-    image: api-gateway
+    image: tejajagadeep/moive-app-api-gateway
     container_name: gateway-container
-    command: mvn clean install
     build:
-      context: /api-gateway
-      dockerfile: /Dockerfile
+      context: api-gateway
+      dockerfile: Dockerfile
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -224,6 +217,20 @@ services:
       interval: 20s
       timeout: 10s
       retries: 10
+
+  swagger-server:
+    image: tejajagadeep/moive-app-swagger-server
+    container_name: swagger-server
+    build:
+      context: swagger-server
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+    ports:
+      - "8769:8769"
+    networks:
+      - my-movie-network
 
 
   zipkin-server:

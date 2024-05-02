@@ -1,0 +1,16 @@
+
+w	java:S125"<This block of commented-out lines of code should be removed.(ÍÀ›ÑJ$d871a2c7-b750-4b8f-951e-8c7e5ee92f59
+¼
+java:S1186%"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ã¯›8J$1aa5ad7f-1693-4a5c-a337-1276b26dccc5
+~
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞJ$c43c909d-b581-453a-b1b7-e93316f9d80c
+ƒ
+java:S6830"GRename this bean to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â¾ü‘J$f214f6d2-a914-40d6-9618-5f20813827f3
+|	java:S125 "<This block of commented-out lines of code should be removed.(ÀÊ´«úÿÿÿÿJ$f161c444-163e-47cf-bd76-b4c6f19a5fb3
+|	java:S125#"<This block of commented-out lines of code should be removed.(¨–êğûÿÿÿÿJ$509a4263-dffe-4353-9eed-ec260bed4b19
+w	java:S125."<This block of commented-out lines of code should be removed.(Üú§J$37b9259b-795b-4f73-a5f5-fc8cde3a14c1
+h
+java:S16020",Remove useless curly braces around statement(¢Åç¯J$87fd3b80-d0bf-4bb1-aeb1-c01d703c4c11
+|	java:S1255"<This block of commented-out lines of code should be removed.(â†­şÿÿÿÿJ$8297e2b2-e146-4293-810f-ebe73b51c6bf
+h
+java:S1068"'Remove this unused "log" private field.(£ÿ¡ãşÿÿÿÿJ$d5e616fb-8ba5-4fdc-abe8-4ab1293c9c65

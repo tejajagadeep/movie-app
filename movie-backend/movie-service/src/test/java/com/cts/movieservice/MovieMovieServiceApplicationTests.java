@@ -7,5 +7,5 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest(classes = MovieServiceApplication.class)
 @ContextConfiguration(classes = MovieServiceApplication.class)
 class MovieMovieServiceApplicationTests {
-    
+
 }

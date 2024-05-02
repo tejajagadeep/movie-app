@@ -1,0 +1,41 @@
+---
+info:
+  component: Default Single Swagger Document Server for MicroService
+
+spring:
+  profiles: default
+
+server:
+  port: 8769
+eureka:
+  instance:
+    ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+documentation: 
+  baseurl: http://localhost
+  swagger: 
+    services:
+      -
+        name: authentication-service
+        url: ${documentation.baseurl}:8090/v3/api-docs?group=authentication-service
+        version: 1.0
+      -
+        name: userprofile-service
+        url: ${documentation.baseurl}:8092/v3/api-docs?group=userprofile-service
+        version: 1.0
+      -
+        name: movie-service
+        url: ${documentation.baseurl}:8081/v3/api-docs?group=movie-service
+        version: 1.0
+      -
+        name: wishlist-service
+        url: ${documentation.baseurl}:8082/v3/api-docs?group=wishlist-service
+        version: 1.0
+ 
+    
