@@ -5,7 +5,7 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-name: Java CI with Maven
+name: Java CI with Maven and Docker
 
 on:
   push:
@@ -25,9 +25,9 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Eureka Service with Maven
+      - name: Build Maven Eureka Service
         run: mvn -B clean install --file movie-backend/eureka-server/pom.xml
-      - name: Build docker
+      - name: Build docker Eureka Service
         run: docker build -t tejajagadeep/movie-app-eureka-server:latest -f movie-backend/eureka-server/Dockerfile movie-backend/eureka-server
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -47,8 +47,17 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Config Service with Maven
+      - name: Build Maven Config Service
         run: mvn -B clean install --file movie-backend/config-server/pom.xml
+      - name: Build docker Config Service
+        run: docker build -t tejajagadeep/movie-app-config-server:latest -f movie-backend/config-server/Dockerfile movie-backend/config-server
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-config-server:latest
 
   build_api_gateway:
     runs-on: ubuntu-latest
@@ -60,8 +69,17 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Api Gateway with Maven
+      - name: Build Maven Api Gateway
         run: mvn -B clean install --file movie-backend/api-gateway/pom.xml
+      - name: Build docker Api Gateway
+        run: docker build -t tejajagadeep/movie-app-api-gateway:latest -f movie-backend/api-gateway/Dockerfile movie-backend/api-gateway
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-api-gateway:latest
 
   build_authentication_service:
     runs-on: ubuntu-latest
@@ -73,8 +91,17 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Authentication Service with Maven
+      - name: Build Maven Authentication Service
         run: mvn -B clean install --file movie-backend/authentication-service/pom.xml
+      - name: Build docker Authentication Service
+        run: docker build -t tejajagadeep/movie-app-authentication-service:latest -f movie-backend/authentication-service/Dockerfile movie-backend/authentication-service
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-authentication-service:latest
 
   build_userprofile_service:
     runs-on: ubuntu-latest
@@ -86,8 +113,17 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build User Profile Service with Maven
+      - name: Build Maven User Profile Service
         run: mvn -B clean install --file movie-backend/userprofile-service/pom.xml
+      - name: Build docker User Profile Service
+        run: docker build -t tejajagadeep/movie-app-userprofile-service:latest -f movie-backend/userprofile-service/Dockerfile movie-backend/userprofile-service
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-userprofile-service:latest
 
   build_movie_service:
     runs-on: ubuntu-latest
@@ -99,8 +135,17 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Movie Service with Maven
+      - name: Build Maven Movie Service
         run: mvn -B clean install --file movie-backend/movie-service/pom.xml
+      - name: Build docker Movie Service
+        run: docker build -t tejajagadeep/movie-app-movie-service:latest -f movie-backend/movie-service/Dockerfile movie-backend/movie-service
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-movie-service:latest
 
   build_wishlist_service:
     runs-on: ubuntu-latest
@@ -112,8 +157,17 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Wishlist Service with Maven
+      - name: Build Maven Wishlist Service
         run: mvn -B clean install --file movie-backend/wishlist-service/pom.xml
+      - name: Build docker Wishlist Service
+        run: docker build -t tejajagadeep/movie-app-wishlist-service:latest -f movie-backend/wishlist-service/Dockerfile movie-backend/wishlist-service
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-wishlist-service:latest
 
   build_swagger_server:
     runs-on: ubuntu-latest
@@ -125,5 +179,14 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-      - name: Build Swagger Server with Maven
+      - name: Build Maven Swagger Server
         run: mvn -B clean install --file movie-backend/swagger-server/pom.xml
+      - name: Build docker Swagger Server
+        run: docker build -t tejajagadeep/movie-app-swagger-server:latest -f movie-backend/swagger-server/Dockerfile movie-backend/swagger-server
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-swagger-server:latest
