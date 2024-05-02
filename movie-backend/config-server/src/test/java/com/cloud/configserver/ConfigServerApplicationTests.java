@@ -1,4 +1,4 @@
-package com.sshalem.configserver;
+package com.cloud.configserver;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
