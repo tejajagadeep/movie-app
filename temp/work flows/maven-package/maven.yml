@@ -26,7 +26,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Eureka Service with Maven
-        run: mvn -B clean install --file movie-backend/eureka-server/pom.xml
+        run: mvn -B package --file movie-backend/eureka-server/pom.xml
 
   build_config_server:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Config Service with Maven
-        run: mvn -B clean install --file movie-backend/config-server/pom.xml
+        run: mvn -B package --file movie-backend/config-server/pom.xml
 
   build_api_gateway:
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Api Gateway with Maven
-        run: mvn -B clean install --file movie-backend/api-gateway/pom.xml
+        run: mvn -B package --file movie-backend/api-gateway/pom.xml
 
   build_authentication_service:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Authentication Service with Maven
-        run: mvn -B clean install --file movie-backend/authentication-service/pom.xml
+        run: mvn -B package --file movie-backend/authentication-service/pom.xml
 
   build_userprofile_service:
     runs-on: ubuntu-latest
@@ -78,7 +78,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build User Profile Service with Maven
-        run: mvn -B clean install --file movie-backend/userprofile-service/pom.xml
+        run: mvn -B package --file movie-backend/userprofile-service/pom.xml
 
   build_movie_service:
     runs-on: ubuntu-latest
@@ -91,7 +91,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Movie Service with Maven
-        run: mvn -B clean install --file movie-backend/movie-service/pom.xml
+        run: mvn -B package --file movie-backend/movie-service/pom.xml
 
   build_wishlist_service:
     runs-on: ubuntu-latest
@@ -104,7 +104,7 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Wishlist Service with Maven
-        run: mvn -B clean install --file movie-backend/wishlist-service/pom.xml
+        run: mvn -B package --file movie-backend/wishlist-service/pom.xml
 
   build_swagger_server:
     runs-on: ubuntu-latest
@@ -117,4 +117,4 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Swagger Server with Maven
-        run: mvn -B clean install --file movie-backend/swagger-server/pom.xml
+        run: mvn -B package --file movie-backend/swagger-server/pom.xml
