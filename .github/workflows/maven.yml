@@ -28,14 +28,14 @@ jobs:
       - name: Build Eureka Service with Maven
         run: mvn -B clean install --file movie-backend/eureka-server/pom.xml
       - name: Build docker
-        uses: mr-smithers-excellent/docker-build-push@v6
+        run: docker build -t tejajagadeep/movie-app-eureka-server:latest -f movie-backend/eureka-server/Dockerfile movie-backend/eureka-server
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
         with:
-          image: tejajagadeep/movie-app-eureka-server
-          tags: latest
-          registry: docker.io
-          dockerfile: movie-backend/eureka-server/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker image to Docker Hub
+        run: docker push tejajagadeep/movie-app-eureka-server:latest
 
   build_config_server:
     runs-on: ubuntu-latest
