@@ -61,7 +61,7 @@ jobs:
       - name: Set Git Token as an environment variable
         run: echo "SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD=${{ secrets.GIT_TOKEN }}" >> $GITHUB_ENV
       - name: Debug Environment Variable
-        run: echo "Git Token: $SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD"
+        run: echo "Git Token $SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD"
       - name: Push Docker image to Docker Hub
         run: docker push tejajagadeep/movie-app-config-server:latest
 
