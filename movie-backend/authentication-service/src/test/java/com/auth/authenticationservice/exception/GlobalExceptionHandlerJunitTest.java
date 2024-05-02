@@ -36,7 +36,7 @@ class GlobalExceptionHandlerJunitTest {
         // Assert
         assertEquals("foo", ((ErrorResponse) actualHandleExceptionResult.getBody()).getMessage());
         assertEquals(500, actualHandleExceptionResult.getStatusCodeValue());
-        assertEquals(HttpStatus.NOT_FOUND, ((ErrorResponse) actualHandleExceptionResult.getBody()).getStatus());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, ((ErrorResponse) actualHandleExceptionResult.getBody()).getStatus());
         assertTrue(actualHandleExceptionResult.hasBody());
         assertTrue(actualHandleExceptionResult.getHeaders().isEmpty());
     }
