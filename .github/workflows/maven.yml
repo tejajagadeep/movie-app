@@ -30,7 +30,7 @@ jobs:
       - name: Build docker
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: repo/image
+          image: tejajagadeep/movie-app-eureka-server
           tags: latest
           registry: docker.io
           dockerfile: movie-backend/eureka-server/Dockerfile
