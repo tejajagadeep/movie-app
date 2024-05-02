@@ -1,5 +1,7 @@
 version: "3.7"
 
+name: my-movie-project
+
 services:
   zookeeper:
     image: wurstmeister/zookeeper
