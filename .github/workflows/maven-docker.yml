@@ -50,7 +50,8 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build Maven Config Service
-        run: mvn -B package --file movie-backend/config-server/pom.xml- name: Build docker Config Service
+        run: mvn -B package --file movie-backend/config-server/pom.xml
+      - name: Build docker Config Service
         run: docker build -t tejajagadeep/movie-app-config-server:latest --build-arg GIT_TOKEN=${{ secrets.GIT_TOKEN }} -f movie-backend/config-server/Dockerfile movie-backend/config-server
       - name: Login to Docker Hub
         uses: docker/login-action@v2
