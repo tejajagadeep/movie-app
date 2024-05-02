@@ -4,7 +4,6 @@ package com.cts.movieservice.controller;
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
 import com.cts.movieservice.service.MovieService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,12 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.fasterxml.jackson.core.type.TypeReference;
-
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1.0/public/movie")

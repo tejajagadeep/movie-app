@@ -22,7 +22,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
     public ResponseEntity<Object> handleException(Exception ex) {
         ErrorResponse messageResponse = new ErrorResponse();
         messageResponse.setMessage(ex.getMessage());
-        messageResponse.setStatus(HttpStatus.NOT_FOUND);
+        messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
