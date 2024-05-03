@@ -67,6 +67,7 @@ services:
       - spring.config.import=optional:configserver:http://config-server:8888/
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/authDB?createDatabaseIfNotExist=true
       - kafka.ip.address=kafka:9092 # run "docker inspect kafka_image_id" to get ip address
+      - spring.kafka.consumer.bootstrap-servers=kafka:9092
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       - spring.jpa.hibernate.ddl-auto=create
     ports:
@@ -99,6 +100,7 @@ services:
       - spring.config.import=optional:configserver:http://config-server:8888/
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/userprofileDB?createDatabaseIfNotExist=true
       - kafka.ip.address=kafka:9092
+      - spring.kafka.producer.bootstrap-servers=kafka:9092
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       - spring.jpa.hibernate.ddl-auto=create
     ports:

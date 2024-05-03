@@ -9,6 +9,6 @@ public class CustomController {
 
     @GetMapping
     public String hello(){
-        return "Api Gateway Microservice for Spotify App started successfully.";
+        return "Api Gateway service for Movie App started successfully.";
     }
 }

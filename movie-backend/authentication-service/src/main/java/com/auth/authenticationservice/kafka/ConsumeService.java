@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ConsumeService 
-{
+public class ConsumeService {
 	 private final AuthService authService;
 	 private RegisterRequest fromPublisher;
 
-	 @Autowired
+	@Autowired
     public ConsumeService(AuthService authService) {
         this.authService = authService;
     }
