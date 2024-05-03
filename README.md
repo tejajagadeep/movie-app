@@ -2,13 +2,13 @@
 
 microservice based application integrated with imdb movie api
 
-# running application
+# running application om docker
 
-run docker
+run
 
-in movie-backend open terminal
-
-## docker compose to run the application
+```bash
+docker-compose up
+```
 
 [Redirect to assets to find docker compose file](assets/docker-compose.yml)
 
@@ -23,5 +23,5 @@ in movie-backend open terminal
 | USERPROFILE-SERVICE    | [http://localhost:8092/swagger-ui/index.html](http://localhost:8092/swagger-ui/index.html) |
 | MOVIE-SERVICE          | [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html) |
 | WISHLIST-SERVICE       | [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) |
-| SWAGGER-SERVER         | [http://localhost:8769/swagger-ui.html](http://localhost:8769/swagger-ui.html)             |
+| SWAGGER-SERVER         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN                 | [http://localhost:9411](http://localhost:9411)                                             |
