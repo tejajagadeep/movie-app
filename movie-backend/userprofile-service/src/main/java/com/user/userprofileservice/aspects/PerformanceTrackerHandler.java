@@ -2,12 +2,12 @@ package com.user.userprofileservice.aspects;
 
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.lang.NonNullApi;
 
 import java.util.Objects;
 
-@Slf4j
+@Log4j2
 public class PerformanceTrackerHandler implements ObservationHandler<Observation.Context> {
     @Override
     public void onStart(Observation.Context context) {

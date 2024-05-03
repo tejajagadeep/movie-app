@@ -4,13 +4,13 @@ import com.auth.authenticationservice.model.RegisterRequest;
 import com.auth.authenticationservice.service.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
+@Log4j2
 public class ConsumeService {
 	 private final AuthService authService;
 	 private RegisterRequest fromPublisher;

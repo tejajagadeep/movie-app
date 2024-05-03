@@ -10,7 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@OpenAPIDefinition(info = @Info(title = "UserProfile-SERVICE API", version = "1.0", description = "Register User"))
+@OpenAPIDefinition(info = @Info(title = "USERPROFILE-SERVICE API", version = "1.0", description = "Register User"))
 @SecurityScheme(
 		name = "Bearer Authentication",
 		type = SecuritySchemeType.HTTP,

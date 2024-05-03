@@ -8,7 +8,7 @@ import com.user.userprofileservice.kafka.DataPublisherServiceImpl;
 import com.user.userprofileservice.model.UserProfile;
 import com.user.userprofileservice.repository.UserProfileRepository;
 import io.micrometer.observation.annotation.Observed;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.common.KafkaException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Observed(name = "user.profile.service.impl")
-@Slf4j
+@Log4j2
 public class UserProfileServiceImpl implements UserProfileService {
 
     private final UserProfileRepository usersProfileRepository;

@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCaching
-@OpenAPIDefinition(info = @Info(title = "Wishlist-SERVICE API", version = "1.0", description = "A wishlist for saving your favorite movie from Movie Service"))
+@OpenAPIDefinition(info = @Info(title = "WISHLIST-SERVICE API", version = "1.0", description = "A wishlist for saving your favorite movie from Movie Service"))
 @SecurityScheme(
 		name = "Bearer Authentication",
 		type = SecuritySchemeType.HTTP,

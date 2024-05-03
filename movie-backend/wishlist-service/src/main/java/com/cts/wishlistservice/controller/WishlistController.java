@@ -6,23 +6,21 @@ import com.cts.wishlistservice.exception.UnAuthorizedException;
 import com.cts.wishlistservice.filter.JwtService;
 import com.cts.wishlistservice.service.WishlistService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.Caching;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1.0/private/wishlist")
-@Slf4j
+@Log4j2
 public class WishlistController {
 
     private final WishlistService wishlistService;
@@ -43,7 +41,7 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
-    public ResponseEntity<Object> getWishlist(@RequestHeader("Authorization") String token, @PathVariable String username){
+    public ResponseEntity<Object> getWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @PathVariable String username){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.getWishlists(username), HttpStatus.OK);
         }
@@ -59,7 +57,7 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("")
-    public ResponseEntity<Object> deleteWishlist(@RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String id){
+    public ResponseEntity<Object> deleteWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String id){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.deleteWishlist(username, id),HttpStatus.OK);
         }
@@ -75,8 +73,7 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/{username}")
-    public ResponseEntity<Object> addWishlist(@RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){
-        log.info(username);
+    public ResponseEntity<Object> addWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){
         if (jwtService.isTokenValid(token.substring(7),username)){
             return new ResponseEntity<>(wishlistService.addWishlist(username,movie),HttpStatus.CREATED);
         }

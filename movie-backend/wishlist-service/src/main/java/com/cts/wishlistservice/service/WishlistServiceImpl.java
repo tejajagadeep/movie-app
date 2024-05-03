@@ -7,7 +7,7 @@ import com.cts.wishlistservice.model.Movie;
 import com.cts.wishlistservice.model.Wishlist;
 import com.cts.wishlistservice.repository.WishlistRepository;
 import io.micrometer.observation.annotation.Observed;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Slf4j
+@Log4j2
 public class WishlistServiceImpl implements WishlistService {
 
     private final WishlistRepository wishlistRepository;
