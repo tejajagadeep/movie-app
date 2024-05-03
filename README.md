@@ -8,11 +8,11 @@ run docker
 
 in movie-backend open terminal
 
-run:
+## docker compose to run the application
 
-```
-docker-compose up
-```
+[Redirect to assets to find docker compose file](assets/docker-compose.yml)
+
+## Services links
 
 | Service                | URL                                                                                        |
 | ---------------------- | ------------------------------------------------------------------------------------------ |

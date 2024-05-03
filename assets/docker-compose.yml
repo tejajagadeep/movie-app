@@ -1,0 +1,224 @@
+version: "3.7"
+
+name: my-movie-project
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper-container
+    ports:
+      - "2181:2181"
+    networks:
+      - my-movie-network
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka-container
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9092,OUTSIDE://config-server:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9092,OUTSIDE://0.0.0.0:9093
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "baeldung:1:1"
+    networks:
+      - my-movie-network
+
+  mysqldb:
+    image: mysql:8.0.36
+    container_name: mysql-container
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: dockerDB
+    networks:
+      - my-movie-network
+
+  eureka-server:
+    image: tejajagadeep/movie-app-eureka-server:latest
+    container_name: eureka-container
+    ports:
+      - "8761:8761"
+    networks:
+      - my-movie-network
+
+  config-server:
+    image: tejajagadeep/movie-app-config-server:latest
+    container_name: config-container
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+    ports:
+      - "8888:8888"
+    networks:
+      - my-movie-network
+    depends_on:
+      - eureka-server
+    links:
+      - eureka-server
+
+  authentication-service:
+    image: tejajagadeep/movie-app-authentication-service:latest
+    container_name: authentication-container
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/authDB?createDatabaseIfNotExist=true
+      - kafka.ip.address=kafka:9092 # run "docker inspect kafka_image_id" to get ip address
+      - spring.kafka.consumer.bootstrap-servers=kafka:9092
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.jpa.hibernate.ddl-auto=create
+    ports:
+      - "8090:8090"
+    networks:
+      - my-movie-network
+    depends_on:
+      - mysqldb
+      - eureka-server
+      - config-server
+    links:
+      - eureka-server
+      - config-server
+      - zipkin-server
+      - mysqldb
+      - zookeeper
+      - kafka
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+
+  userprofile-service:
+    image: tejajagadeep/movie-app-userprofile-service:latest
+    container_name: userprofile-container
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/userprofileDB?createDatabaseIfNotExist=true
+      - kafka.ip.address=kafka:9092
+      - spring.kafka.producer.bootstrap-servers=kafka:9092
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.jpa.hibernate.ddl-auto=create
+    ports:
+      - "8092:8092"
+    networks:
+      - my-movie-network
+    depends_on:
+      - mysqldb
+      - eureka-server
+      - config-server
+    links:
+      - eureka-server
+      - config-server
+      - zipkin-server
+      - mysqldb
+      - zookeeper
+      - kafka
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8092/actuator/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+
+  movie-service:
+    image: tejajagadeep/movie-app-movie-service:latest
+    container_name: movie-container
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+    ports:
+      - "8081:8081"
+    networks:
+      - my-movie-network
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+      - eureka-server
+      - config-server
+      - zipkin-server
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+
+  wishlist-service:
+    image: tejajagadeep/movie-app-wishlist-service:latest
+    container_name: wishlist-container
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+    ports:
+      - "8082:8082"
+    networks:
+      - my-movie-network
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+      - eureka-server
+      - config-server
+      - zipkin-server
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+
+  api-gateway:
+    image: tejajagadeep/movie-app-api-gateway:latest
+    container_name: gateway-container
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+    ports:
+      - "8765:8765"
+    networks:
+      - my-movie-network
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+      - eureka-server
+      - config-server
+      - zipkin-server
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/actuator/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+
+  swagger-server:
+    image: tejajagadeep/movie-app-swagger-server:latest
+    container_name: swagger-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - spring.config.import=optional:configserver:http://config-server:8888/
+    ports:
+      - "8769:8769"
+    networks:
+      - my-movie-network
+
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin-container
+    ports:
+      - "9411:9411"
+    networks:
+      - my-movie-network
+
+networks:
+  my-movie-network:
+    driver: bridge
