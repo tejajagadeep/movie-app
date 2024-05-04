@@ -15,10 +15,10 @@ import java.util.function.Function;
 public class JwtService {
 
     @Value("${secret.key}")
-    private String SECRET;
+    private String secret;
 
     private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+        byte[] keyBytes = Decoders.BASE64.decode(secret);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 

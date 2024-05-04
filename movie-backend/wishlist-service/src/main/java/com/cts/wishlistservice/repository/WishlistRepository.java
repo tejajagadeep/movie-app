@@ -2,7 +2,6 @@ package com.cts.wishlistservice.repository;
 
 import com.cts.wishlistservice.model.Wishlist;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository

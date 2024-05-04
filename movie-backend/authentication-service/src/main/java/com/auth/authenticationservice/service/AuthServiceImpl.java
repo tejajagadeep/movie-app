@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +53,7 @@ public class AuthServiceImpl implements AuthService{
             //Verify whether user present in db
             //generateToken
             //Return the token
-        userRepository.findById(request.getUsername())
+        var user = userRepository.findById(request.getUsername())
                 .orElseThrow(() -> new ResourceNotFoundException("Username not exist."));
         try {
             authenticationManager.authenticate(
@@ -63,8 +62,6 @@ public class AuthServiceImpl implements AuthService{
                             request.getPassword()
                     )
             );
-            var user = userRepository.findById(request.getUsername())
-                    .orElseThrow(() -> new UsernameNotFoundException(request.getUsername()));
             String jwtToken = jwtService.generateToken(user);
             return AuthenticationResponse.builder().accessToken(jwtToken).build();
         } catch (AuthenticationException e) {

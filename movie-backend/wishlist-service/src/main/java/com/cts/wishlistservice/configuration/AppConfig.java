@@ -4,7 +4,6 @@ import com.cts.wishlistservice.aspects.PerformanceTrackerHandler;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
