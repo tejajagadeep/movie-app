@@ -1,8 +1,10 @@
 package com.user.userprofileservice.controller;
 
 import com.user.userprofileservice.dto.UserProfileDto;
+import com.user.userprofileservice.dto.UserProfileUpdateDto;
 import com.user.userprofileservice.exception.UnAuthorizedException;
 import com.user.userprofileservice.filter.JwtService;
+import com.user.userprofileservice.model.UserProfile;
 import com.user.userprofileservice.service.UserProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -11,6 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,15 +59,15 @@ public class UserProfileController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User Details Updated",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserProfileDto.class)) }),
+                            schema = @Schema(implementation = UserProfile.class)) }),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content),
-            @ApiResponse(responseCode = "409", description = "User Details already Exists",
+            @ApiResponse(responseCode = "409", description = "User Email already Exists",
                     content = @Content),
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
                     content = @Content) })
     @PutMapping("/update/{username}")
-    public ResponseEntity<Object> updateUserProfile(@Parameter(hidden = true) @RequestHeader("Authorization") String token,@RequestBody UserProfileDto userProfileDto, @PathVariable String username){
+    public ResponseEntity<Object> updateUserProfile(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @Valid @RequestBody UserProfileUpdateDto userProfileDto, @PathVariable String username){
 
         if (jwtService.isTokenValid(token,username)) {
             return new ResponseEntity<>(userProfileService.updateUserProfile(userProfileDto, username),HttpStatus.OK);

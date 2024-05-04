@@ -2,6 +2,7 @@ package com.user.userprofileservice.service;
 
 import com.user.userprofileservice.dto.User;
 import com.user.userprofileservice.dto.UserProfileDto;
+import com.user.userprofileservice.dto.UserProfileUpdateDto;
 import com.user.userprofileservice.exception.ResourceAlreadyExistsException;
 import com.user.userprofileservice.exception.ResourceNotFoundException;
 import com.user.userprofileservice.kafka.DataPublisherServiceImpl;
@@ -65,14 +66,13 @@ public class UserProfileServiceImpl implements UserProfileService {
             userProfile = usersProfileRepository.save(modelMapper.map(userProfileDto,UserProfile.class));
         } catch (KafkaException ex){
             log.error(ex.getMessage());
-
         }
         return userProfile;
     }
 
     @Override
     @Observed(name = "update.user.profile")
-    public UserProfileDto updateUserProfile(UserProfileDto userProfileDto, String username) {
+    public UserProfile updateUserProfile(UserProfileUpdateDto userProfileDto, String username) {
         UserProfile userProfile = usersProfileRepository.findById(username)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Entity not found with ID: " + username)
@@ -85,10 +85,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         userProfile.setEmail(userProfileDto.getEmail());
         userProfile.setPhoneNumber(userProfileDto.getPhoneNumber());
-
-        usersProfileRepository.save(userProfile);
-
-        return modelMapper.map(userProfile, UserProfileDto.class);
+        return usersProfileRepository.save(userProfile);
     }
 
 }

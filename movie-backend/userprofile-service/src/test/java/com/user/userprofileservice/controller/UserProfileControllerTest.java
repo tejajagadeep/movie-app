@@ -1,6 +1,8 @@
 package com.user.userprofileservice.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.user.userprofileservice.dto.UserProfileDto;
+import com.user.userprofileservice.dto.UserProfileUpdateDto;
 import com.user.userprofileservice.exception.ResourceAlreadyExistsException;
 import com.user.userprofileservice.exception.ResourceNotFoundException;
 import com.user.userprofileservice.filter.JwtService;
@@ -14,6 +16,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.Date;
 
 import static org.mockito.Mockito.when;
 
@@ -84,16 +88,24 @@ class UserProfileControllerTest {
     void testUpdateUserProfile() throws Exception {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
-        UserProfileDto userProfileDto = new UserProfileDto();
-        userProfileDto.setUsername(username);
+        UserProfileUpdateDto userProfileDto = new UserProfileUpdateDto();
         userProfileDto.setEmail("updated@example.com");
+        userProfileDto.setFirstName("asdg");
+        userProfileDto.setLastName("adg");
+        userProfileDto.setPhoneNumber("7894561230");
+        UserProfile userProfile = new UserProfile();
 
+        userProfile.setEmail("updated@example.com");
+        userProfile.setFirstName("asdg");
+        userProfile.setLastName("adg");
+        userProfile.setPhoneNumber("7894561230");
         when(jwtService.isTokenValid(token, username)).thenReturn(true);
-        when(userProfileService.updateUserProfile(userProfileDto, username)).thenReturn(userProfileDto);
-
+        when(userProfileService.updateUserProfile(userProfileDto, username)).thenReturn(userProfile);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String content = objectMapper.writeValueAsString(userProfileDto);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1.0/private/userProfile/update/{username}", username)
                         .header("Authorization", token)
-                        .content("{\"username\":\"testUser\",\"email\":\"updated@example.com\"}")
+                        .content(content)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("updated@example.com"));
@@ -103,16 +115,19 @@ class UserProfileControllerTest {
     void testUpdateUserProfile_Unauthorized() throws Exception {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
-        UserProfileDto userProfileDto = new UserProfileDto();
-        userProfileDto.setUsername(username);
-        userProfileDto.setEmail("updated@example.com");
-
+        UserProfileUpdateDto userProfileDto = new UserProfileUpdateDto();
+        userProfileDto.setFirstName("jagadeep");
+        userProfileDto.setLastName("kollimarla"); // Adjust timezone if necessary
+        userProfileDto.setPhoneNumber("7894561230");
+        userProfileDto.setEmail("jagsg13ee11@gmail.com");
+        ObjectMapper objectMapper = new ObjectMapper();
+        String content = objectMapper.writeValueAsString(userProfileDto);
         when(jwtService.isTokenValid(token, username)).thenReturn(false);
-        when(userProfileService.updateUserProfile(userProfileDto, username)).thenReturn(userProfileDto);
+        when(userProfileService.updateUserProfile(userProfileDto, username)).thenReturn(new UserProfile());
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1.0/private/userProfile/update/{username}", username)
                         .header("Authorization", token)
-                        .content("{\"username\":\"testUser\",\"email\":\"updated@example.com\"}")
+                        .content(content)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isUnauthorized());
     }

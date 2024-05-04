@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -40,7 +39,6 @@ class GlobalExceptionHandlerJunitTest {
         assertTrue(actualHandleExceptionResult.hasBody());
         assertTrue(actualHandleExceptionResult.getHeaders().isEmpty());
     }
-
 
     /**
      * Method under test:
@@ -141,27 +139,6 @@ class GlobalExceptionHandlerJunitTest {
         HttpStatusCode expectedStatus = actualHandleIllegalArgumentExceptionResult.getStatusCode();
         assertSame(expectedStatus, ((ErrorResponse) actualHandleIllegalArgumentExceptionResult.getBody()).getStatus());
     }
-
-    /**
-     * Method under test:
-     * {@link GlobalExceptionHandler#handleIllegalArgumentException(IllegalArgumentException)}
-     */
-    @Test
-    void testHandleIllegalArgumentException2() {
-        // Arrange
-        IllegalArgumentException ex = mock(IllegalArgumentException.class);
-        when(ex.getMessage()).thenReturn("Not all who wander are lost");
-
-        // Act
-        ResponseEntity<Object> actualHandleIllegalArgumentExceptionResult = globalExceptionHandler
-                .handleIllegalArgumentException(ex);
-
-        // Assert
-        verify(ex).getMessage();
-        HttpStatusCode expectedStatus = actualHandleIllegalArgumentExceptionResult.getStatusCode();
-        assertSame(expectedStatus, ((ErrorResponse) actualHandleIllegalArgumentExceptionResult.getBody()).getStatus());
-    }
-
     /**
      * Method under test:
      * {@link GlobalExceptionHandler#handleSignatureException(SignatureException)}

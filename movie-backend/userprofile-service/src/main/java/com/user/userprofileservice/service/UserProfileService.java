@@ -4,6 +4,7 @@ package com.user.userprofileservice.service;
 
 
 import com.user.userprofileservice.dto.UserProfileDto;
+import com.user.userprofileservice.dto.UserProfileUpdateDto;
 import com.user.userprofileservice.model.UserProfile;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public interface UserProfileService {
 
     UserProfile saveUserProfile(UserProfileDto userProfileDto);
 
-    UserProfileDto updateUserProfile(UserProfileDto userProfileDto, String username);
+    UserProfile updateUserProfile(UserProfileUpdateDto userProfileDto, String username);
 
 }

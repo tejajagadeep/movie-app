@@ -5,6 +5,8 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.impl.DefaultClaims;
 import io.jsonwebtoken.impl.DefaultHeader;
+import jakarta.validation.ValidationException;
+import org.apache.kafka.common.KafkaException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,6 +161,80 @@ class GlobalExceptionHandlerJunitTest {
         verify(ex).getMessage();
         HttpStatusCode expectedStatus = actualHandleIllegalArgumentExceptionResult.getStatusCode();
         assertSame(expectedStatus, ((ErrorResponse) actualHandleIllegalArgumentExceptionResult.getBody()).getStatus());
+    }
+
+    /**
+     * Method under test:
+     * {@link GlobalExceptionHandler#handleValidationException(ValidationException)}
+     */
+    @Test
+    void testHandleValidationException() {
+        // Arrange and Act
+        ResponseEntity<Object> actualHandleValidationException = globalExceptionHandler
+                .handleValidationException(new ValidationException("foo"));
+
+        // Assert
+        HttpStatusCode expectedStatus = actualHandleValidationException.getStatusCode();
+        assertSame(expectedStatus, ((ErrorResponse) actualHandleValidationException.getBody()).getStatus());
+    }
+
+    /**
+     * Method under test:
+     * {@link GlobalExceptionHandler#handleValidationException(ValidationException)}
+     */
+    @Test
+    void testHandleValidationException2() {
+        // Arrange
+        ValidationException ex = mock(ValidationException.class);
+        String message = ex.getMessage();
+        String template = "messageTemplate='";
+        String messageTemplate = message.substring(message.indexOf(template) + template.length(), message.indexOf("'", message.indexOf(template) + template.length()));
+
+        when(ex.getMessage()).thenReturn(messageTemplate);
+
+        // Act
+        ResponseEntity<Object> actualHandleValidationExceptionResult = globalExceptionHandler
+                .handleValidationException(ex);
+
+        // Assert
+        verify(ex).getMessage();
+        HttpStatusCode expectedStatus = actualHandleValidationExceptionResult.getStatusCode();
+        assertSame(expectedStatus, ((ErrorResponse) actualHandleValidationExceptionResult.getBody()).getStatus());
+    }
+
+    /**
+     * Method under test:
+     * {@link GlobalExceptionHandler#handleKafkaException(KafkaException)}
+     */
+    @Test
+    void testHandleKafkaException() {
+        // Arrange and Act
+        ResponseEntity<Object> actualHandleKafkaException = globalExceptionHandler
+                .handleKafkaException(new KafkaException("foo"));
+
+        // Assert
+        HttpStatusCode expectedStatus = actualHandleKafkaException.getStatusCode();
+        assertSame(expectedStatus, ((ErrorResponse) actualHandleKafkaException.getBody()).getStatus());
+    }
+
+    /**
+     * Method under test:
+     * {@link GlobalExceptionHandler#handleKafkaException(KafkaException)}
+     */
+    @Test
+    void testHandleKafkaException2() {
+        // Arrange
+        KafkaException ex = mock(KafkaException.class);
+        when(ex.getMessage()).thenReturn("Not all who wander are lost");
+
+        // Act
+        ResponseEntity<Object> actualHandleKafkaException = globalExceptionHandler
+                .handleKafkaException(ex);
+
+        // Assert
+        verify(ex).getMessage();
+        HttpStatusCode expectedStatus = actualHandleKafkaException.getStatusCode();
+        assertSame(expectedStatus, ((ErrorResponse) actualHandleKafkaException.getBody()).getStatus());
     }
 
     /**

@@ -27,6 +27,7 @@ public class GlobalExceptionHandler{
         return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
         ErrorResponse errorResponse = new ErrorResponse();
@@ -37,7 +38,7 @@ public class GlobalExceptionHandler{
     }
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ErrorResponse> handleValidationException(ValidationException ex) {
+    public ResponseEntity<Object> handleValidationException(ValidationException ex) {
 
         ErrorResponse response = new ErrorResponse();
         String message = ex.getMessage();
