@@ -26,9 +26,11 @@ public class UserProfileDto {
         @Size(max = 100)
         private String lastName;
 
+        @NotNull(message = "dateOfBirth is required field")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         private Date dateOfBirth;
 
+        @NotEmpty(message = "phone number is required field")
         @Pattern(
                 regexp = "^\\d{10,}$",
                 message = "phone number must contain 10 digits"
@@ -40,6 +42,7 @@ public class UserProfileDto {
         @Email(message = "enter valid email address")
         private String email;
 
+        @NotEmpty(message = "Password is required field")
         @Pattern(
                 regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
                 message = "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character"

@@ -8,8 +8,4 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(classes = UserprofileServiceApplication.class)
 class UserprofileServiceApplicationTests {
 
-
-    @Test
-    void contextLoads() {
-    }
 }

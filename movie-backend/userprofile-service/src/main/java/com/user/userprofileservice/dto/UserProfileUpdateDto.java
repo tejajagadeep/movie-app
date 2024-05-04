@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -21,6 +24,7 @@ public class UserProfileUpdateDto {
     @Size(max = 100)
     private String lastName;
 
+    @NotEmpty(message = "phone number is required field")
     @Pattern(
             regexp = "^\\d{10,}$",
             message = "phone number must contain 10 digits"
