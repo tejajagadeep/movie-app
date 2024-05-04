@@ -44,7 +44,7 @@ public class UserProfileController {
     @GetMapping("/getUserById/{username}")
     public ResponseEntity<Object> getUserProfileById(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @PathVariable String username){
 
-        if (jwtService.isTokenValid(token.substring(7),username)) {
+        if (jwtService.isTokenValid(token,username)) {
             return new ResponseEntity<>(userProfileService.getUserProfileById(username), HttpStatus.OK);
         }
         throw new UnAuthorizedException("Unauthorized Please check user details.");
@@ -66,7 +66,7 @@ public class UserProfileController {
     @PutMapping("/update/{username}")
     public ResponseEntity<Object> updateUserProfile(@Parameter(hidden = true) @RequestHeader("Authorization") String token,@RequestBody UserProfileDto userProfileDto, @PathVariable String username){
 
-        if (jwtService.isTokenValid(token.substring(7),username)) {
+        if (jwtService.isTokenValid(token,username)) {
             return new ResponseEntity<>(userProfileService.updateUserProfile(userProfileDto, username),HttpStatus.OK);
         }
         throw new UnAuthorizedException("Unauthorized Please check the user details to update.");
