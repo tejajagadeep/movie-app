@@ -257,3 +257,7 @@ k
 Osrc/test/java/com/user/userprofileservice/exception/ErrorResponseJunitTest.java,0\b\0b58557e4240158b8327742790b4ffd336bc10ca
 ˆ
 Xsrc/test/java/com/user/userprofileservice/exception/GlobalExceptionHandlerJunitTest.java,c\c\cce9f5321b093ff9817ab6ceb4db6bcba7dcb8a4
+|
+Lsrc/main/java/com/user/userprofileservice/UserprofileServiceApplication.java,8\e\8e46b59e453e56b36114acfa1daf226f4bb75e5e
+z
+Jsrc/test/java/com/cts/wishlistservice/service/WishlistServiceImplTest.java,9\5\9509cacb5dfe8ed8a676c316955f0f8416dd75dd

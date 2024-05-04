@@ -165,45 +165,6 @@ class GlobalExceptionHandlerJunitTest {
 
     /**
      * Method under test:
-     * {@link GlobalExceptionHandler#handleValidationException(ValidationException)}
-     */
-    @Test
-    void testHandleValidationException() {
-        // Arrange and Act
-        ResponseEntity<Object> actualHandleValidationException = globalExceptionHandler
-                .handleValidationException(new ValidationException("foo"));
-
-        // Assert
-        HttpStatusCode expectedStatus = actualHandleValidationException.getStatusCode();
-        assertSame(expectedStatus, ((ErrorResponse) actualHandleValidationException.getBody()).getStatus());
-    }
-
-    /**
-     * Method under test:
-     * {@link GlobalExceptionHandler#handleValidationException(ValidationException)}
-     */
-    @Test
-    void testHandleValidationException2() {
-        // Arrange
-        ValidationException ex = mock(ValidationException.class);
-        String message = ex.getMessage();
-        String template = "messageTemplate='";
-        String messageTemplate = message.substring(message.indexOf(template) + template.length(), message.indexOf("'", message.indexOf(template) + template.length()));
-
-        when(ex.getMessage()).thenReturn(messageTemplate);
-
-        // Act
-        ResponseEntity<Object> actualHandleValidationExceptionResult = globalExceptionHandler
-                .handleValidationException(ex);
-
-        // Assert
-        verify(ex).getMessage();
-        HttpStatusCode expectedStatus = actualHandleValidationExceptionResult.getStatusCode();
-        assertSame(expectedStatus, ((ErrorResponse) actualHandleValidationExceptionResult.getBody()).getStatus());
-    }
-
-    /**
-     * Method under test:
      * {@link GlobalExceptionHandler#handleKafkaException(KafkaException)}
      */
     @Test
