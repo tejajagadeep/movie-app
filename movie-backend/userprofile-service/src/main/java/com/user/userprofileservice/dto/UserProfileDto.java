@@ -44,7 +44,7 @@ public class UserProfileDto {
 
         @NotEmpty(message = "Password is required field")
         @Pattern(
-                regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$#!%*?&()`~+=_-])[A-Za-z\\d@$#!%*?&()`~+=_-]{8,}$",
+                regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@^$#!%*?&()`~+=_-])[A-Za-z\\d@^$#!%*?&()`~+=_-]{8,}$",
                 message = "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character"
         )
         @Size(max = 100)
