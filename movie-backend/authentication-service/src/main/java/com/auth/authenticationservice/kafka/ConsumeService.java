@@ -1,6 +1,7 @@
 package com.auth.authenticationservice.kafka;
 
 import com.auth.authenticationservice.model.RegisterRequest;
+import com.auth.authenticationservice.model.Role;
 import com.auth.authenticationservice.service.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,6 +38,7 @@ public class ConsumeService {
 	private RegisterRequest convertToJavaObject(String message) throws JsonProcessingException {
 		RegisterRequest userDetails=new ObjectMapper().readValue(message,RegisterRequest.class);
 		log.info("from Converter"+userDetails+"-----");
+		userDetails.setRole(Role.MEMBER);
 		return  userDetails;
 	}
 

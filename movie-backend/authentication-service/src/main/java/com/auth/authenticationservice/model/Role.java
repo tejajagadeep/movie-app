@@ -19,13 +19,15 @@ public enum Role {
                   ADMIN_READ,
                   ADMIN_CREATE,
                   MEMBER_READ,
-                  MEMBER_CREATE
+                  MEMBER_CREATE,
+                  MEMBER_DELETE
           )
   ),
   MEMBER(
           Set.of(
                   MEMBER_READ,
-                  MEMBER_CREATE
+                  MEMBER_CREATE,
+                  MEMBER_DELETE
           )
   )
 

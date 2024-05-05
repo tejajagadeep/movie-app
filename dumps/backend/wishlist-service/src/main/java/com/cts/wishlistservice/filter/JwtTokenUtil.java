@@ -2,13 +2,16 @@ package com.cts.wishlistservice.filter;
 
 import java.io.Serializable;
 import java.security.Key;
-import java.util.Date;
+import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -65,5 +68,16 @@ public class JwtTokenUtil implements Serializable{
         log.info("token: {}", token);
         log.info("userDetails: {}", userDetails.toString());
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+    public String getAuthoritiesString(String token) {
+        return getAllClaimsFromToken(token).get("authorities").toString();
+    }
+    public Collection<? extends GrantedAuthority> getAuthorities(String token){
+        List<String> authorityList = Arrays.asList(getAuthoritiesString(token).split(","));
+        Collection<? extends GrantedAuthority> authorities =  authorityList.stream()
+                .map(SimpleGrantedAuthority::new)
+                .toList();
+        log.info("getAuthorities: {}", authorities.toString());
+        return authorities;
     }
 }

@@ -10,6 +10,7 @@ public enum Permission {
     ADMIN_CREATE("admin:create"),
     MEMBER_READ("management:read"),
     MEMBER_CREATE("management:create"),
+    MEMBER_DELETE("management:delete"),
 
     ;
 

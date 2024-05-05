@@ -2,6 +2,10 @@ version: "3.7"
 
 name: my-movie-project
 
+networks:
+  my-movie-network:
+    driver: bridge
+
 services:
   zookeeper:
     image: wurstmeister/zookeeper
@@ -34,6 +38,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root1234
       MYSQL_DATABASE: dockerDB
+    networks:
+      - my-movie-network
+
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin-container
+    ports:
+      - "9411:9411"
     networks:
       - my-movie-network
 
@@ -85,6 +97,7 @@ services:
       - zookeeper
       - kafka
     restart: on-failure
+    entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/authentication-service-0.0.1-SNAPSHOT.jar"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health"]
       interval: 20s
@@ -117,6 +130,7 @@ services:
       - zookeeper
       - kafka
     restart: on-failure
+    entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/userprofile-service-0.0.1-SNAPSHOT.jar"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8092/actuator/health"]
       interval: 20s
@@ -142,6 +156,7 @@ services:
       - config-server
       - zipkin-server
     restart: on-failure
+    entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/movie-service-0.0.1-SNAPSHOT.jar"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
       interval: 20s
@@ -167,6 +182,7 @@ services:
       - config-server
       - zipkin-server
     restart: on-failure
+    entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/wishlist-service-0.0.1-SNAPSHOT.jar"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
       interval: 20s
@@ -192,6 +208,7 @@ services:
       - config-server
       - zipkin-server
     restart: on-failure
+    entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/api-gateway-0.0.1-SNAPSHOT.jar"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/actuator/health"]
       interval: 20s
@@ -211,20 +228,11 @@ services:
     depends_on:
       - eureka-server
       - config-server
+    restart: on-failure
+    entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/swagger-server-0.0.1-SNAPSHOT.jar"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8769/actuator/health"]
       interval: 20s
       timeout: 10s
       retries: 10
 
-  zipkin-server:
-    image: openzipkin/zipkin
-    container_name: zipkin-container
-    ports:
-      - "9411:9411"
-    networks:
-      - my-movie-network
-
-networks:
-  my-movie-network:
-    driver: bridge

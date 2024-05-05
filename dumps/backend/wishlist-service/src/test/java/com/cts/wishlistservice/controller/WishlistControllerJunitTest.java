@@ -1,14 +1,9 @@
 package com.cts.wishlistservice.controller;
 
-import static org.mockito.Mockito.when;
-
 import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
 import com.cts.wishlistservice.service.WishlistService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -24,6 +19,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+
+import static org.mockito.Mockito.when;
+
 @ContextConfiguration(classes = {WishlistController.class})
 @ExtendWith(SpringExtension.class)
 @DisabledInAotMode
@@ -37,7 +36,7 @@ class WishlistControllerJunitTest {
 
     /**
      * Method under test:
-     * {@link WishlistController#deleteWishlist(String, String, String)}
+     * {@link WishlistController#deleteWishlist(String, String)}
      */
     @Test
     void testDeleteWishlist() throws Exception {
@@ -59,7 +58,7 @@ class WishlistControllerJunitTest {
 
     /**
      * Method under test:
-     * {@link WishlistController#addWishlist(String, String, MovieDto)}
+     * {@link WishlistController#addWishlist(String, MovieDto)}
      */
     @Test
     void testAddWishlist() throws Exception {
@@ -94,7 +93,7 @@ class WishlistControllerJunitTest {
     }
 
     /**
-     * Method under test: {@link WishlistController#getWishlist(String)} (String, String)}
+     * Method under test: {@link WishlistController#getWishlist(String)}
      */
     @Test
     void testGetWishlist() throws Exception {

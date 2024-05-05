@@ -23,5 +23,3 @@ docker-compose up
 | WISHLIST-SERVICE       | [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) |
 | SWAGGER-SERVER         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN                 | [http://localhost:9411](http://localhost:9411)                                             |
-
-If you are facing issue with swagger-server on docker compose file stop and re-run only swagger container manually [Issue Link](https://github.com/tejajagadeep/movie-app/issues/1)
