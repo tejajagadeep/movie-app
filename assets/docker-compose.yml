@@ -38,7 +38,7 @@ services:
       - my-movie-network
 
   eureka-server:
-    image: tejajagadeep/movie-app-eureka-server:latest
+    image: tejajagadeep/movie-app-eureka-server:v1.0
     container_name: eureka-container
     ports:
       - "8761:8761"
@@ -46,7 +46,7 @@ services:
       - my-movie-network
 
   config-server:
-    image: tejajagadeep/movie-app-config-server:latest
+    image: tejajagadeep/movie-app-config-server:v1.0
     container_name: config-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
@@ -60,7 +60,7 @@ services:
       - eureka-server
 
   authentication-service:
-    image: tejajagadeep/movie-app-authentication-service:latest
+    image: tejajagadeep/movie-app-authentication-service:v1.0
     container_name: authentication-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
@@ -92,7 +92,7 @@ services:
       retries: 10
 
   userprofile-service:
-    image: tejajagadeep/movie-app-userprofile-service:latest
+    image: tejajagadeep/movie-app-userprofile-service:v1.0
     container_name: userprofile-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
@@ -124,7 +124,7 @@ services:
       retries: 10
 
   movie-service:
-    image: tejajagadeep/movie-app-movie-service:latest
+    image: tejajagadeep/movie-app-movie-service:v1.0
     container_name: movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
@@ -149,7 +149,7 @@ services:
       retries: 10
 
   wishlist-service:
-    image: tejajagadeep/movie-app-wishlist-service:latest
+    image: tejajagadeep/movie-app-wishlist-service:v1.0
     container_name: wishlist-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
@@ -174,7 +174,7 @@ services:
       retries: 10
 
   api-gateway:
-    image: tejajagadeep/movie-app-api-gateway:latest
+    image: tejajagadeep/movie-app-api-gateway:v1.0
     container_name: gateway-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
@@ -199,7 +199,7 @@ services:
       retries: 10
 
   swagger-server:
-    image: tejajagadeep/movie-app-swagger-server:latest
+    image: tejajagadeep/movie-app-swagger-server:v1.0
     container_name: swagger-server
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka

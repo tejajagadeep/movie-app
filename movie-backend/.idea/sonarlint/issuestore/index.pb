@@ -213,3 +213,5 @@ l
 <src/main/java/com/auth/authenticationservice/model/Role.java,e\4\e41a743825429a0a0e09eeacb0e1822260c8426e
 r
 Bsrc/main/java/com/auth/authenticationservice/model/Permission.java,2\d\2de61826fa79ac913a4fccb39a35893b923bf11a
+~
+Nsrc/test/java/com/user/userprofileservice/controller/PublicControllerTest.java,9\e\9e682e8d61d1e34cf3ecf54a294b2c46c4e12abe
