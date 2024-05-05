@@ -10,10 +10,10 @@ name: Java CI/CD with Maven and Docker
 on:
   push:
     branches: ["main"]
-  #   paths:
-  #     - "movie-backend/**"
-  # pull_request:
-  #   branches: ["main"]
+    # paths:
+    #   - "movie-backend/**"
+  pull_request:
+    branches: ["main"]
 
 jobs:
   build_eureka_server:
