@@ -145,7 +145,7 @@ class PublicControllerTest {
 
     @Test
     void testSaveUserProfile_badRequest_PhoneNumber_containsDigits() throws Exception {
-        userProfileDto.setPhoneNumber("sdga");
+        userProfileDto.setPhoneNumber("swe213dgsdf34sssda");
         ObjectMapper objectMapper = new ObjectMapper();
         String content = objectMapper.writeValueAsString(userProfileDto);
         when(userProfileService.saveUserProfile(userProfileDto)).thenReturn(new UserProfile());

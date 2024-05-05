@@ -225,3 +225,8 @@ j
 :src/main/java/com/cloud/swaggerserver/HelloController.java,3\7\377d192ccb8be240c706a9d36e1f412cb6734349
 s
 Csrc/main/java/com/cloud/swaggerserver/SwaggerServerApplication.java,3\2\3254cccb53a6132463f7054e5f7b2c702b8e4c29
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+ƒ
+Ssrc/test/java/com/user/userprofileservice/controller/UserProfileControllerTest.java,1\b\1b3f818210b2b812f3c1065243207e8256bd3f2c
