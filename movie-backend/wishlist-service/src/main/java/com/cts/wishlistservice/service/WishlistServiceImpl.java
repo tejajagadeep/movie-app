@@ -34,7 +34,7 @@ public class WishlistServiceImpl implements WishlistService {
     /**
      * Get All wish list of a user
      * @param username = username to access wishlist
-     * @return Wishlist
+     * @return WishlistDto
      */
     @Override
     @Observed(name = "get.wishlists")
@@ -47,7 +47,7 @@ public class WishlistServiceImpl implements WishlistService {
      * Delete movie by id for user
      * @param username = username to access wishlist
      * @param id = movie id
-     * @return Wishlist
+     * @return WishlistDto
      */
     @Override
     @Observed(name = "delete.wishlist")
