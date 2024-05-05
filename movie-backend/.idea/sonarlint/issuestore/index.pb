@@ -215,3 +215,9 @@ r
 Bsrc/main/java/com/auth/authenticationservice/model/Permission.java,2\d\2de61826fa79ac913a4fccb39a35893b923bf11a
 ~
 Nsrc/test/java/com/user/userprofileservice/controller/PublicControllerTest.java,9\e\9e682e8d61d1e34cf3ecf54a294b2c46c4e12abe
+w
+Gsrc/main/java/com/user/userprofileservice/dto/UserProfileUpdateDto.java,3\6\36340b738c2b1d6a27d41ae03508757758ace1de
+~
+Nsrc/main/java/com/user/userprofileservice/configuration/UserProfileConfig.java,d\e\de5a6699fdc4e5292542cb1a7e709ffe88182314
+‚
+Rsrc/test/java/com/user/userprofileservice/configuration/UserProfileConfigTest.java,a\7\a7bb51543837ed108ae5a8c47385d3478e1ac33c
