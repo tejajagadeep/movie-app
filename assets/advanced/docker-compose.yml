@@ -200,7 +200,7 @@ services:
 
   swagger-server:
     image: tejajagadeep/movie-app-swagger-server:latest
-    container_name: swagger-server
+    container_name: swagger-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/

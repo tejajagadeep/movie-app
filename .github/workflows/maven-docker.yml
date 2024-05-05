@@ -10,14 +10,13 @@ name: Java CI/CD with Maven and Docker
 on:
   push:
     branches: ["main"]
-    # paths:
-    #   - "movie-backend/**"
+    paths:
+      - "movie-backend/**"
   pull_request:
     branches: ["main"]
 
 jobs:
   build_eureka_server:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/eureka-server')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -40,7 +39,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-eureka-server:latest
 
   build_config_server:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/config-server')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -63,7 +61,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-config-server:latest
 
   build_api_gateway:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/api-gateway')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -86,7 +83,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-api-gateway:latest
 
   build_authentication_service:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/authentication-service')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -109,7 +105,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-authentication-service:latest
 
   build_userprofile_service:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/userprofile-service')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -132,7 +127,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-userprofile-service:latest
 
   build_movie_service:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/movie-service')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -155,7 +149,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-movie-service:latest
 
   build_wishlist_service:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/wishlist_service')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -178,7 +171,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-wishlist-service:latest
 
   build_swagger_server:
-    if: github.event_name == 'push' && contains(github.event.head_commit.modified, 'movie-backend/swagger-server')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -199,13 +191,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-swagger-server:latest
-
-  use_api:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: read
-    steps:
-      - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api https://api.github.com/repos/tejajagadeep/movie-app/commits
