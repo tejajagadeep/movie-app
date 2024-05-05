@@ -10,13 +10,14 @@ name: Java CI/CD with Maven and Docker
 on:
   push:
     branches: ["main"]
+    paths:
+      - "movie-backend/**"
   pull_request:
     branches: ["main"]
 
 jobs:
   build_eureka_server:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
