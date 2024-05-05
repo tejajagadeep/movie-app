@@ -210,7 +210,7 @@ jobs:
         run: |
           gh api https://api.github.com/repos/tejajagadeep/movie/commits
 
-  build_userprofile_service:
+  build_userprofile_service1:
     runs-on: ubuntu-latest
     if: |
       github.event_name == 'push' &&
