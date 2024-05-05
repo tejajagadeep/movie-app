@@ -87,6 +87,8 @@ services:
     build:
       context: swagger-server
       dockerfile: Dockerfile
+    ports:
+      - "8769:8769"
     networks:
       - my-movie-network
 

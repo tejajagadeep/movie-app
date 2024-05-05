@@ -62,7 +62,7 @@ public class UserProfileController {
                             schema = @Schema(implementation = UserProfile.class)) }),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content),
-            @ApiResponse(responseCode = "409", description = "User Email already Exists",
+            @ApiResponse(responseCode = "409", description = "Username/Email already Exists",
                     content = @Content),
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
                     content = @Content) })
