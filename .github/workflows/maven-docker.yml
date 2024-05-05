@@ -201,6 +201,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-swagger-server:latest
 
   test_runner:
+    runs-on: ubuntu-latest
     steps:
       - name: Debug Event Info
         run: |
