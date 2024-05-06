@@ -27,4 +27,4 @@ docker-compose up
 
 ## Flow Diagram
 
-[![Flow Diagram for services](/assets/images/services-flow.png)](https://github.com/tejajagadeep/movie-app/blob/main/assets/images/services-flow.png)
+[![Flow Diagram for services](/assets/images/application-services-flow.png)](https://github.com/tejajagadeep/movie-app/blob/main/assets/images/application-services-flow.png)
