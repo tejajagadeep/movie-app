@@ -12,18 +12,18 @@ docker-compose up
 
 ## Services links
 
-| Service                | URL                                                                                        |
-| ---------------------- | ------------------------------------------------------------------------------------------ |
-| EUREKA-SERVER          | [http://localhost:8761](http://localhost:8761)                                             |
-| CONFIG-SERVER          | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/info)               |
-| API-GATEWAY            | [http://localhost:8765/actuator/info](http://localhost:8765/actuator/info)                 |
-| AUTHENTICATION-SERVICE | [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html) |
-| USERPROFILE-SERVICE    | [http://localhost:8092/swagger-ui/index.html](http://localhost:8092/swagger-ui/index.html) |
-| MOVIE-SERVICE          | [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html) |
-| WISHLIST-SERVICE       | [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) |
-| SWAGGER-SERVER         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
-| ZIPKIN                 | [http://localhost:9411](http://localhost:9411)                                             |
-| MovieApp               | [http://localhost:4200](http://localhost:4200)                                             |
+| Service                | Description                                             | URL                                                                                        |
+| ---------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| EUREKA-SERVER          | Discovery server for microservices                      | [http://localhost:8761](http://localhost:8761)                                             |
+| CONFIG-SERVER          | Server for managing configuration properties            | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/info)               |
+| API-GATEWAY            | Gateway for accessing APIs                              | [http://localhost:8765/actuator/info](http://localhost:8765/actuator/info)                 |
+| AUTHENTICATION-SERVICE | Service for user authentication and authorization       | [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html) |
+| USERPROFILE-SERVICE    | Service for managing user profiles                      | [http://localhost:8092/swagger-ui/index.html](http://localhost:8092/swagger-ui/index.html) |
+| MOVIE-SERVICE          | Service for fetching movie-related data                 | [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html) |
+| WISHLIST-SERVICE       | Service for managing user wishlists                     | [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) |
+| SWAGGER-SERVER         | Server hosting Swagger UI for API documentation         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
+| ZIPKIN                 | Distributed tracing system for monitoring microservices | [http://localhost:9411](http://localhost:9411)                                             |
+| MovieApp               | Web application for the MovieApp project                | [http://localhost:4200](http://localhost:4200)                                             |
 
 ## Flow Diagram
 
