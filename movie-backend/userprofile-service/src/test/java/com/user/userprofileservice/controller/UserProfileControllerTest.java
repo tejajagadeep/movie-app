@@ -37,7 +37,7 @@ class UserProfileControllerTest {
     void testGetUserProfileById() throws Exception {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
-        UserProfileDto userProfileDto = new UserProfileDto();
+        UserProfile userProfileDto = new UserProfile();
         userProfileDto.setUsername(username);
         userProfileDto.setEmail("test@example.com");
 
@@ -55,7 +55,7 @@ class UserProfileControllerTest {
     void testGetUserProfileById_Unauthorized() throws Exception {
         String token = "Bearer <your_token_here>";
         String username = "testUser";
-        UserProfileDto userProfileDto = new UserProfileDto();
+        UserProfile userProfileDto = new UserProfile();
         userProfileDto.setUsername(username);
         userProfileDto.setEmail("test@example.com");
 

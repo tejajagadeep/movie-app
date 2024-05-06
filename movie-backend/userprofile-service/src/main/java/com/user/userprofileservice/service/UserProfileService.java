@@ -9,7 +9,7 @@ import com.user.userprofileservice.model.UserProfile;
 
 public interface UserProfileService {
 
-    UserProfileDto getUserProfileById(String username);
+    UserProfile getUserProfileById(String username);
 
     UserProfile saveUserProfile(UserProfileDto userProfileDto);
 

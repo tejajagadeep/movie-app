@@ -53,9 +53,9 @@ class UserProfileServiceImplTest {
         when(userProfileRepository.findById(username)).thenReturn(Optional.of(userProfile));
         when(modelMapper.map(userProfile, UserProfileDto.class)).thenReturn(expectedDto);
 
-        UserProfileDto result = userProfileService.getUserProfileById(username);
+        UserProfile result = userProfileService.getUserProfileById(username);
 
-        assertEquals(expectedDto, result);
+        assertEquals(expectedDto.getUsername(), result.getUsername());
     }
     @Test
     void testGetUserProfileById_notFount() {

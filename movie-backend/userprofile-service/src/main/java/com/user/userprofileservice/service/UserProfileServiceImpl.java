@@ -35,12 +35,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     @Observed(name = "get.user.profile.by.id")
-    public UserProfileDto getUserProfileById(String username) {
-        UserProfile entity = usersProfileRepository.findById(username)
+    public UserProfile getUserProfileById(String username) {
+        return  usersProfileRepository.findById(username)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Entity not found with ID: " + username));
-
-        return modelMapper.map(entity, UserProfileDto.class);
     }
 
     @Override
