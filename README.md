@@ -23,3 +23,4 @@ docker-compose up
 | WISHLIST-SERVICE       | [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) |
 | SWAGGER-SERVER         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN                 | [http://localhost:9411](http://localhost:9411)                                             |
+| MovieApp               | [http://localhost:4200](http://localhost:4200)                                             |

@@ -37,6 +37,14 @@ services:
     networks:
       - my-movie-network
 
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin-container
+    ports:
+      - "9411:9411"
+    networks:
+      - my-movie-network
+
   eureka-server:
     image: tejajagadeep/movie-app-eureka-server:v1.0
     container_name: eureka-container
@@ -229,11 +237,11 @@ services:
       timeout: 10s
       retries: 10
 
-  zipkin-server:
-    image: openzipkin/zipkin
-    container_name: zipkin-container
+  movie-app:
+    image: tejajagadeep/movie-app-angular:v1.0
+    container_name: movie-app-angular
     ports:
-      - "9411:9411"
+      - "4200:80"
     networks:
       - my-movie-network
 
