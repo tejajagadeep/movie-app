@@ -24,3 +24,7 @@ docker-compose up
 | SWAGGER-SERVER         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN                 | [http://localhost:9411](http://localhost:9411)                                             |
 | MovieApp               | [http://localhost:4200](http://localhost:4200)                                             |
+
+## Flow Diagram
+
+[![Flow Diagram for services](/assets/images/service-workflow-basic.png)](https://github.com/tejajagadeep/movie-app/blob/main/assets/images/service-workflow-basic.png)
