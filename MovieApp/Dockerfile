@@ -1,8 +1,20 @@
-# Use the official Nginx image as the base image
+FROM node:20.10.0-alpine3.17 as builder
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+# Stage 2: Serve Angular application using Nginx
 FROM nginx:alpine
 
-# Copy the built Angular artifacts into the Nginx image
-COPY dist/<your-angular-app-name> /usr/share/nginx/html
+# Copy built Angular artifacts to Nginx directory
+COPY --from=builder /app/dist/movie-app/browser /usr/share/nginx/html
 
 # Expose port 80 to allow external access
 EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]

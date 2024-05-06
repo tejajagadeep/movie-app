@@ -47,6 +47,7 @@ a:hover {
 a.deactive {
   background: #ff3c3c;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .checkbtn {
