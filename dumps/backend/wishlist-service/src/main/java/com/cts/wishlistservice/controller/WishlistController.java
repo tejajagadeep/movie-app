@@ -52,7 +52,7 @@ public class WishlistController {
                     content = @Content) })
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("")
-    @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username && hasAuthority('management:delete')")
+    @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")
     public ResponseEntity<Object> deleteWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String id){
             return new ResponseEntity<>(wishlistService.deleteWishlist(username, id),HttpStatus.OK);
     }

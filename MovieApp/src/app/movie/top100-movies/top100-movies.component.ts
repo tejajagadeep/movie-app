@@ -38,6 +38,7 @@ export class Top100MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.getTop100Movies();
     this.getWishlist();
+    this.supports_html5_storage();
   }
 
   toggleFavorite(movie: Movie) {
@@ -49,7 +50,13 @@ export class Top100MoviesComponent implements OnInit {
       this.isFavorite = false;
     }
   }
-
+  supports_html5_storage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
+  }
   getTop100Movies() {
     this.movieService.getTop100Movies().subscribe({
       next: (v) => {

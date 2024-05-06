@@ -10,10 +10,11 @@ public class CorsConfig implements WebMvcConfigurer {
     @Value("${swagger.server.url}")
     String swaggerUrl;
 
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(swaggerUrl)
+                .allowedOrigins(swaggerUrl.split(","))
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)

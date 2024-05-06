@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest
-@ContextConfiguration(classes = WishlistServiceApplicationTests.class)
+@ContextConfiguration(classes = WishlistServiceApplication.class)
 class WishlistServiceApplicationTests {
 
 	@Test

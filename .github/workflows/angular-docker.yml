@@ -1,0 +1,40 @@
+# name: Deploy Angular App to Docker
+
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - "movie-backend/MovieApp/**"
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "20.11.0"
+
+#       - name: Install dependencies
+#         run: |
+#           cd MovieApp
+#           npm install
+
+#       - name: Build Angular app
+#         run: |
+#           cd MovieApp
+#           npm run build --prod
+
+#       - name: Build Docker image
+#         run: |
+#           docker build -t ${{ secrets.DOCKER_IMAGE_NAME }} MovieApp
+
+#       - name: Push Docker image
+#         run: |
+#           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+#           docker push ${{ secrets.DOCKER_USERNAME }}/movie-app-angular:v1.0
