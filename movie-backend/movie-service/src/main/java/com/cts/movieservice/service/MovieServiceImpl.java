@@ -10,11 +10,14 @@ import io.micrometer.observation.annotation.Observed;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -57,11 +60,33 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
+    @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMoviesSearchBreakCircuit")
+    @Observed(name = "top.movies.search")
+    public Response topMoviesSearch(String search) {
+        ResponseEntity<List<Movie>> responseEntity = restTemplate.exchange(response(""), new ParameterizedTypeReference<List<Movie>>() {});
+
+        // Extract the body from the response entity
+        List<Movie> movies = Optional.ofNullable(responseEntity.getBody()).orElse(Collections.emptyList());
+
+        // Create a new Response object
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(movies.stream().filter(s -> {
+            String title = s.getTitle();
+            return title != null && title.toLowerCase().contains(search.toLowerCase());
+        }).toList());
+
+        return response;
+    }
+
+    @Override
     @Observed(name = "top.movies.by.id")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMovieDetailsById")
     public MovieDetails topMoviesById(String id) {
         return restTemplate.exchange(response(id), MovieDetails.class).getBody();
     }
+
 
     private RequestEntity<Void> response(String query){
         URI uri = UriComponentsBuilder.fromUriString(baseUrl+query)
@@ -77,7 +102,13 @@ public class MovieServiceImpl implements MovieService{
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         return headers;
     }
-
+    public Response getMoviesSearchBreakCircuit(String search, Throwable throwable) throws IOException {
+        Exception e = new IOException();
+        log.error("fall back method called for getMoviesSearchBreakCircuit with error {}", throwable.getMessage());
+        Response response = getAllMoviesBreakCircuit(e);
+        response.setData(response.getData().stream().filter(s->s.getTitle().toLowerCase().contains(search.toLowerCase())).toList());
+        return response;
+    }
     public Response getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = null;

@@ -15,7 +15,7 @@ docker-compose up
 | Service                | URL                                                                                        |
 | ---------------------- | ------------------------------------------------------------------------------------------ |
 | EUREKA-SERVER          | [http://localhost:8761](http://localhost:8761)                                             |
-| CONFIG-SERVER          | [http://localhost:8888/actuator/info](http://localhost:8888/actuator/info)                 |
+| CONFIG-SERVER          | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/info)               |
 | API-GATEWAY            | [http://localhost:8765/actuator/info](http://localhost:8765/actuator/info)                 |
 | AUTHENTICATION-SERVICE | [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html) |
 | USERPROFILE-SERVICE    | [http://localhost:8092/swagger-ui/index.html](http://localhost:8092/swagger-ui/index.html) |

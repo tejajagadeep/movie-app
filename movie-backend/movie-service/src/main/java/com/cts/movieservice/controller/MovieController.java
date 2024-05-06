@@ -36,9 +36,21 @@ public class MovieController {
             @ApiResponse(responseCode = "404", description = "Movies not found",
                     content = @Content) })
     @GetMapping("/top-100-movies")
-
     public ResponseEntity<Object> topMovies(){
         return new ResponseEntity<>(movieService.topMovies(), HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Search from Top 100 Movie List from IMDB")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found 100 Movies",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Movie.class)) }),
+            @ApiResponse(responseCode = "404", description = "Movies not found",
+                    content = @Content) })
+    @GetMapping("/top-100-movies/search/{search}")
+    public ResponseEntity<Object> topMoviesSearch(@PathVariable String search){
+        return new ResponseEntity<>(movieService.topMoviesSearch(search), HttpStatus.OK);
     }
 
     @Operation(summary = "Get Movie details")

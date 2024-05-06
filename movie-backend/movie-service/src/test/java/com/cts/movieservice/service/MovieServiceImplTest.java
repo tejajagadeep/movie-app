@@ -54,6 +54,26 @@ class MovieServiceImplTest {
     }
 
     @Test
+    void testTopMoviesSearch() {
+        // Mocking the response entity
+        List<Movie> movies = List.of();
+        ResponseEntity<List<Movie>> responseEntity = new ResponseEntity<>(movies, HttpStatus.OK);
+        when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
+
+        // Invoking the method under test
+        Response response = movieService.topMoviesSearch("godfather");
+
+        Response expectedResponse = new Response();
+        expectedResponse.setStatus(true);
+        expectedResponse.setMessage("Successful");
+        expectedResponse.setData(movies);
+
+        // Verifying the response
+        assertEquals(expectedResponse, response);
+    }
+
+
+    @Test
     void testTopMoviesById() {
         // Mocking the response entity
         MovieDetails movieDetails = new MovieDetails();

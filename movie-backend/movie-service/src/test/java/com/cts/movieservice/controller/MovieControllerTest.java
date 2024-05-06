@@ -50,6 +50,26 @@ class MovieControllerTest {
     }
 
     @Test
+    void testTopMoviesSearch() throws Exception {
+        Movie movie = new Movie();
+        movie.setId("1");
+        movie.setTitle("Movie 1");
+
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(List.of(movie));
+
+
+
+        when(movieService.topMovies()).thenReturn(response);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies/search/Movie")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
     void testTopMoviesById() throws Exception {
         MovieDetails movieDetails = new MovieDetails();
         movieDetails.setId("1");
