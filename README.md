@@ -29,6 +29,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 | WISHLIST-SERVICE       | Service for managing user wishlists                     | [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) |
 | SWAGGER-SERVER         | Server hosting Swagger UI for API documentation         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN                 | Distributed tracing system for monitoring microservices | [http://localhost:9411](http://localhost:9411)                                             |
+| Kafka-ui               | Kafka UI for kafka server                               | [http://localhost:9090](http://localhost:9090)                                             |
 | MovieApp               | Web application for the MovieApp project                | [http://localhost:4200](http://localhost:4200)                                             |
 
 ## Flow Diagram

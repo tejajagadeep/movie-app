@@ -41,7 +41,7 @@ services:
     environment:
       - DYNAMIC_CONFIG_ENABLED=true
     ports:
-      - "9000:8080"
+      - "9090:8080"
     depends_on:
       - kafka
     networks:
