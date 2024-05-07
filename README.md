@@ -8,13 +8,13 @@ microservice based application integrated with imdb movie api
 docker-compose up
 ```
 
+[Redirect to assets to find docker compose file](assets/docker-compose.yml)
+
 for latest run
 
 ```bash
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock tejajagadeep/docker-compose-movie-container
 ```
-
-[Redirect to assets to find docker compose file](assets/docker-compose.yml)
 
 ## Services links
 
