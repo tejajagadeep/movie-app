@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - "assets/advanced/**"
+    paths:
+      - "assets/advanced/**"
 
 jobs:
-  build_movie_app:
+  build_docker_compose_file:
     runs-on: ubuntu-latest
 
     steps:
