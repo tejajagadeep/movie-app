@@ -1,11 +1,11 @@
-name: Java CI/CD with Node and Docker
+name: Java CI/CD with Docker-Compose and Docker
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "assets/advanced/**"
+    # paths:
+    #   - "assets/advanced/**"
 
 jobs:
   build_movie_app:
