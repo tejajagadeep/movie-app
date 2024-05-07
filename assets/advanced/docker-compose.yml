@@ -35,6 +35,18 @@ services:
     networks:
       - my-movie-network
 
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui-container
+    environment:
+      - DYNAMIC_CONFIG_ENABLED=true
+    ports:
+      - "9000:8080"
+    depends_on:
+      - kafka
+    networks:
+      - my-movie-network
+        
   mysqldb:
     image: mysql:8.0.36
     container_name: mysql-container
@@ -82,8 +94,6 @@ services:
       - "8888:8888"
     networks:
       - my-movie-network
-    depends_on:
-      - eureka-server
     links:
       - eureka-server
 
@@ -104,7 +114,6 @@ services:
       - my-movie-network
     depends_on:
       - mysqldb
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -138,7 +147,6 @@ services:
       - my-movie-network
     depends_on:
       - mysqldb
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -168,7 +176,6 @@ services:
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -196,7 +203,6 @@ services:
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
       - mongodb
     links:
@@ -224,7 +230,6 @@ services:
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -249,7 +254,6 @@ services:
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
     restart: on-failure
     entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/swagger-server-0.0.1-SNAPSHOT.jar"

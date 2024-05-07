@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.common.KafkaException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -55,7 +56,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         User user =new User();
         user.setUsername(userProfileDto.getUsername());
-        user.setPassword(userProfileDto.getPassword());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(userProfileDto.getPassword()));
         user.setRole("MEMBER");
         log.info("------"+ user +"--------");
         UserProfile userProfile = null;

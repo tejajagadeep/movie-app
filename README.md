@@ -13,7 +13,7 @@ docker-compose up
 for latest run
 
 ```bash
-docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock tejajagadeep/docker-compose-movie-container
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie-compose-container tejajagadeep/docker-compose-movie-container
 ```
 
 ## Services links

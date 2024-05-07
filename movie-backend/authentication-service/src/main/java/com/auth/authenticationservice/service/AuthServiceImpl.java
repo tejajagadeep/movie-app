@@ -12,21 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthServiceImpl implements AuthService{
     private  final UserRepository userRepository;
     private  final JwtService jwtService;
-    private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
     @Autowired
-    public AuthServiceImpl(UserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public AuthServiceImpl(UserRepository userRepository, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
-        this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
     }
 
@@ -35,7 +32,7 @@ public class AuthServiceImpl implements AuthService{
     public void register(RegisterRequest registerRequest) {
         var user = User.builder()
                 .username(registerRequest.getUsername())
-                .password(passwordEncoder.encode(registerRequest.getPassword()))
+                .password(registerRequest.getPassword())
                 .role(registerRequest.getRole())
                 .build();
         userRepository.save(user);

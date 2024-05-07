@@ -50,8 +50,6 @@ class AuthServiceImplTest {
     @Test
     void testRegister() {
         RegisterRequest registerRequest = new RegisterRequest("username", "password", Role.MEMBER);
-        when(passwordEncoder.encode(registerRequest.getPassword())).thenReturn("encodedPassword");
-
         authService.register(registerRequest);
 
         verify(userRepository, times(1)).save(any(User.class));
