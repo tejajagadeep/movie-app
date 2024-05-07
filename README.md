@@ -37,7 +37,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 | CONFIG-SERVER  | Server for managing configuration properties            | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/health)             |
 | SWAGGER-SERVER | Server hosting Swagger UI for API documentation         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN         | Distributed tracing system for monitoring microservices | [http://localhost:9411](http://localhost:9411)                                             |
-| Kafka-ui       | Kafka UI for kafka server _host:kafka, port:9092_       | [http://localhost:9090](http://localhost:9090)                                             |
+| Kafka-ui       | Kafka UI for kafka server (_host:kafka,port:9092_)      | [http://localhost:9090](http://localhost:9090)                                             |
 
 ## Flow Diagram
 
