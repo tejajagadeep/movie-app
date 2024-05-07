@@ -8,25 +8,28 @@ networks:
 
 services:
   zookeeper:
-    image: wurstmeister/zookeeper
-    container_name: zookeeper-container
+    image: confluentinc/cp-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - "2181:2181"
+      - 2181:2181
     networks:
       - my-movie-network
-
+  
   kafka:
-    image: wurstmeister/kafka
-    container_name: kafka-container
+    image: confluentinc/cp-kafka
+    depends_on:
+      - zookeeper
     ports:
-      - "9092:9092"
+      - 9092:29092
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9092,OUTSIDE://config-server:9093
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
-      KAFKA_LISTENERS: INSIDE://0.0.0.0:9092,OUTSIDE://0.0.0.0:9093
-      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_CREATE_TOPICS: "baeldung:1:1"
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - my-movie-network
 
@@ -81,7 +84,7 @@ services:
       - spring.kafka.consumer.bootstrap-servers=kafka:9092
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       # - spring.jpa.hibernate.ddl-auto=create
-      - swagger.server.url=http://localhost:8763/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
       - "8090:8090"
     networks:
@@ -115,7 +118,7 @@ services:
       - spring.kafka.producer.bootstrap-servers=kafka:9092
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       # - spring.jpa.hibernate.ddl-auto=create
-      - swagger.server.url=http://localhost:8763/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
       - "8092:8092"
     networks:
@@ -146,7 +149,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
-      - swagger.server.url=http://localhost:8763/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
       - "8081:8081"
     networks:
@@ -173,7 +176,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
-      - swagger.server.url=http://localhost:8763/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
       - "8082:8082"
     networks:
@@ -226,7 +229,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
     ports:
-      - "8763:8769" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
+      - "8769:8769" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
     networks:
       - my-movie-network
     depends_on:
@@ -244,6 +247,6 @@ services:
     image: tejajagadeep/movie-app-angular:latest
     container_name: movie-app-angular
     ports:
-      - "4201:80" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
+      - "4200:80" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
     networks:
       - my-movie-network
