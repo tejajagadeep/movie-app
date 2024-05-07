@@ -2,6 +2,10 @@ version: "3.7"
 
 name: my-movie-project
 
+networks:
+  my-movie-network:
+    driver: bridge
+
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper
@@ -31,6 +35,18 @@ services:
     networks:
       - my-movie-network
 
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui-container
+    environment:
+      - DYNAMIC_CONFIG_ENABLED=true
+    ports:
+      - "9090:8080"
+    depends_on:
+      - kafka
+    networks:
+      - my-movie-network
+        
   mysqldb:
     image: mysql:8.0.36
     container_name: mysql-container
@@ -52,7 +68,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=root1234
     networks:
       - my-movie-network
-      
+
   zipkin-server:
     image: openzipkin/zipkin
     container_name: zipkin-container
@@ -78,15 +94,8 @@ services:
       - "8888:8888"
     networks:
       - my-movie-network
-    depends_on:
-      - eureka-server
     links:
       - eureka-server
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
-      interval: 20s
-      timeout: 10s
-      retries: 10
 
   authentication-service:
     image: tejajagadeep/movie-app-authentication-service:v1.0
@@ -100,12 +109,11 @@ services:
       # - spring.jpa.hibernate.ddl-auto=create
       - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
-      - "8090:8090"
+      - "8090:8090" # if you are changing port change env for swagger-server - springdoc.swagger-ui.urls[0].url=http://localhost:<new-port>/v3/api-docs
     networks:
       - my-movie-network
     depends_on:
       - mysqldb
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -134,12 +142,11 @@ services:
       # - spring.jpa.hibernate.ddl-auto=create
       - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
-      - "8092:8092"
+      - "8092:8092" # if you are changing port change env for swagger-server - springdoc.swagger-ui.urls[1].url=http://localhost:<new-port>/v3/api-docs    
     networks:
       - my-movie-network
     depends_on:
       - mysqldb
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -165,11 +172,10 @@ services:
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       - swagger.server.url=http://localhost:8769/,http://localhost:4200/
     ports:
-      - "8081:8081"
+      - "8081:8081" # if you are changing port change env for swagger-server - springdoc.swagger-ui.urls[2].url=http://localhost:<new-port>/v3/api-docs
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -193,11 +199,10 @@ services:
       - swagger.server.url=http://localhost:8769/,http://localhost:4200/
       - spring.data.mongodb.uri=mongodb://root:root1234@mongodb:27017/wishlistdb?authSource=admin
     ports:
-      - "8082:8082"
+      - "8082:8082" # if you are changing port change env for swagger-server - springdoc.swagger-ui.urls[3].url=http://localhost:<new-port>/v3/api-docs
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
       - mongodb
     links:
@@ -225,7 +230,6 @@ services:
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
     links:
       - eureka-server
@@ -245,12 +249,19 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
+      - springdoc.swagger-ui.urls[0].name=authentication-service
+      - springdoc.swagger-ui.urls[0].url=http://localhost:8090/v3/api-docs
+      - springdoc.swagger-ui.urls[1].name=userprofile-service
+      - springdoc.swagger-ui.urls[1].url=http://localhost:8092/v3/api-docs
+      - springdoc.swagger-ui.urls[2].name=movie-service
+      - springdoc.swagger-ui.urls[2].url=http://localhost:8081/v3/api-docs
+      - springdoc.swagger-ui.urls[3].name=wishlist-service
+      - springdoc.swagger-ui.urls[3].url=http://localhost:8082/v3/api-docs
     ports:
-      - "8769:8769" # if you are changing port change port number: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service to enables cors
+      - "8769:8769" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
     networks:
       - my-movie-network
     depends_on:
-      - eureka-server
       - config-server
     restart: on-failure
     entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/swagger-server-0.0.1-SNAPSHOT.jar"
@@ -264,10 +275,6 @@ services:
     image: tejajagadeep/movie-app-angular:v1.0
     container_name: movie-app-angular
     ports:
-      - "4200:80" # if you are changing port change port number: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service to enable cors
+      - "4200:80" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
     networks:
       - my-movie-network
-
-networks:
-  my-movie-network:
-    driver: bridge
