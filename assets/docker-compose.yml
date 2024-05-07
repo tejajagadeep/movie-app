@@ -42,6 +42,17 @@ services:
     networks:
       - my-movie-network
 
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-container
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root1234
+    networks:
+      - my-movie-network
+      
   zipkin-server:
     image: openzipkin/zipkin
     container_name: zipkin-container
@@ -180,6 +191,7 @@ services:
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       - swagger.server.url=http://localhost:8769/,http://localhost:4200/
+      - spring.data.mongodb.uri=mongodb://root:root1234@mongodb:27017/wishlistdb?authSource=admin
     ports:
       - "8082:8082"
     networks:
@@ -187,9 +199,11 @@ services:
     depends_on:
       - eureka-server
       - config-server
+      - mongodb
     links:
       - eureka-server
       - config-server
+      - mongodb
       - zipkin-server
     restart: on-failure
     entrypoint: sh -c "apk --no-cache add curl && /bin/sh -c 'until curl -sSf http://config-server:8888/actuator/health; do echo \"Waiting for config-server to be healthy...\"; sleep 5; done' && java -jar /usr/src/wishlist-service-0.0.1-SNAPSHOT.jar"
