@@ -41,12 +41,12 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 ## Infrastructure Elements links
 
-| Component | Description      | URL                                               |
-| --------- | ---------------- | ------------------------------------------------- |
-| zookeeper | Apache Zookeeper | [http://ip-address:2182](http://127.0.0.1:2182)   |
-| kafka     | Apache Kafka     | [http://ip-address:9093](http://127.0.0.1:9093)   |
-| mysqldb   | MySQL Database   | [http://ip-address:3307](http://127.0.0.1:3307)   |
-| mongodb   | MongoDB Database | [http://ip-address:27018](http://127.0.0.1:27018) |
+| Component | Description                                              | URL                                               |
+| --------- | -------------------------------------------------------- | ------------------------------------------------- |
+| zookeeper | Distributed coordination service for distributed systems | [http://ip-address:2182](http://127.0.0.1:2182)   |
+| kafka     | Distributed streaming platform                           | [http://ip-address:9093](http://127.0.0.1:9093)   |
+| mysqldb   | Relational database management system (RDBMS)            | [http://ip-address:3307](http://127.0.0.1:3307)   |
+| mongodb   | NoSQL database system                                    | [http://ip-address:27018](http://127.0.0.1:27018) |
 
 **Note:** Consider all service/server names in lowercase for docker-compose host names.
 
