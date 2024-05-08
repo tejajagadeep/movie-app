@@ -8,7 +8,7 @@ on:
       - "assets/advanced/**"
 
 jobs:
-  build_docker_compose_file:
+  build_docker_compose_container:
     runs-on: ubuntu-latest
 
     steps:
