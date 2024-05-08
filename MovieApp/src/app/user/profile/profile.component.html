@@ -43,38 +43,33 @@
                                                 <h6 class="text-muted f-w-400">{{ userProfile.email}}</h6>
                                             </div>
                                         </div>
-                                        <div *ngIf="movies; else noTracks">
-                                            <div *ngIf="movies.length>0; else noTracks">
-                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorites</h6>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Recent</p>
-                                                        <h6 class="text-muted f-w-400">{{movies[movies.length-1].title}}
-                                                            -
-                                                            {{movies[movies.length-1].rating}}</h6>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Total</p>
-                                                        <h6 class="text-muted f-w-400">{{ movies.length}}</h6>
-                                                    </div>
-                                                </div>
+                                        @if (movies && movies.length>0) {
+                                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorites</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Recent</p>
+                                                <h6 class="text-muted f-w-400">{{movies[movies.length-1].title}}
+                                                    -
+                                                    {{movies[movies.length-1].rating}}</h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Total</p>
+                                                <h6 class="text-muted f-w-400">{{ movies.length}}</h6>
                                             </div>
                                         </div>
-
-                                        <ng-template #noTracks>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorites</h6>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Recent</p>
-                                                    <h6 class="text-muted f-w-400">NA</h6>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Total</p>
-                                                    <h6 class="text-muted f-w-400">0</h6>
-                                                </div>
+                                        } @else {
+                                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorites</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Recent</p>
+                                                <h6 class="text-muted f-w-400">NA</h6>
                                             </div>
-                                        </ng-template>
-
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Total</p>
+                                                <h6 class="text-muted f-w-400">0</h6>
+                                            </div>
+                                        </div>
+                                        }
                                     </div>
                                 </div>
                             </div>

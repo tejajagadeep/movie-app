@@ -1,5 +1,7 @@
 # movie-app
 
+microservice based application integrated with imdb movie api
+
 ## Description
 
 This is a Angular (v17.3.4) and Spring Boot (v3.2.4/3.2.5) microservices project, structured around a microservices architecture. It's designed to integrate with the IMDb API to retrieve details about the top 100 movies. This project serves as a comprehensive practice exercise, covering a broad range of technologies commonly used in developing fully-fledged Spring microservices projects, including API gateway implementation, Spring Cloud integration, and more.
