@@ -1,3 +1,5 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
+
 * {
   padding: 0;
   margin: 0;
@@ -12,6 +14,7 @@ nav {
   background: #0082e6;
   height: 80px;
   width: 100%;
+  z-index: 200;
 }
 label.logo {
   color: white;
@@ -63,17 +66,26 @@ a.deactive {
   display: none;
 }
 @media (max-width: 952px) {
+  nav {
+    z-index: 5;
+  }
   label.logo {
     font-size: 30px;
     padding-left: 50px;
+    z-index: 5;
   }
   nav ul li a {
     font-size: 16px;
+    z-index: 5;
   }
 }
 @media (max-width: 858px) {
+  nav {
+    z-index: 5;
+  }
   .checkbtn {
     display: block;
+    z-index: 5;
   }
   ul {
     position: fixed;
@@ -84,29 +96,36 @@ a.deactive {
     left: -100%;
     text-align: center;
     transition: all 0.5s;
+    z-index: 5;
   }
   nav ul li {
     display: block;
     margin: 50px 0;
     line-height: 30px;
+    z-index: 5;
   }
   nav ul li a {
     font-size: 20px;
+    z-index: 5;
   }
   a.active {
     background: none;
     color: #0082e6;
+    z-index: 5;
   }
   a.deactive {
     color: #ff3c3c;
     background: none;
+    z-index: 5;
   }
   a:hover {
     background: none;
     color: #3c53ff;
+    z-index: 5;
   }
   #check:checked ~ ul {
     left: 0;
+    z-index: 5;
   }
 }
 section {

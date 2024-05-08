@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './public/login/login.component';
+import { HomeComponent } from './public/home/home.component';
 import { Top100MoviesComponent } from './movie/top100-movies/top100-movies.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './public/signup/signup.component';
 import { AuthGuard, LoginGuard } from './service/security/auth.guard';
 import { FavoriteListComponent } from './user/favorite-list/favorite-list.component';
 import { ProfileComponent } from './user/profile/profile.component';

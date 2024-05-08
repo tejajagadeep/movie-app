@@ -66,7 +66,7 @@ export class UpdateProfileComponent implements OnInit {
     this.userprofileService.getUserProfile(username).subscribe({
       next: (v) => {
         this.userprofile = v;
-        this.signupForm = this.formBuilder.group({
+        this.signupForm.patchValue({
           firstName: v.firstName,
           lastName: v.lastName,
           email: v.email,
@@ -109,12 +109,14 @@ export class UpdateProfileComponent implements OnInit {
   get phoneNumber() {
     return this.signupForm.get('phoneNumber');
   }
+
   get firstName() {
     return this.signupForm.get('firstName');
   }
   get lastName() {
     return this.signupForm.get('lastName');
   }
+
   get email() {
     return this.signupForm.get('email');
   }

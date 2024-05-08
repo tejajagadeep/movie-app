@@ -1,0 +1,139 @@
+<div class="back">
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+            <form [formGroup]="signupForm" action="#">
+                <div class="user-details">
+
+                    <div class="input-box">
+                        <span for="firstName">First Name:</span>
+                        <div *ngIf="firstName?.touched && firstName?.invalid" class="error-list">
+                            <div *ngIf="firstName?.errors?.['required']">
+                                First Name is required.
+                            </div>
+                        </div>
+
+
+                        <input type="text" id="firstName" formControlName="firstName" maxlength="10"
+                            placeholder="Enter Your First Name">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="lastName">Last Name:</span>
+                        <div class="error-list" *ngIf="lastName?.touched && lastName?.invalid">
+                            <div *ngIf="lastName?.errors?.['required']"> Last Name is required.
+                            </div>
+                        </div>
+                        <input type="text" id="lastName" formControlName="lastName" maxlength="10"
+                            placeholder="Enter Your Last Name">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="dateOfBirth">Date of Birth:</span>
+                        <div class="error-list" *ngIf="dateOfBirth?.touched && dateOfBirth?.invalid">
+                            <div *ngIf="dateOfBirth?.errors?.['required']"> Date of Birth is
+                                required.</div>
+                        </div>
+                        <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="phoneNumber">Phone Number:</span>
+                        <div class="error-list" *ngIf="phoneNumber?.touched && phoneNumber?.invalid">
+                            <div *ngIf="phoneNumber?.errors?.['required']"> phone number is
+                                required.
+                            </div>
+                            <div *ngIf="!phoneNumber?.errors?.['required']">
+                                <div *ngIf="phoneNumber?.errors?.['pattern']"> Phone number should
+                                    contain only 10
+                                    numbers.</div>
+                            </div>
+                        </div>
+                        <input type="text" id="phoneNumber" formControlName="phoneNumber" maxlength="10"
+                            placeholder="Enter Your Phone Number">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="username">Username:</span>
+                        <div class="error-list" *ngIf="username?.touched && username?.invalid">
+                            <div *ngIf="username?.errors?.['required']"> Username is required.</div>
+                            <div *ngIf="!username?.errors?.['required'] && username?.errors?.['minlength']">
+                                Username
+                                should be at least 5 characters
+                                long.
+                            </div>
+                        </div>
+                        <div class="error-list"
+                            *ngIf="signupForm.valid && statusCode===409 && errorMessage.message.includes('Username')">
+                            Username already exists.
+                        </div>
+                        <input type="text" id="username" formControlName="username" maxlength="10"
+                            placeholder="Enter Your Username">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="email">Email:</span>
+                        <div class="error-list" *ngIf="email?.touched && email?.invalid">
+                            <div *ngIf="email?.errors?.['required']"> Email is required.</div>
+                            <div *ngIf="!email?.errors?.['required'] && email?.errors?.['invalidEmail']">
+                                Invalid email
+                                format.
+                            </div>
+                        </div>
+                        <div class="error-list"
+                            *ngIf="signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')">
+                            Email already exists.
+                        </div>
+                        <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="password">Password:</span>
+                        <div class="error-list" *ngIf="password?.touched && password?.invalid">
+                            <div *ngIf="password?.errors?.['required']"> Password is required.</div>
+                            <div *ngIf="!password?.errors?.['required']">
+                                <div *ngIf="password?.errors?.['length']"> Password should be at
+                                    least 8 characters long.
+                                </div>
+                                <div *ngIf="password?.errors?.['number']"> Password should contain
+                                    at
+                                    least 1 number.
+                                </div>
+                                <div *ngIf="password?.errors?.['upper']"> Password should contain at
+                                    least 1 uppercase
+                                    letter.</div>
+                                <div *ngIf="password?.errors?.['lower']"> Password should contain at
+                                    least 1 lowercase
+                                    letter.</div>
+                                <div *ngIf="password?.errors?.['symbol']"> Password should contain
+                                    at
+                                    least 1 symbol.
+                                </div>
+                            </div>
+                        </div>
+                        <input type="password" id="password" formControlName="password"
+                            placeholder="Enter Your Password">
+                    </div>
+
+                    <div class="input-box">
+                        <span for="confirmPassword">Confirm-Password:</span>
+                        <div class="error-list" *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
+                            <div *ngIf="confirmPassword?.errors?.['required']">Password is
+                                required.</div>
+                            <div
+                                *ngIf="!confirmPassword?.errors?.['required'] && confirmPassword?.errors?.['confirmedValidator']">
+                                Passwords do not match.
+                            </div>
+                        </div>
+                        <input type="password" id="confirmPassword" formControlName="confirmPassword"
+                            placeholder="Re-Enter Your Password">
+                    </div>
+
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register" [disabled]="signupForm.invalid" (click)="saveUserProfile()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

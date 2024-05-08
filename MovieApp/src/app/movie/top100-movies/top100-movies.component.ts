@@ -9,6 +9,8 @@ import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { OpenDialogService } from '../../service/component/open-dialog.service';
 import { FooterComponent } from '../../navigation/footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { NoContentComponent } from '../../errors/no-content/no-content.component';
+import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
 
 @Component({
   selector: 'app-top100-movies',
@@ -21,6 +23,8 @@ import { RouterModule } from '@angular/router';
     TopBarComponent,
     FooterComponent,
     RouterModule,
+    NoContentComponent,
+    InternalServerErrorComponent,
   ],
 })
 export class Top100MoviesComponent implements OnInit {
@@ -34,6 +38,7 @@ export class Top100MoviesComponent implements OnInit {
   imdbIds: string[] = [];
   username = localStorage.getItem('username') ?? '';
   isFavorite: boolean = false;
+  statusCode!: number;
 
   ngOnInit(): void {
     this.getTop100Movies();
@@ -62,7 +67,9 @@ export class Top100MoviesComponent implements OnInit {
       next: (v) => {
         this.movieResponse = v;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+      },
       complete: () => {
         console.info('top 100 movies fetched successfully');
       },

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  AsyncValidatorFn,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
@@ -10,10 +9,10 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { UserprofileService } from '../service/data/userprofile.service';
-import { UserProfile } from '../model/UserProfile';
-import { ErrorMessage } from '../model/ErrorMessage';
-import { HttpStatus } from '../model/HttpStatus';
+import { UserprofileService } from '../../service/data/userprofile.service';
+import { UserProfile } from '../../model/UserProfile';
+import { ErrorMessage } from '../../model/ErrorMessage';
+import { HttpStatus } from '../../model/HttpStatus';
 import { Router } from '@angular/router';
 
 @Component({

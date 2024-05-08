@@ -8,9 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthenticationService } from '../service/data/authentication.service';
-import { ErrorMessage } from '../model/ErrorMessage';
-import { AuthenticationRequest } from '../model/AuthenticationRequest';
+import { AuthenticationService } from '../../service/data/authentication.service';
+import { ErrorMessage } from '../../model/ErrorMessage';
+import { AuthenticationRequest } from '../../model/AuthenticationRequest';
 
 @Component({
   selector: 'app-login',

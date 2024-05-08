@@ -17,6 +17,11 @@ export class MovieService {
       `${API_URL}/public/movie/top-100-movies`
     );
   }
+  searchTop100Movies(title: string): Observable<MovieResponse> {
+    return this.http.get<MovieResponse>(
+      `${API_URL}/public/movie/top-100-movies/search/${title}`
+    );
+  }
 
   getMovieById(movieId: string): Observable<MovieDetails> {
     return this.http.get<MovieDetails>(

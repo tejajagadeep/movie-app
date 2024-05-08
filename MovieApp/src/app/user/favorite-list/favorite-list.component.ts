@@ -4,13 +4,22 @@ import { MovieResponse } from '../../model/MovieResponse';
 import { WishlistService } from '../../service/data/wishlist.service';
 import { Movie } from '../../model/Movie';
 import { CommonModule } from '@angular/common';
+import { NotFoundComponent } from '../../errors/not-found/not-found.component';
+import { NoContentComponent } from '../../errors/no-content/no-content.component';
+import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
 
 @Component({
   selector: 'app-favorite-list',
   standalone: true,
   templateUrl: './favorite-list.component.html',
   styleUrl: './favorite-list.component.css',
-  imports: [TopBarComponent, CommonModule],
+  imports: [
+    TopBarComponent,
+    CommonModule,
+    NotFoundComponent,
+    NoContentComponent,
+    InternalServerErrorComponent,
+  ],
 })
 export class FavoriteListComponent implements OnInit {
   constructor(private wishlistService: WishlistService) {}
@@ -18,6 +27,7 @@ export class FavoriteListComponent implements OnInit {
   movies!: Movie[];
   imdbIds: string[] = [];
   username = localStorage.getItem('username') ?? '';
+  statusCode!: number;
 
   ngOnInit(): void {
     this.getWishlist();
@@ -28,7 +38,9 @@ export class FavoriteListComponent implements OnInit {
       next: (v) => {
         this.movies = v.movies;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+      },
       complete: () => {
         console.info('wishlist fetched successfully');
       },
@@ -40,7 +52,9 @@ export class FavoriteListComponent implements OnInit {
       next: (v) => {
         this.movies = v.movies;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e);
+      },
       complete: () => {
         console.info('movie deleted successfully');
       },

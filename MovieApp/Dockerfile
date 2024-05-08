@@ -10,11 +10,13 @@ RUN npm run build
 # Stage 2: Serve Angular application using Nginx
 FROM nginx:alpine
 
+COPY /nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copy built Angular artifacts to Nginx directory
 COPY --from=builder /app/dist/movie-app/browser /usr/share/nginx/html
 
-# Expose port 80 to allow external access
-EXPOSE 80
+# Expose port 4200 to allow external access
+EXPOSE 4200
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]

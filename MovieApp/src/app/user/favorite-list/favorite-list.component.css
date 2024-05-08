@@ -21,6 +21,14 @@ body {
   text-decoration: none;
   padding: 10px;
 }
+h1 {
+  color: black;
+  font-weight: 400;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflow */
+  transition: transform 1s; /* Apply transition to transform property */
+}
 
 .movie_card {
   position: relative;
@@ -165,8 +173,4 @@ body {
     background: linear-gradient(to top, #e5e6e6 50%, transparent 100%);
     display: inline-grid;
   }
-}
-
-.pink {
-  color: rgb(204, 42, 69);
 }

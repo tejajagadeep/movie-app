@@ -276,6 +276,6 @@ services:
     image: tejajagadeep/movie-app-angular:v1.0
     container_name: movie-app-angular
     ports:
-      - "4200:80" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
+      - "4200:4200" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
     networks:
       - my-movie-network

@@ -1,5 +1,5 @@
 <app-top-bar></app-top-bar>
-<div class="all back">
+<div class="back">
     <div class="container">
         <div class="title">Registration</div>
         <div class="content">
@@ -8,56 +8,61 @@
 
                     <div class="input-box">
                         <span for="firstName">First Name:</span>
+                        <div *ngIf="firstName?.touched && firstName?.invalid" class="error-list">
+                            <div *ngIf="firstName?.errors?.['required']">
+                                First Name is required.
+                            </div>
+                        </div>
+
+
                         <input type="text" id="firstName" formControlName="firstName" maxlength="10"
                             placeholder="Enter Your First Name">
-                        <ul *ngIf="firstName?.touched && firstName?.invalid" class="error">
-                            <li *ngIf="firstName?.errors?.['required']"><span>&#8226;</span> First Name is required.
-                            </li>
-                        </ul>
                     </div>
 
                     <div class="input-box">
                         <span for="lastName">Last Name:</span>
+                        <div class="error-list" *ngIf="lastName?.touched && lastName?.invalid">
+                            <div *ngIf="lastName?.errors?.['required']"> Last Name is required.
+                            </div>
+                        </div>
                         <input type="text" id="lastName" formControlName="lastName" maxlength="10"
                             placeholder="Enter Your Last Name">
-                        <ul *ngIf="lastName?.touched && lastName?.invalid" class="error">
-                            <li *ngIf="lastName?.errors?.['required']"><span>&#8226;</span> Last Name is required.</li>
-                        </ul>
                     </div>
 
                     <div class="input-box">
                         <span for="phoneNumber">Phone Number:</span>
+                        <div class="error-list" *ngIf="phoneNumber?.touched && phoneNumber?.invalid">
+                            <div *ngIf="phoneNumber?.errors?.['required']"> phone number is
+                                required.
+                            </div>
+                            <div *ngIf="!phoneNumber?.errors?.['required']">
+                                <div *ngIf="phoneNumber?.errors?.['pattern']"> Phone number should
+                                    contain only 10
+                                    numbers.</div>
+                            </div>
+                        </div>
                         <input type="text" id="phoneNumber" formControlName="phoneNumber" maxlength="10"
                             placeholder="Enter Your Phone Number">
-                        <ul *ngIf="phoneNumber?.touched && phoneNumber?.invalid" class="error">
-                            <li *ngIf="phoneNumber?.errors?.['required']"><span>&#8226;</span> phone number is required.
-                            </li>
-                            <div *ngIf="!phoneNumber?.errors?.['required']">
-                                <li *ngIf="phoneNumber?.errors?.['pattern']"><span>&#8226;</span> Phone number should
-                                    contain only 10
-                                    numbers.</li>
-                            </div>
-                        </ul>
                     </div>
 
                     <div class="input-box">
                         <span for="email">Email:</span>
-                        <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
-                        <ul *ngIf="email?.touched && email?.invalid" class="error">
-                            <li *ngIf="email?.errors?.['required']"><span>&#8226;</span> Email is required.</li>
-                            <li *ngIf="!email?.errors?.['required'] && email?.errors?.['invalidEmail']">
-                                <span>&#8226;</span> Invalid email
+                        <div class="error-list" *ngIf="email?.touched && email?.invalid">
+                            <div *ngIf="email?.errors?.['required']"> Email is required.</div>
+                            <div *ngIf="!email?.errors?.['required'] && email?.errors?.['invalidEmail']">
+                                Invalid email
                                 format.
-                            </li>
-                        </ul>
-                        <div *ngIf="signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')"
-                            class="error">
-                            <span>&#8226;</span> Email already exists.
+                            </div>
                         </div>
+                        <div class="error-list"
+                            *ngIf="signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')">
+                            Email already exists.
+                        </div>
+                        <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
                     </div>
                 </div>
                 <div class="button">
-                    <input type="submit" value="Update" [disabled]="signupForm.invalid" (click)="updateUserProfile()">
+                    <input type="submit" value="Register" [disabled]="signupForm.invalid" (click)="updateUserProfile()">
                 </div>
             </form>
         </div>
