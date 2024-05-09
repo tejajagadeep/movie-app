@@ -108,7 +108,7 @@ services:
       - spring.kafka.consumer.bootstrap-servers=kafka:9093
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       # - spring.jpa.hibernate.ddl-auto=create
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
     ports:
       - "8090:8090" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[0].url=http://localhost:<new-port>/v3/api-docs
     networks:
@@ -141,7 +141,7 @@ services:
       - spring.kafka.producer.bootstrap-servers=kafka:9093
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       # - spring.jpa.hibernate.ddl-auto=create
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
     ports:
       - "8092:8092" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[1].url=http://localhost:<new-port>/v3/api-docs    
     networks:
@@ -171,7 +171,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
     ports:
       - "8081:8081" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[2].url=http://localhost:<new-port>/v3/api-docs
     networks:
@@ -197,7 +197,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/
+      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
       - spring.data.mongodb.uri=mongodb://root:root1234@mongodb:27017/wishlistdb?authSource=admin
     ports:
       - "8082:8082" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[3].url=http://localhost:<new-port>/v3/api-docs
@@ -259,7 +259,7 @@ services:
       - springdoc.swagger-ui.urls[3].name=wishlist-service
       - springdoc.swagger-ui.urls[3].url=http://localhost:8082/v3/api-docs
     ports:
-      - "8769:8769" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
+      - "8769:8769"  # if you are changing port add environment: - swagger.server.url=<previous_env+>,http://localhost:<new-swagger-server-port>/
     networks:
       - my-movie-network
     depends_on:
@@ -276,6 +276,6 @@ services:
     image: tejajagadeep/movie-app-angular:latest
     container_name: movie-app-angular
     ports:
-      - "4201:4200" # if you are changing port add environment: - swagger.server.url=http://localhost:<new-swagger-port>/,http://localhost:<new-movie-app-angular-port>/ to authentication-service, userprofile-service, movie-service, wishlist-service
+      - "4201:4201" # sorry you can't change port for this due to page reload configuration by nginx
     networks:
       - my-movie-network

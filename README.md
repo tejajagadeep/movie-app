@@ -30,7 +30,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 | Service                | Description                                       | URL                                                                                        |
 | ---------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| MOVIE-APP              | Web application for the MovieApp project          | [http://localhost:4200](http://localhost:4200)                                             |
+| MOVIE-APP              | Web application for the MovieApp project          | [http://localhost:4201](http://localhost:4201)                                             |
 | API-GATEWAY            | Gateway for accessing APIs                        | [http://localhost:8765/actuator/info](http://localhost:8765/actuator/info)                 |
 | AUTHENTICATION-SERVICE | Service for user authentication and authorization | [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html) |
 | USERPROFILE-SERVICE    | Service for managing user profiles                | [http://localhost:8092/swagger-ui/index.html](http://localhost:8092/swagger-ui/index.html) |
