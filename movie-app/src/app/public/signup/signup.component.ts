@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
   userprofile!: UserProfile;
   HttpStatus = HttpStatus;
   statusCode!: number;
+  currentDate: string = new Date().toISOString().split('T')[0];
 
   constructor(
     private router: Router,
@@ -57,6 +58,40 @@ export class SignupComponent implements OnInit {
         },
       });
     }
+  }
+
+  OnlyAlbhabets(event: any): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+
+    if (
+      charCode == 32 ||
+      (charCode > 64 && charCode < 91) ||
+      (charCode > 96 && charCode < 123)
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+  OnlyNumbers(event: any): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+
+    if (charCode >= 48 && charCode <= 57) {
+      return true;
+    }
+
+    return false;
+  }
+
+  submitForm() {
+    this.signupForm.get('firstName')?.markAsTouched();
+    this.signupForm.get('lastName')?.markAsTouched();
+    this.signupForm.get('dateOfBirth')?.markAsTouched();
+    this.signupForm.get('phoneNumber')?.markAsTouched();
+    this.signupForm.get('username')?.markAsTouched();
+    this.signupForm.get('email')?.markAsTouched();
+    this.signupForm.get('password')?.markAsTouched();
+    this.signupForm.get('confirmPassword')?.markAsTouched();
   }
 
   formBuilderGroup() {

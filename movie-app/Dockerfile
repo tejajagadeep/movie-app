@@ -15,8 +15,8 @@ COPY /nginx.conf /etc/nginx/conf.d/default.conf
 # Copy built Angular artifacts to Nginx directory
 COPY --from=builder /app/dist/movie-app/browser /usr/share/nginx/html
 
-# Expose port 4201 to allow external access
-EXPOSE 4201
+# Expose port 80 to allow external access
+EXPOSE 80
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]

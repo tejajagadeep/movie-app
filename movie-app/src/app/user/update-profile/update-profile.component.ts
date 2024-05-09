@@ -80,6 +80,34 @@ export class UpdateProfileComponent implements OnInit {
     });
   }
 
+  OnlyAlbhabets(event: any): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+
+    if (
+      charCode == 32 ||
+      (charCode > 64 && charCode < 91) ||
+      (charCode > 96 && charCode < 123)
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+  OnlyNumbers(event: any): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+
+    if (charCode >= 48 && charCode <= 57) {
+      return true;
+    }
+
+    return false;
+  }
+  submitForm() {
+    this.signupForm.get('firstName')?.markAsTouched();
+    this.signupForm.get('lastName')?.markAsTouched();
+    this.signupForm.get('phoneNumber')?.markAsTouched();
+    this.signupForm.get('email')?.markAsTouched();
+  }
   formBuilderGroup() {
     this.signupForm = this.formBuilder.group({
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],

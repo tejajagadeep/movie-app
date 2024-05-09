@@ -45,7 +45,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 | CONFIG-SERVER  | Server for managing configuration properties            | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/health)             |
 | SWAGGER-SERVER | Server hosting Swagger UI for API documentation         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
 | ZIPKIN-SERVER  | Distributed tracing system for monitoring microservices | [http://localhost:9411](http://localhost:9411)                                             |
-| KAFKA-UI       | Kafka UI for kafka server (_host:kafka,port:9093_)      | [http://localhost:9090](http://localhost:9090)                                             |
+| KAFKA-UI       | Kafka UI for kafka server (_host:`kafka`,port:`9093`_)  | [http://localhost:9090](http://localhost:9090)                                             |
 
 ## Infrastructure Elements
 
@@ -71,6 +71,5 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 - **API Gateway:** This Service acts as the entry point of the system. It intercepts all the requests and validates the JWT Token before routing it to the appropriate microservices.
 - **Eureka Server:** This Service acts as a service registry where all the other microservices registers during startup for discoverability.
 - **Config Server:** This Service acts as a centralized location to store the configuration of the other microservices of the system.
-- **Swagger Server:** This Service acts as a documentation for all the other core microservices.
 
 [Redirect to assets/documents to find detailed overview pdf](assets/documents/MovieApp.pdf)

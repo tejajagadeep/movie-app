@@ -1,70 +1,95 @@
 <app-top-bar></app-top-bar>
-<div class="back">
+<section class="back">
     <div class="container">
-        <div class="title">Update Profile</div>
+        <div class="title">Registration</div>
         <div class="content">
             <form [formGroup]="signupForm" action="#">
                 <div class="user-details">
 
-                    <div class="input-box">
+                    <article class="input-box">
                         <span for="firstName">First Name:</span>
-                        <div *ngIf="firstName?.touched && firstName?.invalid" class="error-list">
-                            <div *ngIf="firstName?.errors?.['required']">
-                                First Name is required.
+                        @if (firstName?.touched && firstName?.invalid) {
+                        <div class="error-list">
+                            @if (firstName?.errors?.['required']) {
+                            <div>
+                                (First Name is required)
                             </div>
+                            }
                         </div>
-
-
+                        }
                         <input type="text" id="firstName" formControlName="firstName" maxlength="10"
-                            placeholder="Enter Your First Name">
-                    </div>
+                            placeholder="Enter Your First Name" (keypress)="OnlyAlbhabets($event)">
+                    </article>
 
-                    <div class="input-box">
+                    <article class="input-box">
                         <span for="lastName">Last Name:</span>
-                        <div class="error-list" *ngIf="lastName?.touched && lastName?.invalid">
-                            <div *ngIf="lastName?.errors?.['required']"> Last Name is required.
+                        @if (lastName?.touched && lastName?.invalid) {
+                        <div class="error-list">
+                            @if (lastName?.errors?.['required']) {
+                            <div> (Last Name is required)
                             </div>
+                            }
                         </div>
+                        }
                         <input type="text" id="lastName" formControlName="lastName" maxlength="10"
-                            placeholder="Enter Your Last Name">
-                    </div>
+                            placeholder="Enter Your Last Name" (keypress)="OnlyAlbhabets($event)">
+                    </article>
 
-                    <div class="input-box">
+                    <article class="input-box">
                         <span for="phoneNumber">Phone Number:</span>
-                        <div class="error-list" *ngIf="phoneNumber?.touched && phoneNumber?.invalid">
-                            <div *ngIf="phoneNumber?.errors?.['required']"> phone number is
-                                required.
+                        @if (phoneNumber?.touched && phoneNumber?.invalid) {
+                        <div class="error-list">
+                            @if (phoneNumber?.errors?.['required']) {
+                            <div> (phone number is
+                                required)
                             </div>
-                            <div *ngIf="!phoneNumber?.errors?.['required']">
-                                <div *ngIf="phoneNumber?.errors?.['pattern']"> Phone number should
+                            } @else {
+                            <div>
+                                @if (phoneNumber?.errors?.['pattern']) {
+                                <div> (Phone number should
                                     contain only 10
-                                    numbers.</div>
+                                    numbers)</div>
+                                }
                             </div>
+                            }
                         </div>
+                        }
                         <input type="text" id="phoneNumber" formControlName="phoneNumber" maxlength="10"
-                            placeholder="Enter Your Phone Number">
-                    </div>
+                            placeholder="Enter Your Phone Number" (keypress)="OnlyNumbers($event)">
+                    </article>
 
-                    <div class="input-box">
+                    <article class="input-box">
                         <span for="email">Email:</span>
-                        <div class="error-list" *ngIf="email?.touched && email?.invalid">
-                            <div *ngIf="email?.errors?.['required']"> Email is required.</div>
-                            <div *ngIf="!email?.errors?.['required'] && email?.errors?.['invalidEmail']">
-                                Invalid email
-                                format.
+                        @if (email?.touched && email?.invalid) {
+                        <div class="error-list">
+                            @if (email?.errors?.['required']) {
+                            <div> (Email is required)</div>
+                            } @else {
+                            @if (email?.errors?.['invalidEmail']) {
+                            <div>
+                                (Invalid email
+                                format)
                             </div>
+                            }
+                            }
                         </div>
-                        <div class="error-list"
-                            *ngIf="signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')">
-                            Email already exists.
+                        }
+                        @if (signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')) {
+                        <div class="error-list">
+                            (Email already exists)
                         </div>
+                        }
                         <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
-                    </div>
+                    </article>
+
                 </div>
                 <div class="button">
-                    <input type="submit" value="Update" [disabled]="signupForm.invalid" (click)="updateUserProfile()">
+                    @if (signupForm.invalid) {<input type="submit" value="Complete Registration" (click)="submitForm()"
+                        title="fill all the required fields">}
+                    @else {<input type="submit" value="Register" [disabled]="signupForm.invalid"
+                        (click)="updateUserProfile()">}
                 </div>
             </form>
         </div>
     </div>
-</div>
+</section>

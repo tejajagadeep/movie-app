@@ -276,6 +276,6 @@ services:
     image: tejajagadeep/movie-app-angular:latest
     container_name: movie-app-angular
     ports:
-      - "4201:4201" # sorry you can't change port for this due to page reload configuration by nginx
+      - "4201:80" # sorry you can't change port for this due to page reload configuration by nginx
     networks:
       - my-movie-network
