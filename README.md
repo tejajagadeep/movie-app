@@ -4,11 +4,13 @@ microservice based application integrated with imdb movie api
 
 ## Description
 
-This is a Angular (v17.3.4) and Spring Boot (v3.2.4/3.2.5) microservices project, structured around a microservices architecture. It's designed to integrate with the IMDb API to retrieve details about the top 100 movies. This project serves as a comprehensive practice exercise, covering a broad range of technologies commonly used in developing fully-fledged Spring microservices projects, including API gateway implementation, Spring Cloud integration, and more.
+This is a Angular (v17.3.4) and Spring Boot (v3.2.4/3.2.5) project, structured around a microservices architecture. It's designed to integrate with the IMDb API to retrieve details about the top 100 movies. This project serves as a comprehensive practice exercise, covering a broad range of technologies commonly used in developing fully-fledged Spring microservices projects, including API gateway implementation, Spring Cloud integration, and more.
 
 Furthermore, the project includes a CI/CD pipeline managed through GitHub. Continuous Integration (CI) is handled through GitHub Actions, enabling automated testing and validation of code changes as they are pushed to the repository. For Continuous Deployment (CD), Docker is utilized for containerization, ensuring consistent deployment across environments, and a workflow is established for deploying to Amazon EC2 instances.
 
 ## running application on docker
+
+**Prerequisites:** Docker and Docker Compose are required.
 
 ```bash
 docker-compose up
@@ -62,12 +64,13 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 ## The responsibilities of the microservices in the above figure are as follows:
 
-- User Profile Service: This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
-- Authentication Service: This Service is responsible for consuming user credential from the message bus and storing it in the database. When a user logs in, this service validates the login credentials against the credentials stored in the database. If the credentials matches, this service generates a JWT token and sends back as response, else an error message is sent.
-- Movie Service: This Service is responsible for accessing an external movie API to fetch top 100 movies and returning back as response.
-- Wishlist Service: This Service is responsible for storing movies bookmarked by users in the database.
-- API Gateway: This Service acts as the entry point of the system. It intercepts all the requests and validates the JWT Token before routing it to the appropriate microservices.
-- Eureka Server: This Service acts as a service registry where all the other microservices registers during startup for discoverability.
-- Config Server: This Service acts as
+- **User Profile Service:** This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
+- **Authentication Service:** This Service is responsible for consuming user credential from the message bus and storing it in the database. When a user logs in, this service validates the login credentials against the credentials stored in the database. If the credentials matches, this service generates a JWT token and sends back as response, else an error message is sent.
+- **Movie Service:** This Service is responsible for accessing an external movie API to fetch top 100 movies and returning back as response.
+- **Wishlist Service:** This Service is responsible for storing movies bookmarked by users in the database.
+- **API Gateway:** This Service acts as the entry point of the system. It intercepts all the requests and validates the JWT Token before routing it to the appropriate microservices.
+- **Eureka Server:** This Service acts as a service registry where all the other microservices registers during startup for discoverability.
+- **Config Server:** This Service acts as a centralized location to store the configuration of the other microservices of the system.
+- **Swagger Server:** This Service acts as a documentation for all the other core microservices.
 
 [Redirect to assets/documents to find detailed overview pdf](assets/documents/MovieApp.pdf)

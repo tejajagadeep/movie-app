@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "MovieApp/**"
+      - "movie-app/**"
 
 jobs:
   build_movie_app:
@@ -22,17 +22,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd MovieApp
+          cd movie-app
           npm install
 
       - name: Build Angular app
         run: |
-          cd MovieApp
+          cd movie-app
           npm run build --prod
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/movie-app-angular:latest MovieApp
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/movie-app-angular:latest movie-app
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:

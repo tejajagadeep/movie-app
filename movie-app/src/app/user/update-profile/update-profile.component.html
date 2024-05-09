@@ -1,7 +1,7 @@
 <app-top-bar></app-top-bar>
 <div class="back">
     <div class="container">
-        <div class="title">Registration</div>
+        <div class="title">Update Profile</div>
         <div class="content">
             <form [formGroup]="signupForm" action="#">
                 <div class="user-details">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="button">
-                    <input type="submit" value="Register" [disabled]="signupForm.invalid" (click)="updateUserProfile()">
+                    <input type="submit" value="Update" [disabled]="signupForm.invalid" (click)="updateUserProfile()">
                 </div>
             </form>
         </div>
