@@ -17,6 +17,7 @@ import java.io.*;
 import java.net.URI;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.http.HttpHeaders;
@@ -63,7 +64,7 @@ public class MovieServiceImpl implements MovieService{
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMoviesSearchBreakCircuit")
     @Observed(name = "top.movies.search")
     public Response topMoviesSearch(String search) {
-        ResponseEntity<List<Movie>> responseEntity = restTemplate.exchange(response(""), new ParameterizedTypeReference<List<Movie>>() {});
+        ResponseEntity<List<Movie>> responseEntity = restTemplate.exchange(response(""), new ParameterizedTypeReference<>() {});
 
         // Extract the body from the response entity
         List<Movie> movies = Optional.ofNullable(responseEntity.getBody()).orElse(Collections.emptyList());
@@ -77,6 +78,31 @@ public class MovieServiceImpl implements MovieService{
             return title != null && title.toLowerCase().contains(search.toLowerCase());
         }).toList());
 
+        return response;
+    }
+
+    @Override
+    @Observed(name = "top.movies.by.genre")
+    @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "topMoviesByGenreBreakCircuit")
+    public Response topMoviesByGenre(String genre) {
+        ResponseEntity<List<Movie>> responseEntity = restTemplate.exchange(response(""), new ParameterizedTypeReference<>() {});
+
+        // Extract the body from the response entity
+        List<Movie> movies = Optional.ofNullable(responseEntity.getBody()).orElse(Collections.emptyList());
+
+        // Create a new Response object
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(
+                movies.stream()
+                        .filter(s -> {
+                            List<String> genres = s.getGenre();
+                            return genres != null && genres.stream()
+                                    .anyMatch(g -> g != null && g.equalsIgnoreCase(genre));
+                        })
+                        .toList()
+        );
         return response;
     }
 
@@ -109,6 +135,28 @@ public class MovieServiceImpl implements MovieService{
         response.setData(response.getData().stream().filter(s->s.getTitle().toLowerCase().contains(search.toLowerCase())).toList());
         return response;
     }
+
+    public Response topMoviesByGenreBreakCircuit(String genre, Throwable throwable) throws IOException {
+        Exception e = new IOException();
+        log.error("fall back method called for topMoviesByGenre with error {}", throwable.getMessage());
+        Response response = getAllMoviesBreakCircuit(e);
+        List<String> allGenres = response.getData().stream()
+                .flatMap(movie -> movie.getGenre().stream()) // Flatten the stream of genres
+                .filter(Objects::nonNull) // Filter out null genres
+                .distinct()
+                .toList(); // Collect the result into a list
+
+
+        log.info("gnere as"+ allGenres);
+        response.setData(response.getData().stream().filter(s -> {
+            List<String> genres = s.getGenre();
+            return genres != null && genres.stream()
+                    .anyMatch(g -> g != null && g.equalsIgnoreCase(genre));
+        }).toList());
+        return response;
+    }
+
+
     public Response getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = null;

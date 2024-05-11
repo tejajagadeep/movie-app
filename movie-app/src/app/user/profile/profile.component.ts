@@ -3,7 +3,7 @@ import { FooterComponent } from '../../navigation/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { UserProfile } from '../../model/UserProfile';
 import { UserprofileService } from '../../service/data/userprofile.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { WishlistService } from '../../service/data/wishlist.service';
 import { Movie } from '../../model/Movie';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
@@ -25,10 +25,12 @@ import { NotFoundComponent } from '../../errors/not-found/not-found.component';
 export class ProfileComponent implements OnInit {
   userProfile!: UserProfile;
   movies!: Movie[];
+  statusCode!: number;
 
   constructor(
     private userService: UserprofileService,
-    private wishlists: WishlistService
+    private wishlists: WishlistService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.users();
@@ -41,7 +43,15 @@ export class ProfileComponent implements OnInit {
       next: (v) => {
         this.userProfile = v;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.log(e);
+        this.statusCode = e.status;
+        if (this.statusCode === 400 || this.statusCode === 401) {
+          console.error(e), localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          this.router.navigate(['/login']);
+        }
+      },
       complete: () => {
         console.info('user profile fetched successfully');
       },
@@ -54,7 +64,14 @@ export class ProfileComponent implements OnInit {
       next: (v) => {
         this.movies = v.movies;
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 400 || this.statusCode === 401) {
+          console.error(e), localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          this.router.navigate(['/login']);
+        }
+      },
       complete: () => {
         console.info('wishlist fetched successfully');
       },

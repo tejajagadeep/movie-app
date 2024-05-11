@@ -10,15 +10,23 @@ import { RouterModule } from '@angular/router';
 })
 export class TopBarComponent implements OnInit {
   username!: string;
+  isLoggedIn = false;
 
   ngOnInit(): void {
     const storedUsername = localStorage.getItem('username');
+    const storedToken = localStorage.getItem('token');
     if (
       storedUsername !== null &&
       storedUsername !== undefined &&
-      storedUsername !== 'undefined'
+      storedUsername !== 'undefined' &&
+      storedToken !== null &&
+      storedToken !== undefined &&
+      storedToken !== 'undefined'
     ) {
       this.username = storedUsername;
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
     }
   }
   logout() {

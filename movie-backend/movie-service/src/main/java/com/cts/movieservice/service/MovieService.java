@@ -14,4 +14,6 @@ public interface MovieService {
     MovieDetails topMoviesById(String id);
 
     Response topMoviesSearch(String search);
+
+    Response topMoviesByGenre(String genre);
 }

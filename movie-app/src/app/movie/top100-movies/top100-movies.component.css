@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -8,7 +8,7 @@ body {
   background-color: rgb(22, 20, 24);
   color: #eee;
   user-select: none;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -130,11 +130,11 @@ code {
     box-shadow: 0 7px 50px 10px #000000aa;
     transform: scale(1.015);
     filter: brightness(1.3);
-    ::before {
+    /* ::before {
       filter: brightness(0.5);
       top: -100%;
       left: 200%;
-    }
+    } */
   }
 }
 
@@ -167,7 +167,7 @@ h2 {
 
 .fa-icon {
   position: absolute;
-  top: 10px; /* Adjust the top position as needed */
+  top: 10px;
   right: 10px;
   cursor: pointer; /* Adjust the right position as needed */
 }
@@ -178,6 +178,28 @@ h2 {
 }
 .rank {
   position: absolute;
-  top: 10px; /* Adjust the top position as needed */
+  top: 5px;
   left: 10px;
+  display: inline-block;
+  color: white; /* Text color */
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black; /* Creating black fill */
+  padding: 4px; /* Adjust padding as needed */
+  border-radius: 4px;
+  font-size: 24px;
+}
+
+.more {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.419);
+  border-radius: 50%; /* Make it circular */
+  width: 27px; /* Adjust width and height for your needs */
+  height: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

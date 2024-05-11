@@ -5,9 +5,13 @@
     </label>
     <label class="logo">MovieApp</label>
     <ul>
-        <li><a class="active" [routerLink]="['/home']">Home</a></li>
+        <li><a [routerLink]="['/home']">Home</a></li>
+        @if (isLoggedIn) {
         <li><a [routerLink]="['/favorite']">Favorite</a></li>
         <li><a [routerLink]="['/profile']">{{username}}</a></li>
         <li><a class="deactive" [routerLink]="['/login']" (click)="logout()">Logout</a></li>
+        } @else{
+        <li><a class="active" [routerLink]="['/login']">Login</a></li>
+        }
     </ul>
 </nav>

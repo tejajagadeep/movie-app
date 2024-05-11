@@ -14,13 +14,20 @@ import { UserProfile } from '../../model/UserProfile';
 import { ErrorMessage } from '../../model/ErrorMessage';
 import { HttpStatus } from '../../model/HttpStatus';
 import { Router } from '@angular/router';
+import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
+import { FooterComponent } from '../../navigation/footer/footer.component';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    TopBarComponent,
+    FooterComponent,
+  ],
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;

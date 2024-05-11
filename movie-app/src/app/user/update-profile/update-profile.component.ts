@@ -13,13 +13,19 @@ import { UserprofileService } from '../../service/data/userprofile.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
+import { FooterComponent } from '../../navigation/footer/footer.component';
 
 @Component({
   selector: 'app-update-profile',
   standalone: true,
   templateUrl: './update-profile.component.html',
   styleUrl: './update-profile.component.css',
-  imports: [ReactiveFormsModule, CommonModule, TopBarComponent],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    TopBarComponent,
+    FooterComponent,
+  ],
 })
 export class UpdateProfileComponent implements OnInit {
   updateForm!: FormGroup;
@@ -49,9 +55,12 @@ export class UpdateProfileComponent implements OnInit {
             console.log(v);
           },
           error: (e) => {
-            this.errorMessage = e.error;
-            this.statusCode = e.status;
-            console.error(this.errorMessage.status);
+            console.error(e), (this.statusCode = e.status);
+            if (this.statusCode === 400 || this.statusCode === 401) {
+              console.error(e), localStorage.removeItem('token');
+              localStorage.removeItem('username');
+              this.router.navigate(['/login']);
+            }
           },
           complete: () => {
             console.info('User Details saved successfully');
@@ -73,7 +82,14 @@ export class UpdateProfileComponent implements OnInit {
           phoneNumber: v.phoneNumber,
         });
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 400 || this.statusCode === 401) {
+          console.error(e), localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          this.router.navigate(['/login']);
+        }
+      },
       complete: () => {
         console.info('user profile fetched successfully');
       },

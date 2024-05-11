@@ -4,7 +4,9 @@
 }
 @else if (movieResponse.data.length>0) {
 <div class="container">
+
     @for (movie of movieResponse.data; track $index) { <div class="nft">
+
         <div class='main'>
             <div class="image-container">
                 <img class="tokenImage" [src]="movie.image" alt="NFT" />
@@ -33,6 +35,9 @@
                     </svg>
 
                 </i>
+                <a class="more" title="Redirect to IMDB for more details" (click)="moreDetails(movie.imdb_link)">
+                    <span class="material-icons">&#xe89e;</span>
+                </a>
                 <i class="rank">{{movie.rank}}</i>
 
             </div>

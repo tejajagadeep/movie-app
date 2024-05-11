@@ -8,7 +8,7 @@ import { WishlistService } from '../../service/data/wishlist.service';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { OpenDialogService } from '../../service/component/open-dialog.service';
 import { FooterComponent } from '../../navigation/footer/footer.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NoContentComponent } from '../../errors/no-content/no-content.component';
 import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,7 +33,8 @@ export class Top100MoviesComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private wishlistService: WishlistService,
-    private openDialog: OpenDialogService
+    private openDialog: OpenDialogService,
+    private router: Router
   ) {}
 
   movieResponse: MovieResponse = new MovieResponse();
@@ -85,13 +86,24 @@ export class Top100MoviesComponent implements OnInit {
           this.imdbIds.push(movie.imdbid);
         });
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 400 || this.statusCode === 401) {
+          console.error(e), localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          this.router.navigate(['/login']);
+        }
+      },
       complete: () => {
         console.info('wishlist fetched successfully');
       },
     });
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+  }
   saveWishlist(movie: Movie) {
     console.log(this.username);
     this.wishlistService.saveWishlist(this.username, movie).subscribe({
@@ -101,7 +113,14 @@ export class Top100MoviesComponent implements OnInit {
           this.imdbIds.push(movie.imdbid);
         });
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 400 || this.statusCode === 401) {
+          console.error(e), localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          this.router.navigate(['/login']);
+        }
+      },
       complete: () => {
         console.info('movie saved successfully');
       },
@@ -116,7 +135,14 @@ export class Top100MoviesComponent implements OnInit {
           this.imdbIds.push(movie.imdbid);
         });
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 400 || this.statusCode === 401) {
+          console.error(e), localStorage.removeItem('token');
+          localStorage.removeItem('username');
+          this.router.navigate(['/login']);
+        }
+      },
       complete: () => {
         console.info('movie deleted successfully');
       },

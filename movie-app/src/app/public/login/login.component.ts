@@ -11,13 +11,21 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../service/data/authentication.service';
 import { ErrorMessage } from '../../model/ErrorMessage';
 import { AuthenticationRequest } from '../../model/AuthenticationRequest';
+import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
+import { FooterComponent } from '../../navigation/footer/footer.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    TopBarComponent,
+    FooterComponent,
+  ],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
