@@ -16,5 +16,11 @@ WORKDIR /app
 # Copy your Docker Compose files
 COPY docker-compose.yml /app/docker-compose.yml
 
+# Copy the entrypoint script
+COPY entrypoint.sh /app/entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x /app/entrypoint.sh
+
 # Default command
-CMD sh -c "docker-compose pull && docker-compose up"
+CMD ["/bin/sh", "/app/entrypoint.sh"]
