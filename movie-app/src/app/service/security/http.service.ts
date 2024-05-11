@@ -17,8 +17,15 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  let token = localStorage.getItem('token');
-
+  let token = '';
+  const storedToken = localStorage.getItem('token');
+  if (
+    storedToken !== null &&
+    storedToken !== undefined &&
+    storedToken !== 'undefined'
+  ) {
+    token = storedToken;
+  }
   const authReq = req.clone({
     setHeaders: {
       Authorization: `Bearer ${token}`,

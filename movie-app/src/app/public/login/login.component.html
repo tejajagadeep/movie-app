@@ -26,36 +26,48 @@
                         <div class="title">Login</div>
                         <form action="#" [formGroup]="loginForm">
                             <div class="input-boxes">
-                                <div class="input-box">
-                                    <i class="fas fa-envelope"></i>
-                                    <input type="text" id="username" formControlName="username" maxlength="10"
-                                        placeholder="Enter your username">
-                                    <ul *ngIf="username?.touched && username?.invalid" class="error">
-                                        <li *ngIf="username?.errors?.['required']"><span>&#8226;</span> Username is
-                                            required.</li>
-                                        <li *ngIf="!username?.errors?.['required'] && username?.errors?.['minlength']">
-                                            <span>&#8226;</span> Username is not valid.
-                                        </li>
+                                <div class="input-container">
+                                    <div class="input-box">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="text" id="username" formControlName="username" maxlength="10"
+                                            placeholder="Enter your username">
+                                    </div>
+                                    @if (username?.touched && username?.invalid) {<ul class="error-list">
+                                        @if (username?.errors?.['required']) {<li>Username is required</li>}
+                                        @else if (username?.errors?.['minlength']){<li>
+                                            Username is not valid</li>}
                                     </ul>
-                                    <ul *ngIf="loginForm.valid && statusCode === 404" class="error">
-                                        <li><span>&#8226;</span> Username does not exist.</li>
-                                    </ul>
+                                    }
+                                    @if (loginForm.valid && statusCode === 404) {<ul class="error-list">
+                                        <li>Username does not exist</li>
+                                    </ul>}
+
                                 </div>
-                                <div class="input-box">
-                                    <i class="fas fa-lock"></i>
-                                    <input type="password" id="password" formControlName="password"
-                                        placeholder="Enter your email">
-                                    <ul *ngIf="password?.touched && password?.invalid" class="error">
-                                        <li *ngIf="password?.errors?.['required']"><span>&#8226;</span> Password is
-                                            required.</li>
-                                        <li
-                                            *ngIf="!username?.errors?.['required'] && password?.errors?.['pattern'] || password?.errors?.['minLength']">
-                                            <span>&#8226;</span> Password is not valid.
-                                        </li>
-                                    </ul>
-                                    <ul *ngIf="loginForm.valid && statusCode === 401" class="error">
-                                        <li><span>&#8226;</span> incorrect password.</li>
-                                    </ul>
+                                <div class="input-container">
+                                    <div class="input-box">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="password" formControlName="password"
+                                            placeholder="Enter your email">
+                                        @if (password?.touched && password?.invalid) {
+                                        <ul class="error-list">
+                                            @if (password?.errors?.['required']) {<li> Password is
+                                                required</li>
+                                            } @else if (password?.errors?.['pattern'] ||
+                                            password?.errors?.['minLength']) {
+                                            <li>
+                                                Password is not valid
+                                            </li>
+                                            }
+
+                                        </ul>
+                                        }
+                                        @if (loginForm.valid && statusCode === 401) {
+                                        <ul class="error-list">
+                                            <li>incorrect password</li>
+                                        </ul>
+                                        }
+
+                                    </div>
                                 </div>
                                 <!-- <div class="text"><a href="#">Forgot password?</a></div> -->
                                 <div class="button input-box">

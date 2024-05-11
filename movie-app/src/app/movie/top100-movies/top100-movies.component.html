@@ -1,44 +1,66 @@
-<app-top-bar></app-top-bar>
 @if (movieResponse.data) {
 @if (movieResponse.data.length===0) {
 <app-no-content></app-no-content>
 }
 @else if (movieResponse.data.length>0) {
-@for(movie of movieResponse.data; track $index){
-<div class="movie_card" id="bright">
-    <div class="info_section">
-        <div class="movie_header">
-            <img class="locandina" [src]="movie.image" />
-            <h1 [title]="movie.title">{{movie.title}}</h1>
-            <h4> {{movie.year}}</h4>
-            <span class="minutes">{{movie.rating}}</span>
-            @for(g of movie.genre; track $index) {
-            <p class="type">{{g}}</p>
-            }
-        </div>
-        <div class="movie_desc">
-            <p class="text">
-                {{movie.description}}
-            </p>
-        </div>
-        <div class="movie_social">
-            <ul>
-                <li><i class="material-icons" [routerLink]="['/movie-details',movie.id]" title="play trailer">play</i>
-                </li>
-                @if (imdbIds.includes(movie.imdbid)) {<li><i (click)="delete(movie.imdbid)" class="material-icons pink"
-                        title="remove from favorites">favorite</i></li>
-                } @else {
-                <li><i class="material-icons" (click)="saveWishlist(movie)" title="add to favorites">favorite</i>
-                </li>
-                }
-                <li><i class="material-icons" (click)="moreDetails(movie.imdb_link)"
-                        title="redirect to Imdb to get more details">more</i></li>
-            </ul>
+<div class="container">
+    @for (movie of movieResponse.data; track $index) { <div class="nft">
+        <div class='main'>
+            <div class="image-container">
+                <img class="tokenImage" [src]="movie.image" alt="NFT" />
+                <i class="fas fa-icon">
+                    <svg height="24" version="1.1" width="24" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                        <g transform="translate(0 -1028.4)">
+                            <!-- Outline Path -->
+                            <path
+                                d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
+                                fill="none" stroke="white" stroke-width="1.5" />
+
+                            <!-- Main Path -->
+                            @if (imdbIds.includes(movie.imdbid)) {
+                            <path (click)="delete(movie.imdbid)"
+                                d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
+                                fill="#c0392b" />
+                            }@else {
+                            <path (click)="saveWishlist(movie)"
+                                d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
+                                fill="#353535aa" />
+
+                            }
+                        </g>
+                    </svg>
+
+                </i>
+                <i class="rank">{{movie.rank}}</i>
+
+            </div>
+
+            <h2 [title]="movie.title">{{movie.title}}</h2>
+            <p class='description'>{{movie.description}}</p>
+            <div class='tokenInfo'>
+                <div class="price">
+                    <ins><span class="material-icons">&#xe838;</span></ins>
+                    <p>{{movie.rating}}</p>
+                </div>
+                <div class="duration">
+                    <ins>◷</ins>
+                    <p>{{movie.year}}</p>
+                </div>
+            </div>
+            <hr />
+            <div class='creator'>
+                <div class='wrapper'>
+                    <img [src]="movie.image" alt="Creator" />
+                </div>
+                <p>@for (g of movie.genre; track $index) {
+                <div class="type">{{g}}</div> }</p>
+            </div>
         </div>
     </div>
-    <div class="blur_back bright_back" [style.background-image]="'url(' + movie.image + ')'"></div>
+    }
 </div>
-}
 }
 }
 @else {

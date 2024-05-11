@@ -4,14 +4,13 @@
         <div class="content">
             <form [formGroup]="signupForm" action="#">
                 <div class="user-details">
-
                     <article class="input-box">
                         <span for="firstName">First Name:</span>
                         @if (firstName?.touched && firstName?.invalid) {
                         <div class="error-list">
                             @if (firstName?.errors?.['required']) {
                             <div>
-                                (First Name is required)
+                                First Name is required
                             </div>
                             }
                         </div>
@@ -19,13 +18,12 @@
                         <input type="text" id="firstName" formControlName="firstName" maxlength="10"
                             placeholder="Enter Your First Name" (keypress)="OnlyAlbhabets($event)">
                     </article>
-
                     <article class="input-box">
                         <span for="lastName">Last Name:</span>
                         @if (lastName?.touched && lastName?.invalid) {
                         <div class="error-list">
                             @if (lastName?.errors?.['required']) {
-                            <div> (Last Name is required)
+                            <div> Last Name is required
                             </div>
                             }
                         </div>
@@ -39,8 +37,8 @@
                         @if (dateOfBirth?.touched && dateOfBirth?.invalid) {
                         <div class="error-list">
                             @if (dateOfBirth?.errors?.['required']) {
-                            <div> (Date of Birth is
-                                required)</div>
+                            <div> Date of Birth is
+                                required</div>
                             }
                         </div>
                         }
@@ -52,15 +50,15 @@
                         @if (phoneNumber?.touched && phoneNumber?.invalid) {
                         <div class="error-list">
                             @if (phoneNumber?.errors?.['required']) {
-                            <div> (phone number is
-                                required)
+                            <div> phone number is
+                                required
                             </div>
                             } @else {
                             <div>
                                 @if (phoneNumber?.errors?.['pattern']) {
-                                <div> (Phone number should
+                                <div> Phone number should
                                     contain only 10
-                                    numbers)</div>
+                                    numbers</div>
                                 }
                             </div>
                             }
@@ -75,11 +73,11 @@
                         @if (username?.touched && username?.invalid) {
                         <div class="error-list">
                             @if (username?.errors?.['required']) {
-                            <div> (Username is required)</div>
+                            <div> Username is required</div>
                             } @else {
                             @if (username?.errors?.['minlength']) {
                             <div>
-                                (Username should be at least 5 characters long)
+                                Username should be at least 5 characters long
                             </div>
                             }
                             }
@@ -87,7 +85,7 @@
                         }
                         @if (signupForm.valid && statusCode===409 && errorMessage.message.includes('Username')) {
                         <div class="error-list">
-                            (Username already exists)
+                            Username already exists
                         </div>
                         }
                         <input type="text" id="username" formControlName="username" maxlength="10"
@@ -99,12 +97,12 @@
                         @if (email?.touched && email?.invalid) {
                         <div class="error-list">
                             @if (email?.errors?.['required']) {
-                            <div> (Email is required)</div>
+                            <div> Email is required</div>
                             } @else {
                             @if (email?.errors?.['invalidEmail']) {
                             <div>
-                                (Invalid email
-                                format)
+                                Invalid email
+                                format
                             </div>
                             }
                             }
@@ -112,7 +110,7 @@
                         }
                         @if (signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')) {
                         <div class="error-list">
-                            (Email already exists)
+                            Email already exists
                         </div>
                         }
                         <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
@@ -123,29 +121,29 @@
                         @if (password?.touched && password?.invalid) {
                         <div class="error-list">
                             @if (password?.errors?.['required']) {
-                            <div> (Password is required)</div>
+                            <div> Password is required</div>
                             } @else {
                             @if (password?.errors?.['length']) {<div> Password should be at
-                                (least 8 characters long)
+                                least 8 characters long
                             </div>
                             } @else if (password?.errors?.['number']) {
-                            <div> (Password should contain
+                            <div> Password should contain
                                 at
-                                least 1 number)
+                                least 1 number
                             </div>
                             } @else if (password?.errors?.['upper']) {
-                            <div> (Password should contain at
+                            <div> Password should contain at
                                 least 1 uppercase
-                                letter)</div>
+                                letter</div>
                             }
                             @else if (password?.errors?.['lower']) {
-                            <div> (Password should contain at
+                            <div> Password should contain at
                                 least 1 lowercase
-                                letter)</div>
+                                letter</div>
                             } @else if (password?.errors?.['symbol']) {
-                            <div> (Password should contain
+                            <div> Password should contain
                                 at
-                                least 1 symbol)
+                                least 1 symbol
                             </div>
                             }
                             }
@@ -160,12 +158,12 @@
                         @if (confirmPassword?.touched && confirmPassword?.invalid) {
                         <div class="error-list">
                             @if (confirmPassword?.errors?.['required']) {
-                            <div>(Confirm-Password is
-                                required)</div>
+                            <div>Confirm-Password is
+                                required</div>
                             } @else {
                             @if (confirmPassword?.errors?.['confirmedValidator']) {
                             <div>
-                                (Confirm-Password do not match)
+                                Passwords do not match
                             </div>
                             }
                             }

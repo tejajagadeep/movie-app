@@ -1,5 +1,6 @@
 <p>movie-details</p>
-<div class="container" *ngIf="movieDetails">
+@if (movieDetails) {
+<div class="container">
     <div>
         <h1>{{movieDetails.title}}</h1>
         <div class="movie-details">
@@ -21,3 +22,4 @@
         </iframe>
     </div>
 </div>
+}

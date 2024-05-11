@@ -26,14 +26,21 @@ export class FavoriteListComponent implements OnInit {
 
   movies!: Movie[];
   imdbIds: string[] = [];
-  username = localStorage.getItem('username') ?? '';
   statusCode!: number;
-
+  username!: string;
   ngOnInit(): void {
     this.getWishlist();
   }
 
   getWishlist() {
+    const storedUsername = localStorage.getItem('username');
+    if (
+      storedUsername !== null &&
+      storedUsername !== undefined &&
+      storedUsername !== 'undefined'
+    ) {
+      this.username = storedUsername;
+    }
     this.wishlistService.getWishlist(this.username).subscribe({
       next: (v) => {
         this.movies = v.movies;
@@ -48,6 +55,14 @@ export class FavoriteListComponent implements OnInit {
   }
 
   delete(id: string) {
+    const storedUsername = localStorage.getItem('username');
+    if (
+      storedUsername !== null &&
+      storedUsername !== undefined &&
+      storedUsername !== 'undefined'
+    ) {
+      this.username = storedUsername;
+    }
     this.wishlistService.deleteWishlist(this.username, id).subscribe({
       next: (v) => {
         this.movies = v.movies;

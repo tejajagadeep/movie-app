@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../../service/data/movie.service';
-import { Movie } from '../../model/Movie';
+import { MovieResponse } from '../model/MovieResponse';
+import { MovieService } from '../service/data/movie.service';
+import { WishlistService } from '../service/data/wishlist.service';
+import { OpenDialogService } from '../service/component/open-dialog.service';
+import { Movie } from '../model/Movie';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { MovieResponse } from '../../model/MovieResponse';
-import { WishlistService } from '../../service/data/wishlist.service';
-import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
-import { OpenDialogService } from '../../service/component/open-dialog.service';
-import { FooterComponent } from '../../navigation/footer/footer.component';
+import { TopBarComponent } from '../navigation/top-bar/top-bar.component';
+import { FooterComponent } from '../navigation/footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { NoContentComponent } from '../../errors/no-content/no-content.component';
-import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
-import { MatIconModule } from '@angular/material/icon';
+import { NoContentComponent } from '../errors/no-content/no-content.component';
+import { InternalServerErrorComponent } from '../errors/internal-server-error/internal-server-error.component';
 
 @Component({
-  selector: 'app-top100-movies',
+  selector: 'app-test',
   standalone: true,
-  templateUrl: './top100-movies.component.html',
-  styleUrl: './top100-movies.component.css',
   imports: [
     HttpClientModule,
     CommonModule,
@@ -26,10 +23,11 @@ import { MatIconModule } from '@angular/material/icon';
     RouterModule,
     NoContentComponent,
     InternalServerErrorComponent,
-    MatIconModule,
   ],
+  templateUrl: './test.component.html',
+  styleUrl: './test.component.css',
 })
-export class Top100MoviesComponent implements OnInit {
+export class TestComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private wishlistService: WishlistService,
@@ -41,6 +39,7 @@ export class Top100MoviesComponent implements OnInit {
   username = localStorage.getItem('username') ?? '';
   isFavorite: boolean = false;
   statusCode!: number;
+  heartStates: { [key: string]: string } = {};
 
   ngOnInit(): void {
     this.getTop100Movies();
@@ -48,13 +47,30 @@ export class Top100MoviesComponent implements OnInit {
     this.supports_html5_storage();
   }
 
-  toggleFavorite(movie: Movie) {
-    if (this.imdbIds.includes(movie.imdbid)) {
-      this.delete(movie.imdbid);
-      this.isFavorite = true;
+  toggleHeartState(movie: Movie): void {
+    if (!this.imdbIds.includes(movie.imdbid)) {
+      if (this.heartStates[movie.imdbid] === 'active') {
+        this.heartStates[movie.imdbid as any] = 'inactive';
+        this.delete(movie.imdbid);
+      } else {
+        this.heartStates[movie.imdbid as any] = 'active';
+        this.saveWishlist(movie);
+      }
     } else {
-      this.saveWishlist(movie);
-      this.isFavorite = false;
+      if (this.heartStates[movie.imdbid] === 'inactive') {
+        this.heartStates[movie.imdbid as any] = 'active';
+        this.saveWishlist(movie);
+      } else {
+        this.heartStates[movie.imdbid as any] = 'inactive';
+        this.delete(movie.imdbid);
+      }
+    }
+  }
+  getHeartState(imdbid: string): string {
+    if (this.imdbIds.includes(imdbid)) {
+      return this.heartStates[imdbid] || 'active';
+    } else {
+      return this.heartStates[imdbid] || 'inactive';
     }
   }
   supports_html5_storage() {

@@ -146,12 +146,18 @@ form .button input:hover {
   }
 }
 
+.input-box {
+  position: relative;
+}
+
 .error-list {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0;
+  position: absolute;
+  top: 100%; /* Position the error messages below the input field */
+  left: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
+  z-index: 5;
   color: red;
-  font-size: 12px;
-  padding-left: 3px;
+  font-size: 0.8em;
 }

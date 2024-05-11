@@ -3,7 +3,7 @@
     <div class="container">
         <div class="title">Registration</div>
         <div class="content">
-            <form [formGroup]="signupForm" action="#">
+            <form [formGroup]="updateForm" action="#">
                 <div class="user-details">
 
                     <article class="input-box">
@@ -12,7 +12,7 @@
                         <div class="error-list">
                             @if (firstName?.errors?.['required']) {
                             <div>
-                                (First Name is required)
+                                First Name is required
                             </div>
                             }
                         </div>
@@ -26,7 +26,7 @@
                         @if (lastName?.touched && lastName?.invalid) {
                         <div class="error-list">
                             @if (lastName?.errors?.['required']) {
-                            <div> (Last Name is required)
+                            <div> Last Name is required
                             </div>
                             }
                         </div>
@@ -40,15 +40,15 @@
                         @if (phoneNumber?.touched && phoneNumber?.invalid) {
                         <div class="error-list">
                             @if (phoneNumber?.errors?.['required']) {
-                            <div> (phone number is
-                                required)
+                            <div> phone number is
+                                required
                             </div>
                             } @else {
                             <div>
                                 @if (phoneNumber?.errors?.['pattern']) {
-                                <div> (Phone number should
+                                <div> Phone number should
                                     contain only 10
-                                    numbers)</div>
+                                    numbers</div>
                                 }
                             </div>
                             }
@@ -63,20 +63,20 @@
                         @if (email?.touched && email?.invalid) {
                         <div class="error-list">
                             @if (email?.errors?.['required']) {
-                            <div> (Email is required)</div>
+                            <div> Email is required</div>
                             } @else {
                             @if (email?.errors?.['invalidEmail']) {
                             <div>
-                                (Invalid email
-                                format)
+                                Invalid email
+                                format
                             </div>
                             }
                             }
                         </div>
                         }
-                        @if (signupForm.valid && statusCode===409 && errorMessage.message.includes('Email')) {
+                        @if (updateForm.valid && statusCode===409 && errorMessage.message.includes('Email')) {
                         <div class="error-list">
-                            (Email already exists)
+                            Email already exists
                         </div>
                         }
                         <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
@@ -84,9 +84,9 @@
 
                 </div>
                 <div class="button">
-                    @if (signupForm.invalid) {<input type="submit" value="Complete Registration" (click)="submitForm()"
+                    @if (updateForm.invalid) {<input type="submit" value="Update" (click)="submitForm()"
                         title="fill all the required fields">}
-                    @else {<input type="submit" value="Register" [disabled]="signupForm.invalid"
+                    @else {<input type="submit" value="Update" [disabled]="updateForm.invalid"
                         (click)="updateUserProfile()">}
                 </div>
             </form>

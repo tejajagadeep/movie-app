@@ -22,7 +22,7 @@ import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
   imports: [ReactiveFormsModule, CommonModule, TopBarComponent],
 })
 export class UpdateProfileComponent implements OnInit {
-  signupForm!: FormGroup;
+  updateForm!: FormGroup;
   errorMessage!: ErrorMessage;
   userprofile!: UserProfile;
   statusCode!: number;
@@ -40,10 +40,10 @@ export class UpdateProfileComponent implements OnInit {
 
   updateUserProfile() {
     const username = localStorage.getItem('username') ?? '';
-    if (this.signupForm.valid) {
-      console.log(this.signupForm.value);
+    if (this.updateForm.valid) {
+      console.log(this.updateForm.value);
       this.userprofileService
-        .updateUserProfile(username, this.signupForm.value)
+        .updateUserProfile(username, this.updateForm.value)
         .subscribe({
           next: (v) => {
             console.log(v);
@@ -66,7 +66,7 @@ export class UpdateProfileComponent implements OnInit {
     this.userprofileService.getUserProfile(username).subscribe({
       next: (v) => {
         this.userprofile = v;
-        this.signupForm.patchValue({
+        this.updateForm.patchValue({
           firstName: v.firstName,
           lastName: v.lastName,
           email: v.email,
@@ -103,13 +103,13 @@ export class UpdateProfileComponent implements OnInit {
     return false;
   }
   submitForm() {
-    this.signupForm.get('firstName')?.markAsTouched();
-    this.signupForm.get('lastName')?.markAsTouched();
-    this.signupForm.get('phoneNumber')?.markAsTouched();
-    this.signupForm.get('email')?.markAsTouched();
+    this.updateForm.get('firstName')?.markAsTouched();
+    this.updateForm.get('lastName')?.markAsTouched();
+    this.updateForm.get('phoneNumber')?.markAsTouched();
+    this.updateForm.get('email')?.markAsTouched();
   }
   formBuilderGroup() {
-    this.signupForm = this.formBuilder.group({
+    this.updateForm = this.formBuilder.group({
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -135,17 +135,17 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   get phoneNumber() {
-    return this.signupForm.get('phoneNumber');
+    return this.updateForm.get('phoneNumber');
   }
 
   get firstName() {
-    return this.signupForm.get('firstName');
+    return this.updateForm.get('firstName');
   }
   get lastName() {
-    return this.signupForm.get('lastName');
+    return this.updateForm.get('lastName');
   }
 
   get email() {
-    return this.signupForm.get('email');
+    return this.updateForm.get('email');
   }
 }

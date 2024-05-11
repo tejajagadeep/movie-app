@@ -1,8 +1,9 @@
 <br>
 <br>
-<button *ngIf="showBtn$ | async" class="top-btn" (click)="gotoTop()">
+@if (showBtn$ | async) {<button class="top-btn" (click)="gotoTop()">
     &uarr;
 </button>
+}
 <br>
 <br>
 <br>

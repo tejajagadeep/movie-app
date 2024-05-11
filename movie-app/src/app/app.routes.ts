@@ -8,6 +8,8 @@ import { FavoriteListComponent } from './user/favorite-list/favorite-list.compon
 import { ProfileComponent } from './user/profile/profile.component';
 import { UpdateProfileComponent } from './user/update-profile/update-profile.component';
 import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
+import { SomethingWentWrongComponent } from './errors/something-went-wrong/something-went-wrong.component';
+import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +19,14 @@ export const routes: Routes = [
     path: 'favorite',
     component: FavoriteListComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'something-went-wrong',
+    component: SomethingWentWrongComponent,
+  },
+  {
+    path: 'test',
+    component: TestComponent,
   },
   { path: 'signup', component: SignupComponent, canActivate: [LoginGuard] },
   {
