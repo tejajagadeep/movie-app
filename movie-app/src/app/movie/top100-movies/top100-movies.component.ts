@@ -11,7 +11,16 @@ import { FooterComponent } from '../../navigation/footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
 import { NoContentComponent } from '../../errors/no-content/no-content.component';
 import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-top100-movies',
@@ -20,13 +29,22 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './top100-movies.component.css',
   imports: [
     HttpClientModule,
-    CommonModule,
     TopBarComponent,
     FooterComponent,
     RouterModule,
     NoContentComponent,
     InternalServerErrorComponent,
+    MatSidenavModule,
     MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class Top100MoviesComponent implements OnInit {
@@ -42,29 +60,61 @@ export class Top100MoviesComponent implements OnInit {
   username = localStorage.getItem('username') ?? '';
   isFavorite: boolean = false;
   statusCode!: number;
+  searchControl: FormControl = new FormControl('');
+  options: { value: string; viewValue: string }[] = [];
 
   ngOnInit(): void {
+    this.genres();
     this.getTop100Movies();
     this.getWishlist();
     this.supports_html5_storage();
+    this.searchForm();
   }
 
-  toggleFavorite(movie: Movie) {
-    if (this.imdbIds.includes(movie.imdbid)) {
-      this.delete(movie.imdbid);
-      this.isFavorite = true;
-    } else {
-      this.saveWishlist(movie);
-      this.isFavorite = false;
-    }
+  searchForm() {
+    this.searchControl.valueChanges
+      .pipe(
+        debounceTime(300), // Debounce to reduce unnecessary API calls
+        distinctUntilChanged() // Ensure that only distinct values trigger the search
+      )
+      .subscribe((searchTerm) => {
+        this.searchTopMovies(searchTerm);
+      });
   }
-  supports_html5_storage() {
-    try {
-      return 'localStorage' in window && window['localStorage'] !== null;
-    } catch (e) {
-      return false;
-    }
+
+  genres() {
+    const fetchedGenres = [
+      'Action',
+      'Adventure',
+      'Animation',
+      'Biography',
+      'Comedy',
+      'Crime',
+      'Drama',
+      'Experimental',
+      'Family',
+      'Fantasy',
+      'Film-Noir',
+      'History',
+      'Horror',
+      'Music',
+      'Musical',
+      'Mystery',
+      'Romance',
+      'Sci-Fi',
+      'Thriller',
+      'War',
+      'Western',
+    ];
+
+    this.options = [];
+
+    fetchedGenres.forEach((genre) => {
+      this.options.push({ value: genre.toLowerCase(), viewValue: genre });
+    });
+    this.options.push({ value: 'uncheck', viewValue: 'Uncheck' });
   }
+
   getTop100Movies() {
     this.movieService.getTop100Movies().subscribe({
       next: (v) => {
@@ -77,6 +127,43 @@ export class Top100MoviesComponent implements OnInit {
         console.info('top 100 movies fetched successfully');
       },
     });
+  }
+
+  searchTopMovies(movieTitle: string) {
+    if (movieTitle.trim() !== '') {
+      this.movieService.searchTop100Movies(movieTitle).subscribe({
+        next: (v) => {
+          this.movieResponse = v;
+        },
+        error: (e) => {
+          console.error(e);
+          this.statusCode = e.status;
+        },
+        complete: () => {
+          console.info('Top 100 movies fetched successfully');
+        },
+      });
+    } else if (movieTitle === '') {
+      this.getTop100Movies();
+    }
+  }
+
+  filterGenre(genre: string) {
+    if (genre === 'uncheck') {
+      this.getTop100Movies();
+    } else {
+      this.movieService.filterGenreTopMovies(genre).subscribe({
+        next: (v) => {
+          this.movieResponse = v;
+        },
+        error: (e) => {
+          console.error(e), (this.statusCode = e.status);
+        },
+        complete: () => {
+          console.info('top 100 movies fetched successfully');
+        },
+      });
+    }
   }
 
   getWishlist() {
@@ -98,11 +185,6 @@ export class Top100MoviesComponent implements OnInit {
         console.info('wishlist fetched successfully');
       },
     });
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
   }
   saveWishlist(movie: Movie) {
     console.log(this.username);
@@ -155,5 +237,18 @@ export class Top100MoviesComponent implements OnInit {
 
   playTrailer(id: String) {
     this.openDialog.openPlayDialog(id);
+  }
+
+  supports_html5_storage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 }

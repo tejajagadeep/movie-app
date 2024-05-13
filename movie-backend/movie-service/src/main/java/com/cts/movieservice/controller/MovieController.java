@@ -59,7 +59,7 @@ public class MovieController {
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
                     content = @Content) })
-    @GetMapping("/top-100-movies/filter/{genre}")
+    @GetMapping("/top-100-movies/filter-genre/{genre}")
     public ResponseEntity<Object> topMoviesByGenre(@PathVariable String genre){
         return new ResponseEntity<>(movieService.topMoviesByGenre(genre), HttpStatus.OK);
     }

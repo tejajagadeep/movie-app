@@ -1,1 +1,52 @@
+<!-- <mat-sidenav-container style="height: 100vh;">
+    <mat-sidenav #sidenav mode="side" class="custom-sidenav">
+        <p>
+            <button mat-icon-button routerLink="/home">
+                <mat-icon>home</mat-icon>
+            </button>
+        </p>
+        <p>
+            <button mat-icon-button routerLink="/profile">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </p>
+        <p>
+            <button mat-icon-button routerLink="/favorite">
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </p>
+        <p>
+            <button mat-icon-button routerLink="/login" (click)="logout()">
+                <mat-icon matTooltip="Click to logout">logout</mat-icon>
+            </button>
+        </p>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" class="toolbar">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Movie App</span>
+            <span class="spacer"></span>
+            <div class="centered-content">
+                <mat-form-field appearance="fill" style="padding-top: 5%;">
+                    <mat-label>Search</mat-label>
+                    <input matInput type="text" [formControl]="searchControl">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="padding-top: 5%; padding-left: 10px;">
+                    <mat-label>Genre</mat-label>
+                    <mat-select (selectionChange)="filterGenre($event.value)">
+                        @for (option of options; track $index) {<mat-option [value]="option.value">{{ option.viewValue
+                            }}</mat-option>}
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+        </mat-toolbar>
+<router-outlet></router-outlet>
+
+</mat-sidenav-content>
+</mat-sidenav-container> -->
+
 <router-outlet></router-outlet>

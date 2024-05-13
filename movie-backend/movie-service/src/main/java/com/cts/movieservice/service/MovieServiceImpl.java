@@ -15,10 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.URI;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -140,14 +138,12 @@ public class MovieServiceImpl implements MovieService{
         Exception e = new IOException();
         log.error("fall back method called for topMoviesByGenre with error {}", throwable.getMessage());
         Response response = getAllMoviesBreakCircuit(e);
-        List<String> allGenres = response.getData().stream()
+        Set<String> allGenres = response.getData().stream()
                 .flatMap(movie -> movie.getGenre().stream()) // Flatten the stream of genres
                 .filter(Objects::nonNull) // Filter out null genres
-                .distinct()
-                .toList(); // Collect the result into a list
+                .collect(Collectors.toSet());
 
-
-        log.info("gnere as"+ allGenres);
+        log.info("genre as: {}", allGenres);
         response.setData(response.getData().stream().filter(s -> {
             List<String> genres = s.getGenre();
             return genres != null && genres.stream()

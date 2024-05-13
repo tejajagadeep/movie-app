@@ -9,6 +9,7 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { tokenInterceptor } from './service/security/http.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch()),
     provideHttpClient(withInterceptors([tokenInterceptor])),
+    provideAnimations(),
   ],
 };

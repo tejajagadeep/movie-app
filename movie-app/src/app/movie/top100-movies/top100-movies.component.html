@@ -1,74 +1,126 @@
-@if (movieResponse.data) {
-@if (movieResponse.data.length===0) {
-<app-no-content></app-no-content>
-}
-@else if (movieResponse.data.length>0) {
-<div class="container">
+<mat-sidenav-container style="height: 100vh;">
+    <mat-sidenav #sidenav mode="side" class="custom-sidenav">
+        <p>
+            <button mat-icon-button routerLink="/home">
+                <mat-icon>home</mat-icon>
+            </button>
+        </p>
+        <p>
+            <button mat-icon-button routerLink="/profile">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </p>
+        <p>
+            <button mat-icon-button routerLink="/favorite">
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </p>
+        <p>
+            <button mat-icon-button routerLink="/login" (click)="logout()">
+                <mat-icon matTooltip="Click to logout">logout</mat-icon>
+            </button>
+        </p>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" class="toolbar">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Movie App</span>
+            <span class="spacer"></span>
+            <div class="centered-content">
+                <mat-form-field appearance="fill" style="padding-top: 5%;">
+                    <mat-label>Search</mat-label>
+                    <input matInput type="text" [formControl]="searchControl">
+                </mat-form-field>
 
-    @for (movie of movieResponse.data; track $index) { <div class="nft">
+                <mat-form-field appearance="fill" style="padding-top: 5%; padding-left: 10px;">
+                    <mat-label>Genre</mat-label>
+                    <mat-select (selectionChange)="filterGenre($event.value)">
+                        @for (option of options; track $index) {<mat-option [value]="option.value">{{ option.viewValue
+                            }}</mat-option>}
+                    </mat-select>
 
-        <div class='main'>
-            <div class="image-container">
-                <img class="tokenImage" [src]="movie.image" alt="NFT" />
-                <i class="fas fa-icon">
-                    <svg height="24" version="1.1" width="24" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
-                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                        <g transform="translate(0 -1028.4)">
-                            <!-- Outline Path -->
-                            <path
-                                d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
-                                fill="none" stroke="white" stroke-width="1.5" />
-
-                            <!-- Main Path -->
-                            @if (imdbIds.includes(movie.imdbid)) {
-                            <path (click)="delete(movie.imdbid)"
-                                d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
-                                fill="#c0392b" />
-                            }@else {
-                            <path (click)="saveWishlist(movie)"
-                                d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
-                                fill="#353535aa" />
-
-                            }
-                        </g>
-                    </svg>
-
-                </i>
-                <a class="more" title="Redirect to IMDB for more details" (click)="moreDetails(movie.imdb_link)">
-                    <span class="material-icons">&#xe89e;</span>
-                </a>
-                <i class="rank">{{movie.rank}}</i>
-
+                </mat-form-field>
             </div>
+        </mat-toolbar>
 
-            <h2 [title]="movie.title">{{movie.title}}</h2>
-            <p class='description'>{{movie.description}}</p>
-            <div class='tokenInfo'>
-                <div class="price">
-                    <ins><span class="material-icons">&#xe838;</span></ins>
-                    <p>{{movie.rating}}</p>
-                </div>
-                <div class="duration">
-                    <ins>◷</ins>
-                    <p>{{movie.year}}</p>
+
+        @if (movieResponse.data) {
+        @if (movieResponse.data.length===0) {
+        <app-no-content></app-no-content>
+        }
+        @else if (movieResponse.data.length>0) {
+        <div class="container">
+
+            @for (movie of movieResponse.data; track $index) { <div class="nft">
+
+                <div class='main'>
+                    <div class="image-container">
+                        <img class="tokenImage" [src]="movie.image" alt="NFT" />
+                        <i class="fas fa-icon">
+                            <svg height="24" version="1.1" width="24" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                                <g transform="translate(0 -1028.4)">
+                                    <!-- Outline Path -->
+                                    <path
+                                        d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
+                                        fill="none" stroke="white" stroke-width="1.5" />
+
+                                    <!-- Main Path -->
+                                    @if (imdbIds.includes(movie.imdbid)) {
+                                    <path (click)="delete(movie.imdbid)"
+                                        d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
+                                        fill="#c0392b" />
+                                    }@else {
+                                    <path (click)="saveWishlist(movie)"
+                                        d="m7 1031.4c-1.5355 0-3.0784 0.5-4.25 1.7-2.3431 2.4-2.2788 6.1 0 8.5l9.25 9.8 9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-0.75 0.8-0.75-0.8c-1.172-1.2-2.7145-1.7-4.25-1.7z"
+                                        fill="#353535aa" />
+
+                                    }
+                                </g>
+                            </svg>
+
+                        </i>
+                        <a class="more" title="Redirect to IMDB for more details"
+                            (click)="moreDetails(movie.imdb_link)">
+                            <span class="material-icons">&#xe89e;</span>
+                        </a>
+                        <i class="rank">{{movie.rank}}</i>
+
+                    </div>
+
+                    <h2 [title]="movie.title">{{movie.title}}</h2>
+                    <p class='description'>{{movie.description}}</p>
+                    <div class='tokenInfo'>
+                        <div class="price">
+                            <ins><span class="material-icons">&#xe838;</span></ins>
+                            <p>{{movie.rating}}</p>
+                        </div>
+                        <div class="duration">
+                            <ins>◷</ins>
+                            <p>{{movie.year}}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class='creator'>
+                        <div class='wrapper'>
+                            <img [src]="movie.image" alt="Creator" />
+                        </div>
+                        <p>@for (g of movie.genre; track $index) {
+                        <div class="type">{{g}}</div> }</p>
+                    </div>
                 </div>
             </div>
-            <hr />
-            <div class='creator'>
-                <div class='wrapper'>
-                    <img [src]="movie.image" alt="Creator" />
-                </div>
-                <p>@for (g of movie.genre; track $index) {
-                <div class="type">{{g}}</div> }</p>
-            </div>
+            }
         </div>
-    </div>
-    }
-</div>
-}
-}
-@else {
-<app-internal-server-error></app-internal-server-error>
-}
-<app-footer></app-footer>
+        }
+        }
+        @else {
+        <app-internal-server-error></app-internal-server-error>
+        }
+        <app-footer></app-footer>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

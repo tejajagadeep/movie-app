@@ -23,6 +23,12 @@ export class MovieService {
     );
   }
 
+  filterGenreTopMovies(genre: string): Observable<MovieResponse> {
+    return this.http.get<MovieResponse>(
+      `${API_URL}/public/movie/top-100-movies/filter/${genre}`
+    );
+  }
+
   getMovieById(movieId: string): Observable<MovieDetails> {
     return this.http.get<MovieDetails>(
       `${API_URL}/public/movie/top-100-movies/${movieId}`
