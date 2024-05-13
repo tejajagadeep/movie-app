@@ -47,7 +47,7 @@ class MovieDiffblueTest {
     @Test
     void testEquals2() {
         // Arrange
-        Movie movie = new Movie("42", 1, "Dr", "Image", "The characteristics of someone or something", new ArrayList<>(),
+        Movie movie = new Movie("42", 1, "Dr", "Image","Thumbnail", "The characteristics of someone or something", new ArrayList<>(),
                 10.0f, 1, "Imdb Link", "Imdbid");
 
         // Act and Assert
@@ -323,9 +323,9 @@ class MovieDiffblueTest {
     @Test
     void testEqualsAndHashCode3() {
         // Arrange
-        Movie movie = new Movie("42", 1, "Dr", "Image", "The characteristics of someone or something", new ArrayList<>(),
+        Movie movie = new Movie("42", 1, "Dr", "Image","Thumbnail", "The characteristics of someone or something", new ArrayList<>(),
                 10.0f, 1, "Imdb Link", "Imdbid");
-        Movie movie2 = new Movie("42", 1, "Dr", "Image", "The characteristics of someone or something", new ArrayList<>(),
+        Movie movie2 = new Movie("42", 1, "Dr", "Image","Thumbnail", "The characteristics of someone or something", new ArrayList<>(),
                 10.0f, 1, "Imdb Link", "Imdbid");
 
         // Act and Assert
@@ -373,6 +373,7 @@ class MovieDiffblueTest {
         actualMovie.setImdbLink("Imdb Link");
         actualMovie.setImdbid("Imdbid");
         actualMovie.setRank(1);
+        actualMovie.setThumbnail("Thumbnail");
         actualMovie.setRating(10.0f);
         actualMovie.setTitle("Dr");
         actualMovie.setYear(1);
@@ -381,6 +382,7 @@ class MovieDiffblueTest {
         List<String> actualGenre = actualMovie.getGenre();
         String actualId = actualMovie.getId();
         String actualImage = actualMovie.getImage();
+        String actualThumbnail = actualMovie.getThumbnail();
         String actualImdbLink = actualMovie.getImdbLink();
         String actualImdbid = actualMovie.getImdbid();
         int actualRank = actualMovie.getRank();
@@ -392,8 +394,9 @@ class MovieDiffblueTest {
         assertEquals("Dr", actualTitle);
         assertEquals("Image", actualImage);
         assertEquals("Imdb Link", actualImdbLink);
+        assertEquals("Thumbnail", actualThumbnail);
         assertEquals("Imdbid", actualImdbid);
-        assertEquals("Movie(id=42, rank=1, title=Dr, image=Image, description=The characteristics of someone or something,"
+        assertEquals("Movie(id=42, rank=1, title=Dr, image=Image, thumbnail=Thumbnail, description=The characteristics of someone or something,"
                 + " genre=[], rating=10.0, year=1, imdbLink=Imdb Link, imdbid=Imdbid)", actualToStringResult);
         assertEquals("The characteristics of someone or something", actualDescription);
         assertEquals(1, actualRank);
@@ -436,13 +439,14 @@ class MovieDiffblueTest {
         ArrayList<String> genre = new ArrayList<>();
 
         // Act
-        Movie actualMovie = new Movie("42", 1, "Dr", "Image", "The characteristics of someone or something", genre, 10.0f,
+        Movie actualMovie = new Movie("42", 1, "Dr", "Image","Thumbnail", "The characteristics of someone or something", genre, 10.0f,
                 1, "Imdb Link", "Imdbid");
         actualMovie.setDescription("The characteristics of someone or something");
         ArrayList<String> genre2 = new ArrayList<>();
         actualMovie.setGenre(genre2);
         actualMovie.setId("42");
         actualMovie.setImage("Image");
+        actualMovie.setThumbnail("Thumbnail");
         actualMovie.setImdbLink("Imdb Link");
         actualMovie.setImdbid("Imdbid");
         actualMovie.setRank(1);
@@ -454,6 +458,7 @@ class MovieDiffblueTest {
         List<String> actualGenre = actualMovie.getGenre();
         String actualId = actualMovie.getId();
         String actualImage = actualMovie.getImage();
+        String actualThumbnail = actualMovie.getThumbnail();
         String actualImdbLink = actualMovie.getImdbLink();
         String actualImdbid = actualMovie.getImdbid();
         int actualRank = actualMovie.getRank();
@@ -466,7 +471,7 @@ class MovieDiffblueTest {
         assertEquals("Image", actualImage);
         assertEquals("Imdb Link", actualImdbLink);
         assertEquals("Imdbid", actualImdbid);
-        assertEquals("Movie(id=42, rank=1, title=Dr, image=Image, description=The characteristics of someone or something,"
+        assertEquals("Movie(id=42, rank=1, title=Dr, image=Image, thumbnail=Thumbnail, description=The characteristics of someone or something,"
                 + " genre=[], rating=10.0, year=1, imdbLink=Imdb Link, imdbid=Imdbid)", actualToStringResult);
         assertEquals("The characteristics of someone or something", actualDescription);
         assertEquals(1, actualRank);

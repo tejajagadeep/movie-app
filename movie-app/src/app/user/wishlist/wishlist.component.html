@@ -11,7 +11,7 @@
     <div class="info_section">
         <div class="movie_header">
             <img class="locandina" [src]="movie.image" />
-            <h1 [title]="movie.title">{{movie.title}}</h1>
+            <h1 [matTooltip]="movie.title">{{movie.title}}</h1>
             <h4> {{movie.year}}</h4>
             <span class="minutes">{{movie.rating}}</span>
             @for(g of movie.genre; track $index) {
@@ -25,11 +25,12 @@
         </div>
         <div class="movie_social">
             <ul>
-                <li><i class="material-icons" title="play trailer">play</i></li>
-                <li><i class="material-icons" (click)="delete(movie.imdbid)" title="delete from favorite">delete</i>
+                <li><i class="material-icons" matTooltip="play trailer">play</i></li>
+                <li><i class="material-icons" (click)="delete(movie.imdbid)"
+                        matTooltip="delete from Wishlists">delete</i>
                 </li>
                 <li><i class="material-icons" (click)="moreDetails(movie.imdb_link)"
-                        title="redirect to Imdb for more details">more</i></li>
+                        matTooltip="redirect to Imdb for more details">more</i></li>
             </ul>
         </div>
     </div>

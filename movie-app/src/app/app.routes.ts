@@ -4,20 +4,20 @@ import { HomeComponent } from './public/home/home.component';
 import { Top100MoviesComponent } from './movie/top100-movies/top100-movies.component';
 import { SignupComponent } from './public/signup/signup.component';
 import { AuthGuard, LoginGuard } from './service/security/auth.guard';
-import { FavoriteListComponent } from './user/favorite-list/favorite-list.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UpdateProfileComponent } from './user/update-profile/update-profile.component';
 import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
 import { SomethingWentWrongComponent } from './errors/something-went-wrong/something-went-wrong.component';
 import { TestComponent } from './test/test.component';
+import { WishlistComponent } from './user/wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   {
-    path: 'favorite',
-    component: FavoriteListComponent,
+    path: 'wishlist',
+    component: WishlistComponent,
     canActivate: [AuthGuard],
   },
   {

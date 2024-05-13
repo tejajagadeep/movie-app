@@ -7,10 +7,8 @@ import com.cts.movieservice.service.MovieService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -62,9 +60,29 @@ class MovieControllerTest {
 
 
 
-        when(movieService.topMovies()).thenReturn(response);
+        when(movieService.topMoviesSearch("Movie 1")).thenReturn(response);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies/search/Movie")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    void testTopMoviesGenreFilter() throws Exception {
+        Movie movie = new Movie();
+        movie.setId("1");
+        movie.setTitle("Movie 1");
+        movie.setGenre(List.of("Action"));
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(List.of(movie));
+
+
+
+        when(movieService.topMoviesByGenre("Action")).thenReturn(response);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies/filter-genre/Action")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

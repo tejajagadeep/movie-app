@@ -12,10 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1.0/public/movie")
@@ -42,7 +39,7 @@ public class MovieController {
 
     @Operation(summary = "Search from Top 100 Movie List from IMDB")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found 100 Movies",
+            @ApiResponse(responseCode = "200", description = "Found Movies",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
@@ -54,7 +51,7 @@ public class MovieController {
 
     @Operation(summary = "Filter from Top 100 Movie List from IMDB by genre")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found 100 Movies",
+            @ApiResponse(responseCode = "200", description = "Found Movies",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",

@@ -1,6 +1,6 @@
 .footer {
   overflow: hidden;
-  background-color: #000000;
+  background-color: #3f51b5;
   /* position: fixed; */
   /* Set the footer to fixed position */
   bottom: 0;
@@ -40,7 +40,7 @@ p {
   /* Remove borders */
   outline: none;
   /* Remove outline */
-  background-color: rgb(0, 0, 0);
+  background-color: #3f51b5;
   /* Set a background color */
   color: white;
   /* Text color */

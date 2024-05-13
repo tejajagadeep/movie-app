@@ -25,7 +25,7 @@ export class MovieService {
 
   filterGenreTopMovies(genre: string): Observable<MovieResponse> {
     return this.http.get<MovieResponse>(
-      `${API_URL}/public/movie/top-100-movies/filter/${genre}`
+      `${API_URL}/public/movie/top-100-movies/filter-genre/${genre}`
     );
   }
 

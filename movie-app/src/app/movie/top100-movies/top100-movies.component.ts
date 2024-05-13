@@ -21,6 +21,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { endianness } from 'os';
 
 @Component({
   selector: 'app-top100-movies',
@@ -34,17 +36,18 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
     RouterModule,
     NoContentComponent,
     InternalServerErrorComponent,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
     MatFormFieldModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatSelectModule,
+    MatPaginatorModule,
   ],
 })
 export class Top100MoviesComponent implements OnInit {
@@ -57,18 +60,66 @@ export class Top100MoviesComponent implements OnInit {
 
   movieResponse: MovieResponse = new MovieResponse();
   imdbIds: string[] = [];
-  username = localStorage.getItem('username') ?? '';
+  username = '';
   isFavorite: boolean = false;
   statusCode!: number;
   searchControl: FormControl = new FormControl('');
   options: { value: string; viewValue: string }[] = [];
 
+  pageSize!: number; // Number of items per page
+  currentPage = 1;
+  totalPages!: number;
+  pagedMovies: Movie[] = [];
+  pageSizeOptions = [4, 8, 24, 100];
+
   ngOnInit(): void {
+    this.username = localStorage.getItem('username') ?? '';
     this.genres();
     this.getTop100Movies();
     this.getWishlist();
     this.supports_html5_storage();
     this.searchForm();
+    this.pageSize = this.pageSizeOptions[1];
+  }
+  paginatorPage(event: PageEvent) {
+    // Update custom pagination controls based on mat-paginator
+    console.log('paging paginatorPage ' + event.previousPageIndex);
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex + 1;
+    this.setPage(this.currentPage);
+  }
+
+  calculateTotalPages() {
+    this.totalPages = this.movieResponse.data.length;
+  }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+
+    const startIndex = (page - 1) * this.pageSize;
+    const endIndex = Math.min(
+      startIndex + this.pageSize - 1,
+      this.movieResponse.data.length - 1
+    );
+    this.pagedMovies = this.movieResponse.data.slice(startIndex, endIndex + 1);
+    this.currentPage = page;
+    console.log('paging setPage ' + this.currentPage);
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.setPage(this.currentPage);
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage <= this.totalPages) {
+      this.currentPage++;
+      this.setPage(this.currentPage);
+    }
   }
 
   searchForm() {
@@ -125,6 +176,8 @@ export class Top100MoviesComponent implements OnInit {
       },
       complete: () => {
         console.info('top 100 movies fetched successfully');
+        this.calculateTotalPages();
+        this.setPage(1);
       },
     });
   }
@@ -140,7 +193,9 @@ export class Top100MoviesComponent implements OnInit {
           this.statusCode = e.status;
         },
         complete: () => {
-          console.info('Top 100 movies fetched successfully');
+          console.info('searched ' + movieTitle + ' movies successfully');
+          this.calculateTotalPages();
+          this.setPage(1);
         },
       });
     } else if (movieTitle === '') {
@@ -160,7 +215,9 @@ export class Top100MoviesComponent implements OnInit {
           console.error(e), (this.statusCode = e.status);
         },
         complete: () => {
-          console.info('top 100 movies fetched successfully');
+          console.info('filter genre ' + genre + ' fetched successfully');
+          this.calculateTotalPages();
+          this.setPage(1);
         },
       });
     }
@@ -186,6 +243,7 @@ export class Top100MoviesComponent implements OnInit {
       },
     });
   }
+
   saveWishlist(movie: Movie) {
     console.log(this.username);
     this.wishlistService.saveWishlist(this.username, movie).subscribe({

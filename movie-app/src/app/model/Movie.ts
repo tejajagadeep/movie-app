@@ -3,6 +3,7 @@ export class Movie {
   rank!: number;
   title!: string;
   image!: string;
+  thumbnail!: string;
   description!: string;
   genre!: string[];
   rating!: number;

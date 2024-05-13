@@ -58,6 +58,24 @@ public class MovieServiceImpl implements MovieService{
         return response;
     }
 
+
+    @Override
+    @Observed(name = "top.movies.page.nation")
+    @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "topMoviesPageNationBreakCircuit")
+    public Response topMoviesPageNation(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        // Fetch movies using offset and pageSize
+        List<Movie> movies = restTemplate.exchange(response("?page=" + offset + "&size=" + pageSize),
+                new ParameterizedTypeReference<List<Movie>>() {}).getBody();
+
+        Response response = new Response();
+        response.setStatus(true);
+        response.setMessage("Successful");
+        response.setData(movies);
+
+        return response;
+    }
+
     @Override
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMoviesSearchBreakCircuit")
     @Observed(name = "top.movies.search")
@@ -104,6 +122,7 @@ public class MovieServiceImpl implements MovieService{
         return response;
     }
 
+
     @Override
     @Observed(name = "top.movies.by.id")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMovieDetailsById")
@@ -126,6 +145,30 @@ public class MovieServiceImpl implements MovieService{
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         return headers;
     }
+
+    public Response topMoviesPageNationBreakCircuit(int page, int pageSize, Throwable throwable) throws IOException {
+        Exception e = new IOException();
+        log.error("Fallback method called for topMoviesPageNationBreakCircuit with error {}", throwable.getMessage());
+
+        // Get the full list of movies from the fallback method
+        Response response = getAllMoviesBreakCircuit(e);
+
+        // Apply pagination
+        List<Movie> movies = response.getData();
+        int totalMovies = movies.size();
+
+        int startIdx = (page - 1) * pageSize;
+        int endIdx = Math.min(startIdx + pageSize, totalMovies);
+
+        List<Movie> pagedMovies = movies.subList(startIdx, endIdx);
+
+        // Update response data with paginated movies
+        response.setData(pagedMovies);
+
+        return response;
+    }
+
+
     public Response getMoviesSearchBreakCircuit(String search, Throwable throwable) throws IOException {
         Exception e = new IOException();
         log.error("fall back method called for getMoviesSearchBreakCircuit with error {}", throwable.getMessage());
@@ -133,6 +176,7 @@ public class MovieServiceImpl implements MovieService{
         response.setData(response.getData().stream().filter(s->s.getTitle().toLowerCase().contains(search.toLowerCase())).toList());
         return response;
     }
+
 
     public Response topMoviesByGenreBreakCircuit(String genre, Throwable throwable) throws IOException {
         Exception e = new IOException();
@@ -153,13 +197,14 @@ public class MovieServiceImpl implements MovieService{
     }
 
 
+
     public Response getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = null;
 
         try {
             // Load the resource stream
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("static/movie-data.txt");
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("static/movie-data.json");
             if (inputStream != null) {
                 // Read the JSON data from the input stream
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -174,7 +219,7 @@ public class MovieServiceImpl implements MovieService{
                 ObjectMapper objectMapper = new ObjectMapper();
                 movies = objectMapper.readValue(jsonString.toString(), new TypeReference<>() {});
             } else {
-                throw new IOException("Resource not found: static/movie-data.txt");
+                throw new IOException("Resource not found: static/movie-data.json");
             }
         } catch (IOException io) {
             throw new IOException("Failed to read movie data from file", io);

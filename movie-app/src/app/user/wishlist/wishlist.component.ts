@@ -8,21 +8,23 @@ import { NotFoundComponent } from '../../errors/not-found/not-found.component';
 import { NoContentComponent } from '../../errors/no-content/no-content.component';
 import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
 import { Router } from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-favorite-list',
+  selector: 'app-wishlist',
   standalone: true,
-  templateUrl: './favorite-list.component.html',
-  styleUrl: './favorite-list.component.css',
+  templateUrl: './wishlist.component.html',
+  styleUrl: './wishlist.component.css',
   imports: [
     TopBarComponent,
     CommonModule,
     NotFoundComponent,
     NoContentComponent,
     InternalServerErrorComponent,
+    MatTooltipModule,
   ],
 })
-export class FavoriteListComponent implements OnInit {
+export class WishlistComponent implements OnInit {
   constructor(
     private wishlistService: WishlistService,
     private router: Router

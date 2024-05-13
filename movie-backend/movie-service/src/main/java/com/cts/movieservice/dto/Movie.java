@@ -22,6 +22,9 @@ public class Movie {
     @JsonProperty("image")
     private String image;
 
+    @JsonProperty("thumbnail")
+    private String thumbnail;
+
     @JsonProperty("description")
     private String description;
 

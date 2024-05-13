@@ -11,9 +11,12 @@ public interface MovieService {
 
     Response topMovies();
 
+    Response topMoviesPageNation(int page, int pageSize);
+
     MovieDetails topMoviesById(String id);
 
     Response topMoviesSearch(String search);
 
     Response topMoviesByGenre(String genre);
+
 }
