@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,6 +10,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './top-bar.component.css',
 })
 export class TopBarComponent implements OnInit {
+  constructor(private snackBar: MatSnackBar) {}
+
   username!: string;
   isLoggedIn = false;
 
@@ -32,5 +35,8 @@ export class TopBarComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    this.snackBar.open('You have Logged Out.', 'Close', {
+      duration: 3000, // Duration in milliseconds
+    });
   }
 }

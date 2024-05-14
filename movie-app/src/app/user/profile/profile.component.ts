@@ -8,6 +8,7 @@ import { WishlistService } from '../../service/data/wishlist.service';
 import { Movie } from '../../model/Movie';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { NotFoundComponent } from '../../errors/not-found/not-found.component';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ import { NotFoundComponent } from '../../errors/not-found/not-found.component';
     RouterModule,
     TopBarComponent,
     NotFoundComponent,
+    MatTooltip,
   ],
 })
 export class ProfileComponent implements OnInit {

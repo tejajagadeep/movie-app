@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { debounceTime, fromEvent, map, tap } from 'rxjs';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 @Component({
   selector: 'app-footer',
   standalone: true,

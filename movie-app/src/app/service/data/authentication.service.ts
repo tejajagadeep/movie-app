@@ -24,9 +24,9 @@ export class AuthenticationService {
     );
   }
 
-  isUserLoggedIn(username: string): Observable<String> {
-    return this.http.get<String>(
-      `${API_URL}/public/auth/authenticate/${username}`
+  isUserLoggedIn(username: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `${API_URL}/public/auth/validate?username=${username}`
     );
   }
 }

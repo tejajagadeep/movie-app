@@ -14,15 +14,8 @@ export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-  {
-    path: 'wishlist',
-    component: WishlistComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'something-went-wrong',
-    component: SomethingWentWrongComponent,
-  },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
+  { path: 'something-went-wrong', component: SomethingWentWrongComponent },
   { path: 'signup', component: SignupComponent, canActivate: [LoginGuard] },
   {
     path: 'top-100-movies',
@@ -34,11 +27,7 @@ export const routes: Routes = [
     component: MovieDetailsComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'update-profile',
     component: UpdateProfileComponent,

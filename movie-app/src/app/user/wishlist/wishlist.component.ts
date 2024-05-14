@@ -10,6 +10,7 @@ import { InternalServerErrorComponent } from '../../errors/internal-server-error
 import { Router } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FooterComponent } from '../../navigation/footer/footer.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-wishlist',
@@ -29,7 +30,8 @@ import { FooterComponent } from '../../navigation/footer/footer.component';
 export class WishlistComponent implements OnInit {
   constructor(
     private wishlistService: WishlistService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   movies!: Movie[];
@@ -90,6 +92,9 @@ export class WishlistComponent implements OnInit {
       },
       complete: () => {
         console.info('movie deleted successfully');
+        this.snackBar.open('Movie delete From Wishlist.', 'Close', {
+          duration: 3000, // Duration in milliseconds
+        });
       },
     });
   }

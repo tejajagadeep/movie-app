@@ -13,6 +13,7 @@ import { ErrorMessage } from '../../model/ErrorMessage';
 import { AuthenticationRequest } from '../../model/AuthenticationRequest';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { FooterComponent } from '../../navigation/footer/footer.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -72,7 +74,10 @@ export class LoginComponent implements OnInit {
         complete: () => {
           localStorage.setItem('username', this.loginForm.value.username);
           this.router.navigate(['/home']);
-          console.info('User Details saved successfully');
+          this.snackBar.open('You are Logged In', 'Close', {
+            duration: 3000, // Duration in milliseconds
+          });
+          console.info('User logged in successfully');
         },
       });
     }

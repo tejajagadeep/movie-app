@@ -47,6 +47,7 @@ public class AuthController {
     @GetMapping("/validate")
     @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")
     public ResponseEntity<Object> validate(@RequestParam String username) {
-        return new ResponseEntity<>(username+" Authorized", HttpStatus.ACCEPTED);
+        log.info("username :{} validated", username);
+        return new ResponseEntity<>(true, HttpStatus.ACCEPTED);
     }
 }

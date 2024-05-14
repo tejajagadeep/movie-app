@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../service/data/movie.service';
 import { Movie } from '../../model/Movie';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { MovieResponse } from '../../model/MovieResponse';
 import { WishlistService } from '../../service/data/wishlist.service';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
@@ -22,7 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { endianness } from 'os';
+import { AuthenticationService } from '../../service/data/authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-top100-movies',
@@ -30,14 +29,12 @@ import { endianness } from 'os';
   templateUrl: './top100-movies.component.html',
   styleUrl: './top100-movies.component.css',
   imports: [
-    HttpClientModule,
     TopBarComponent,
     FooterComponent,
     RouterModule,
     NoContentComponent,
     InternalServerErrorComponent,
     MatFormFieldModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
@@ -52,10 +49,12 @@ import { endianness } from 'os';
 })
 export class Top100MoviesComponent implements OnInit {
   constructor(
+    private authService: AuthenticationService,
     private movieService: MovieService,
     private wishlistService: WishlistService,
     private openDialog: OpenDialogService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   movieResponse: MovieResponse = new MovieResponse();
@@ -258,16 +257,7 @@ export class Top100MoviesComponent implements OnInit {
         }
       },
       error: (e) => {
-        if (e) {
-          console.error(e), (this.statusCode = e.status);
-          if (this.statusCode === 400 || this.statusCode === 401) {
-            console.error(e), localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            this.router.navigate(['/login']);
-          }
-        } else {
-          console.log('Null values while fetching error message wishlist');
-        }
+        this.wishlistError(e);
       },
       complete: () => {
         console.info('wishlist fetched successfully');
@@ -289,19 +279,13 @@ export class Top100MoviesComponent implements OnInit {
         }
       },
       error: (e) => {
-        if (e) {
-          console.error(e), (this.statusCode = e.status);
-          if (this.statusCode === 400 || this.statusCode === 401) {
-            console.error(e), localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            this.router.navigate(['/login']);
-          }
-        } else {
-          console.log('Null values while fetching error message saving movie');
-        }
+        this.wishlistError(e);
       },
       complete: () => {
         console.info('movie saved successfully');
+        this.snackBar.open('Movie added to Wishlist', 'Close', {
+          duration: 3000, // Duration in milliseconds
+        });
       },
     });
   }
@@ -319,19 +303,58 @@ export class Top100MoviesComponent implements OnInit {
         }
       },
       error: (e) => {
-        if (e) {
-          console.error(e), (this.statusCode = e.status);
-          if (this.statusCode === 400 || this.statusCode === 401) {
-            console.error(e), localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            this.router.navigate(['/login']);
-          }
-        } else {
-          console.log('Null values while fetching error message delete movie');
-        }
+        this.wishlistError(e);
       },
       complete: () => {
         console.info('movie deleted successfully');
+        this.snackBar.open('Movie deleted from Wishlist.', 'Close', {
+          duration: 3000, // Duration in milliseconds
+        });
+      },
+    });
+  }
+
+  wishlistError(error: any) {
+    if (error) {
+      console.error(error), (this.statusCode = error.status);
+      if (this.statusCode === 400 || this.statusCode === 401) {
+        console.error(error), localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        this.validateUser();
+      }
+    } else {
+      console.log('Null values while fetching error message');
+    }
+  }
+
+  validateUser() {
+    let result = false;
+    this.authService.isUserLoggedIn(this.username).subscribe({
+      next: (v) => {
+        if (v) {
+          result = v;
+          console.log(result);
+        } else {
+          console.log('Null values while fetching delete movie');
+        }
+      },
+      error: (e) => {
+        if (e) {
+          console.error(e), (this.statusCode = e.status);
+          this.snackBar.open(
+            'Wrong user credentials. Please Login again.',
+            'Close',
+            {
+              duration: 3000, // Duration in milliseconds
+            }
+          );
+          this.router.navigate(['/login']);
+        } else {
+          console.log('Null values when validating user');
+        }
+      },
+      complete: () => {
+        console.info('validation successfully');
       },
     });
   }
@@ -355,5 +378,8 @@ export class Top100MoviesComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    this.snackBar.open('You have logged Out', 'Close', {
+      duration: 3000, // Duration in milliseconds
+    });
   }
 }

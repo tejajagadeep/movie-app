@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { FooterComponent } from '../../navigation/footer/footer.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-profile',
@@ -36,7 +37,8 @@ export class UpdateProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private userprofileService: UserprofileService
+    private userprofileService: UserprofileService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -65,6 +67,9 @@ export class UpdateProfileComponent implements OnInit {
           complete: () => {
             console.info('User Details saved successfully');
             this.router.navigate(['/profile']);
+            this.snackBar.open('Profile has been Updated.', 'Close', {
+              duration: 3000, // Duration in milliseconds
+            });
           },
         });
     }

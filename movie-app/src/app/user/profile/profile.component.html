@@ -16,7 +16,7 @@
                                     <h6 class="f-w-600">{{userProfile.dateOfBirth |
                                         date:'dd MMMM yyyy'}}</h6>
                                     <span>{{userProfile.username}}</span><br>
-                                    <a [routerLink]="['/update-profile']">
+                                    <a matTooltip="Update Your Profile" [routerLink]="['/update-profile']">
                                         <i class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                     </a>
                                 </div>
