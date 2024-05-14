@@ -169,10 +169,18 @@ export class Top100MoviesComponent implements OnInit {
   getTop100Movies() {
     this.movieService.getTop100Movies().subscribe({
       next: (v) => {
-        this.movieResponse = v;
+        if (v) {
+          this.movieResponse = v;
+        } else {
+          console.log('Null values while fetching top movies');
+        }
       },
       error: (e) => {
-        console.error(e), (this.statusCode = e.status);
+        if (e) {
+          console.error(e), (this.statusCode = e.status);
+        } else {
+          console.log('Null values while fetching error top movies');
+        }
       },
       complete: () => {
         console.info('top 100 movies fetched successfully');
@@ -186,11 +194,18 @@ export class Top100MoviesComponent implements OnInit {
     if (movieTitle.trim() !== '') {
       this.movieService.searchTop100Movies(movieTitle).subscribe({
         next: (v) => {
-          this.movieResponse = v;
+          if (v) {
+            this.movieResponse = v;
+          } else {
+            console.log('Null values while fetching searchTopMovies');
+          }
         },
         error: (e) => {
-          console.error(e);
-          this.statusCode = e.status;
+          if (e) {
+            console.error(e), (this.statusCode = e.status);
+          } else {
+            console.log('Null values while fetching error message top search');
+          }
         },
         complete: () => {
           console.info('searched ' + movieTitle + ' movies successfully');
@@ -209,10 +224,18 @@ export class Top100MoviesComponent implements OnInit {
     } else {
       this.movieService.filterGenreTopMovies(genre).subscribe({
         next: (v) => {
-          this.movieResponse = v;
+          if (v) {
+            this.movieResponse = v;
+          } else {
+            console.log('Null values while fetching filterGenre');
+          }
         },
         error: (e) => {
-          console.error(e), (this.statusCode = e.status);
+          if (e) {
+            console.error(e), (this.statusCode = e.status);
+          } else {
+            console.log('Null values while fetching error message filterGenre');
+          }
         },
         complete: () => {
           console.info('filter genre ' + genre + ' fetched successfully');
@@ -226,16 +249,24 @@ export class Top100MoviesComponent implements OnInit {
   getWishlist() {
     this.wishlistService.getWishlist(this.username).subscribe({
       next: (v) => {
-        v.movies.forEach((movie) => {
-          this.imdbIds.push(movie.imdbid);
-        });
+        if (v) {
+          v.movies.forEach((movie) => {
+            this.imdbIds.push(movie.imdbid);
+          });
+        } else {
+          console.log('Null values while fetching wishlist');
+        }
       },
       error: (e) => {
-        console.error(e), (this.statusCode = e.status);
-        if (this.statusCode === 400 || this.statusCode === 401) {
-          console.error(e), localStorage.removeItem('token');
-          localStorage.removeItem('username');
-          this.router.navigate(['/login']);
+        if (e) {
+          console.error(e), (this.statusCode = e.status);
+          if (this.statusCode === 400 || this.statusCode === 401) {
+            console.error(e), localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            this.router.navigate(['/login']);
+          }
+        } else {
+          console.log('Null values while fetching error message wishlist');
         }
       },
       complete: () => {
@@ -248,17 +279,25 @@ export class Top100MoviesComponent implements OnInit {
     console.log(this.username);
     this.wishlistService.saveWishlist(this.username, movie).subscribe({
       next: (v) => {
-        this.imdbIds = [];
-        v.movies.forEach((movie) => {
-          this.imdbIds.push(movie.imdbid);
-        });
+        if (v) {
+          this.imdbIds = [];
+          v.movies.forEach((movie) => {
+            this.imdbIds.push(movie.imdbid);
+          });
+        } else {
+          console.log('Null values while fetching saving movie');
+        }
       },
       error: (e) => {
-        console.error(e), (this.statusCode = e.status);
-        if (this.statusCode === 400 || this.statusCode === 401) {
-          console.error(e), localStorage.removeItem('token');
-          localStorage.removeItem('username');
-          this.router.navigate(['/login']);
+        if (e) {
+          console.error(e), (this.statusCode = e.status);
+          if (this.statusCode === 400 || this.statusCode === 401) {
+            console.error(e), localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            this.router.navigate(['/login']);
+          }
+        } else {
+          console.log('Null values while fetching error message saving movie');
         }
       },
       complete: () => {
@@ -270,17 +309,25 @@ export class Top100MoviesComponent implements OnInit {
   delete(id: string) {
     this.wishlistService.deleteWishlist(this.username, id).subscribe({
       next: (v) => {
-        this.imdbIds = [];
-        v.movies.forEach((movie) => {
-          this.imdbIds.push(movie.imdbid);
-        });
+        if (v) {
+          this.imdbIds = [];
+          v.movies.forEach((movie) => {
+            this.imdbIds.push(movie.imdbid);
+          });
+        } else {
+          console.log('Null values while fetching delete movie');
+        }
       },
       error: (e) => {
-        console.error(e), (this.statusCode = e.status);
-        if (this.statusCode === 400 || this.statusCode === 401) {
-          console.error(e), localStorage.removeItem('token');
-          localStorage.removeItem('username');
-          this.router.navigate(['/login']);
+        if (e) {
+          console.error(e), (this.statusCode = e.status);
+          if (this.statusCode === 400 || this.statusCode === 401) {
+            console.error(e), localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            this.router.navigate(['/login']);
+          }
+        } else {
+          console.log('Null values while fetching error message delete movie');
         }
       },
       complete: () => {

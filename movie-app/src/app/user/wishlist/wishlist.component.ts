@@ -97,4 +97,8 @@ export class WishlistComponent implements OnInit {
   moreDetails(link: any) {
     window.open(link, '_blank');
   }
+
+  play(link: any) {
+    window.open(link, '_blank');
+  }
 }

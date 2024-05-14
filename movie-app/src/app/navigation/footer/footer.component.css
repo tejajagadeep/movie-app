@@ -1,3 +1,5 @@
+@import url(https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.5/src/app/ci.min.css);
+
 .top-btn {
   position: fixed;
   bottom: 20px;
@@ -38,7 +40,7 @@ img {
 
 .footer {
   overflow: hidden;
-  background-color: #2a3fb3;
+  background-color: darkgrey;
   bottom: 0;
   width: 100%;
   text-align: center;
@@ -60,4 +62,11 @@ p {
 .social-icon {
   width: 25px;
   height: 25px;
+}
+.ci {
+  padding-top: 5px;
+  cursor: pointer;
+}
+.separator {
+  margin: 0 5px;
 }
