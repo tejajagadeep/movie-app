@@ -9,6 +9,7 @@ import { NoContentComponent } from '../../errors/no-content/no-content.component
 import { InternalServerErrorComponent } from '../../errors/internal-server-error/internal-server-error.component';
 import { Router } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FooterComponent } from '../../navigation/footer/footer.component';
 
 @Component({
   selector: 'app-wishlist',
@@ -22,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     NoContentComponent,
     InternalServerErrorComponent,
     MatTooltipModule,
+    FooterComponent,
   ],
 })
 export class WishlistComponent implements OnInit {
