@@ -283,13 +283,24 @@ export class Top100MoviesComponent implements OnInit {
       },
       complete: () => {
         console.info('movie saved successfully');
-        this.snackBar.open('Movie added to Wishlist', 'Close', {
-          duration: 3000, // Duration in milliseconds
-        });
+        this.openSnackBarWithOpenButton(
+          'Movie added to Wishlist',
+          'Open',
+          '/wishlist'
+        );
       },
     });
   }
+  openSnackBarWithOpenButton(message: string, action: string, route: string) {
+    let snackBarRef = this.snackBar.open(message, action, {
+      duration: 3000, // Duration in milliseconds
+    });
 
+    // Override the action button behavior to navigate to the specified route
+    snackBarRef.onAction().subscribe(() => {
+      this.router.navigate([route]);
+    });
+  }
   delete(id: string) {
     this.wishlistService.deleteWishlist(this.username, id).subscribe({
       next: (v) => {

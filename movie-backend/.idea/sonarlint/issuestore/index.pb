@@ -193,3 +193,5 @@ m
 =src/test/java/com/cts/movieservice/dto/MovieDiffblueTest.java,5\7\5786ee4ccf48de0c000e2d221c1216b5b80fe576
 {
 Ksrc/main/java/com/auth/authenticationservice/controller/AuthController.java,e\e\eec342c9adbf4a32a49556a0533a7d706eb78950
+
+Osrc/test/java/com/auth/authenticationservice/controller/AuthControllerTest.java,3\f\3f14adcf0624dadd686340cb5e01ad74639df61c

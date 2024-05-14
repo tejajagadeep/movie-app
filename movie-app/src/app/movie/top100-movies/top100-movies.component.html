@@ -7,7 +7,7 @@
         </p>
         <p>
             <button mat-icon-button matTooltip="wishlist" routerLink="/wishlist">
-                <mat-icon>bookmark</mat-icon>
+                <mat-icon>bookmarks</mat-icon>
             </button>
         </p>
         <div class="my-form-side">
@@ -94,8 +94,8 @@
                             @if (imdbIds.includes(movie.imdbid)) {
                             <button mat-fab class="more" matTooltip="delete from wishlist"
                                 (click)="delete(movie.imdbid)" color="primary"
-                                aria-label="Example icon button with a home icon" style="color: red;">
-                                <mat-icon>bookmark</mat-icon>
+                                aria-label="Example icon button with a home icon">
+                                <mat-icon>bookmark_added</mat-icon>
                             </button>
                             }@else {
                             <button mat-fab class="more" matTooltip="save to wishlist" (click)="saveWishlist(movie)"

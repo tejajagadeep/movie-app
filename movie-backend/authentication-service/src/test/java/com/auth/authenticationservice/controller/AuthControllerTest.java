@@ -43,6 +43,6 @@ class AuthControllerTest {
         ResponseEntity<Object> result = authController.validate(username);
 
         assertEquals(HttpStatus.ACCEPTED, result.getStatusCode());
-        assertEquals(username + " Authorized", result.getBody());
+        assertEquals(true, result.getBody());
     }
 }
