@@ -23,8 +23,6 @@ export class MovieDetailsComponent implements OnInit {
   safeTrailerUrl!: SafeResourceUrl;
 
   constructor(
-    // public dialogRef: MatDialogRef<MovieDetailsComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: { id: string },
     private movieService: MovieService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer

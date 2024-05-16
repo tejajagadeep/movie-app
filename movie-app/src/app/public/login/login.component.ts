@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('username', this.loginForm.value.username);
           this.router.navigate(['/home']);
           this.snackBar.open('You are Logged In', 'Close', {
-            duration: 3000, // Duration in milliseconds
+            duration: 3000,
           });
           console.info('User logged in successfully');
         },
