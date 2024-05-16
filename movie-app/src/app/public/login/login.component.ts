@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       this.authService.authenticate(this.loginForm.value).subscribe({
         next: (v) => {
           console.log(v);
-          localStorage.setItem('token', v.access_token);
+          sessionStorage.setItem('token', v.access_token);
         },
         error: (e) => {
           this.statusCode = e.status;
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
           }
         },
         complete: () => {
-          localStorage.setItem('username', this.loginForm.value.username);
+          sessionStorage.setItem('username', this.loginForm.value.username);
           this.router.navigate(['/home']);
           this.snackBar.open('You are Logged In', 'Close', {
             duration: 3000,

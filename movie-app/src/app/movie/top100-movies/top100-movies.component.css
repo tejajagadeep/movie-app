@@ -23,7 +23,7 @@ code {
 }
 .nft {
   user-select: none;
-  max-width: 280px;
+  max-width: 250px;
   margin: 1rem auto;
   border: 1px solid #ffffff22;
   background-color: #282c34;
@@ -55,12 +55,13 @@ code {
     .tokenImage {
       border-radius: 0.5rem;
       max-width: 100%;
-      height: 250px;
+      height: 200px;
       object-fit: cover;
     }
     .description {
       margin: 0.5rem 0;
       color: #c2b7e4;
+      margin-top: -10px;
     }
     .tokenInfo {
       display: flex;
@@ -83,7 +84,7 @@ code {
         margin-right: 0.2rem;
         ins {
           margin: 0.5rem;
-          margin-bottom: 0.4rem;
+          /* margin-bottom: 0.4rem; */
         }
       }
     }
@@ -139,6 +140,17 @@ code {
   }
 }
 
+.tags {
+  position: -ms-page;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.tags hr {
+  border-color: #88888855;
+}
+
 .bg {
   position: fixed;
   top: 50%;
@@ -150,7 +162,7 @@ code {
   }
 }
 
-h2 {
+h3 {
   overflow: auto;
   white-space: nowrap; /* Prevent text wrapping */
   overflow: hidden; /* Hide overflow */
@@ -227,6 +239,21 @@ h2 {
 .centered-content {
   display: flex;
   align-items: center; /* Align items vertically */
+}
+
+.nft .description,
+.nft .price p,
+.nft .duration p,
+.nft .type {
+  font-size: 0.93rem; /* Adjust the font size as needed */
+}
+
+.nft .rank {
+  font-size: 25px; /* Adjust the font size as needed */
+}
+
+.nft .more {
+  font-size: 0.7rem; /* Adjust the font size as needed */
 }
 
 .mat-form-field {

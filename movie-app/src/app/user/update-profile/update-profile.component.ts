@@ -47,7 +47,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   updateUserProfile() {
-    const username = localStorage.getItem('username') ?? '';
+    const username = sessionStorage.getItem('username') ?? '';
     if (this.updateForm.valid) {
       console.log(this.updateForm.value);
       this.userprofileService
@@ -75,8 +75,8 @@ export class UpdateProfileComponent implements OnInit {
                   duration: 3000, // Duration in milliseconds
                 }
               );
-              console.error(e), localStorage.removeItem('token');
-              localStorage.removeItem('username');
+              console.error(e), sessionStorage.removeItem('token');
+              sessionStorage.removeItem('username');
               this.router.navigate(['/login']);
             }
           },
@@ -92,7 +92,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   getUserProfile() {
-    const username = localStorage.getItem('username') ?? '';
+    const username = sessionStorage.getItem('username') ?? '';
     this.userprofileService.getUserProfile(username).subscribe({
       next: (v) => {
         this.userprofile = v;
@@ -106,8 +106,8 @@ export class UpdateProfileComponent implements OnInit {
       error: (e) => {
         console.error(e), (this.statusCode = e.status);
         if (this.statusCode === 400 || this.statusCode === 401) {
-          console.error(e), localStorage.removeItem('token');
-          localStorage.removeItem('username');
+          console.error(e), sessionStorage.removeItem('token');
+          sessionStorage.removeItem('username');
           this.router.navigate(['/login']);
         }
       },

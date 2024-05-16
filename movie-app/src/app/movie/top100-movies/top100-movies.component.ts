@@ -72,7 +72,7 @@ export class Top100MoviesComponent implements OnInit {
   pageSizeOptions = [4, 8, 24, 100];
 
   ngOnInit(): void {
-    this.username = localStorage.getItem('username') ?? '';
+    this.username = sessionStorage.getItem('username') ?? '';
     this.genres();
     this.getTop100Movies();
     this.getWishlist();
@@ -338,8 +338,8 @@ export class Top100MoviesComponent implements OnInit {
         );
       }
       if (this.statusCode === 400 || this.statusCode === 401) {
-        console.error(error), localStorage.removeItem('token');
-        localStorage.removeItem('username');
+        console.error(error), sessionStorage.removeItem('token');
+        sessionStorage.removeItem('username');
         this.validateUser();
       }
     } else {
@@ -398,15 +398,15 @@ export class Top100MoviesComponent implements OnInit {
 
   supports_html5_storage() {
     try {
-      return 'localStorage' in window && window['localStorage'] !== null;
+      return 'sessionStorage' in window && window['sessionStorage'] !== null;
     } catch (e) {
       return false;
     }
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('username');
     this.snackBar.open('You have logged Out', 'Close', {
       duration: 3000, // Duration in milliseconds
     });

@@ -85,7 +85,8 @@
         @else if (movieResponse.data.length>0) {
         <div class="container">
 
-            @for (movie of pagedMovies; track $index) { <div class="nft">
+            @for (movie of pagedMovies; track $index) {
+            <div class="nft">
 
                 <div class='main'>
                     <div class="image-container">
@@ -94,8 +95,9 @@
                             @if (imdbIds.includes(movie.imdbid)) {
                             <button mat-fab class="more" matTooltip="delete from wishlist"
                                 (click)="delete(movie.imdbid)" color="primary"
-                                aria-label="Example icon button with a home icon">
-                                <mat-icon>bookmark_added</mat-icon>
+                                aria-label="Example icon button with a home icon"
+                                style="color: rgba(255, 0, 0, 0.854);">
+                                <mat-icon>bookmark</mat-icon>
                             </button>
                             }@else {
                             <button mat-fab class="more" matTooltip="save to wishlist" (click)="saveWishlist(movie)"
@@ -113,27 +115,29 @@
 
                     </div>
 
-                    <h2 [matTooltip]="movie.title">{{movie.title}}</h2>
+                    <h3 [matTooltip]="movie.title">{{movie.title}}</h3>
                     <p class='description'>{{movie.description}}</p>
-                    <div class='tokenInfo'>
-                        <div class="price" matTooltip="IMDB Rating">
-                            <ins><span class="material-icons">&#xe838;</span></ins>
-                            <p>{{movie.rating}}</p>
+                    <div class="tags">
+                        <div class='tokenInfo'>
+                            <div class="price" matTooltip="IMDB Rating">
+                                <ins><span class="material-icons">&#xe838;</span></ins>
+                                <p>{{movie.rating}}</p>
+                            </div>
+                            <div class="duration" matTooltip="Release Year">
+                                <ins><mat-icon>
+                                        calendar_month
+                                    </mat-icon></ins>
+                                <p>{{movie.year}}</p>
+                            </div>
                         </div>
-                        <div class="duration" matTooltip="Release Year">
-                            <ins><mat-icon>
-                                    calendar_month
-                                </mat-icon></ins>
-                            <p>{{movie.year}}</p>
+                        <hr />
+                        <div class='creator'>
+                            <div class='wrapper'>
+                                <img [src]="movie.thumbnail" matTooltip="Thumbnail" alt="Creator" />
+                            </div>
+                            <p>@for (g of movie.genre; track $index) {
+                            <div class="type">{{g}}</div> }</p>
                         </div>
-                    </div>
-                    <hr />
-                    <div class='creator'>
-                        <div class='wrapper'>
-                            <img [src]="movie.thumbnail" matTooltip="Thumbnail" alt="Creator" />
-                        </div>
-                        <p>@for (g of movie.genre; track $index) {
-                        <div class="type">{{g}}</div> }</p>
                     </div>
                 </div>
             </div>

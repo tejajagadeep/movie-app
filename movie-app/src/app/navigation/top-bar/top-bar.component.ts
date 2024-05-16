@@ -16,8 +16,8 @@ export class TopBarComponent implements OnInit {
   isLoggedIn = false;
 
   ngOnInit(): void {
-    const storedUsername = localStorage.getItem('username');
-    const storedToken = localStorage.getItem('token');
+    const storedUsername = sessionStorage.getItem('username');
+    const storedToken = sessionStorage.getItem('token');
     if (
       storedUsername !== null &&
       storedUsername !== undefined &&
@@ -33,8 +33,8 @@ export class TopBarComponent implements OnInit {
     }
   }
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('username');
     this.snackBar.open('You have Logged Out.', 'Close', {
       duration: 3000, // Duration in milliseconds
     });

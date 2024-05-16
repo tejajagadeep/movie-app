@@ -20,7 +20,7 @@ export class LoginService {
 
   isLogged() {
     this.isLoggedIn = true;
-    let username = localStorage.getItem('username') ?? '';
+    let username = sessionStorage.getItem('username') ?? '';
     this.authService.isUserLoggedIn(username).pipe(
       map((response: boolean) => {
         return response; // Return true if authentication is successful, false otherwise

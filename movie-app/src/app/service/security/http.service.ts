@@ -18,7 +18,7 @@ import { catchError, throwError } from 'rxjs';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   let token = '';
-  const storedToken = localStorage.getItem('token');
+  const storedToken = sessionStorage.getItem('token');
   if (
     storedToken !== null &&
     storedToken !== undefined &&

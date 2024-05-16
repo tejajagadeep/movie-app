@@ -4,7 +4,7 @@ import { Injectable, inject } from '@angular/core';
 @Injectable()
 class PermissionsService {
   canActivate(): boolean {
-    if (localStorage.getItem('token') && localStorage.getItem('username')) {
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('username')) {
       return true;
     }
 
@@ -17,9 +17,9 @@ class PermissionsService {
 // };
 
 export const AuthGuard: CanActivateFn = (route, state) => {
-  // if (typeof window !== 'undefined' && window.localStorage) {
-  let token = localStorage.getItem('token');
-  let username = localStorage.getItem('username');
+  // if (typeof window !== 'undefined' && window.sessionStorage) {
+  let token = sessionStorage.getItem('token');
+  let username = sessionStorage.getItem('username');
   const router = inject(Router);
   if (token !== null && username !== null) {
     return true;
@@ -28,15 +28,15 @@ export const AuthGuard: CanActivateFn = (route, state) => {
     return false;
   }
   // } else {
-  //   // Handle the case where localStorage is not available
+  //   // Handle the case where sessionStorage is not available
   //   return false;
   // }
 };
 
 export const LoginGuard: CanActivateFn = (route, state) => {
-  // if (typeof window !== 'undefined' && window.localStorage) {
-  let token = localStorage.getItem('token');
-  let username = localStorage.getItem('username');
+  // if (typeof window !== 'undefined' && window.sessionStorage) {
+  let token = sessionStorage.getItem('token');
+  let username = sessionStorage.getItem('username');
   const router = inject(Router);
   if (token === null || username === null) {
     return true;
@@ -45,7 +45,7 @@ export const LoginGuard: CanActivateFn = (route, state) => {
     return false;
   }
   // } else {
-  //   // Handle the case where localStorage is not available
+  //   // Handle the case where sessionStorage is not available
   //   return false;
   // }
 };

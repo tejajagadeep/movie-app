@@ -39,7 +39,7 @@ export class WishlistComponent implements OnInit {
   statusCode!: number;
   username: string = 'user';
   ngOnInit(): void {
-    const storedUsername = localStorage.getItem('username');
+    const storedUsername = sessionStorage.getItem('username');
     if (
       storedUsername !== null &&
       storedUsername !== undefined &&
@@ -74,8 +74,8 @@ export class WishlistComponent implements OnInit {
               duration: 3000, // Duration in milliseconds
             }
           );
-          console.error(e), localStorage.removeItem('token');
-          localStorage.removeItem('username');
+          console.error(e), sessionStorage.removeItem('token');
+          sessionStorage.removeItem('username');
           this.router.navigate(['/login']);
         }
       },
@@ -109,8 +109,8 @@ export class WishlistComponent implements OnInit {
               duration: 3000, // Duration in milliseconds
             }
           );
-          console.error(e), localStorage.removeItem('token');
-          localStorage.removeItem('username');
+          console.error(e), sessionStorage.removeItem('token');
+          sessionStorage.removeItem('username');
           this.router.navigate(['/login']);
         }
       },
