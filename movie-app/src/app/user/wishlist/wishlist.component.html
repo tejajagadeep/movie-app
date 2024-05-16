@@ -1,4 +1,5 @@
 <app-top-bar></app-top-bar>
+@if (movies) {
 @if(statusCode===404) {
 <app-not-found></app-not-found>
 }
@@ -39,7 +40,7 @@
 </div>
 }
 }
-@else {
+} @else {
 <app-internal-server-error></app-internal-server-error>
 }
 <app-footer></app-footer>

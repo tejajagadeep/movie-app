@@ -44,6 +44,5 @@ class AuthControllerTest {
 
         assertEquals(HttpStatus.ACCEPTED, result.getStatusCode());
         assertEquals(true, result.getBody());
-        
     }
 }

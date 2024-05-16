@@ -70,6 +70,15 @@ export class LoginComponent implements OnInit {
         },
         error: (e) => {
           this.statusCode = e.status;
+          if (this.statusCode === 500 || this.statusCode === 503) {
+            this.snackBar.open(
+              'The service is currently unavailable. Please try again later.',
+              'Close',
+              {
+                duration: 3000,
+              }
+            );
+          }
         },
         complete: () => {
           localStorage.setItem('username', this.loginForm.value.username);

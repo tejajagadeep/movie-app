@@ -9,6 +9,7 @@ import { Movie } from '../../model/Movie';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
 import { NotFoundComponent } from '../../errors/not-found/not-found.component';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -32,7 +33,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserprofileService,
     private wishlists: WishlistService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
     this.users();
@@ -48,6 +50,15 @@ export class ProfileComponent implements OnInit {
       error: (e) => {
         console.log(e);
         this.statusCode = e.status;
+        if (this.statusCode === 500 || this.statusCode === 503) {
+          this.snackBar.open(
+            'The service is currently unavailable. Please try again later.',
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+        }
         if (this.statusCode === 400 || this.statusCode === 401) {
           console.error(e), localStorage.removeItem('token');
           localStorage.removeItem('username');
@@ -68,7 +79,23 @@ export class ProfileComponent implements OnInit {
       },
       error: (e) => {
         console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 500 || this.statusCode === 503) {
+          this.snackBar.open(
+            'The service is currently unavailable. Please try again later.',
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+        }
         if (this.statusCode === 400 || this.statusCode === 401) {
+          this.snackBar.open(
+            'Wrong user credentials. Please Login again.',
+            'Close',
+            {
+              duration: 3000, // Duration in milliseconds
+            }
+          );
           console.error(e), localStorage.removeItem('token');
           localStorage.removeItem('username');
           this.router.navigate(['/login']);

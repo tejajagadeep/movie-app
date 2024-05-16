@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-not-found',
   standalone: true,
-  imports: [],
+  imports: [MatTooltipModule],
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.css',
 })

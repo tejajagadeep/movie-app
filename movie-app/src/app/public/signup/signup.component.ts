@@ -51,15 +51,26 @@ export class SignupComponent implements OnInit {
 
   saveUserProfile() {
     if (this.signupForm.valid) {
-      console.log(this.signupForm.value);
       this.userprofileService.saveUserProfile(this.signupForm.value).subscribe({
         next: (v) => {
           console.log(v);
         },
         error: (e) => {
+          console.log('error');
           this.errorMessage = e.error;
           this.statusCode = e.status;
-          console.error(this.errorMessage.status);
+          console.error(e);
+          if (this.statusCode === 500 || this.statusCode === 503) {
+            this.snackBar.open(
+              'The service is currently unavailable. Please try again later.',
+              'Close',
+              {
+                duration: 3000,
+              }
+            );
+          } else {
+            console.error('An unexpected error occurred:', e);
+          }
         },
         complete: () => {
           console.info('User Registered successfully');

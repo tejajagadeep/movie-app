@@ -37,12 +37,8 @@ export class WishlistComponent implements OnInit {
   movies!: Movie[];
   imdbIds: string[] = [];
   statusCode!: number;
-  username!: string;
+  username: string = 'user';
   ngOnInit(): void {
-    this.getWishlist();
-  }
-
-  getWishlist() {
     const storedUsername = localStorage.getItem('username');
     if (
       storedUsername !== null &&
@@ -51,13 +47,33 @@ export class WishlistComponent implements OnInit {
     ) {
       this.username = storedUsername;
     }
+    this.getWishlist();
+  }
+
+  getWishlist() {
     this.wishlistService.getWishlist(this.username).subscribe({
       next: (v) => {
         this.movies = v.movies;
       },
       error: (e) => {
         console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 500 || this.statusCode === 503) {
+          this.snackBar.open(
+            'The service is currently unavailable. Please try again later.',
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+        }
         if (this.statusCode === 400 || this.statusCode === 401) {
+          this.snackBar.open(
+            'Wrong user credentials. Please Login again.',
+            'Close',
+            {
+              duration: 3000, // Duration in milliseconds
+            }
+          );
           console.error(e), localStorage.removeItem('token');
           localStorage.removeItem('username');
           this.router.navigate(['/login']);
@@ -70,21 +86,29 @@ export class WishlistComponent implements OnInit {
   }
 
   delete(id: string) {
-    const storedUsername = localStorage.getItem('username');
-    if (
-      storedUsername !== null &&
-      storedUsername !== undefined &&
-      storedUsername !== 'undefined'
-    ) {
-      this.username = storedUsername;
-    }
     this.wishlistService.deleteWishlist(this.username, id).subscribe({
       next: (v) => {
         this.movies = v.movies;
       },
       error: (e) => {
         console.error(e), (this.statusCode = e.status);
+        if (this.statusCode === 500 || this.statusCode === 503) {
+          this.snackBar.open(
+            'The service is currently unavailable. Please try again later.',
+            'Close',
+            {
+              duration: 3000,
+            }
+          );
+        }
         if (this.statusCode === 400 || this.statusCode === 401) {
+          this.snackBar.open(
+            'Wrong user credentials. Please Login again.',
+            'Close',
+            {
+              duration: 3000, // Duration in milliseconds
+            }
+          );
           console.error(e), localStorage.removeItem('token');
           localStorage.removeItem('username');
           this.router.navigate(['/login']);

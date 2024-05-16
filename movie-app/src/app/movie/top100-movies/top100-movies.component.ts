@@ -266,7 +266,6 @@ export class Top100MoviesComponent implements OnInit {
   }
 
   saveWishlist(movie: Movie) {
-    console.log(this.username);
     this.wishlistService.saveWishlist(this.username, movie).subscribe({
       next: (v) => {
         if (v) {
@@ -327,7 +326,17 @@ export class Top100MoviesComponent implements OnInit {
 
   wishlistError(error: any) {
     if (error) {
+      console.log(error.status);
       console.error(error), (this.statusCode = error.status);
+      if (error.status === 500 || error.status === 503) {
+        this.snackBar.open(
+          'The service is currently unavailable. Please try again later.',
+          'Close',
+          {
+            duration: 3000,
+          }
+        );
+      }
       if (this.statusCode === 400 || this.statusCode === 401) {
         console.error(error), localStorage.removeItem('token');
         localStorage.removeItem('username');
@@ -352,6 +361,15 @@ export class Top100MoviesComponent implements OnInit {
       error: (e) => {
         if (e) {
           console.error(e), (this.statusCode = e.status);
+          if (this.statusCode === 500 || this.statusCode === 503) {
+            this.snackBar.open(
+              'The service is currently unavailable. Please try again later.',
+              'Close',
+              {
+                duration: 3000,
+              }
+            );
+          }
           this.snackBar.open(
             'Wrong user credentials. Please Login again.',
             'Close',

@@ -12,25 +12,30 @@ Furthermore, the project includes a CI/CD pipeline managed through GitHub. Conti
 
 **Prerequisites:** Docker and Docker Compose are required.
 
-```bash
-docker-compose up
-```
-
-[Redirect to assets to find docker compose file](assets/docker-compose.yml)
-
 for latest run
 
 ```bash
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie-compose-container tejajagadeep/docker-compose-movie-container
 ```
 
+```bash
+docker-compose up
+```
+
+[Redirect to assets to find docker compose file](assets/docker-compose.yml)
+
 **Note:** Make sure that the below ports are available for bash command.
+
+## User Interface
+
+| Interface | Description                              | URL                                            |
+| --------- | ---------------------------------------- | ---------------------------------------------- |
+| MOVIE-APP | Web application for the MovieApp project | [http://localhost:4201](http://localhost:4201) |
 
 ## Services
 
 | Service                | Description                                       | URL                                                                                        |
 | ---------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| MOVIE-APP              | Web application for the MovieApp project          | [http://localhost:4201](http://localhost:4201)                                             |
 | API-GATEWAY            | Gateway for accessing APIs                        | [http://localhost:8765/actuator/info](http://localhost:8765/actuator/info)                 |
 | AUTHENTICATION-SERVICE | Service for user authentication and authorization | [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html) |
 | USERPROFILE-SERVICE    | Service for managing user profiles                | [http://localhost:8092/swagger-ui/index.html](http://localhost:8092/swagger-ui/index.html) |
@@ -39,13 +44,10 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 ## Servers
 
-| Server         | Description                                             | URL                                                                                        |
-| -------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| EUREKA-SERVER  | Discovery server for microservices                      | [http://localhost:8761](http://localhost:8761)                                             |
-| CONFIG-SERVER  | Server for managing configuration properties            | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/health)             |
-| SWAGGER-SERVER | Server hosting Swagger UI for API documentation         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
-| ZIPKIN-SERVER  | Distributed tracing system for monitoring microservices | [http://localhost:9411](http://localhost:9411)                                             |
-| KAFKA-UI       | Kafka UI for kafka server (_host:`kafka`,port:`9093`_)  | [http://localhost:9090](http://localhost:9090)                                             |
+| Server        | Description                                  | URL                                                                            |
+| ------------- | -------------------------------------------- | ------------------------------------------------------------------------------ |
+| EUREKA-SERVER | Discovery server for microservices           | [http://localhost:8761](http://localhost:8761)                                 |
+| CONFIG-SERVER | Server for managing configuration properties | [http://localhost:8888/actuator/health](http://localhost:8888/actuator/health) |
 
 ## Infrastructure Elements
 
@@ -55,6 +57,14 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 | KAFKA     | Distributed streaming platform                           | [http://ip-address:9093](http://127.0.0.1:9093)   |
 | MYSQLDB   | Relational database management system (RDBMS)            | [http://ip-address:3307](http://127.0.0.1:3307)   |
 | MONGODB   | NoSQL database system                                    | [http://ip-address:27018](http://127.0.0.1:27018) |
+
+## Infrastructure UI
+
+| UI             | Description                                             | URL                                                                                        |
+| -------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| SWAGGER-SERVER | Server hosting Swagger UI for API documentation         | [http://localhost:8769/swagger-ui/index.html](http://localhost:8769/swagger-ui/index.html) |
+| ZIPKIN-SERVER  | Distributed tracing system for monitoring microservices | [http://localhost:9411](http://localhost:9411)                                             |
+| KAFKA-UI       | Kafka UI for kafka server (_host:`kafka`,port:`9093`_)  | [http://localhost:9090](http://localhost:9090)                                             |
 
 **Note:** Consider all service/server names in lowercase for docker-compose host names.
 
