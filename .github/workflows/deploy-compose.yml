@@ -17,11 +17,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/docker-compose-movie-container:v1.0 assets/advanced
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/docker-compose-movie-container:latest assets/advanced
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-compose-movie-container:v1.0
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-compose-movie-container:latest
