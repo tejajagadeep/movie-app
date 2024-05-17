@@ -41,7 +41,15 @@
                                     }
                                     @if (loginForm.valid && statusCode === 404) {<ul class="error-list">
                                         <li>Username does not exist</li>
-                                    </ul>}
+                                    </ul>}@else if (statusCode === 503) {
+                                    <ul class="error-list">
+                                        <li>service unavailable</li>
+                                    </ul>
+                                    }@else if (statusCode === 500) {
+                                    <ul class="error-list">
+                                        <li>internal server error</li>
+                                    </ul>
+                                    }
 
                                 </div>
                                 <div class="input-container">
@@ -65,6 +73,14 @@
                                         @if (loginForm.valid && statusCode === 401) {
                                         <ul class="error-list">
                                             <li>incorrect password</li>
+                                        </ul>
+                                        }@else if (statusCode === 503) {
+                                        <ul class="error-list">
+                                            <li>service unavailable</li>
+                                        </ul>
+                                        }@else if (statusCode === 500) {
+                                        <ul class="error-list">
+                                            <li>internal server error</li>
                                         </ul>
                                         }
 

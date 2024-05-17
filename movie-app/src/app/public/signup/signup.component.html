@@ -88,6 +88,14 @@
                         <div class="error-list">
                             Username already exists
                         </div>
+                        }@else if (statusCode === 503) {
+                        <ul class="error-list">
+                            <li>service unavailable</li>
+                        </ul>
+                        }@else if (statusCode === 500) {
+                        <ul class="error-list">
+                            <li>internal server error</li>
+                        </ul>
                         }
                         <input type="text" id="username" formControlName="username" maxlength="10"
                             placeholder="Enter Your Username">
@@ -113,6 +121,14 @@
                         <div class="error-list">
                             Email already exists
                         </div>
+                        }@else if (statusCode === 503) {
+                        <ul class="error-list">
+                            <li>service unavailable</li>
+                        </ul>
+                        }@else if (statusCode === 500) {
+                        <ul class="error-list">
+                            <li>internal server error</li>
+                        </ul>
                         }
                         <input type="email" id="email" formControlName="email" placeholder="Enter Your Email">
                     </article>
