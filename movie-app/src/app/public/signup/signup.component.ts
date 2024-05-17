@@ -47,6 +47,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.formBuilderGroup();
+    this.serviceError(this.statusCode);
   }
 
   saveUserProfile() {
@@ -60,17 +61,6 @@ export class SignupComponent implements OnInit {
           this.errorMessage = e.error;
           this.statusCode = e.status;
           console.error(e);
-          if (this.statusCode === 500 || this.statusCode === 503) {
-            this.snackBar.open(
-              'The service is currently unavailable. Please try again later.',
-              'Close',
-              {
-                duration: 3000,
-              }
-            );
-          } else {
-            console.error('An unexpected error occurred:', e);
-          }
         },
         complete: () => {
           console.info('User Registered successfully');
@@ -238,9 +228,17 @@ export class SignupComponent implements OnInit {
   }
 
   serviceError(code: number) {
-    if (this.statusCode === 500 || this.statusCode === 503) {
+    if (this.statusCode === 503) {
       this.snackBar.open(
         'The service is currently unavailable. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 500) {
+      this.snackBar.open(
+        'Internal Server Error. Please try again later.',
         'Close',
         {
           duration: 3000,

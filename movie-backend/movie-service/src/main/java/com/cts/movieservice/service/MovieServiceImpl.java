@@ -196,8 +196,6 @@ public class MovieServiceImpl implements MovieService{
         return response;
     }
 
-
-
     public Response getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = null;

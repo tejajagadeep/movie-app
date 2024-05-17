@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.users();
     this.getWishlist();
+    this.serviceError(this.statusCode);
   }
 
   users() {
@@ -50,15 +51,6 @@ export class ProfileComponent implements OnInit {
       error: (e) => {
         console.log(e);
         this.statusCode = e.status;
-        if (this.statusCode === 500 || this.statusCode === 503) {
-          this.snackBar.open(
-            'The service is currently unavailable. Please try again later.',
-            'Close',
-            {
-              duration: 3000,
-            }
-          );
-        }
         if (this.statusCode === 400 || this.statusCode === 401) {
           console.error(e), sessionStorage.removeItem('token');
           sessionStorage.removeItem('username');
@@ -79,15 +71,6 @@ export class ProfileComponent implements OnInit {
       },
       error: (e) => {
         console.error(e), (this.statusCode = e.status);
-        if (this.statusCode === 500 || this.statusCode === 503) {
-          this.snackBar.open(
-            'The service is currently unavailable. Please try again later.',
-            'Close',
-            {
-              duration: 3000,
-            }
-          );
-        }
         if (this.statusCode === 400 || this.statusCode === 401) {
           this.snackBar.open(
             'Wrong user credentials. Please Login again.',
@@ -105,5 +88,24 @@ export class ProfileComponent implements OnInit {
         console.info('wishlist fetched successfully');
       },
     });
+  }
+  serviceError(code: number) {
+    if (this.statusCode === 503) {
+      this.snackBar.open(
+        'The service is currently unavailable. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 500) {
+      this.snackBar.open(
+        'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    }
   }
 }

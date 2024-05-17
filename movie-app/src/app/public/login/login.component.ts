@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginFormBuilder();
+    this.serviceError(this.statusCode);
   }
 
   loginFormBuilder() {
@@ -70,15 +71,6 @@ export class LoginComponent implements OnInit {
         },
         error: (e) => {
           this.statusCode = e.status;
-          if (this.statusCode === 500 || this.statusCode === 503) {
-            this.snackBar.open(
-              'The service is currently unavailable. Please try again later.',
-              'Close',
-              {
-                duration: 3000,
-              }
-            );
-          }
         },
         complete: () => {
           sessionStorage.setItem('username', this.loginForm.value.username);
@@ -100,9 +92,17 @@ export class LoginComponent implements OnInit {
   }
 
   serviceError(code: number) {
-    if (this.statusCode === 500 || this.statusCode === 503) {
+    if (this.statusCode === 503) {
       this.snackBar.open(
         'The service is currently unavailable. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 500) {
+      this.snackBar.open(
+        'Internal Server Error. Please try again later.',
         'Close',
         {
           duration: 3000,

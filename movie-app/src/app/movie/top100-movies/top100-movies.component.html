@@ -80,7 +80,7 @@
 
         @if (movieResponse.data) {
         @if (movieResponse.data.length===0) {
-        <app-no-content></app-no-content>
+        <app-not-found></app-not-found>
         }
         @else if (movieResponse.data.length>0) {
         <div class="container">

@@ -22,6 +22,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { AuthenticationService } from '../../service/data/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotFoundComponent } from '../../errors/not-found/not-found.component';
 
 @Component({
   selector: 'app-top100-movies',
@@ -45,6 +46,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule,
+    NotFoundComponent,
   ],
 })
 export class Top100MoviesComponent implements OnInit {
@@ -79,6 +81,7 @@ export class Top100MoviesComponent implements OnInit {
     this.supports_html5_storage();
     this.searchForm();
     this.pageSize = this.pageSizeOptions[1];
+    this.serviceError(this.statusCode);
   }
   paginatorPage(event: PageEvent) {
     // Update custom pagination controls based on mat-paginator
@@ -163,18 +166,6 @@ export class Top100MoviesComponent implements OnInit {
       this.options.push({ value: genre.toLowerCase(), viewValue: genre });
     });
     this.options.push({ value: 'uncheck', viewValue: 'Uncheck' });
-  }
-
-  serviceError(code: number) {
-    if (this.statusCode === 500 || this.statusCode === 503) {
-      this.snackBar.open(
-        'The service is currently unavailable. Please try again later.',
-        'Close',
-        {
-          duration: 3000,
-        }
-      );
-    }
   }
 
   getTop100Movies() {
@@ -373,15 +364,6 @@ export class Top100MoviesComponent implements OnInit {
       error: (e) => {
         if (e) {
           console.error(e), (this.statusCode = e.status);
-          if (this.statusCode === 500 || this.statusCode === 503) {
-            this.snackBar.open(
-              'The service is currently unavailable. Please try again later.',
-              'Close',
-              {
-                duration: 3000,
-              }
-            );
-          }
           this.snackBar.open(
             'Wrong user credentials. Please Login again.',
             'Close',
@@ -422,5 +404,24 @@ export class Top100MoviesComponent implements OnInit {
     this.snackBar.open('You have logged Out', 'Close', {
       duration: 3000, // Duration in milliseconds
     });
+  }
+  serviceError(code: number) {
+    if (this.statusCode === 503) {
+      this.snackBar.open(
+        'The service is currently unavailable. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 500) {
+      this.snackBar.open(
+        'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    }
   }
 }

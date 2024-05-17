@@ -10,7 +10,7 @@ services:
 
   zookeeper:
     image: confluentinc/cp-zookeeper
-    container_name: zookeeper-container
+    container_name: zookeeper-movie-container
     environment:
       ZOOKEEPER_CLIENT_PORT: 2182
       ZOOKEEPER_TICK_TIME: 2000
@@ -21,7 +21,7 @@ services:
   
   kafka:
     image: confluentinc/cp-kafka
-    container_name: kafka-container
+    container_name: kafka-movie-container
     depends_on:
       - zookeeper
     ports:
@@ -38,7 +38,7 @@ services:
 
   kafka-ui:
     image: provectuslabs/kafka-ui
-    container_name: kafka-ui-container
+    container_name: kafka-ui-movie-container
     environment:
       - DYNAMIC_CONFIG_ENABLED=true
     ports:
@@ -50,7 +50,7 @@ services:
         
   mysqldb:
     image: mysql:8.0.36
-    container_name: mysql-container
+    container_name: mysql-movie-container
     ports:
       - "3307:3306"
     environment:
@@ -61,7 +61,7 @@ services:
 
   mongodb:
     image: mongo:latest
-    container_name: mongodb-container
+    container_name: mongodb-movie-container
     ports:
       - "27018:27017"
     environment:
@@ -72,7 +72,7 @@ services:
 
   zipkin-server:
     image: openzipkin/zipkin
-    container_name: zipkin-container
+    container_name: zipkin-movie-container
     ports:
       - "9411:9411" # if you are changing port, change env: - management.zipkin.tracing.endpoint=http://zipkin-server:<new-port>/api/v2/spans
     networks:
@@ -80,7 +80,7 @@ services:
 
   eureka-server:
     image: tejajagadeep/movie-app-eureka-server:latest
-    container_name: eureka-container
+    container_name: eureka-movie-container
     ports:
       - "8761:8761"  # if you are changing port, change env: - eureka.client.service-url.defaultZone=http://eureka-server:<<new-port>/eureka
     networks:
@@ -88,7 +88,7 @@ services:
 
   config-server:
     image: tejajagadeep/movie-app-config-server:latest
-    container_name: config-container
+    container_name: config-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
     ports:
@@ -100,7 +100,7 @@ services:
 
   authentication-service:
     image: tejajagadeep/movie-app-authentication-service:latest
-    container_name: authentication-container
+    container_name: authentication-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -133,7 +133,7 @@ services:
 
   userprofile-service:
     image: tejajagadeep/movie-app-userprofile-service:latest
-    container_name: userprofile-container
+    container_name: userprofile-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -166,7 +166,7 @@ services:
 
   movie-service:
     image: tejajagadeep/movie-app-movie-service:latest
-    container_name: movie-container
+    container_name: movie-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -192,7 +192,7 @@ services:
 
   wishlist-service:
     image: tejajagadeep/movie-app-wishlist-service:latest
-    container_name: wishlist-container
+    container_name: wishlist-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -221,7 +221,7 @@ services:
 
   api-gateway:
     image: tejajagadeep/movie-app-api-gateway:latest
-    container_name: gateway-container
+    container_name: gateway-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
@@ -246,7 +246,7 @@ services:
 
   swagger-server:
     image: tejajagadeep/movie-app-swagger-server:latest
-    container_name: swagger-container
+    container_name: swagger-movie-container
     environment:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
