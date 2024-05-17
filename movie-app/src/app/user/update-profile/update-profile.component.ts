@@ -185,4 +185,15 @@ export class UpdateProfileComponent implements OnInit {
   get email() {
     return this.updateForm.get('email');
   }
+  serviceError(code: number) {
+    if (this.statusCode === 500 || this.statusCode === 503) {
+      this.snackBar.open(
+        'The service is currently unavailable. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    }
+  }
 }

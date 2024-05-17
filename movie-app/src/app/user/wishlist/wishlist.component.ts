@@ -130,4 +130,16 @@ export class WishlistComponent implements OnInit {
   play(link: any) {
     window.open(link, '_blank');
   }
+
+  serviceError(code: number) {
+    if (this.statusCode === 500 || this.statusCode === 503) {
+      this.snackBar.open(
+        'The service is currently unavailable. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    }
+  }
 }

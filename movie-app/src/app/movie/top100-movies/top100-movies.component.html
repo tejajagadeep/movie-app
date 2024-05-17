@@ -94,14 +94,15 @@
                         <div class="fas fa-icon">
                             @if (imdbIds.includes(movie.imdbid)) {
                             <button mat-fab class="more" matTooltip="delete from wishlist"
-                                (click)="delete(movie.imdbid)" color="primary"
+                                (click)="serviceError(statusCode); delete(movie.imdbid)" color="primary"
                                 aria-label="Example icon button with a home icon"
                                 style="color: rgba(255, 0, 0, 0.854);">
                                 <mat-icon>bookmark</mat-icon>
                             </button>
                             }@else {
-                            <button mat-fab class="more" matTooltip="save to wishlist" (click)="saveWishlist(movie)"
-                                color="primary" aria-label="Example icon button with a home icon">
+                            <button mat-fab class="more" matTooltip="save to wishlist"
+                                (click)="serviceError(statusCode); saveWishlist(movie)" color="primary"
+                                aria-label="Example icon button with a home icon">
                                 <mat-icon>bookmark</mat-icon>
                             </button>
                             }

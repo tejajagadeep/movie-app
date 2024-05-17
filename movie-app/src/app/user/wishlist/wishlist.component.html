@@ -28,7 +28,7 @@
             <ul>
                 <li><i class="material-icons" matTooltip="play related movie videos"
                         (click)="play(movie.imdb_link+'/videogallery/')">play</i></li>
-                <li><i class="material-icons" (click)="delete(movie.imdbid)"
+                <li><i class="material-icons" (click)="serviceError(statusCode); delete(movie.imdbid)"
                         matTooltip="delete from Wishlists">delete</i>
                 </li>
                 <li><i class="material-icons" (click)="moreDetails(movie.imdb_link)"

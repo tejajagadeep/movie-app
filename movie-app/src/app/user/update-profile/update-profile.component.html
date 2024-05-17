@@ -87,7 +87,7 @@
                     @if (updateForm.invalid) {<input type="submit" value="Update" (click)="submitForm()"
                         title="fill all the required fields">}
                     @else {<input type="submit" value="Update" [disabled]="updateForm.invalid"
-                        (click)="updateUserProfile()">}
+                        (click)="serviceError(statusCode); updateUserProfile()">}
                 </div>
             </form>
         </div>

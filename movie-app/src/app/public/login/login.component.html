@@ -41,15 +41,7 @@
                                     }
                                     @if (loginForm.valid && statusCode === 404) {<ul class="error-list">
                                         <li>Username does not exist</li>
-                                    </ul>}@else if (statusCode === 503) {
-                                    <ul class="error-list">
-                                        <li>service unavailable</li>
-                                    </ul>
-                                    }@else if (statusCode === 500) {
-                                    <ul class="error-list">
-                                        <li>internal server error</li>
-                                    </ul>
-                                    }
+                                    </ul>}
 
                                 </div>
                                 <div class="input-container">
@@ -74,14 +66,6 @@
                                         <ul class="error-list">
                                             <li>incorrect password</li>
                                         </ul>
-                                        }@else if (statusCode === 503) {
-                                        <ul class="error-list">
-                                            <li>service unavailable</li>
-                                        </ul>
-                                        }@else if (statusCode === 500) {
-                                        <ul class="error-list">
-                                            <li>internal server error</li>
-                                        </ul>
                                         }
 
                                     </div>
@@ -89,7 +73,7 @@
                                 <!-- <div class="text"><a href="#">Forgot password?</a></div> -->
                                 <div class="button input-box">
                                     <input type="submit" value="submit" [disabled]="loginForm.invalid"
-                                        (click)="login()">
+                                        (click)="serviceError(statusCode); login()">
                                 </div>
                                 <div class="text sign-up-text">Don't have an account? <label
                                         [routerLink]="['/signup']">Sigup
