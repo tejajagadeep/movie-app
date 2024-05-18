@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd movie-app
-          npm install
+          npm install  --force
 
       - name: Build Angular app
         run: |
