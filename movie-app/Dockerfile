@@ -12,7 +12,7 @@ FROM nginx:alpine
 
 # ENV NGINX_PORT=$NGINX_PORT
 
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
+# COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built Angular artifacts to Nginx directory
 COPY --from=builder /app/dist/movie-app/browser /usr/share/nginx/html
