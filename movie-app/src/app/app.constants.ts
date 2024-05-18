@@ -1,2 +1,1 @@
-export const API_URL =
-  'http://ec2-54-172-9-213.compute-1.amazonaws.com:8765/api/v1.0';
+export const API_URL = 'http://localhost:8765/api/v1.0';
