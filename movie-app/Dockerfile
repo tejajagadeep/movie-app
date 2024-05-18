@@ -5,14 +5,14 @@ COPY package*.json ./
 RUN npm install --force
 
 COPY . .
-RUN npm run build
+RUN npm run build --prod
 
 # Stage 2: Serve Angular application using Nginx
 FROM nginx:alpine
 
 # ENV NGINX_PORT=$NGINX_PORT
 
-# COPY /nginx.conf /etc/nginx/conf.d/default.conf
+COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built Angular artifacts to Nginx directory
 COPY --from=builder /app/dist/movie-app/browser /usr/share/nginx/html
