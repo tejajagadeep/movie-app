@@ -8,7 +8,8 @@ import { WishlistComponent } from './wishlist.component';
 import { WishlistService } from '../../service/data/wishlist.service';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Movie } from '../../model/Movie';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, provideRouter } from '@angular/router';
+import { AuthGuard } from '../../service/security/auth.guard';
 
 describe('WishlistComponent', () => {
   let component: WishlistComponent;
@@ -16,12 +17,18 @@ describe('WishlistComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        WishlistComponent,
-        HttpClientTestingModule,
-        ActivatedRouteSnapshot,
+      imports: [WishlistComponent, HttpClientTestingModule],
+      providers: [
+        provideHttpClientTesting(),
+        WishlistService,
+        provideRouter([
+          {
+            path: 'wishlist',
+            component: WishlistComponent,
+            canActivate: [AuthGuard],
+          },
+        ]),
       ],
-      providers: [provideHttpClientTesting(), WishlistService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(WishlistComponent);

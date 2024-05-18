@@ -1,4 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movie } from '../../model/Movie';
 import { Observable, throwError } from 'rxjs';
@@ -34,10 +38,18 @@ export class WishlistService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(error: any): Observable<never> {
-    console.error('An error occurred:', error); // log to console instead
-    return throwError(
-      () => new Error('Something bad happened; please try again later.')
-    );
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side or network error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Backend error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(() => ({
+      status: error.status,
+      message: error.statusText,
+    }));
   }
 }

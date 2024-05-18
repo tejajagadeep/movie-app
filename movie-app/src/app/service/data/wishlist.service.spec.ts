@@ -101,7 +101,7 @@ describe('WishlistService', () => {
       () => fail('expected an error, but did not get one'),
       (error) => {
         expect(error.status).toEqual(dummyError.status);
-        expect(error.statusText).toEqual(dummyError.statusText);
+        expect(error.message).toEqual(dummyError.statusText);
       }
     );
 

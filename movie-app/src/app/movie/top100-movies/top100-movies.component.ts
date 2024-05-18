@@ -4,7 +4,6 @@ import { Movie } from '../../model/Movie';
 import { MovieResponse } from '../../model/MovieResponse';
 import { WishlistService } from '../../service/data/wishlist.service';
 import { TopBarComponent } from '../../navigation/top-bar/top-bar.component';
-import { OpenDialogService } from '../../service/component/open-dialog.service';
 import { FooterComponent } from '../../navigation/footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
 import { NoContentComponent } from '../../errors/no-content/no-content.component';
@@ -54,7 +53,6 @@ export class Top100MoviesComponent implements OnInit {
     private authService: AuthenticationService,
     private movieService: MovieService,
     private wishlistService: WishlistService,
-    private openDialog: OpenDialogService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
@@ -384,10 +382,6 @@ export class Top100MoviesComponent implements OnInit {
 
   moreDetails(link: any) {
     window.open(link, '_blank');
-  }
-
-  playTrailer(id: String) {
-    this.openDialog.openPlayDialog(id);
   }
 
   supports_html5_storage() {

@@ -6,7 +6,6 @@ import { SignupComponent } from './public/signup/signup.component';
 import { AuthGuard, LoginGuard } from './service/security/auth.guard';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UpdateProfileComponent } from './user/update-profile/update-profile.component';
-import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
 import { SomethingWentWrongComponent } from './errors/something-went-wrong/something-went-wrong.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 
@@ -15,18 +14,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
-  { path: 'something-went-wrong', component: SomethingWentWrongComponent },
   { path: 'signup', component: SignupComponent, canActivate: [LoginGuard] },
-  {
-    path: 'top-100-movies',
-    component: Top100MoviesComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'movie-details/:id',
-    component: MovieDetailsComponent,
-    canActivate: [AuthGuard],
-  },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'update-profile',
