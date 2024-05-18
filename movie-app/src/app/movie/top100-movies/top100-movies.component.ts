@@ -171,7 +171,7 @@ export class Top100MoviesComponent implements OnInit {
       next: (v) => {
         if (v) {
           this.movieResponse = v;
-          if (!v.status) {
+          if (!this.movieResponse.status) {
             this.snackBar.open(
               'External API call failed, displaying dummy data.',
               'Close',
