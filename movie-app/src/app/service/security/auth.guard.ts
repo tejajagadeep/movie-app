@@ -18,34 +18,43 @@ class PermissionsService {
 
 export const AuthGuard: CanActivateFn = (route, state) => {
   // if (typeof window !== 'undefined' && window.sessionStorage) {
-  let token = sessionStorage.getItem('token');
-  let username = sessionStorage.getItem('username');
   const router = inject(Router);
-  if (token !== null && username !== null) {
-    return true;
+  if (
+    typeof window !== 'undefined' &&
+    typeof sessionStorage !== 'undefined' &&
+    sessionStorage
+  ) {
+    let token = sessionStorage.getItem('token');
+    let username = sessionStorage.getItem('username');
+    if (token !== null && username !== null) {
+      return true;
+    } else {
+      router.navigate(['/login']);
+      return false;
+    }
   } else {
     router.navigate(['/login']);
     return false;
   }
-  // } else {
-  //   // Handle the case where sessionStorage is not available
-  //   return false;
-  // }
 };
 
 export const LoginGuard: CanActivateFn = (route, state) => {
-  // if (typeof window !== 'undefined' && window.sessionStorage) {
-  let token = sessionStorage.getItem('token');
-  let username = sessionStorage.getItem('username');
   const router = inject(Router);
-  if (token === null || username === null) {
-    return true;
+
+  if (
+    typeof window !== 'undefined' &&
+    typeof sessionStorage !== 'undefined' &&
+    sessionStorage
+  ) {
+    let token = sessionStorage.getItem('token');
+    let username = sessionStorage.getItem('username');
+    if (token === null || username === null) {
+      return true;
+    } else {
+      router.navigate(['/home']);
+      return false;
+    }
   } else {
-    router.navigate(['/home']);
     return false;
   }
-  // } else {
-  //   // Handle the case where sessionStorage is not available
-  //   return false;
-  // }
 };
