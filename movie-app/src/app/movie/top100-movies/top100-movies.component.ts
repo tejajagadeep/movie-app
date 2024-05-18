@@ -80,10 +80,10 @@ export class Top100MoviesComponent implements OnInit {
     this.searchForm();
     this.pageSize = this.pageSizeOptions[1];
     this.serviceError(this.statusCode);
+    this.pagedMovies = this.movieResponse.data.slice(0, 8);
   }
   paginatorPage(event: PageEvent) {
     // Update custom pagination controls based on mat-paginator
-    console.log('paging paginatorPage ' + event.previousPageIndex);
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex + 1;
     this.setPage(this.currentPage);
@@ -171,6 +171,15 @@ export class Top100MoviesComponent implements OnInit {
       next: (v) => {
         if (v) {
           this.movieResponse = v;
+          if (!v.status) {
+            this.snackBar.open(
+              'External API call failed, displaying dummy data.',
+              'Close',
+              {
+                duration: 3000, // Duration in milliseconds
+              }
+            );
+          }
         } else {
           console.log('Null values while fetching top movies');
         }
@@ -226,6 +235,15 @@ export class Top100MoviesComponent implements OnInit {
         next: (v) => {
           if (v) {
             this.movieResponse = v;
+            if (!v.status) {
+              this.snackBar.open(
+                'External API call failed, displaying dummy data.',
+                'Close',
+                {
+                  duration: 3000, // Duration in milliseconds
+                }
+              );
+            }
           } else {
             console.log('Null values while fetching filterGenre');
           }

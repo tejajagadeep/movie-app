@@ -83,6 +83,8 @@
         <app-not-found></app-not-found>
         }
         @else if (movieResponse.data.length>0) {
+        @if(movieResponse){
+
         <div class="container">
 
             @for (movie of pagedMovies; track $index) {
@@ -144,6 +146,7 @@
             </div>
             }
         </div>
+        }
 
         @if (totalPages > 0) {<mat-paginator class="paging" [showFirstLastButtons]="true" [length]="totalPages"
             [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="paginatorPage($event)">
