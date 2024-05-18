@@ -205,6 +205,15 @@ export class Top100MoviesComponent implements OnInit {
         next: (v) => {
           if (v) {
             this.movieResponse = v;
+            if (!this.movieResponse.status) {
+              this.snackBar.open(
+                'External API call failed, displaying dummy data.',
+                'Close',
+                {
+                  duration: 3000, // Duration in milliseconds
+                }
+              );
+            }
           } else {
             console.log('Null values while fetching searchTopMovies');
           }
@@ -235,7 +244,7 @@ export class Top100MoviesComponent implements OnInit {
         next: (v) => {
           if (v) {
             this.movieResponse = v;
-            if (!v.status) {
+            if (!this.movieResponse.status) {
               this.snackBar.open(
                 'External API call failed, displaying dummy data.',
                 'Close',

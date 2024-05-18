@@ -15,7 +15,10 @@ FROM nginx:alpine
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built Angular artifacts to Nginx directory
-COPY --from=builder /app/dist/movie-app/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/movie-app/server /usr/share/nginx/html
+
+# Ensure the custom index.server.html is used
+RUN mv /usr/share/nginx/html/index.server.html /usr/share/nginx/html/index.html
 
 # Expose port 80 to allow external access
 EXPOSE 4201
