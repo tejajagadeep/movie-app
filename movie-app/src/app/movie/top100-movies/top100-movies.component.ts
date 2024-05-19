@@ -80,7 +80,6 @@ export class Top100MoviesComponent implements OnInit {
     this.searchForm();
     this.pageSize = this.pageSizeOptions[1];
     this.serviceError(this.statusCode);
-    this.pagedMovies = this.movieResponse.data.slice(0, 8);
   }
   paginatorPage(event: PageEvent) {
     // Update custom pagination controls based on mat-paginator
@@ -195,6 +194,7 @@ export class Top100MoviesComponent implements OnInit {
         console.info('top 100 movies fetched successfully');
         this.calculateTotalPages();
         this.setPage(1);
+        this.pagedMovies = this.movieResponse.data.slice(0, 8);
       },
     });
   }

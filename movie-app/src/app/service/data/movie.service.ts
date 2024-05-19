@@ -58,6 +58,7 @@ export class MovieService {
     return throwError(() => ({
       status: error.status,
       message: error.statusText,
+      error: error.error,
     }));
   }
 }

@@ -50,6 +50,7 @@ export class WishlistService {
     return throwError(() => ({
       status: error.status,
       message: error.statusText,
+      error: error.error,
     }));
   }
 }

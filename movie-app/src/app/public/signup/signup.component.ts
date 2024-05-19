@@ -246,4 +246,13 @@ export class SignupComponent implements OnInit {
       );
     }
   }
+
+  alreadyExists(errors: ErrorMessage, status: number) {
+    console.log(errors.toString());
+    if (status === 409) {
+      this.snackBar.open(errors.message, 'Close', {
+        duration: 3000,
+      });
+    }
+  }
 }

@@ -36,12 +36,11 @@ export class UserprofileService {
     username: string,
     userProfile: UserProfile
   ): Observable<UserProfile> {
-    return this.http
-      .put<UserProfile>(
-        `${API_URL}/private/userProfile/update/${username}`,
-        userProfile
-      )
-      .pipe(catchError(this.handleError));
+    return this.http.put<UserProfile>(
+      `${API_URL}/private/userProfile/update/${username}`,
+      userProfile
+    );
+    // .pipe(catchError(this.handleError))
   }
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';
@@ -50,11 +49,13 @@ export class UserprofileService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Backend error
+      console.log(error);
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(() => ({
       status: error.status,
       message: error.statusText,
+      error: error.error,
     }));
   }
 }

@@ -179,7 +179,7 @@
                     @if (signupForm.invalid) {<input type="submit" value="Complete Registration" (click)="submitForm()"
                         title="fill all the required fields">}
                     @else {<input type="submit" value="Register" [disabled]="signupForm.invalid"
-                        (click)="serviceError(statusCode); saveUserProfile()">}
+                        (click)=" saveUserProfile(); serviceError(statusCode); alreadyExists(errorMessage, statusCode)">}
                 </div>
             </form>
         </div>
