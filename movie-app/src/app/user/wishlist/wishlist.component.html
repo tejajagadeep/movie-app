@@ -1,5 +1,4 @@
 <app-top-bar></app-top-bar>
-@if (movies) {
 @if(statusCode===404) {
 <app-not-found></app-not-found>
 }
@@ -38,7 +37,6 @@
     </div>
     <div class="blur_back bright_back" [style.background-image]="'url(' + movie.image + ')'"></div>
 </div>
-}
 }
 } @else {
 <app-internal-server-error></app-internal-server-error>
