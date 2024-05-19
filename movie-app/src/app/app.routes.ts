@@ -9,7 +9,7 @@ import { WishlistComponent } from './user/wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [LoginGuard] },
