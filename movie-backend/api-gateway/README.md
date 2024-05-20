@@ -58,3 +58,11 @@ An API Gateway serves as a critical component in a microservices architecture, a
 - **Scalability:** The gateway can scale independently, handling a large volume of requests and distributing them across various microservices.
 
 By acting as a mediator between clients and microservices, the API Gateway ensures that only authenticated and authorized requests reach the backend services, thus enhancing the overall security and manageability of the system.
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE.md) file for details.

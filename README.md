@@ -1,6 +1,6 @@
 # movie-app
 
-microservice based application integrated with imdb movie api
+The **Movie App System** is a distributed application composed of multiple microservices designed to provide various functionalities related to user management, movie data retrieval integrated with imdb movie api, and wishlist management.
 
 ## Description
 
@@ -72,12 +72,26 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 ## The responsibilities of the microservices in the above figure are as follows:
 
-- **User Profile Service:** This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
-- **Authentication Service:** This Service is responsible for consuming user credential from the message bus and storing it in the database. When a user logs in, this service validates the login credentials against the credentials stored in the database. If the credentials matches, this service generates a JWT token and sends back as response, else an error message is sent.
-- **Movie Service:** This Service is responsible for accessing an external movie API to fetch top 100 movies and returning back as response.
-- **Wishlist Service:** This Service is responsible for storing movies bookmarked by users in the database.
-- **API Gateway:** This Service acts as the entry point of the system. It intercepts all the requests and validates the JWT Token before routing it to the appropriate microservices.
-- **Eureka Server:** This Service acts as a service registry where all the other microservices registers during startup for discoverability.
-- **Config Server:** This Service acts as a centralized location to store the configuration of the other microservices of the system.
+1. [User Profile Service](./movie-backend/user-profile-service/README.md): This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
+2. [Authentication Service](./movie-backend/authentication-service/README.md): This Service is responsible for consuming user credential from the message bus and storing it in the database. When a user logs in, this service validates the login credentials against the credentials stored in the database. If the credentials matches, this service generates a JWT token and sends back as response, else an error message is sent.
+3. [Movie Service](./movie-backend/movie-service/README.md): This Service is responsible for accessing an external movie API to fetch top 100 movies and returning back as response.
+4. [Wishlist Service](./movie-backend/wishlist-service/README.md): This Service is responsible for storing movies bookmarked by users in the database.
+5. [API Gateway](./movie-backend/api-gateway/README.md): This Service acts as the entry point of the system. It intercepts all the requests and validates the JWT Token before routing it to the appropriate microservices.
+6. [Eureka Server](./movie-backend/eureka-server/README.md): This Service acts as a service registry where all the other microservices registers during startup for discoverability.
+7. [Config Server](./movie-backend/config-server/README.md): This Service acts as a centralized location to store the configuration of the other microservices of the system.
+   Certainly! Here's the updated README incorporating the new services and including a brief description for the Angular UI:
+8. [Swagger Server](./movie-backend/swagger-server/README.md): Provides API documentation for all microservices using Swagger UI.
 
-[Redirect to assets/documents to find detailed overview pdf](assets/documents/MovieApp.pdf)
+---
+
+## Angular UI (movie-app)
+
+The [Movie App Angular UI](./movie-app/README.md) is a web interface developed using Angular, providing users with an intuitive platform to interact with the movie application. It offers features such as browsing movies, managing wishlists, and user authentication.
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.

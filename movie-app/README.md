@@ -130,7 +130,7 @@ movie-app
 
 ## Contributing
 
-Contributions are welcome! Please fork this repository and submit pull requests.
+Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
 
 ## License
 

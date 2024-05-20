@@ -73,3 +73,11 @@ An Authentication Service plays a crucial role in a microservices architecture b
    - **Response:** The service sends the JWT token back to the user. If validation fails, an error message is sent.
 
 By managing user credentials securely and generating JWT tokens, the Authentication Service ensures that only authenticated users can access the system, providing a secure and efficient authentication mechanism in a microservices architecture.
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE.md) file for details.
