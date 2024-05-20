@@ -1,4 +1,4 @@
-name: Java CI/CD with Docker-Compose and Docker
+name: Docker-Compose CI/CD Docker
 
 on:
   push:

@@ -9,7 +9,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpServerErrorException;
 
+import javax.naming.ServiceUnavailableException;
 import java.security.SignatureException;
 import java.util.Date;
 
@@ -58,6 +60,16 @@ public class GlobalExceptionHandler {
         messageResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         messageResponse.setTimeStamp(new Date());
         return new ResponseEntity<>(messageResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    @ExceptionHandler(ServiceUnavailableException.class)
+    public ResponseEntity<Object> handleSERVICE_UNAVAILABLE(ServiceUnavailableException ex) {
+        ErrorResponse messageResponse = new ErrorResponse();
+        messageResponse.setMessage(ex.getMessage());
+        messageResponse.setStatus(HttpStatus.SERVICE_UNAVAILABLE);
+        messageResponse.setTimeStamp(new Date());
+        return new ResponseEntity<>(messageResponse, HttpStatus.SERVICE_UNAVAILABLE);
     }
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)

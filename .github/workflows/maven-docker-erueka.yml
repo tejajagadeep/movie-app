@@ -5,7 +5,7 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-name: Java CI/CD with Maven and Docker on eureka-server
+name: Eureka-Server Java Maven CI/CD Docker
 
 on:
   push:

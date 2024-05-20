@@ -10,7 +10,7 @@ Furthermore, the project includes a CI/CD pipeline managed through GitHub. Conti
 
 ## running application on docker
 
-**Prerequisites:** Docker and Docker Compose are required.
+**Prerequisites:** Docker is required.
 
 for latest run
 
