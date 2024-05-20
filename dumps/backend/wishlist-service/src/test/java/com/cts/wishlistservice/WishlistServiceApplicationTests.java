@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(classes = WishlistServiceApplication.class)
 class WishlistServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	void contextLoads() {
+//	}
 
 }

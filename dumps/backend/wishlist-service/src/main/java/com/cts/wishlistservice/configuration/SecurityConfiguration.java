@@ -1,7 +1,6 @@
 package com.cts.wishlistservice.configuration;
 
 import com.cts.wishlistservice.filter.JwtRequestFilter;
-import com.cts.wishlistservice.filter.JwtTokenUtil;
 import com.cts.wishlistservice.filter.JwtUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -57,7 +56,7 @@ public class SecurityConfiguration {
         // user for matching credentials
         // Use BCryptPasswordEncoder
         log.info("configureGlobal");
-        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(NoOpPasswordEncoder.getInstance());
+        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean

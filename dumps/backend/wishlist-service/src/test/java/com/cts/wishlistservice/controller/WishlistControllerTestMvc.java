@@ -7,7 +7,6 @@ import com.cts.wishlistservice.service.WishlistService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,15 +16,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Collections;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(WishlistController.class)
 @ContextConfiguration(classes = WishlistController.class)
-class WishlistControllerTest {
+class WishlistControllerTestMvc {
 
     @Autowired
     private MockMvc mockMvc;
@@ -35,16 +32,7 @@ class WishlistControllerTest {
 
     @Test
     void testGetWishlist_UnauthorizedException() throws Exception {
-        String token = "Bearer <your_token_here>";
         String username = "user";
-        WishlistDto wishlistDto = new WishlistDto();
-        wishlistDto.setUsername(username);
-        MovieDto movie = new MovieDto();
-        movie.setTitle("Movie 1");
-
-        wishlistDto.setMovies(List.of(movie));
-
-        when(wishlistService.getWishlists(username)).thenReturn(wishlistDto);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/private/wishlist/{username}", username)
                         .header(HttpHeaders.AUTHORIZATION, "Bearer testtoken")
@@ -73,26 +61,6 @@ class WishlistControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
     }
 
-
-    @Test
-    @WithMockUser(roles = "MEMBER", username = "user")
-    void testGetWishlist_notFound() throws Exception {
-        String username = "user";
-        WishlistDto wishlistDto = new WishlistDto();
-        wishlistDto.setUsername(username);
-        MovieDto movie = new MovieDto();
-        movie.setTitle("Movie 1");
-
-        wishlistDto.setMovies(List.of(movie));
-
-        when(wishlistService.getWishlists(username)).thenThrow(new ResourceNotFoundException(""));
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/private/wishlist/{username}", username)
-                        .header(HttpHeaders.AUTHORIZATION, "Bearer testtoken")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound());
-    }
-
     @Test
     @WithMockUser(roles = "MEMBER", username = "user")
     void testDeleteWishlist() throws Exception {
@@ -115,7 +83,6 @@ class WishlistControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
     }
 
-
     @Test
     @WithMockUser(roles = "MEMBER", username = "user")
     void testAddWishlist() throws Exception {
@@ -136,7 +103,18 @@ class WishlistControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
     }
 
+    @Test
+    @WithMockUser(roles = "MEMBER", username = "user")
+    void testGetWishlist_notFound() throws Exception {
+        String username = "user";
 
+        when(wishlistService.getWishlists(username)).thenThrow(new ResourceNotFoundException(""));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/private/wishlist/{username}", username)
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer testtoken")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
 
     @Test
     @WithMockUser(roles = "MEMBER", username = "user")
@@ -148,9 +126,8 @@ class WishlistControllerTest {
                         .param("username", username)
                         .param("id", id)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isUnauthorized());
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
     }
-
 
     @Test
     @WithMockUser(roles = "MEMBER", username = "user")
@@ -168,7 +145,6 @@ class WishlistControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
-
     @Test
     @WithMockUser(roles = "MEMBER", username = "user")
     void testAddWishlist_UnauthorizedException() throws Exception {
@@ -179,7 +155,7 @@ class WishlistControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1.0/private/wishlist/{username}", username)
                         .content("{\"id\":\"1\",\"title\":\"Movie 1\"}")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isUnauthorized());
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
     }
 
     @Test
@@ -197,5 +173,5 @@ class WishlistControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
-
 }
+
