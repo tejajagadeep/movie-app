@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userprofileService: UserprofileService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.formBuilderGroup();
@@ -63,6 +63,7 @@ export class SignupComponent implements OnInit {
           console.error(e);
         },
         complete: () => {
+          this.statusCode = 201;
           console.info('User Registered successfully');
           this.router.navigate(['/login']);
           this.snackBar.open('You have Successfully registered.', 'Close', {
@@ -239,6 +240,14 @@ export class SignupComponent implements OnInit {
     } else if (this.statusCode === 500) {
       this.snackBar.open(
         'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 404) {
+      this.snackBar.open(
+        'Not Found. Please try again later.',
         'Close',
         {
           duration: 3000,

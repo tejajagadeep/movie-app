@@ -18,10 +18,6 @@ for latest run
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie-compose-container tejajagadeep/docker-compose-movie-container
 ```
 
-```bash
-docker-compose up
-```
-
 [Redirect to assets to find docker compose file](assets/docker-compose.yml)
 
 **Note:** Make sure that the below ports are available for bash command.
@@ -71,6 +67,8 @@ docker-compose up
 ## Flow Diagram
 
 [![Flow Diagram for services](/assets/images/application-flow-diagram.png)](https://github.com/tejajagadeep/movie-app/blob/main/assets/images/application-flow-diagram.png)
+
+[Youtube Demo Link](https://youtu.be/j3HoZmhHORE)
 
 ## The responsibilities of the microservices in the above figure are as follows:
 

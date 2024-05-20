@@ -76,8 +76,9 @@
             </div>
 
         </mat-toolbar>
-
-
+        @if (statusCodeMovie===404){
+        <app-not-found></app-not-found>
+        } @else {
         @if (movieResponse.data) {
         @if (movieResponse.data.length===0) {
         <app-not-found></app-not-found>
@@ -157,6 +158,7 @@
         }
         @else {
         <app-internal-server-error></app-internal-server-error>
+        }
         }
 
     </mat-sidenav-content>

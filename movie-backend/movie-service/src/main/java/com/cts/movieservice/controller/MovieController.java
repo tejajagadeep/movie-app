@@ -3,6 +3,7 @@ package com.cts.movieservice.controller;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
+import com.cts.movieservice.exception.ErrorResponse;
 import com.cts.movieservice.service.MovieService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -31,7 +32,8 @@ public class MovieController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
-                    content = @Content) })
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) }) })
     @GetMapping("/top-100-movies")
     public ResponseEntity<Object> topMovies(){
         return new ResponseEntity<>(movieService.topMovies(), HttpStatus.OK);
@@ -43,7 +45,8 @@ public class MovieController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
-                    content = @Content) })
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) }) })
     @GetMapping("/top-100-movies/search/{search}")
     public ResponseEntity<Object> topMoviesSearch(@PathVariable String search){
         return new ResponseEntity<>(movieService.topMoviesSearch(search), HttpStatus.OK);
@@ -67,7 +70,8 @@ public class MovieController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = MovieDetails.class)) }),
             @ApiResponse(responseCode = "404", description = "Movie Details not found",
-                    content = @Content) })
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) }) })
     @GetMapping("/top-100-movies/{id}")
     public ResponseEntity<Object> topMoviesById(@PathVariable String id){
         return new ResponseEntity<>(movieService.topMoviesById(id),HttpStatus.OK);

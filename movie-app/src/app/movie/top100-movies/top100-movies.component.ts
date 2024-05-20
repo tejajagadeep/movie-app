@@ -55,7 +55,7 @@ export class Top100MoviesComponent implements OnInit {
     private wishlistService: WishlistService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   movieResponse: MovieResponse = new MovieResponse();
   imdbIds: string[] = [];
@@ -64,6 +64,7 @@ export class Top100MoviesComponent implements OnInit {
   statusCode!: number;
   searchControl: FormControl = new FormControl('');
   options: { value: string; viewValue: string }[] = [];
+  statusCodeMovie!: number
 
   pageSize!: number; // Number of items per page
   currentPage = 1;
@@ -185,16 +186,18 @@ export class Top100MoviesComponent implements OnInit {
       },
       error: (e) => {
         if (e) {
-          console.error(e), (this.statusCode = e.status);
+          console.error(e), (this.statusCodeMovie = e.status);
         } else {
           console.log('Null values while fetching error top movies');
         }
       },
       complete: () => {
+        this.statusCodeMovie = 200;
         console.info('top 100 movies fetched successfully');
         this.calculateTotalPages();
         this.setPage(1);
         this.pagedMovies = this.movieResponse.data.slice(0, 8);
+
       },
     });
   }
@@ -220,15 +223,17 @@ export class Top100MoviesComponent implements OnInit {
         },
         error: (e) => {
           if (e) {
-            console.error(e), (this.statusCode = e.status);
+            console.error(e), (this.statusCodeMovie = e.status);
           } else {
             console.log('Null values while fetching error message top search');
           }
         },
         complete: () => {
+          this.statusCodeMovie = 200;
           console.info('searched ' + movieTitle + ' movies successfully');
           this.calculateTotalPages();
           this.setPage(1);
+
         },
       });
     } else if (movieTitle === '') {
@@ -259,15 +264,17 @@ export class Top100MoviesComponent implements OnInit {
         },
         error: (e) => {
           if (e) {
-            console.error(e), (this.statusCode = e.status);
+            console.error(e), (this.statusCodeMovie = e.status);
           } else {
             console.log('Null values while fetching error message filterGenre');
           }
         },
         complete: () => {
+          this.statusCodeMovie = 200;
           console.info('filter genre ' + genre + ' fetched successfully');
           this.calculateTotalPages();
           this.setPage(1);
+
         },
       });
     }
@@ -288,7 +295,9 @@ export class Top100MoviesComponent implements OnInit {
         this.wishlistError(e);
       },
       complete: () => {
+        this.statusCode = 200;
         console.info('wishlist fetched successfully');
+
       },
     });
   }
@@ -309,6 +318,7 @@ export class Top100MoviesComponent implements OnInit {
         this.wishlistError(e);
       },
       complete: () => {
+        this.statusCode = 201;
         console.info('movie saved successfully');
         this.openSnackBarWithOpenButton(
           'Movie added to Wishlist',
@@ -344,6 +354,7 @@ export class Top100MoviesComponent implements OnInit {
         this.wishlistError(e);
       },
       complete: () => {
+        this.statusCode = 200;
         console.info('movie deleted successfully');
         this.snackBar.open('Movie deleted from Wishlist.', 'Close', {
           duration: 3000, // Duration in milliseconds
@@ -402,6 +413,7 @@ export class Top100MoviesComponent implements OnInit {
         }
       },
       complete: () => {
+        this.statusCode = 202;
         console.info('validation successfully');
       },
     });
@@ -438,6 +450,14 @@ export class Top100MoviesComponent implements OnInit {
     } else if (this.statusCode === 500) {
       this.snackBar.open(
         'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 404) {
+      this.snackBar.open(
+        'Not Found. Please try again later.',
         'Close',
         {
           duration: 3000,

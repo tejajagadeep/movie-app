@@ -32,7 +32,7 @@ export class WishlistComponent implements OnInit {
     private wishlistService: WishlistService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   movies!: Movie[];
   imdbIds: string[] = [];
@@ -72,6 +72,7 @@ export class WishlistComponent implements OnInit {
         }
       },
       complete: () => {
+        this.statusCode = 200;
         console.info('wishlist fetched successfully');
       },
     });
@@ -98,6 +99,7 @@ export class WishlistComponent implements OnInit {
         }
       },
       complete: () => {
+        this.statusCode = 200;
         console.info('movie deleted successfully');
         this.snackBar.open('Movie delete From Wishlist.', 'Close', {
           duration: 3000, // Duration in milliseconds
@@ -126,6 +128,14 @@ export class WishlistComponent implements OnInit {
     } else if (this.statusCode === 500) {
       this.snackBar.open(
         'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 404) {
+      this.snackBar.open(
+        'Not Found. Please try again later.',
         'Close',
         {
           duration: 3000,

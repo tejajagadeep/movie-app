@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     private wishlists: WishlistService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.users();
     this.getWishlist();
@@ -58,6 +58,7 @@ export class ProfileComponent implements OnInit {
         }
       },
       complete: () => {
+        this.statusCode = 200;
         console.info('user profile fetched successfully');
       },
     });
@@ -85,6 +86,7 @@ export class ProfileComponent implements OnInit {
         }
       },
       complete: () => {
+        this.statusCode = 200;
         console.info('wishlist fetched successfully');
       },
     });
@@ -101,6 +103,14 @@ export class ProfileComponent implements OnInit {
     } else if (this.statusCode === 500) {
       this.snackBar.open(
         'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 404) {
+      this.snackBar.open(
+        'Not Found. Please try again later.',
         'Close',
         {
           duration: 3000,

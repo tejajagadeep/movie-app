@@ -56,7 +56,9 @@ class MovieServiceImplTest {
     @Test
     void testTopMoviesSearch() {
         // Mocking the response entity
-        List<Movie> movies = List.of();
+        Movie movie = new Movie();
+        movie.setTitle("godfather");
+        List<Movie> movies = List.of(movie);
         ResponseEntity<List<Movie>> responseEntity = new ResponseEntity<>(movies, HttpStatus.OK);
         when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
 
@@ -75,12 +77,14 @@ class MovieServiceImplTest {
     @Test
     void testTopMoviesFilterGenre() {
         // Mocking the response entity
-        List<Movie> movies = List.of();
+        Movie movie = new Movie();
+        movie.setGenre(List.of("Action"));
+        List<Movie> movies = List.of(movie);
         ResponseEntity<List<Movie>> responseEntity = new ResponseEntity<>(movies, HttpStatus.OK);
         when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
 
         // Invoking the method under test
-        Response response = movieService.topMoviesByGenre("godfather");
+        Response response = movieService.topMoviesByGenre("Action");
 
         Response expectedResponse = new Response();
         expectedResponse.setStatus(true);

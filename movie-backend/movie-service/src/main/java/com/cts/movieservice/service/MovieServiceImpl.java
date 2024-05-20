@@ -3,6 +3,7 @@ package com.cts.movieservice.service;
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
 import com.cts.movieservice.dto.Response;
+import com.cts.movieservice.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -94,6 +95,10 @@ public class MovieServiceImpl implements MovieService{
             return title != null && title.toLowerCase().contains(search.toLowerCase());
         }).toList());
 
+        if (response.getData().isEmpty()) {
+            throw new ResourceNotFoundException("Not Found Search Result");
+        }
+
         return response;
     }
 
@@ -119,6 +124,9 @@ public class MovieServiceImpl implements MovieService{
                         })
                         .toList()
         );
+        if (response.getData().isEmpty()) {
+            throw new ResourceNotFoundException("Not Found Search Result");
+        }
         return response;
     }
 
@@ -174,6 +182,9 @@ public class MovieServiceImpl implements MovieService{
         log.error("fall back method called for getMoviesSearchBreakCircuit with error {}", throwable.getMessage());
         Response response = getAllMoviesBreakCircuit(e);
         response.setData(response.getData().stream().filter(s->s.getTitle().toLowerCase().contains(search.toLowerCase())).toList());
+        if (response.getData().isEmpty()) {
+            throw new ResourceNotFoundException("Not Found Search Result");
+        }
         return response;
     }
 
@@ -193,6 +204,9 @@ public class MovieServiceImpl implements MovieService{
             return genres != null && genres.stream()
                     .anyMatch(g -> g != null && g.equalsIgnoreCase(genre));
         }).toList());
+        if (response.getData().isEmpty()) {
+            throw new ResourceNotFoundException("Not Found Search Result");
+        }
         return response;
     }
 

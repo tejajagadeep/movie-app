@@ -39,7 +39,7 @@ export class UpdateProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userprofileService: UserprofileService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.formBuilderGroup();
@@ -189,6 +189,14 @@ export class UpdateProfileComponent implements OnInit {
     } else if (this.statusCode === 500) {
       this.snackBar.open(
         'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 404) {
+      this.snackBar.open(
+        'Not Found. Please try again later.',
         'Close',
         {
           duration: 3000,

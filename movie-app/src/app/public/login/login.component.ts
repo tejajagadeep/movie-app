@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthenticationService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loginFormBuilder();
@@ -72,6 +72,7 @@ export class LoginComponent implements OnInit {
           this.statusCode = e.status;
         },
         complete: () => {
+          this.statusCode = 201;
           sessionStorage.setItem('username', this.loginForm.value.username);
           this.router.navigate(['/home']);
           this.snackBar.open('You are Logged In', 'Close', {
@@ -102,6 +103,14 @@ export class LoginComponent implements OnInit {
     } else if (this.statusCode === 500) {
       this.snackBar.open(
         'Internal Server Error. Please try again later.',
+        'Close',
+        {
+          duration: 3000,
+        }
+      );
+    } else if (this.statusCode === 404) {
+      this.snackBar.open(
+        'Not Found. Please try again later.',
         'Close',
         {
           duration: 3000,
