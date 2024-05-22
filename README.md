@@ -72,7 +72,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 ## The responsibilities of the microservices in the above figure are as follows:
 
-1. [User Profile Service](./movie-backend/user-profile-service/README.md): This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
+1. [User Profile Service](./movie-backend/userprofile-service/README.md): This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
 2. [Authentication Service](./movie-backend/authentication-service/README.md): This Service is responsible for consuming user credential from the message bus and storing it in the database. When a user logs in, this service validates the login credentials against the credentials stored in the database. If the credentials matches, this service generates a JWT token and sends back as response, else an error message is sent.
 3. [Movie Service](./movie-backend/movie-service/README.md): This Service is responsible for accessing an external movie API to fetch top 100 movies and returning back as response.
 4. [Wishlist Service](./movie-backend/wishlist-service/README.md): This Service is responsible for storing movies bookmarked by users in the database.
