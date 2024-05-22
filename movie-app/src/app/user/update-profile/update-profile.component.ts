@@ -59,6 +59,7 @@ export class UpdateProfileComponent implements OnInit {
           },
           error: (e) => {
             console.error(e), (this.statusCode = e.status);
+            this.errorMessage = e.error
             if (this.statusCode === 400 || this.statusCode === 401) {
               this.snackBar.open(
                 'Wrong user credentials. Please Login again.',
