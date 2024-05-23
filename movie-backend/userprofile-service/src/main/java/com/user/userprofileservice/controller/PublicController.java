@@ -1,6 +1,8 @@
 package com.user.userprofileservice.controller;
 
 import com.user.userprofileservice.dto.UserProfileDto;
+import com.user.userprofileservice.exception.ErrorResponse;
+import com.user.userprofileservice.model.UserProfile;
 import com.user.userprofileservice.service.UserProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -31,9 +33,10 @@ public class PublicController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User Details Saved",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserProfileDto.class)) }),
+                            schema = @Schema(implementation = UserProfile.class)) }),
             @ApiResponse(responseCode = "409", description = "User Details already Exists",
-                    content = @Content) })
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @PostMapping("/addUser")
     public ResponseEntity<Object> saveUserProfile(@Valid @RequestBody UserProfileDto userProfileDto){
         return new ResponseEntity<>(userProfileService.saveUserProfile(userProfileDto), HttpStatus.CREATED);

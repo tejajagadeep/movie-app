@@ -40,11 +40,13 @@ Before you begin, ensure you have met the following requirements:
 
    Create an `application.properties` file in the `src/main/resources` directory and add your movie API key:
 
-   ```properties
-   rapid.api.key=your_api_key_here
-   rapid.api.host=imdb-top-100-movies.p.rapidapi.com
-   base.url=https://imdb-top-100-movies.p.rapidapi.com/
-   ```
+```properties
+server.port=8081
+
+rapid.api.key=(create account in rapid api)
+rapid.api.host=imdb-top-100-movies.p.rapidapi.com
+base.url=https://imdb-top-100-movies.p.rapidapi.com/
+```
 
 ### Running the Service
 

@@ -33,7 +33,7 @@ An API Gateway serves as a critical component in a microservices architecture, a
 
 6. **Monitoring and Logging:**
    - **Request Logging:** It logs all incoming requests and outgoing responses for monitoring and troubleshooting purposes.
-   - **Metrics:** The gateway collects metrics such as request counts, response times, error rates, etc., providing valuable insights into the system’s performance.
+   - **Metrics:** The gateway collects metrics such as request counts, movieResponse times, error rates, etc., providing valuable insights into the system’s performance.
 
 ### Example Flow
 
@@ -47,9 +47,9 @@ An API Gateway serves as a critical component in a microservices architecture, a
    - If the token is valid, the gateway checks the user’s permissions and roles from the token claims to authorize the request.
    - If authorized, the gateway routes the request to the appropriate microservice.
 
-5. **Request Processing:** The backend microservice processes the request and sends the response back to the API Gateway.
+5. **Request Processing:** The backend microservice processes the request and sends the movieResponse back to the API Gateway.
 
-6. **Response Handling:** The gateway may modify the response (if necessary) and then sends it back to the client.
+6. **Response Handling:** The gateway may modify the movieResponse (if necessary) and then sends it back to the client.
 
 ### Benefits
 
@@ -58,6 +58,53 @@ An API Gateway serves as a critical component in a microservices architecture, a
 - **Scalability:** The gateway can scale independently, handling a large volume of requests and distributing them across various microservices.
 
 By acting as a mediator between clients and microservices, the API Gateway ensures that only authenticated and authorized requests reach the backend services, thus enhancing the overall security and manageability of the system.
+
+## application properties
+
+```yml
+server:
+  port: 8765
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          "[/**]":
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: USERPROFILE-SERVICE
+          uri: lb://USERPROFILE-SERVICE
+          predicates:
+            - Path=/api/v1.0/private/userProfile/**, /api/v1.0/public/userProfile/**
+
+        - id: MOVIE-SERVICE
+          uri: lb://MOVIE-SERVICE
+          predicates:
+            - Path=/api/v1.0/public/movie/**
+
+        - id: WISHLIST-SERVICE
+          uri: lb://WISHLIST-SERVICE
+          predicates:
+            - Path=/api/v1.0/private/wishlist/**
+
+        - id: AUTHENTICATION-SERVICE
+          uri: lb://AUTHENTICATION-SERVICE
+          predicates:
+            - Path=/api/v1.0/public/auth/**
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  main:
+    web-application-type: reactive
+secret:
+  key: d3e1b7c4f6a9d21f4e5b2c3d8e6f1a2b3c4d5e6f7a8b9c1d2e3f4a5b6c7d8e9f0
+```
 
 ## Contributing
 

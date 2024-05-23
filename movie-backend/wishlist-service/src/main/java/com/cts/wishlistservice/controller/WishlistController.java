@@ -2,6 +2,7 @@ package com.cts.wishlistservice.controller;
 
 import com.cts.wishlistservice.dto.MovieDto;
 import com.cts.wishlistservice.dto.WishlistDto;
+import com.cts.wishlistservice.exception.ErrorResponse;
 import com.cts.wishlistservice.exception.UnAuthorizedException;
 import com.cts.wishlistservice.filter.JwtService;
 import com.cts.wishlistservice.service.WishlistService;
@@ -38,7 +39,8 @@ public class WishlistController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = WishlistDto.class)) }),
             @ApiResponse(responseCode = "404", description = "Wishlist not found",
-                    content = @Content) })
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{username}")
     public ResponseEntity<Object> getWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @PathVariable String username){
@@ -54,7 +56,8 @@ public class WishlistController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = WishlistDto.class)) }),
             @ApiResponse(responseCode = "404", description = "Movie not delete",
-                    content = @Content) })
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("")
     public ResponseEntity<Object> deleteWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @RequestParam String username, @RequestParam String id){
@@ -70,7 +73,8 @@ public class WishlistController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = WishlistDto.class)) }),
             @ApiResponse(responseCode = "404", description = "Move not saved",
-                    content = @Content) })
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/{username}")
     public ResponseEntity<Object> addWishlist(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @PathVariable String username, @RequestBody MovieDto movie){

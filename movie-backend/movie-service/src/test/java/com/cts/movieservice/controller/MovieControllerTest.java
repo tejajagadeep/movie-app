@@ -2,7 +2,7 @@ package com.cts.movieservice.controller;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
-import com.cts.movieservice.dto.Response;
+import com.cts.movieservice.dto.MovieResponse;
 import com.cts.movieservice.service.MovieService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +32,14 @@ class MovieControllerTest {
         movie.setId("1");
         movie.setTitle("Movie 1");
 
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(List.of(movie));
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(List.of(movie));
 
 
 
-        when(movieService.topMovies()).thenReturn(response);
+        when(movieService.topMovies()).thenReturn(movieResponse);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -53,14 +53,14 @@ class MovieControllerTest {
         movie.setId("1");
         movie.setTitle("Movie 1");
 
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(List.of(movie));
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(List.of(movie));
 
 
 
-        when(movieService.topMoviesSearch("Movie 1")).thenReturn(response);
+        when(movieService.topMoviesSearch("Movie 1")).thenReturn(movieResponse);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies/search/Movie")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -73,14 +73,14 @@ class MovieControllerTest {
         movie.setId("1");
         movie.setTitle("Movie 1");
         movie.setGenre(List.of("Action"));
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(List.of(movie));
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(List.of(movie));
 
 
 
-        when(movieService.topMoviesByGenre("Action")).thenReturn(response);
+        when(movieService.topMoviesByGenre("Action")).thenReturn(movieResponse);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1.0/public/movie/top-100-movies/filter-genre/Action")
                         .contentType(MediaType.APPLICATION_JSON))

@@ -2,7 +2,7 @@ package com.cts.movieservice.service;
 
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
-import com.cts.movieservice.dto.Response;
+import com.cts.movieservice.dto.MovieResponse;
 import com.cts.movieservice.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,74 +48,74 @@ public class MovieServiceImpl implements MovieService{
     @Override
     @Observed(name = "top.movies")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getAllMoviesBreakCircuit")
-    public Response topMovies(){
+    public MovieResponse topMovies(){
         List<Movie> movies =  restTemplate.exchange(response(""), new ParameterizedTypeReference<List<Movie>>() {}).getBody();
 
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(movies);
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(movies);
 
-        return response;
+        return movieResponse;
     }
 
 
     @Override
     @Observed(name = "top.movies.page.nation")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "topMoviesPageNationBreakCircuit")
-    public Response topMoviesPageNation(int page, int pageSize) {
+    public MovieResponse topMoviesPageNation(int page, int pageSize) {
         int offset = (page - 1) * pageSize;
         // Fetch movies using offset and pageSize
         List<Movie> movies = restTemplate.exchange(response("?page=" + offset + "&size=" + pageSize),
                 new ParameterizedTypeReference<List<Movie>>() {}).getBody();
 
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(movies);
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(movies);
 
-        return response;
+        return movieResponse;
     }
 
     @Override
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "getMoviesSearchBreakCircuit")
     @Observed(name = "top.movies.search")
-    public Response topMoviesSearch(String search) {
+    public MovieResponse topMoviesSearch(String search) {
         ResponseEntity<List<Movie>> responseEntity = restTemplate.exchange(response(""), new ParameterizedTypeReference<>() {});
 
-        // Extract the body from the response entity
+        // Extract the body from the movieResponse entity
         List<Movie> movies = Optional.ofNullable(responseEntity.getBody()).orElse(Collections.emptyList());
 
-        // Create a new Response object
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(movies.stream().filter(s -> {
+        // Create a new MovieResponse object
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(movies.stream().filter(s -> {
             String title = s.getTitle();
             return title != null && title.toLowerCase().contains(search.toLowerCase());
         }).toList());
 
-        if (response.getData().isEmpty()) {
+        if (movieResponse.getData().isEmpty()) {
             throw new ResourceNotFoundException("Not Found Search Result");
         }
 
-        return response;
+        return movieResponse;
     }
 
     @Override
     @Observed(name = "top.movies.by.genre")
     @CircuitBreaker(name = "MovieServiceImpl", fallbackMethod = "topMoviesByGenreBreakCircuit")
-    public Response topMoviesByGenre(String genre) {
+    public MovieResponse topMoviesByGenre(String genre) {
         ResponseEntity<List<Movie>> responseEntity = restTemplate.exchange(response(""), new ParameterizedTypeReference<>() {});
 
-        // Extract the body from the response entity
+        // Extract the body from the movieResponse entity
         List<Movie> movies = Optional.ofNullable(responseEntity.getBody()).orElse(Collections.emptyList());
 
-        // Create a new Response object
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(
+        // Create a new MovieResponse object
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(
                 movies.stream()
                         .filter(s -> {
                             List<String> genres = s.getGenre();
@@ -124,10 +124,10 @@ public class MovieServiceImpl implements MovieService{
                         })
                         .toList()
         );
-        if (response.getData().isEmpty()) {
+        if (movieResponse.getData().isEmpty()) {
             throw new ResourceNotFoundException("Not Found Search Result");
         }
-        return response;
+        return movieResponse;
     }
 
 
@@ -154,15 +154,15 @@ public class MovieServiceImpl implements MovieService{
         return headers;
     }
 
-    public Response topMoviesPageNationBreakCircuit(int page, int pageSize, Throwable throwable) throws IOException {
+    public MovieResponse topMoviesPageNationBreakCircuit(int page, int pageSize, Throwable throwable) throws IOException {
         Exception e = new IOException();
         log.error("Fallback method called for topMoviesPageNationBreakCircuit with error {}", throwable.getMessage());
 
         // Get the full list of movies from the fallback method
-        Response response = getAllMoviesBreakCircuit(e);
+        MovieResponse movieResponse = getAllMoviesBreakCircuit(e);
 
         // Apply pagination
-        List<Movie> movies = response.getData();
+        List<Movie> movies = movieResponse.getData();
         int totalMovies = movies.size();
 
         int startIdx = (page - 1) * pageSize;
@@ -170,47 +170,47 @@ public class MovieServiceImpl implements MovieService{
 
         List<Movie> pagedMovies = movies.subList(startIdx, endIdx);
 
-        // Update response data with paginated movies
-        response.setData(pagedMovies);
+        // Update movieResponse data with paginated movies
+        movieResponse.setData(pagedMovies);
 
-        return response;
+        return movieResponse;
     }
 
 
-    public Response getMoviesSearchBreakCircuit(String search, Throwable throwable) throws IOException {
+    public MovieResponse getMoviesSearchBreakCircuit(String search, Throwable throwable) throws IOException {
         Exception e = new IOException();
         log.error("fall back method called for getMoviesSearchBreakCircuit with error {}", throwable.getMessage());
-        Response response = getAllMoviesBreakCircuit(e);
-        response.setData(response.getData().stream().filter(s->s.getTitle().toLowerCase().contains(search.toLowerCase())).toList());
-        if (response.getData().isEmpty()) {
+        MovieResponse movieResponse = getAllMoviesBreakCircuit(e);
+        movieResponse.setData(movieResponse.getData().stream().filter(s->s.getTitle().toLowerCase().contains(search.toLowerCase())).toList());
+        if (movieResponse.getData().isEmpty()) {
             throw new ResourceNotFoundException("Not Found Search Result");
         }
-        return response;
+        return movieResponse;
     }
 
 
-    public Response topMoviesByGenreBreakCircuit(String genre, Throwable throwable) throws IOException {
+    public MovieResponse topMoviesByGenreBreakCircuit(String genre, Throwable throwable) throws IOException {
         Exception e = new IOException();
         log.error("fall back method called for topMoviesByGenre with error {}", throwable.getMessage());
-        Response response = getAllMoviesBreakCircuit(e);
-        Set<String> allGenres = response.getData().stream()
+        MovieResponse movieResponse = getAllMoviesBreakCircuit(e);
+        Set<String> allGenres = movieResponse.getData().stream()
                 .flatMap(movie -> movie.getGenre().stream()) // Flatten the stream of genres
                 .filter(Objects::nonNull) // Filter out null genres
                 .collect(Collectors.toSet());
 
         log.info("genre as: {}", allGenres);
-        response.setData(response.getData().stream().filter(s -> {
+        movieResponse.setData(movieResponse.getData().stream().filter(s -> {
             List<String> genres = s.getGenre();
             return genres != null && genres.stream()
                     .anyMatch(g -> g != null && g.equalsIgnoreCase(genre));
         }).toList());
-        if (response.getData().isEmpty()) {
+        if (movieResponse.getData().isEmpty()) {
             throw new ResourceNotFoundException("Not Found Search Result");
         }
-        return response;
+        return movieResponse;
     }
 
-    public Response getAllMoviesBreakCircuit(Exception e) throws IOException {
+    public MovieResponse getAllMoviesBreakCircuit(Exception e) throws IOException {
         log.error("fall back method called for getAllMoviesBreakCircuit with error {}", e.getMessage());
         List<Movie> movies = null;
 
@@ -237,12 +237,12 @@ public class MovieServiceImpl implements MovieService{
             throw new IOException("Failed to read movie data from file", io);
         }
 
-        // Create and return the response
-        Response response = new Response();
-        response.setStatus(false);
-        response.setMessage("Unsuccessful call. Redirecting to dummy data");
-        response.setData(movies);
-        return response;
+        // Create and return the movieResponse
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(false);
+        movieResponse.setMessage("Unsuccessful call. Redirecting to dummy data");
+        movieResponse.setData(movies);
+        return movieResponse;
     }
 
     private MovieDetails getMovieDetailsById(Exception e){

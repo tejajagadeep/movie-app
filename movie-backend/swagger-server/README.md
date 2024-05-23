@@ -36,15 +36,27 @@ Before you begin, ensure you have met the following requirements:
 
 2. **Configure Application Properties**
 
-   Create an `application.properties` file in the `src/main/resources` directory and configure your Swagger settings:
+   Create an `application.yml` file in the `src/main/resources` directory and configure your Swagger settings:
 
-   ```properties
-   spring.application.name=swagger-server
-   server.port=8081
+```yml
+server:
+  port: 8769
 
-   # Swagger configuration
-   springfox.documentation.swagger.v2.path=/api-docs
-   ```
+swagger:
+  base-url: http://localhost
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: authentication-service
+        url: ${swagger.base-url}:8090/v3/api-docs
+      - name: userprofile-service
+        url: ${swagger.base-url}:8092/v3/api-docs
+      - name: movie-service
+        url: ${swagger.base-url}:8081/v3/api-docs
+      - name: wishlist-service
+        url: ${swagger.base-url}:8082/v3/api-docs
+```
 
 ### Running the Service
 

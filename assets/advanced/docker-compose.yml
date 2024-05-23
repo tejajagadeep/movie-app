@@ -7,7 +7,6 @@ networks:
     driver: bridge
 
 services:
-
   zookeeper:
     image: confluentinc/cp-zookeeper
     container_name: zookeeper-movie-container
@@ -15,10 +14,10 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2182
       ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - 2182:2181 
+      - 2182:2181
     networks:
       - my-movie-network
-  
+
   kafka:
     image: confluentinc/cp-kafka
     container_name: kafka-movie-container
@@ -47,7 +46,7 @@ services:
       - kafka
     networks:
       - my-movie-network
-        
+
   mysqldb:
     image: mysql:8.0.36
     container_name: mysql-movie-container
@@ -82,7 +81,7 @@ services:
     image: tejajagadeep/movie-app-eureka-server:latest
     container_name: eureka-movie-container
     ports:
-      - "8761:8761"  # if you are changing port, change env: - eureka.client.service-url.defaultZone=http://eureka-server:<<new-port>/eureka
+      - "8761:8761" # if you are changing port, change env: - eureka.client.service-url.defaultZone=http://eureka-server:<<new-port>/eureka
     networks:
       - my-movie-network
 
@@ -108,7 +107,7 @@ services:
       - spring.kafka.consumer.bootstrap-servers=kafka:9093
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       # - spring.jpa.hibernate.ddl-auto=create
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/,
+      - allowed.cors.urls=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/,
     ports:
       - "8090:8090" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[0].url=http://localhost:<new-port>/v3/api-docs
     networks:
@@ -141,9 +140,9 @@ services:
       - spring.kafka.producer.bootstrap-servers=kafka:9093
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
       # - spring.jpa.hibernate.ddl-auto=create
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
+      - allowed.cors.urls=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
     ports:
-      - "8092:8092" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[1].url=http://localhost:<new-port>/v3/api-docs    
+      - "8092:8092" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[1].url=http://localhost:<new-port>/v3/api-docs
     networks:
       - my-movie-network
     depends_on:
@@ -171,7 +170,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
+      - allowed.cors.urls=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
     ports:
       - "8081:8081" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[2].url=http://localhost:<new-port>/v3/api-docs
     networks:
@@ -197,7 +196,7 @@ services:
       - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
       - spring.config.import=optional:configserver:http://config-server:8888/
       - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
-      - swagger.server.url=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
+      - allowed.cors.urls=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
       - spring.data.mongodb.uri=mongodb://root:root1234@mongodb:27017/wishlistdb?authSource=admin
     ports:
       - "8082:8082" # if you are changing port in change env for swagger-server - springdoc.swagger-ui.urls[3].url=http://localhost:<new-port>/v3/api-docs
@@ -259,7 +258,7 @@ services:
       - springdoc.swagger-ui.urls[3].name=wishlist-service
       - springdoc.swagger-ui.urls[3].url=http://localhost:8082/v3/api-docs
     ports:
-      - "8769:8769"  # if you are changing port add environment: - swagger.server.url=<previous_env+>,http://localhost:<new-swagger-server-port>/
+      - "8769:8769" # if you are changing port add environment: - allowed.cors.urls=<previous_env+>,http://localhost:<new-swagger-server-port>/
     networks:
       - my-movie-network
     depends_on:

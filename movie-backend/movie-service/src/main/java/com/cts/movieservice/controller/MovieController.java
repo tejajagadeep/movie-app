@@ -1,8 +1,8 @@
 package com.cts.movieservice.controller;
 
 
-import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
+import com.cts.movieservice.dto.MovieResponse;
 import com.cts.movieservice.exception.ErrorResponse;
 import com.cts.movieservice.service.MovieService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +30,7 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found 100 Movies",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Movie.class)) }),
+                            schema = @Schema(implementation = MovieResponse.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class)) }) })
@@ -43,7 +43,7 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found Movies",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Movie.class)) }),
+                            schema = @Schema(implementation = MovieResponse.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class)) }) })
@@ -56,9 +56,10 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found Movies",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Movie.class)) }),
+                            schema = @Schema(implementation = MovieResponse.class)) }),
             @ApiResponse(responseCode = "404", description = "Movies not found",
-                    content = @Content) })
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) }) })
     @GetMapping("/top-100-movies/filter-genre/{genre}")
     public ResponseEntity<Object> topMoviesByGenre(@PathVariable String genre){
         return new ResponseEntity<>(movieService.topMoviesByGenre(genre), HttpStatus.OK);

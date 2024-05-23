@@ -43,6 +43,26 @@ movie-app-backend
 └── README.md
 ```
 
+## application properties in all microservices
+
+```properties
+#eureka
+#eureka.instance.ip-address=true
+eureka.client.fetch-registry=true
+eureka.client.register-with-eureka=true
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+#eureka.instance.hostname=localhost
+management.endpoints.web.exposure.include=*
+management.endpoint.health.show-details=always
+
+management.zipkin.tracing.endpoint=http://localhost:9411/api/v2/spans
+management.tracing.sampling.probability=1.0
+
+# allowed cors urls are below
+allowed.cors.urls=http://localhost:8769/,http://localhost:4201/,http://localhost:4200/
+```
+
 ## Contributing
 
 Contributions are welcome! Please fork this repository and submit pull requests. Thank You.

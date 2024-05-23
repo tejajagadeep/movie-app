@@ -1,5 +1,6 @@
 package com.auth.authenticationservice.controller;
 
+import com.auth.authenticationservice.exception.ErrorResponse;
 import com.auth.authenticationservice.service.AuthService;
 import com.auth.authenticationservice.dto.AuthenticationRequest;
 import com.auth.authenticationservice.dto.AuthenticationResponse;
@@ -29,6 +30,14 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @Operation(summary = "Check User Authentication")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Access Token Created",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "User not Found",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@Valid @RequestBody AuthenticationRequest request) {
         log.info(request.toString());
@@ -41,8 +50,9 @@ public class AuthController {
             @ApiResponse(responseCode = "202", description = "User Details Accepted",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = String.class)) }),
-            @ApiResponse(responseCode = "403", description = "Forbidden user mis-match",
-                    content = @Content) })
+            @ApiResponse(responseCode = "401", description = "Unauthorized user access",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/validate")
     @PreAuthorize("hasRole('MEMBER') && #username == authentication.principal.username")

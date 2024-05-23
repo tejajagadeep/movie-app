@@ -11,7 +11,7 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Response {
+public class MovieResponse {
 
     private boolean status;
     private String message;

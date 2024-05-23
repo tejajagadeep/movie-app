@@ -127,3 +127,45 @@ registerUser(newUser);
 ```
 
 In this example, the `registerUser` function separates the credentials from the profile information, publishes the credentials to a RabbitMQ queue, and stores the profile information in a MongoDB database using Mongoose. This setup ensures that the credentials are securely handled and processed by the Authentication Service.
+
+## application properties
+
+```properties
+#server.servlet.context-path=/userprofile-service
+##h2 related
+#spring.application.name=user-profile
+
+kafka.ip.address=127.0.0.1:9092
+
+server.port=8092
+spring.jpa.hibernate.ddl-auto=update
+#spring.datasource.url=jdbc:mysql://spotify-jd.ctrnjcq4sjyh.us-east-1.rds.amazonaws.com/userprofile
+#spring.datasource.username=admin
+#spring.datasource.password=Deepu123
+spring.datasource.url=jdbc:mysql://localhost:3306/userprofileDB?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=root1234
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+# Kafka Consumer Configuration
+spring.kafka.consumer.enable-auto-commit=true
+spring.kafka.consumer.auto-commit-interval-ms=1000 # Adjust the interval as needed
+
+
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+#spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+
+logging.level.org.apache.kafka.clients.NetworkClient=error
+
+secret.key=d3e1b7c4f6a9d21f4e5b2c3d8e6f1a2b3c4d5e6f7a8b9c1d2e3f4a5b6c7d8e9f0
+```
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.

@@ -2,6 +2,7 @@ package com.user.userprofileservice.controller;
 
 import com.user.userprofileservice.dto.UserProfileDto;
 import com.user.userprofileservice.dto.UserProfileUpdateDto;
+import com.user.userprofileservice.exception.ErrorResponse;
 import com.user.userprofileservice.exception.UnAuthorizedException;
 import com.user.userprofileservice.filter.JwtService;
 import com.user.userprofileservice.model.UserProfile;
@@ -39,11 +40,13 @@ public class UserProfileController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User Details Found",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserProfileDto.class)) }),
+                            schema = @Schema(implementation = UserProfile.class)) }),
             @ApiResponse(responseCode = "404", description = "User not found",
-                    content = @Content),
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) ,
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
-                    content = @Content) })
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @GetMapping("/getUserById/{username}")
     public ResponseEntity<Object> getUserProfileById(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @PathVariable String username){
 
@@ -61,11 +64,14 @@ public class UserProfileController {
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserProfile.class)) }),
             @ApiResponse(responseCode = "404", description = "User not found",
-                    content = @Content),
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ),
             @ApiResponse(responseCode = "409", description = "Username/Email already Exists",
-                    content = @Content),
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ),
             @ApiResponse(responseCode = "401", description = "Unauthorized user",
-                    content = @Content) })
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)) ) })
     @PutMapping("/update/{username}")
     public ResponseEntity<Object> updateUserProfile(@Parameter(hidden = true) @RequestHeader("Authorization") String token, @Valid @RequestBody UserProfileUpdateDto userProfileDto, @PathVariable String username){
 

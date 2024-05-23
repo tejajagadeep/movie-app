@@ -20,7 +20,7 @@ An Authentication Service plays a crucial role in a microservices architecture b
    - **Token Signing:** The token is signed using a secret key (in symmetric encryption) or a private key (in asymmetric encryption) to ensure its integrity and authenticity.
 
 4. **Response Handling:**
-   - **Successful Authentication:** If the credentials are valid, the service sends the JWT token back to the user as part of the response.
+   - **Successful Authentication:** If the credentials are valid, the service sends the JWT token back to the user as part of the movieResponse.
    - **Error Handling:** If the credentials are invalid, the service sends an error message indicating authentication failure.
 
 ### Detailed Workflow
@@ -44,7 +44,7 @@ An Authentication Service plays a crucial role in a microservices architecture b
      - **Roles and Permissions:** Information about the user's roles and permissions.
      - **Expiration Time:** Specifies how long the token is valid.
    - **Token Signing:** The payload is signed to ensure it hasn’t been tampered with.
-   - **Successful Response:** The JWT token is sent back to the user in the response.
+   - **Successful Response:** The JWT token is sent back to the user in the movieResponse.
    - **Error Response:** If validation fails, an error message is sent indicating the failure reason (e.g., "Invalid credentials").
 
 ### Security Considerations
@@ -73,6 +73,46 @@ An Authentication Service plays a crucial role in a microservices architecture b
    - **Response:** The service sends the JWT token back to the user. If validation fails, an error message is sent.
 
 By managing user credentials securely and generating JWT tokens, the Authentication Service ensures that only authenticated users can access the system, providing a secure and efficient authentication mechanism in a microservices architecture.
+
+## application properties
+
+```properties
+
+server.port=8090
+
+kafka.ip.address=127.0.0.1:9092
+
+spring.jpa.hibernate.ddl-auto=update
+#spring.datasource.username=admin
+#spring.datasource.password=Deepu123
+#spring.datasource.url=jdbc:mysql://spotify-jd.ctrnjcq4sjyh.us-east-1.rds.amazonaws.com/authentication
+spring.datasource.url=jdbc:mysql://localhost:3306/authDB?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=root1234
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.jpa.show-sql: true
+
+jwt.secret=e9c4171e357f0181297736ce92b5581d8e48ff3fa47376f394f387c820060dd8
+jwt.expiration-milliseconds=604800000
+
+# Kafka Consumer Configuration
+spring.kafka.consumer.bootstrap-servers=localhost:9092
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.properties.spring.json.trusted.packages=*
+spring.kafka.consumer.group-id=mygroup
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.enable-auto-commit=true
+spring.kafka.consumer.auto-commit-interval-ms=1000
+
+secret.key=d3e1b7c4f6a9d21f4e5b2c3d8e6f1a2b3c4d5e6f7a8b9c1d2e3f4a5b6c7d8e9f0
+
+spring.kafka.consumer.properties.spring.json.trusted.packages=*
+spring.kafka.consumer.group-id=mygroup
+spring.kafka.consumer.auto-offset-reset=earliest
+
+logging.level.org.apache.kafka.clients.NetworkClient=error
+```
 
 ## Contributing
 

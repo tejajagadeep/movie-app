@@ -1,10 +1,8 @@
 package com.cts.movieservice.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.cts.movieservice.dto.Movie;
 import com.cts.movieservice.dto.MovieDetails;
-import com.cts.movieservice.dto.Response;
+import com.cts.movieservice.dto.MovieResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +12,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +33,7 @@ class MovieServiceImplTest {
 
     @Test
     void testTopMovies() {
-        // Mocking the response entity
+        // Mocking the movieResponse entity
         List<Movie> movies = List.of(new Movie(), new Movie());
         ResponseEntity<List<Movie>> responseEntity = new ResponseEntity<>(movies, HttpStatus.OK);
         when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
@@ -44,18 +41,18 @@ class MovieServiceImplTest {
         // Invoking the method under test
         Object result = movieService.topMovies();
 
-        Response response = new Response();
-        response.setStatus(true);
-        response.setMessage("Successful");
-        response.setData(movies);
+        MovieResponse movieResponse = new MovieResponse();
+        movieResponse.setStatus(true);
+        movieResponse.setMessage("Successful");
+        movieResponse.setData(movies);
 
-        // Verifying the response
-        assertEquals(response, result);
+        // Verifying the movieResponse
+        assertEquals(movieResponse, result);
     }
 
     @Test
     void testTopMoviesSearch() {
-        // Mocking the response entity
+        // Mocking the movieResponse entity
         Movie movie = new Movie();
         movie.setTitle("godfather");
         List<Movie> movies = List.of(movie);
@@ -63,20 +60,20 @@ class MovieServiceImplTest {
         when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
 
         // Invoking the method under test
-        Response response = movieService.topMoviesSearch("godfather");
+        MovieResponse movieResponse = movieService.topMoviesSearch("godfather");
 
-        Response expectedResponse = new Response();
-        expectedResponse.setStatus(true);
-        expectedResponse.setMessage("Successful");
-        expectedResponse.setData(movies);
+        MovieResponse expectedMovieResponse = new MovieResponse();
+        expectedMovieResponse.setStatus(true);
+        expectedMovieResponse.setMessage("Successful");
+        expectedMovieResponse.setData(movies);
 
-        // Verifying the response
-        assertEquals(expectedResponse, response);
+        // Verifying the movieResponse
+        assertEquals(expectedMovieResponse, movieResponse);
     }
 
     @Test
     void testTopMoviesFilterGenre() {
-        // Mocking the response entity
+        // Mocking the movieResponse entity
         Movie movie = new Movie();
         movie.setGenre(List.of("Action"));
         List<Movie> movies = List.of(movie);
@@ -84,15 +81,15 @@ class MovieServiceImplTest {
         when(restTemplate.exchange(any(), eq(new ParameterizedTypeReference<List<Movie>>() {}))).thenReturn(responseEntity);
 
         // Invoking the method under test
-        Response response = movieService.topMoviesByGenre("Action");
+        MovieResponse movieResponse = movieService.topMoviesByGenre("Action");
 
-        Response expectedResponse = new Response();
-        expectedResponse.setStatus(true);
-        expectedResponse.setMessage("Successful");
-        expectedResponse.setData(movies);
+        MovieResponse expectedMovieResponse = new MovieResponse();
+        expectedMovieResponse.setStatus(true);
+        expectedMovieResponse.setMessage("Successful");
+        expectedMovieResponse.setData(movies);
 
-        // Verifying the response
-        assertEquals(expectedResponse, response);
+        // Verifying the movieResponse
+        assertEquals(expectedMovieResponse, movieResponse);
     }
 
 

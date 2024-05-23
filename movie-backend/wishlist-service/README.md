@@ -190,6 +190,19 @@ wishlistservice
 └── pom.xml
 ```
 
+## application properties
+
+```properties
+server.port=8082
+
+#spring.data.mongodb.uri=mongodb+srv://tejajagadeep:0DdYIxVZc3OSk9sE@movie-app.lhqd4qf.mongodb.net/wishlist?retryWrites=true&w=majority&appName=movie-app
+
+spring.data.mongodb.uri=mongodb+srv://tejajagadeep:tejajagadeep@cluster0.u0rctha.mongodb.net/wishlist-db?retryWrites=true&w=majority&appName=Cluster0
+spring.cache.jcache.config=ehcache.xml
+
+secret.key=d3e1b7c4f6a9d21f4e5b2c3d8e6f1a2b3c4d5e6f7a8b9c1d2e3f4a5b6c7d8e9f0
+```
+
 ## Contributing
 
 Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
