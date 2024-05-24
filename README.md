@@ -92,7 +92,7 @@ The [Movie App Angular UI](./movie-app/README.md) is a web interface developed u
 
 **Prerequisites:** Java 17 or higher, Maven, MysqlDB, MongoDb are required.
 
-**Zipkin-Server:** to Setup Zipkin server [Quick Start Zipkin][https://zipkin.io/pages/quickstart]. or [Download jar](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) and run
+**Zipkin-Server:** to Setup Zipkin server [Quick Start Zipkin](https://zipkin.io/pages/quickstart){:target="_blank"}. or [Download jar](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) and run
 
 ```bash
 java -jar .\zipkin-server-3.3.0-exec.jar
