@@ -88,6 +88,16 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 The [Movie App Angular UI](./movie-app/README.md) is a web interface developed using Angular, providing users with an intuitive platform to interact with the movie application. It offers features such as browsing movies, managing wishlists, and user authentication.
 
+## Locally Running application
+
+**Prerequisites:** Java 17 or higher, Maven, MysqlDB, MongoDb are required.
+
+**Zipkin-Server:** to Setup Zipkin server [Quick Start Zipkin](https://zipkin.io/pages/quickstart). or [Download jar](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) and run
+
+```bash
+java -jar .\zipkin-server-3.3.0-exec.jar
+```
+
 ## Contributing
 
 Contributions are welcome! Please fork this repository and submit pull requests. Thank You.
