@@ -94,6 +94,9 @@ The [Movie App Angular UI](./movie-app/README.md) is a web interface developed u
 
 **Zipkin-Server:** to Setup Zipkin server [Quick Start Zipkin](https://zipkin.io/pages/quickstart){:target="_blank"}. or [Download jar](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) and run
 
+[GitHub README](https://github.com/openzipkin/zipkin){:target="_blank"}
+
+
 ```bash
 java -jar .\zipkin-server-3.3.0-exec.jar
 ```
