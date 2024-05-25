@@ -1,0 +1,220 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.user:userprofile-service >--------------------
+[INFO] Building userprofile-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.4:run (default-cli) > test-compile @ userprofile-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ userprofile-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ userprofile-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ userprofile-service ---
+[INFO] skip non existing resourceDirectory C:\Users\tejaj\Videos\git\movie-app\movie-backend\userprofile-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ userprofile-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot:3.2.4:run (default-cli) < test-compile @ userprofile-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.4:run (default-cli) @ userprofile-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2024-05-25T06:46:43.322+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.UserprofileServiceApplication      : Starting UserprofileServiceApplication using Java 22.0.1 with PID 1976 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\userprofile-service\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\userprofile-service)
+2024-05-25T06:46:43.324+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.UserprofileServiceApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-05-25T06:46:43.381+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
+2024-05-25T06:46:43.381+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=userprofile-service, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
+2024-05-25T06:46:44.176+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-25T06:46:44.287+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 1 JPA repository interface.
+2024-05-25T06:46:44.612+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.cloud.context.scope.GenericScope     : BeanFactory id=cea1095b-0b72-33c5-a4bc-ff8f88fbdecb
+2024-05-25T06:46:44.936+05:30  WARN 1976 --- [userprofile-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-25T06:46:44.942+05:30  WARN 1976 --- [userprofile-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-25T06:46:45.214+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8092 (http)
+2024-05-25T06:46:45.225+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-25T06:46:45.225+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-05-25T06:46:45.288+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-25T06:46:45.288+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1906 ms
+2024-05-25T06:46:45.827+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-25T06:46:45.856+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-25T06:46:45.888+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-25T06:46:46.048+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-25T06:46:46.061+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-25T06:46:46.259+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7baea18b
+2024-05-25T06:46:46.265+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-25T06:46:46.299+05:30  WARN 1976 --- [userprofile-service] [           main] [                                                 ] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-25T06:46:46.944+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-25T06:46:46.974+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-25T06:46:47.362+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.aspects.LoggingAspect              : Method returned: org.modelmapper.ModelMapper@79ac02a9
+2024-05-25T06:46:47.520+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.aspects.LoggingAspect              : Method returned: io.micrometer.observation.aop.ObservedAspect@319fe034
+2024-05-25T06:46:47.520+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.aspects.LoggingAspect              : Method returned: (name=MovieApp, numPartitions=default, replicationFactor=default, replicasAssignments=null, configs=null)
+2024-05-25T06:46:47.684+05:30  WARN 1976 --- [userprofile-service] [           main] [                                                 ] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-25T06:46:47.730+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.aspects.LoggingAspect              : Method returned: null
+2024-05-25T06:46:49.247+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-05-25T06:46:49.416+05:30  WARN 1976 --- [userprofile-service] [           main] [                                                 ] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-25T06:46:49.446+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 24 endpoint(s) beneath base path '/actuator'
+2024-05-25T06:46:49.634+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	auto.include.jmx.reporter = true
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2024-05-25T06:46:49.875+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.6.1
+2024-05-25T06:46:49.875+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 5e3c2b738d253ff5
+2024-05-25T06:46:49.875+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1716599809875
+2024-05-25T06:47:19.887+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.a.k.c.a.i.AdminMetadataManager         : [AdminClient clientId=adminclient-1] Metadata update failed
+
+org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment. Call: fetchMetadata
+
+2024-05-25T06:47:19.902+05:30 ERROR 1976 --- [userprofile-service] [           main] [                                                 ] o.springframework.kafka.core.KafkaAdmin  : Could not configure topics
+
+org.springframework.kafka.KafkaException: Timed out waiting to get existing topics
+	at org.springframework.kafka.core.KafkaAdmin.lambda$checkPartitions$11(KafkaAdmin.java:520) ~[spring-kafka-3.1.3.jar:3.1.3]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.springframework.kafka.core.KafkaAdmin.checkPartitions(KafkaAdmin.java:499) ~[spring-kafka-3.1.3.jar:3.1.3]
+	at org.springframework.kafka.core.KafkaAdmin.addOrModifyTopicsIfNeeded(KafkaAdmin.java:392) ~[spring-kafka-3.1.3.jar:3.1.3]
+	at org.springframework.kafka.core.KafkaAdmin.initialize(KafkaAdmin.java:258) ~[spring-kafka-3.1.3.jar:3.1.3]
+	at org.springframework.kafka.core.KafkaAdmin.afterSingletonsInstantiated(KafkaAdmin.java:222) ~[spring-kafka-3.1.3.jar:3.1.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:986) ~[spring-beans-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.5.jar:6.1.5]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.4.jar:3.2.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.4.jar:3.2.4]
+	at com.user.userprofileservice.UserprofileServiceApplication.main(UserprofileServiceApplication.java:23) ~[classes/:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095) ~[na:na]
+	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:180) ~[kafka-clients-3.6.1.jar:na]
+	at org.springframework.kafka.core.KafkaAdmin.lambda$checkPartitions$11(KafkaAdmin.java:502) ~[spring-kafka-3.1.3.jar:3.1.3]
+	... 15 common frames omitted
+
+2024-05-25T06:47:29.915+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.a.k.clients.admin.KafkaAdminClient     : [AdminClient clientId=adminclient-1] Forcing a hard I/O thread shutdown. Requests in progress will be aborted.
+2024-05-25T06:47:29.915+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for adminclient-1 unregistered
+2024-05-25T06:47:29.917+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.a.k.c.a.i.AdminMetadataManager         : [AdminClient clientId=adminclient-1] Metadata update failed
+
+org.apache.kafka.common.errors.TimeoutException: The AdminClient thread has exited. Call: fetchMetadata
+
+2024-05-25T06:47:29.917+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.a.k.clients.admin.KafkaAdminClient     : [AdminClient clientId=adminclient-1] Timed out 2 remaining operation(s) during close.
+2024-05-25T06:47:29.917+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2024-05-25T06:47:29.917+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2024-05-25T06:47:29.917+05:30  INFO 1976 --- [userprofile-service] [| adminclient-1] [                                                 ] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2024-05-25T06:47:29.945+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-05-25T06:47:30.020+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-05-25T06:47:30.024+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-05-25T06:47:30.057+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-05-25T06:47:30.265+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-05-25T06:47:30.278+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-05-25T06:47:30.282+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-25T06:47:30.282+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1716599850282 with initial instances count: 4
+2024-05-25T06:47:30.320+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application USERPROFILE-SERVICE with eureka with status UP
+2024-05-25T06:47:30.322+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1716599850322, current=UP, previous=STARTING]
+2024-05-25T06:47:30.323+05:30  INFO 1976 --- [userprofile-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USERPROFILE-SERVICE/KJagadeep:userprofile-service:8092: registering service...
+2024-05-25T06:47:30.338+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8092 (http) with context path ''
+2024-05-25T06:47:30.338+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8092
+2024-05-25T06:47:30.359+05:30  INFO 1976 --- [userprofile-service] [           main] [                                                 ] c.u.u.UserprofileServiceApplication      : Started UserprofileServiceApplication in 48.956 seconds (process running for 49.35)
+2024-05-25T06:47:30.380+05:30  INFO 1976 --- [userprofile-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USERPROFILE-SERVICE/KJagadeep:userprofile-service:8092 - registration status: 204
+2024-05-25T06:48:19.688+05:30  INFO 1976 --- [userprofile-service] [nio-8092-exec-1] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-25T06:48:19.688+05:30  INFO 1976 --- [userprofile-service] [nio-8092-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-25T06:48:19.688+05:30  INFO 1976 --- [userprofile-service] [nio-8092-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-05-25T06:48:20.146+05:30  INFO 1976 --- [userprofile-service] [nio-8092-exec-1] [66513c5bbda2f88202c65d305a839483-02c65d305a839483] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 364 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:43 min
+[INFO] Finished at: 2024-05-25T06:49:22+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.4:run (default-cli) on project userprofile-service: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

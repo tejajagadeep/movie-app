@@ -1,0 +1,105 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.cloud:config-server >-----------------------
+[INFO] Building config-server 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.5:run (default-cli) > test-compile @ config-server >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ config-server ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ config-server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ config-server ---
+[INFO] skip non existing resourceDirectory C:\Users\tejaj\Videos\git\movie-app\movie-backend\config-server\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ config-server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot:3.2.5:run (default-cli) < test-compile @ config-server <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.5:run (default-cli) @ config-server ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2024-05-25T06:46:00.937+05:30  INFO 11620 --- [config-server] [           main] c.c.c.ConfigServerApplication            : Starting ConfigServerApplication using Java 22.0.1 with PID 11620 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\config-server\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\config-server)
+2024-05-25T06:46:00.939+05:30  INFO 11620 --- [config-server] [           main] c.c.c.ConfigServerApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-05-25T06:46:01.519+05:30  INFO 11620 --- [config-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=df7efb52-0052-3ff7-bc54-b767a96cfe53
+2024-05-25T06:46:01.558+05:30  WARN 11620 --- [config-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-25T06:46:01.559+05:30  WARN 11620 --- [config-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-25T06:46:01.697+05:30  INFO 11620 --- [config-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8888 (http)
+2024-05-25T06:46:01.705+05:30  INFO 11620 --- [config-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-25T06:46:01.705+05:30  INFO 11620 --- [config-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-25T06:46:01.748+05:30  INFO 11620 --- [config-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-25T06:46:01.749+05:30  INFO 11620 --- [config-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 772 ms
+2024-05-25T06:46:02.135+05:30  INFO 11620 --- [config-server] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-05-25T06:46:04.470+05:30  WARN 11620 --- [config-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-25T06:46:04.488+05:30  INFO 11620 --- [config-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-05-25T06:46:04.554+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-05-25T06:46:04.557+05:30  INFO 11620 --- [config-server] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-05-25T06:46:04.570+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-05-25T06:46:04.811+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-05-25T06:46:04.813+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-05-25T06:46:04.815+05:30  INFO 11620 --- [config-server] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-25T06:46:04.819+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1716599764819 with initial instances count: 0
+2024-05-25T06:46:04.819+05:30  INFO 11620 --- [config-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CONFIG-SERVER with eureka with status UP
+2024-05-25T06:46:04.819+05:30  INFO 11620 --- [config-server] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1716599764819, current=UP, previous=STARTING]
+2024-05-25T06:46:04.820+05:30  INFO 11620 --- [config-server] [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-SERVER/KJagadeep:config-server:8888: registering service...
+2024-05-25T06:46:04.832+05:30  INFO 11620 --- [config-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8888 (http) with context path ''
+2024-05-25T06:46:04.833+05:30  INFO 11620 --- [config-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8888
+2024-05-25T06:46:04.842+05:30  INFO 11620 --- [config-server] [           main] c.c.c.ConfigServerApplication            : Started ConfigServerApplication in 4.235 seconds (process running for 4.505)
+2024-05-25T06:46:04.905+05:30  INFO 11620 --- [config-server] [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-SERVER/KJagadeep:config-server:8888 - registration status: 204
+2024-05-25T06:46:21.371+05:30  INFO 11620 --- [config-server] [nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-25T06:46:21.371+05:30  INFO 11620 --- [config-server] [nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-25T06:46:21.372+05:30  INFO 11620 --- [config-server] [nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-25T06:46:22.460+05:30  INFO 11620 --- [config-server] [nio-8888-exec-1] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\authentication-service.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:46:22.460+05:30  INFO 11620 --- [config-server] [nio-8888-exec-1] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\application.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:46:34.818+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-05-25T06:46:34.819+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-05-25T06:46:34.819+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-05-25T06:46:34.819+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-05-25T06:46:34.819+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-05-25T06:46:34.819+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2024-05-25T06:46:34.819+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-05-25T06:46:34.846+05:30  INFO 11620 --- [config-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-05-25T06:46:43.092+05:30  INFO 11620 --- [config-server] [nio-8888-exec-2] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\userprofile-service.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:46:43.092+05:30  INFO 11620 --- [config-server] [nio-8888-exec-2] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\application.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:47:02.605+05:30  INFO 11620 --- [config-server] [nio-8888-exec-3] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\movie-service.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:47:02.605+05:30  INFO 11620 --- [config-server] [nio-8888-exec-3] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\application.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:47:22.865+05:30  INFO 11620 --- [config-server] [nio-8888-exec-4] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\wishlist-service.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:47:22.865+05:30  INFO 11620 --- [config-server] [nio-8888-exec-4] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\application.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:47:43.109+05:30  INFO 11620 --- [config-server] [nio-8888-exec-6] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\api-gateway.yml]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:47:43.109+05:30  INFO 11620 --- [config-server] [nio-8888-exec-6] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\application.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:48:03.400+05:30  INFO 11620 --- [config-server] [nio-8888-exec-8] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\swagger-server.yml]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+2024-05-25T06:48:03.400+05:30  INFO 11620 --- [config-server] [nio-8888-exec-8] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [C:\Users\tejaj\AppData\Local\Temp\config-repo-8192742043206719993\application.properties]' via location 'file:/C:/Users/tejaj/AppData/Local/Temp/config-repo-8192742043206719993/'
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:22 min
+[INFO] Finished at: 2024-05-25T06:49:21+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.5:run (default-cli) on project config-server: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

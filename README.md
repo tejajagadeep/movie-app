@@ -70,7 +70,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 [Youtube Demo Link](https://youtu.be/j3HoZmhHORE)
 
-## The responsibilities of the microservices in the above figure are as follows:
+### The responsibilities of the microservices in the above figure are as follows:
 
 1. [User Profile Service](./movie-backend/userprofile-service/README.md): This Service is responsible for storing user registration details. The Service publishes the user credentials sent as part of registration to the message bus and stores the remaining user profile information in the database.
 2. [Authentication Service](./movie-backend/authentication-service/README.md): This Service is responsible for consuming user credential from the message bus and storing it in the database. When a user logs in, this service validates the login credentials against the credentials stored in the database. If the credentials matches, this service generates a JWT token and sends back as response, else an error message is sent.
@@ -84,15 +84,15 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --name my-movie
 
 ---
 
-## Angular UI (movie-app)
+### Angular UI (movie-app)
 
 The [Movie App Angular UI](./movie-app/README.md) is a web interface developed using Angular, providing users with an intuitive platform to interact with the movie application. It offers features such as browsing movies, managing wishlists, and user authentication.
 
 ## Locally Running application
 
-**Prerequisites:** Java 17 or higher, Maven, MysqlDB, MongoDb are required.
+**Prerequisites:** Java 17 or higher, Maven, MysqlDB, MongoDB are required.
 
-**Zipkin-Server:** to Setup Zipkin server [Quick Start Zipkin](https://zipkin.io/pages/quickstart). or [Download jar](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) and run
+**Zipkin-Server:** to Setup Zipkin server [Quick Start Zipkin](https://zipkin.io/pages/quickstart) or [Download jar](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) and run
 
 ```bash
 java -jar .\zipkin-server-3.3.0-exec.jar
