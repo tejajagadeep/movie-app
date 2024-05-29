@@ -57,9 +57,7 @@
                             } @else {
                             <div>
                                 @if (phoneNumber?.errors?.['pattern']) {
-                                <div> Phone number should
-                                    contain only 10
-                                    numbers</div>
+                                <div> Phone number must be 10 digits</div>
                                 }
                             </div>
                             }
@@ -78,7 +76,7 @@
                             } @else {
                             @if (username?.errors?.['minlength']) {
                             <div>
-                                Username should be at least 5 characters long
+                                Username must be at least 5 characters.
                             </div>
                             }
                             }
@@ -124,27 +122,19 @@
                             @if (password?.errors?.['required']) {
                             <div> Password is required</div>
                             } @else {
-                            @if (password?.errors?.['length']) {<div> Password should be at
-                                least 8 characters long
+                            @if (password?.errors?.['length']) {<div> Password must include 8 characters
                             </div>
                             } @else if (password?.errors?.['number']) {
-                            <div> Password should contain
-                                at
-                                least 1 number
+                            <div> Password must include 1 number
                             </div>
                             } @else if (password?.errors?.['upper']) {
-                            <div> Password should contain at
-                                least 1 uppercase
-                                letter</div>
+                            <div> Password must include 1 uppercase letter</div>
                             }
                             @else if (password?.errors?.['lower']) {
-                            <div> Password should contain at
-                                least 1 lowercase
+                            <div> Password must include 1 lowercase
                                 letter</div>
                             } @else if (password?.errors?.['symbol']) {
-                            <div> Password should contain
-                                at
-                                least 1 symbol
+                            <div> Password must include 1 symbol
                             </div>
                             }
                             }

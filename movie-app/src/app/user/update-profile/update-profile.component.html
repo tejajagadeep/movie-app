@@ -40,15 +40,13 @@
                         @if (phoneNumber?.touched && phoneNumber?.invalid) {
                         <div class="error-list">
                             @if (phoneNumber?.errors?.['required']) {
-                            <div> phone number is
+                            <div> Phone number is
                                 required
                             </div>
                             } @else {
                             <div>
                                 @if (phoneNumber?.errors?.['pattern']) {
-                                <div> Phone number should
-                                    contain only 10
-                                    numbers</div>
+                                <div>Phone number must be 10 digits</div>
                                 }
                             </div>
                             }

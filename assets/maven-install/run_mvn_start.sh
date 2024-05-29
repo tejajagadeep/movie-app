@@ -2,8 +2,8 @@
 
 # List of directories
 directories=(
-    "../../movie-backend/eureka-server"
     "../../movie-backend/config-server"
+    "../../movie-backend/eureka-server"
     "../../movie-backend/authentication-service"
     "../../movie-backend/userprofile-service"
     "../../movie-backend/movie-service"
@@ -33,7 +33,7 @@ start_application() {
     
     # Optionally wait for the application to be ready
     # This can be customized depending on your application's readiness criteria
-    sleep 20  # Adjust sleep duration as needed for your applications to start up
+    sleep 10  # Adjust sleep duration as needed for your applications to start up
 }
 
 # Loop through each directory and start the application sequentially

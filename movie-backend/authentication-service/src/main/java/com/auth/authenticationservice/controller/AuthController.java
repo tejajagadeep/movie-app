@@ -34,7 +34,7 @@ public class AuthController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Access Token Created",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = String.class)) }),
+                            schema = @Schema(implementation = AuthenticationResponse.class)) }),
             @ApiResponse(responseCode = "404", description = "User not Found",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class)) ) })
@@ -49,7 +49,7 @@ public class AuthController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "202", description = "User Details Accepted",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = String.class)) }),
+                            schema = @Schema(implementation = Boolean.class)) }),
             @ApiResponse(responseCode = "401", description = "Unauthorized user access",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class)) ) })
