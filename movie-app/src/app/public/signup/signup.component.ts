@@ -74,7 +74,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  OnlyAlbhabets(event: any): boolean {
+  OnlyAlphabets(event: any): boolean {
     const charCode = event.which ? event.which : event.keyCode;
 
     if (

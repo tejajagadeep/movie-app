@@ -13,6 +13,7 @@ nav {
   height: 80px;
   width: 100%;
   z-index: 200;
+  position: relative;
 }
 label.logo {
   color: white;
@@ -126,6 +127,24 @@ a.deactive {
     z-index: 5;
   }
 }
+
+@media (max-width: 380px) {
+  label.logo {
+    font-size: 24px; /* Adjust font size */
+    padding: 0 20px; /* Adjust padding */
+    line-height: 80px; /* Ensure the logo stays centered vertically */
+  }
+  .checkbtn {
+    margin-right: 20px; /* Adjust margin for the menu button */
+  }
+  nav ul li {
+    line-height: 80px; /* Adjust line-height for the list items */
+  }
+  nav ul li a {
+    font-size: 16px; /* Adjust font size */
+  }
+}
+
 section {
   background-size: cover;
   height: calc(100vh - 80px);
