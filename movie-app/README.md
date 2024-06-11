@@ -66,7 +66,15 @@ To build the application for production, run:
 ng build
 ```
 
-The production-ready files will be generated in the `dist/` directory.
+To test the application with coverage, run:
+
+```bash
+ng test --code-coverage
+```
+
+The production-ready files will be generated in the `dist/` directory. **Client Side Rendering(CSR):** dist/browser. **Server Side Rendering(SSR):** dist/server
+
+The test-coverage files will be generated in the `coverage/` directory.
 
 ## Project Structure
 
