@@ -20,6 +20,14 @@ chmod +x run_mvn_start.sh
 ./run_mvn_start.sh
 ```
 
+### Maven Start
+
+```bash
+chmod +x stop_ports.sh
+
+./stop_ports.sh
+```
+
 **Note:** increase sleep time if facing issues with config server not starting before other services
 
 **_Prerequisites:_** Maven git bash if running on windows

@@ -35,37 +35,37 @@ Standard Commons Logging discovery in action with spring-jcl: please remove comm
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2024-05-25T06:45:40.887+05:30  INFO 18864 --- [eureka-server] [           main] c.u.e.EurekaServerApplication            : Starting EurekaServerApplication using Java 22.0.1 with PID 18864 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\eureka-server\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\eureka-server)
-2024-05-25T06:45:40.889+05:30  INFO 18864 --- [eureka-server] [           main] c.u.e.EurekaServerApplication            : No active profile set, falling back to 1 default profile: "default"
-2024-05-25T06:45:41.625+05:30  INFO 18864 --- [eureka-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8f3ec10f-59cd-397d-82f3-7da97306a40e
-2024-05-25T06:45:41.662+05:30  WARN 18864 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-05-25T06:45:41.664+05:30  WARN 18864 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2024-05-25T06:45:41.812+05:30  INFO 18864 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8761 (http)
-2024-05-25T06:45:41.819+05:30  INFO 18864 --- [eureka-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-05-25T06:45:41.820+05:30  INFO 18864 --- [eureka-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-05-25T06:45:41.866+05:30  INFO 18864 --- [eureka-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-05-25T06:45:41.867+05:30  INFO 18864 --- [eureka-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 937 ms
+2024-06-21T13:23:46.507+05:30  INFO 22072 --- [eureka-server] [           main] c.u.e.EurekaServerApplication            : Starting EurekaServerApplication using Java 22.0.1 with PID 22072 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\eureka-server\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\eureka-server)
+2024-06-21T13:23:46.509+05:30  INFO 22072 --- [eureka-server] [           main] c.u.e.EurekaServerApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-06-21T13:23:47.495+05:30  INFO 22072 --- [eureka-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8f3ec10f-59cd-397d-82f3-7da97306a40e
+2024-06-21T13:23:47.539+05:30  WARN 22072 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-06-21T13:23:47.545+05:30  WARN 22072 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-06-21T13:23:47.719+05:30  INFO 22072 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8761 (http)
+2024-06-21T13:23:47.735+05:30  INFO 22072 --- [eureka-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-21T13:23:47.735+05:30  INFO 22072 --- [eureka-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-21T13:23:47.799+05:30  INFO 22072 --- [eureka-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-21T13:23:47.799+05:30  INFO 22072 --- [eureka-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1247 ms
 Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
-2024-05-25T06:45:42.443+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2024-05-25T06:45:42.444+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
-2024-05-25T06:45:42.588+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2024-05-25T06:45:42.588+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2024-05-25T06:45:43.088+05:30  WARN 18864 --- [eureka-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2024-05-25T06:45:43.100+05:30  INFO 18864 --- [eureka-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2024-05-25T06:45:43.166+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2024-05-25T06:45:43.173+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2024-05-25T06:45:43.173+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
-2024-05-25T06:45:43.173+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2024-05-25T06:45:43.173+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2024-05-25T06:45:43.191+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-05-25T06:45:43.203+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-05-25T06:45:43.257+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=java.net.ConnectException: Connection refused: getsockopt stacktrace=jakarta.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: getsockopt
+2024-06-21T13:23:48.499+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2024-06-21T13:23:48.508+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2024-06-21T13:23:48.681+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2024-06-21T13:23:48.681+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2024-06-21T13:23:49.359+05:30  WARN 22072 --- [eureka-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-06-21T13:23:49.373+05:30  INFO 22072 --- [eureka-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-06-21T13:23:49.449+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-06-21T13:23:49.459+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2024-06-21T13:23:49.459+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2024-06-21T13:23:49.459+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2024-06-21T13:23:49.459+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2024-06-21T13:23:49.495+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-06-21T13:23:49.509+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:23:49.573+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=java.net.ConnectException: Connection refused: getsockopt stacktrace=jakarta.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: getsockopt
 	at org.glassfish.jersey.client.internal.HttpUrlConnector.apply(HttpUrlConnector.java:275)
 	at org.glassfish.jersey.client.ClientRuntime.invoke(ClientRuntime.java:300)
 	at org.glassfish.jersey.client.JerseyInvocation.lambda$invoke$0(JerseyInvocation.java:674)
@@ -193,8 +193,8 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 	at org.glassfish.jersey.client.internal.HttpUrlConnector.apply(HttpUrlConnector.java:273)
 	... 103 more
 
-2024-05-25T06:45:43.257+05:30  WARN 18864 --- [eureka-server] [           main] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused: getsockopt
-2024-05-25T06:45:43.258+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EUREKA-SERVER/KJagadeep:eureka-server:8761 - was unable to refresh its cache! This periodic background refresh will be retried in 30 seconds. status = Cannot execute request on any known server stacktrace = com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+2024-06-21T13:23:49.573+05:30  WARN 22072 --- [eureka-server] [           main] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused: getsockopt
+2024-06-21T13:23:49.573+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_EUREKA-SERVER/KJagadeep:eureka-server:8761 - was unable to refresh its cache! This periodic background refresh will be retried in 30 seconds. status = Cannot execute request on any known server stacktrace = com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
@@ -277,72 +277,137 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
 	at com.university.eurekaserver.EurekaServerApplication.main(EurekaServerApplication.java:12)
 
-2024-05-25T06:45:43.258+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from primary servers failed
-2024-05-25T06:45:43.259+05:30  WARN 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Using default backup registry implementation which does not do anything.
-2024-05-25T06:45:43.259+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from backup servers failed
-2024-05-25T06:45:43.260+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Not registering with Eureka server per configuration
-2024-05-25T06:45:43.262+05:30  INFO 18864 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1716599743261 with initial instances count: 0
-2024-05-25T06:45:43.293+05:30  INFO 18864 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
-2024-05-25T06:45:43.294+05:30  INFO 18864 --- [eureka-server] [           main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
-2024-05-25T06:45:43.371+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2024-05-25T06:45:43.371+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
-2024-05-25T06:45:43.371+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2024-05-25T06:45:43.371+05:30  INFO 18864 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2024-05-25T06:45:43.389+05:30  INFO 18864 --- [eureka-server] [           main] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
-2024-05-25T06:45:43.393+05:30  INFO 18864 --- [eureka-server] [           main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
-2024-05-25T06:45:43.396+05:30  INFO 18864 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initialized
-2024-05-25T06:45:43.403+05:30  INFO 18864 --- [eureka-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-2024-05-25T06:45:43.432+05:30  INFO 18864 --- [eureka-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EUREKA-SERVER with eureka with status UP
-2024-05-25T06:45:43.440+05:30  INFO 18864 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
-2024-05-25T06:45:43.440+05:30  INFO 18864 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
-2024-05-25T06:45:43.440+05:30  INFO 18864 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
-2024-05-25T06:45:43.440+05:30  INFO 18864 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
-2024-05-25T06:45:43.441+05:30  INFO 18864 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
-2024-05-25T06:45:43.445+05:30  INFO 18864 --- [eureka-server] [       Thread-9] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
-2024-05-25T06:45:43.445+05:30  INFO 18864 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8761 (http) with context path ''
-2024-05-25T06:45:43.446+05:30  INFO 18864 --- [eureka-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
-2024-05-25T06:45:43.458+05:30  INFO 18864 --- [eureka-server] [           main] c.u.e.EurekaServerApplication            : Started EurekaServerApplication in 2.924 seconds (process running for 3.174)
-2024-05-25T06:46:04.747+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-25T06:46:04.748+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-05-25T06:46:04.749+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-05-25T06:46:04.902+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CONFIG-SERVER/KJagadeep:config-server:8888 with status UP (replication=false)
-2024-05-25T06:46:05.493+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CONFIG-SERVER/KJagadeep:config-server:8888 with status UP (replication=true)
-2024-05-25T06:46:13.270+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2024-05-25T06:46:13.271+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-05-25T06:46:13.271+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-05-25T06:46:13.271+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-05-25T06:46:13.272+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-05-25T06:46:13.272+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-05-25T06:46:13.272+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-05-25T06:46:13.296+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2024-05-25T06:46:27.195+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance AUTHENTICATION-SERVICE/KJagadeep:authentication-service:8090 with status UP (replication=false)
-2024-05-25T06:46:27.721+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance AUTHENTICATION-SERVICE/KJagadeep:authentication-service:8090 with status UP (replication=true)
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
-2024-05-25T06:46:43.297+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-05-25T06:46:43.302+05:30  INFO 18864 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2024-05-25T06:46:43.442+05:30  INFO 18864 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2024-05-25T06:47:06.870+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance MOVIE-SERVICE/KJagadeep:movie-service:8081 with status UP (replication=false)
-2024-05-25T06:47:07.380+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance MOVIE-SERVICE/KJagadeep:movie-service:8081 with status UP (replication=true)
-2024-05-25T06:47:27.924+05:30  INFO 18864 --- [eureka-server] [io-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance WISHLIST-SERVICE/KJagadeep:wishlist-service:8082 with status UP (replication=false)
-2024-05-25T06:47:28.429+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance WISHLIST-SERVICE/KJagadeep:wishlist-service:8082 with status UP (replication=true)
-2024-05-25T06:47:30.379+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERPROFILE-SERVICE/KJagadeep:userprofile-service:8092 with status UP (replication=false)
-2024-05-25T06:47:30.910+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERPROFILE-SERVICE/KJagadeep:userprofile-service:8092 with status UP (replication=true)
-2024-05-25T06:47:43.446+05:30  INFO 18864 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
-2024-05-25T06:47:45.556+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/KJagadeep:api-gateway:8765 with status UP (replication=false)
-2024-05-25T06:47:46.076+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/KJagadeep:api-gateway:8765 with status UP (replication=true)
-2024-05-25T06:48:05.669+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SWAGGER-SERVER/KJagadeep:swagger-server:8769 with status UP (replication=false)
-2024-05-25T06:48:06.170+05:30  INFO 18864 --- [eureka-server] [nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SWAGGER-SERVER/KJagadeep:swagger-server:8769 with status UP (replication=true)
-2024-05-25T06:48:43.459+05:30  INFO 18864 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 13ms
+2024-06-21T13:23:49.573+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from primary servers failed
+2024-06-21T13:23:49.573+05:30  WARN 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Using default backup registry implementation which does not do anything.
+2024-06-21T13:23:49.573+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from backup servers failed
+2024-06-21T13:23:49.579+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Not registering with Eureka server per configuration
+2024-06-21T13:23:49.579+05:30  INFO 22072 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1718956429579 with initial instances count: 0
+2024-06-21T13:23:49.605+05:30  INFO 22072 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2024-06-21T13:23:49.609+05:30  INFO 22072 --- [eureka-server] [           main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
+2024-06-21T13:23:49.694+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2024-06-21T13:23:49.694+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2024-06-21T13:23:49.694+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2024-06-21T13:23:49.694+05:30  INFO 22072 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2024-06-21T13:23:49.718+05:30  INFO 22072 --- [eureka-server] [           main] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
+2024-06-21T13:23:49.726+05:30  INFO 22072 --- [eureka-server] [           main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2024-06-21T13:23:49.728+05:30  INFO 22072 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2024-06-21T13:23:49.737+05:30  INFO 22072 --- [eureka-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-06-21T13:23:49.767+05:30  INFO 22072 --- [eureka-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EUREKA-SERVER with eureka with status UP
+2024-06-21T13:23:49.774+05:30  INFO 22072 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2024-06-21T13:23:49.774+05:30  INFO 22072 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2024-06-21T13:23:49.774+05:30  INFO 22072 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2024-06-21T13:23:49.774+05:30  INFO 22072 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2024-06-21T13:23:49.774+05:30  INFO 22072 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2024-06-21T13:23:49.778+05:30  INFO 22072 --- [eureka-server] [       Thread-9] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2024-06-21T13:23:49.780+05:30  INFO 22072 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8761 (http) with context path ''
+2024-06-21T13:23:49.781+05:30  INFO 22072 --- [eureka-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
+2024-06-21T13:23:49.792+05:30  INFO 22072 --- [eureka-server] [           main] c.u.e.EurekaServerApplication            : Started EurekaServerApplication in 3.731 seconds (process running for 4.124)
+2024-06-21T13:23:50.219+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-21T13:23:50.220+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-21T13:23:50.221+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-21T13:24:06.672+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance AUTHENTICATION-SERVICE/KJagadeep:authentication-service:8090 with status UP (replication=false)
+2024-06-21T13:24:07.269+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance AUTHENTICATION-SERVICE/KJagadeep:authentication-service:8090 with status UP (replication=true)
+2024-06-21T13:24:11.766+05:30  WARN 22072 --- [eureka-server] [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: lease doesn't exist, registering resource: CONFIG-SERVER - KJagadeep:config-server:8888
+2024-06-21T13:24:11.766+05:30  WARN 22072 --- [eureka-server] [nio-8761-exec-2] c.n.eureka.resources.InstanceResource    : Not Found (Renew): CONFIG-SERVER - KJagadeep:config-server:8888
+2024-06-21T13:24:11.817+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CONFIG-SERVER/KJagadeep:config-server:8888 with status UP (replication=false)
+2024-06-21T13:24:11.817+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CONFIG-SERVER/KJagadeep:config-server:8888 with status UP (replication=false)
+2024-06-21T13:24:12.346+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CONFIG-SERVER/KJagadeep:config-server:8888 with status UP (replication=true)
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-06-21T13:24:19.587+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:24:19.597+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-06-21T13:24:22.342+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : Registered instance MOVIE-SERVICE/KJagadeep:movie-service:8081 with status UP (replication=false)
+2024-06-21T13:24:22.856+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance MOVIE-SERVICE/KJagadeep:movie-service:8081 with status UP (replication=true)
+2024-06-21T13:24:33.443+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance WISHLIST-SERVICE/KJagadeep:wishlist-service:8082 with status UP (replication=false)
+2024-06-21T13:24:33.959+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance WISHLIST-SERVICE/KJagadeep:wishlist-service:8082 with status UP (replication=true)
+2024-06-21T13:24:40.659+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/KJagadeep:api-gateway:8765 with status UP (replication=false)
+2024-06-21T13:24:41.173+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/KJagadeep:api-gateway:8765 with status UP (replication=true)
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2024-06-21T13:24:49.606+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:24:49.614+05:30  INFO 22072 --- [eureka-server] [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-06-21T13:24:49.779+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-06-21T13:24:50.319+05:30  INFO 22072 --- [eureka-server] [io-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SWAGGER-SERVER/KJagadeep:swagger-server:8769 with status UP (replication=false)
+2024-06-21T13:24:50.849+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SWAGGER-SERVER/KJagadeep:swagger-server:8769 with status UP (replication=true)
+2024-06-21T13:24:57.222+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERPROFILE-SERVICE/KJagadeep:userprofile-service:8092 with status UP (replication=false)
+2024-06-21T13:24:57.739+05:30  INFO 22072 --- [eureka-server] [nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERPROFILE-SERVICE/KJagadeep:userprofile-service:8092 with status UP (replication=true)
+2024-06-21T13:25:49.786+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T13:26:49.792+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T13:27:49.799+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T13:28:49.512+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:28:49.809+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2024-06-21T13:29:49.818+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-06-21T13:30:49.822+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2024-06-21T13:31:49.824+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2024-06-21T13:32:49.833+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-06-21T13:33:49.516+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:33:49.838+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2024-06-21T13:34:49.843+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T13:35:49.844+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-06-21T13:36:49.859+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 15ms
+2024-06-21T13:37:49.864+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2024-06-21T13:38:49.524+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:38:49.730+05:30  INFO 22072 --- [eureka-server] [hresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 11
+2024-06-21T13:38:49.873+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-06-21T13:39:49.877+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2024-06-21T13:40:49.884+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T13:41:49.888+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2024-06-21T13:42:49.891+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-06-21T13:43:49.529+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:43:49.897+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2024-06-21T13:44:49.908+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-06-21T13:45:49.915+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2024-06-21T13:46:49.918+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2024-06-21T13:47:49.924+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2024-06-21T13:48:49.531+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:48:49.938+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 24ms
+2024-06-21T13:49:49.945+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-06-21T13:50:49.961+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 15ms
+2024-06-21T13:51:49.964+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-06-21T13:52:49.967+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2024-06-21T13:53:49.533+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:53:49.742+05:30  INFO 22072 --- [eureka-server] [hresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 11
+2024-06-21T13:53:49.976+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-06-21T13:54:49.977+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-06-21T13:55:49.993+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 16ms
+2024-06-21T13:56:50.006+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2024-06-21T13:57:50.007+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2024-06-21T13:58:49.539+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:58:50.018+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2024-06-21T13:59:50.030+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2024-06-21T14:00:50.043+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2024-06-21T14:01:50.047+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2024-06-21T14:02:50.058+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 12ms
+2024-06-21T14:03:49.542+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:03:50.065+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T14:04:50.076+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-06-21T14:05:50.087+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2024-06-21T14:06:50.098+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2024-06-21T14:07:50.110+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-06-21T14:08:49.557+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:08:49.748+05:30  INFO 22072 --- [eureka-server] [hresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 11
+2024-06-21T14:08:50.116+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T14:09:50.121+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
+2024-06-21T14:10:50.122+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-06-21T14:11:50.124+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2024-06-21T14:12:50.132+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 8ms
+2024-06-21T14:13:49.562+05:30  INFO 22072 --- [eureka-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:13:50.135+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-06-21T14:14:50.150+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 16ms
+2024-06-21T14:15:50.155+05:30  INFO 22072 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  03:41 min
-[INFO] Finished at: 2024-05-25T06:49:20+05:30
+[INFO] Total time:  53:00 min
+[INFO] Finished at: 2024-06-21T14:16:43+05:30
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.5:run (default-cli) on project eureka-server: Process terminated with exit code: 1 -> [Help 1]
 [ERROR] 

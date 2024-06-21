@@ -34,65 +34,293 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.4)
 
-2024-05-25T06:47:23.036+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.c.w.WishlistServiceApplication         : Starting WishlistServiceApplication using Java 22.0.1 with PID 22448 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\wishlist-service\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\wishlist-service)
-2024-05-25T06:47:23.036+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.c.w.WishlistServiceApplication         : No active profile set, falling back to 1 default profile: "default"
-2024-05-25T06:47:23.067+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
-2024-05-25T06:47:23.067+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=wishlist-service, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
-2024-05-25T06:47:23.787+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2024-05-25T06:47:23.871+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 1 MongoDB repository interface.
-2024-05-25T06:47:24.077+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58c8bd3c-8b10-33ac-8b26-4d20b06cb870
-2024-05-25T06:47:24.370+05:30  WARN 22448 --- [wishlist-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-05-25T06:47:24.370+05:30  WARN 22448 --- [wishlist-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2024-05-25T06:47:24.636+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
-2024-05-25T06:47:24.652+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-05-25T06:47:24.652+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-05-25T06:47:24.707+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-05-25T06:47:24.707+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1640 ms
-2024-05-25T06:47:25.434+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] org.mongodb.driver.client                : MongoClient with metadata {"application": {"name": "Cluster0"}, "driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/22.0.1+8-16"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=majority, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='tejajagadeep', source='admin', password=<hidden>, mechanismProperties=<hidden>}, transportSettings=null, streamFactoryFactory=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@6a261998], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@70f3bf00, com.mongodb.Jep395RecordCodecProvider@49770ef9, com.mongodb.KotlinCodecProvider@15bcecf9]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.u0rctha.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-1i3w24-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@4f0cdd0f], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='Cluster0', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
-2024-05-25T06:47:25.441+05:30  INFO 22448 --- [wishlist-service] [tha.mongodb.net] [                                                 ] org.mongodb.driver.cluster               : Adding discovered server ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017 to client view of cluster
-2024-05-25T06:47:25.496+05:30  INFO 22448 --- [wishlist-service] [tha.mongodb.net] [                                                 ] org.mongodb.driver.cluster               : Adding discovered server ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017 to client view of cluster
-2024-05-25T06:47:25.497+05:30  INFO 22448 --- [wishlist-service] [tha.mongodb.net] [                                                 ] org.mongodb.driver.cluster               : Adding discovered server ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017 to client view of cluster
-2024-05-25T06:47:25.846+05:30  INFO 22448 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=204319600, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=51, topologyVersion=TopologyVersion{processId=6650ba09e9520f7cf2962f9c, counter=4}, lastWriteDate=Sat May 25 06:47:24 IST 2024, lastUpdateTimeNanos=2802607682000}
-2024-05-25T06:47:25.846+05:30  INFO 22448 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=205411600, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=51, topologyVersion=TopologyVersion{processId=6650bad10f7815dbc48119bf, counter=3}, lastWriteDate=Sat May 25 06:47:24 IST 2024, lastUpdateTimeNanos=2802607602400}
-2024-05-25T06:47:25.846+05:30  INFO 22448 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=205411100, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000168, setVersion=51, topologyVersion=TopologyVersion{processId=6650ba6c2d7bfe10ff395f7e, counter=6}, lastWriteDate=Sat May 25 06:47:24 IST 2024, lastUpdateTimeNanos=2802607602400}
-2024-05-25T06:47:25.846+05:30  INFO 22448 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Discovered replica set primary ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017 with max election id 7fffffff0000000000000168 and max set version 51
-2024-05-25T06:47:25.952+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: org.modelmapper.ModelMapper@68c3aa38
-2024-05-25T06:47:25.994+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: io.micrometer.observation.aop.ObservedAspect@76641439
-2024-05-25T06:47:26.214+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: null
-2024-05-25T06:47:27.456+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
-2024-05-25T06:47:27.534+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 24 endpoint(s) beneath base path '/actuator'
-2024-05-25T06:47:27.628+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2024-05-25T06:47:27.721+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2024-05-25T06:47:27.721+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-05-25T06:47:27.753+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-05-25T06:47:27.846+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2024-05-25T06:47:27.846+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
-2024-05-25T06:47:27.846+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2024-05-25T06:47:27.862+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1716599847862 with initial instances count: 2
-2024-05-25T06:47:27.862+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application WISHLIST-SERVICE with eureka with status UP
-2024-05-25T06:47:27.862+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1716599847862, current=UP, previous=STARTING]
-2024-05-25T06:47:27.877+05:30  INFO 22448 --- [wishlist-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WISHLIST-SERVICE/KJagadeep:wishlist-service:8082: registering service...
-2024-05-25T06:47:27.877+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path ''
-2024-05-25T06:47:27.877+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8082
-2024-05-25T06:47:27.909+05:30  INFO 22448 --- [wishlist-service] [           main] [                                                 ] c.c.w.WishlistServiceApplication         : Started WishlistServiceApplication in 6.467 seconds (process running for 6.803)
-2024-05-25T06:47:27.924+05:30  INFO 22448 --- [wishlist-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WISHLIST-SERVICE/KJagadeep:wishlist-service:8082 - registration status: 204
-2024-05-25T06:48:14.032+05:30  INFO 22448 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-25T06:48:14.032+05:30  INFO 22448 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-05-25T06:48:14.033+05:30  INFO 22448 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-05-25T06:48:14.033+05:30  INFO 22448 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: false
-2024-05-25T06:48:14.499+05:30  INFO 22448 --- [wishlist-service] [nio-8082-exec-1] [66513c565bd517c1c0bd39c7fe0fa239-c0bd39c7fe0fa239] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 368 ms
-2024-05-25T06:48:21.495+05:30  INFO 22448 --- [wishlist-service] [nio-8082-exec-2] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: false
+2024-06-21T13:24:28.147+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.c.w.WishlistServiceApplication         : Starting WishlistServiceApplication using Java 22.0.1 with PID 8256 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\wishlist-service\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\wishlist-service)
+2024-06-21T13:24:28.149+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.c.w.WishlistServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-06-21T13:24:28.197+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
+2024-06-21T13:24:28.197+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=wishlist-service, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
+2024-06-21T13:24:29.014+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2024-06-21T13:24:29.106+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 1 MongoDB repository interface.
+2024-06-21T13:24:29.317+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58c8bd3c-8b10-33ac-8b26-4d20b06cb870
+2024-06-21T13:24:29.596+05:30  WARN 8256 --- [wishlist-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-06-21T13:24:29.599+05:30  WARN 8256 --- [wishlist-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-06-21T13:24:29.877+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2024-06-21T13:24:29.886+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-21T13:24:29.887+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-21T13:24:29.951+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-21T13:24:29.951+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1753 ms
+2024-06-21T13:24:30.726+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] org.mongodb.driver.client                : MongoClient with metadata {"application": {"name": "Cluster0"}, "driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/22.0.1+8-16"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=majority, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='tejajagadeep', source='admin', password=<hidden>, mechanismProperties=<hidden>}, transportSettings=null, streamFactoryFactory=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@1db9c2cf], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@32e7df65, com.mongodb.Jep395RecordCodecProvider@421d7900, com.mongodb.KotlinCodecProvider@45964b9e]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.u0rctha.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-1i3w24-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@166a5659], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='Cluster0', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2024-06-21T13:24:30.729+05:30  INFO 8256 --- [wishlist-service] [tha.mongodb.net] [                                                 ] org.mongodb.driver.cluster               : Adding discovered server ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017 to client view of cluster
+2024-06-21T13:24:30.755+05:30  INFO 8256 --- [wishlist-service] [tha.mongodb.net] [                                                 ] org.mongodb.driver.cluster               : Adding discovered server ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017 to client view of cluster
+2024-06-21T13:24:30.757+05:30  INFO 8256 --- [wishlist-service] [tha.mongodb.net] [                                                 ] org.mongodb.driver.cluster               : Adding discovered server ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017 to client view of cluster
+2024-06-21T13:24:31.082+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=211695600, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000179, setVersion=75, topologyVersion=TopologyVersion{processId=667037d1dda1543e3f050515, counter=6}, lastWriteDate=Fri Jun 21 13:24:30 IST 2024, lastUpdateTimeNanos=687512185534000}
+2024-06-21T13:24:31.082+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=208687300, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=75, topologyVersion=TopologyVersion{processId=66703a0997b53da744d683c9, counter=3}, lastWriteDate=Fri Jun 21 13:24:30 IST 2024, lastUpdateTimeNanos=687512185620200}
+2024-06-21T13:24:31.082+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=211527500, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=75, topologyVersion=TopologyVersion{processId=667038dd001611f7bba31b43, counter=4}, lastWriteDate=Fri Jun 21 13:24:30 IST 2024, lastUpdateTimeNanos=687512185586800}
+2024-06-21T13:24:31.084+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Discovered replica set primary ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017 with max election id 7fffffff0000000000000179 and max set version 75
+2024-06-21T13:24:31.171+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: org.modelmapper.ModelMapper@26361572
+2024-06-21T13:24:31.212+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: io.micrometer.observation.aop.ObservedAspect@35bf6dba
+2024-06-21T13:24:31.413+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: null
+2024-06-21T13:24:32.858+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-06-21T13:24:33.013+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 24 endpoint(s) beneath base path '/actuator'
+2024-06-21T13:24:33.117+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-06-21T13:24:33.223+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-06-21T13:24:33.226+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:24:33.249+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:24:33.249+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:24:33.249+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:24:33.250+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:24:33.250+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:24:33.250+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-06-21T13:24:33.250+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:24:33.373+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-06-21T13:24:33.376+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-06-21T13:24:33.378+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-06-21T13:24:33.382+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1718956473382 with initial instances count: 3
+2024-06-21T13:24:33.399+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application WISHLIST-SERVICE with eureka with status UP
+2024-06-21T13:24:33.399+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1718956473399, current=UP, previous=STARTING]
+2024-06-21T13:24:33.401+05:30  INFO 8256 --- [wishlist-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WISHLIST-SERVICE/KJagadeep:wishlist-service:8082: registering service...
+2024-06-21T13:24:33.415+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path ''
+2024-06-21T13:24:33.416+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8082
+2024-06-21T13:24:33.434+05:30  INFO 8256 --- [wishlist-service] [           main] [                                                 ] c.c.w.WishlistServiceApplication         : Started WishlistServiceApplication in 7.103 seconds (process running for 7.5)
+2024-06-21T13:24:33.445+05:30  INFO 8256 --- [wishlist-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_WISHLIST-SERVICE/KJagadeep:wishlist-service:8082 - registration status: 204
+2024-06-21T13:26:46.279+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-21T13:26:46.280+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-21T13:26:46.281+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-21T13:26:46.290+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-1] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: false
+2024-06-21T13:26:46.775+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-1] [6675323eacd580fb200b77bb3062a92a-200b77bb3062a92a] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 403 ms
+2024-06-21T13:26:47.851+05:30  WARN 8256 --- [wishlist-service] [ender@1f786968}] [                                                 ] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.
+2024-06-21T13:26:47.851+05:30  WARN 8256 --- [wishlist-service] [ender@1f786968}] [                                                 ] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 1 spans due to ResourceAccessException(I/O error on POST request for "http://localhost:9411/api/v2/spans": Connect to http://localhost:9411 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt)
+
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": Connect to http://localhost:9411 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:672) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinRestTemplateSender$RestTemplateHttpPostCall.doExecute(ZipkinRestTemplateSender.java:68) ~[spring-boot-actuator-autoconfigure-3.2.4.jar:3.2.4]
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinRestTemplateSender$RestTemplateHttpPostCall.doExecute(ZipkinRestTemplateSender.java:48) ~[spring-boot-actuator-autoconfigure-3.2.4.jar:3.2.4]
+	at zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]
+	at zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]
+	at zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) ~[zipkin-reporter-2.16.3.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:9411 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:752) ~[na:na]
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.lambda$connectSocket$0(PlainConnectionSocketFactory.java:91) ~[httpclient5-5.2.3.jar:5.2.3]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:90) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.socket.ConnectionSocketFactory.connectSocket(ConnectionSocketFactory.java:123) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:184) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:447) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:162) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:172) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:142) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:96) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:115) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:95) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889) ~[spring-web-6.1.5.jar:6.1.5]
+	... 8 common frames omitted
+
+2024-06-21T13:27:06.611+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-2] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: false
+2024-06-21T13:27:22.729+05:30  INFO 8256 --- [wishlist-service] [nio-8082-exec-3] [                                                 ] c.c.w.aspects.LoggingAspect              : Method returned: false
+2024-06-21T13:29:33.256+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:34:33.262+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:39:33.263+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:44:33.268+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:49:33.273+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:54:33.289+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:59:33.294+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:04:33.297+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:09:33.313+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:14:33.326+05:30  INFO 8256 --- [wishlist-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:16:26.482+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketReadException: Exception receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:730) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:606) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:451) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:404) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:224) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:1108) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1095) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1462) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068) ~[na:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:175) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:200) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:739) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:603) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 5 common frames omitted
+
+2024-06-21T14:16:26.482+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketReadException: Exception receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:730) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:606) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:451) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:404) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:224) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:1108) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1095) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1462) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068) ~[na:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:175) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:200) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:739) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:603) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 5 common frames omitted
+
+2024-06-21T14:16:26.482+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketReadException: Exception receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:730) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:606) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:451) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:404) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:224) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:1108) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1095) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1462) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068) ~[na:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:175) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:200) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:739) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:603) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 5 common frames omitted
+
+2024-06-21T14:16:26.525+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketException: No such host is known (ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net)
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:221) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.ServerAddressWithResolver.getSocketAddresses(ServerAddressWithResolver.java:68) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:100) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:78) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:211) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:196) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.UnknownHostException: No such host is known (ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1221) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1816) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1149) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1806) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1676) ~[na:na]
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:213) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 7 common frames omitted
+
+2024-06-21T14:16:26.525+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketException: No such host is known (ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net)
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:221) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.ServerAddressWithResolver.getSocketAddresses(ServerAddressWithResolver.java:68) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:100) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:78) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:211) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:196) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.UnknownHostException: No such host is known (ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1221) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1816) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1149) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1806) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1676) ~[na:na]
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:213) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 7 common frames omitted
+
+2024-06-21T14:16:26.525+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketException: No such host is known (ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net)
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:221) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.ServerAddressWithResolver.getSocketAddresses(ServerAddressWithResolver.java:68) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:100) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:78) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:211) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:196) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.UnknownHostException: No such host is known (ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1221) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1816) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1149) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1806) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1676) ~[na:na]
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:213) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 7 common frames omitted
+
+2024-06-21T14:16:36.533+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017
+
+com.mongodb.MongoSocketException: ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:221) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.ServerAddressWithResolver.getSocketAddresses(ServerAddressWithResolver.java:68) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:100) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:78) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:211) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:196) ~[mongodb-driver-core-4.11.1.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:156) ~[mongodb-driver-core-4.11.1.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: java.net.UnknownHostException: ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net
+	at java.base/java.net.InetAddress$CachedLookup.get(InetAddress.java:998) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1806) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1676) ~[na:na]
+	at com.mongodb.ServerAddress.getSocketAddresses(ServerAddress.java:213) ~[mongodb-driver-core-4.11.1.jar:na]
+	... 7 common frames omitted
+
+2024-06-21T14:16:37.772+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=233411400, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=75, topologyVersion=TopologyVersion{processId=66703a0997b53da744d683c9, counter=3}, lastWriteDate=Fri Jun 21 14:16:37 IST 2024, lastUpdateTimeNanos=690638877081800}
+2024-06-21T14:16:37.784+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=21, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=240724600, setName='atlas-1i3w24-shard-0', canonicalAddress=ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, hosts=[ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-00.u0rctha.mongodb.net:27017, ac-c4tcoo9-shard-00-01.u0rctha.mongodb.net:27017], passives=[], arbiters=[], primary='ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000179, setVersion=75, topologyVersion=TopologyVersion{processId=667037d1dda1543e3f050515, counter=6}, lastWriteDate=Fri Jun 21 14:16:37 IST 2024, lastUpdateTimeNanos=690638878849400}
+2024-06-21T14:16:37.784+05:30  INFO 8256 --- [wishlist-service] [ngodb.net:27017] [                                                 ] org.mongodb.driver.cluster               : Discovered replica set primary ac-c4tcoo9-shard-00-02.u0rctha.mongodb.net:27017 with max election id 7fffffff0000000000000179 and max set version 75
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:04 min
-[INFO] Finished at: 2024-05-25T06:49:23+05:30
+[INFO] Total time:  52:21 min
+[INFO] Finished at: 2024-06-21T14:16:44+05:30
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.4:run (default-cli) on project wishlist-service: Process terminated with exit code: 1 -> [Help 1]
 [ERROR] 

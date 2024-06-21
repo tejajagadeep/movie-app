@@ -34,55 +34,124 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.4)
 
-2024-05-25T06:47:02.799+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.c.m.MovieServiceApplication            : Starting MovieServiceApplication using Java 22.0.1 with PID 21672 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\movie-service\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\movie-service)
-2024-05-25T06:47:02.799+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.c.m.MovieServiceApplication            : No active profile set, falling back to 1 default profile: "default"
-2024-05-25T06:47:02.847+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
-2024-05-25T06:47:02.847+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=movie-service, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
-2024-05-25T06:47:03.985+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.cloud.context.scope.GenericScope     : BeanFactory id=541403b3-e532-3a73-ba46-fb9aa5451005
-2024-05-25T06:47:04.229+05:30  WARN 21672 --- [movie-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-05-25T06:47:04.244+05:30  WARN 21672 --- [movie-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2024-05-25T06:47:04.574+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2024-05-25T06:47:04.574+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-05-25T06:47:04.574+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-05-25T06:47:04.653+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-05-25T06:47:04.653+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1806 ms
-2024-05-25T06:47:05.143+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: org.springframework.web.client.RestTemplate@51cd2d2
-2024-05-25T06:47:05.268+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: io.micrometer.observation.aop.ObservedAspect@6a299b9d
-2024-05-25T06:47:05.442+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: null
-2024-05-25T06:47:06.466+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
-2024-05-25T06:47:06.515+05:30  WARN 21672 --- [movie-service] [           main] [                                                 ] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2024-05-25T06:47:06.531+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 24 endpoint(s) beneath base path '/actuator'
-2024-05-25T06:47:06.593+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2024-05-25T06:47:06.673+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2024-05-25T06:47:06.674+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-05-25T06:47:06.688+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-05-25T06:47:06.786+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2024-05-25T06:47:06.786+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
-2024-05-25T06:47:06.786+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2024-05-25T06:47:06.786+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1716599826786 with initial instances count: 2
-2024-05-25T06:47:06.799+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application MOVIE-SERVICE with eureka with status UP
-2024-05-25T06:47:06.799+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1716599826799, current=UP, previous=STARTING]
-2024-05-25T06:47:06.799+05:30  INFO 21672 --- [movie-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MOVIE-SERVICE/KJagadeep:movie-service:8081: registering service...
-2024-05-25T06:47:06.818+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
-2024-05-25T06:47:06.818+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8081
-2024-05-25T06:47:06.855+05:30  INFO 21672 --- [movie-service] [           main] [                                                 ] c.c.m.MovieServiceApplication            : Started MovieServiceApplication in 5.779 seconds (process running for 6.076)
-2024-05-25T06:47:06.872+05:30  INFO 21672 --- [movie-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MOVIE-SERVICE/KJagadeep:movie-service:8081 - registration status: 204
-2024-05-25T06:48:16.427+05:30  INFO 21672 --- [movie-service] [nio-8081-exec-1] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-25T06:48:16.427+05:30  INFO 21672 --- [movie-service] [nio-8081-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-05-25T06:48:16.443+05:30  INFO 21672 --- [movie-service] [nio-8081-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
-2024-05-25T06:48:16.443+05:30  INFO 21672 --- [movie-service] [nio-8081-exec-1] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: false
-2024-05-25T06:48:16.962+05:30  INFO 21672 --- [movie-service] [nio-8081-exec-1] [66513c58231b55e66a7d9f9547ce5359-6a7d9f9547ce5359] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 439 ms
+2024-06-21T13:24:18.063+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.c.m.MovieServiceApplication            : Starting MovieServiceApplication using Java 22.0.1 with PID 5264 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\movie-service\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\movie-service)
+2024-06-21T13:24:18.065+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.c.m.MovieServiceApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-06-21T13:24:18.108+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
+2024-06-21T13:24:18.108+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=movie-service, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
+2024-06-21T13:24:19.157+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.cloud.context.scope.GenericScope     : BeanFactory id=541403b3-e532-3a73-ba46-fb9aa5451005
+2024-06-21T13:24:19.383+05:30  WARN 5264 --- [movie-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-06-21T13:24:19.389+05:30  WARN 5264 --- [movie-service] [           main] [                                                 ] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-06-21T13:24:19.693+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-06-21T13:24:19.702+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-21T13:24:19.702+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-21T13:24:19.753+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-21T13:24:19.754+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1644 ms
+2024-06-21T13:24:20.304+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: org.springframework.web.client.RestTemplate@434a8938
+2024-06-21T13:24:20.414+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: io.micrometer.observation.aop.ObservedAspect@de63949
+2024-06-21T13:24:20.644+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: null
+2024-06-21T13:24:21.885+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-06-21T13:24:21.972+05:30  WARN 5264 --- [movie-service] [           main] [                                                 ] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-06-21T13:24:21.985+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 24 endpoint(s) beneath base path '/actuator'
+2024-06-21T13:24:22.070+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-06-21T13:24:22.167+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-06-21T13:24:22.171+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:24:22.186+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:24:22.186+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:24:22.186+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:24:22.186+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:24:22.186+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:24:22.187+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-06-21T13:24:22.187+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:24:22.285+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-06-21T13:24:22.287+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-06-21T13:24:22.289+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-06-21T13:24:22.293+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1718956462293 with initial instances count: 0
+2024-06-21T13:24:22.305+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application MOVIE-SERVICE with eureka with status UP
+2024-06-21T13:24:22.305+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1718956462305, current=UP, previous=STARTING]
+2024-06-21T13:24:22.307+05:30  INFO 5264 --- [movie-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MOVIE-SERVICE/KJagadeep:movie-service:8081: registering service...
+2024-06-21T13:24:22.322+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-06-21T13:24:22.323+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8081
+2024-06-21T13:24:22.342+05:30  INFO 5264 --- [movie-service] [           main] [                                                 ] c.c.m.MovieServiceApplication            : Started MovieServiceApplication in 6.172 seconds (process running for 6.534)
+2024-06-21T13:24:22.344+05:30  INFO 5264 --- [movie-service] [nfoReplicator-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MOVIE-SERVICE/KJagadeep:movie-service:8081 - registration status: 204
+2024-06-21T13:24:52.289+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:24:52.290+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:24:52.290+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:24:52.290+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:24:52.290+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:24:52.290+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2024-06-21T13:24:52.290+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:24:52.339+05:30  INFO 5264 --- [movie-service] [freshExecutor-0] [                                                 ] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-06-21T13:26:41.529+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-1] [                                                 ] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-21T13:26:41.537+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-21T13:26:41.539+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-1] [                                                 ] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-21T13:26:41.549+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-1] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: false
+2024-06-21T13:26:42.186+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-1] [66753239f703b6356be79924565e53b5-6be79924565e53b5] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 549 ms
+2024-06-21T13:26:43.262+05:30  WARN 5264 --- [movie-service] [ender@3b2df334}] [                                                 ] z.r.AsyncReporter$BoundedAsyncReporter   : Spans were dropped due to exceptions. All subsequent errors will be logged at FINE level.
+2024-06-21T13:26:43.262+05:30  WARN 5264 --- [movie-service] [ender@3b2df334}] [                                                 ] z.r.AsyncReporter$BoundedAsyncReporter   : Dropped 1 spans due to ResourceAccessException(I/O error on POST request for "http://localhost:9411/api/v2/spans": Connect to http://localhost:9411 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt)
+
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:9411/api/v2/spans": Connect to http://localhost:9411 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:672) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinRestTemplateSender$RestTemplateHttpPostCall.doExecute(ZipkinRestTemplateSender.java:68) ~[spring-boot-actuator-autoconfigure-3.2.4.jar:3.2.4]
+	at org.springframework.boot.actuate.autoconfigure.tracing.zipkin.ZipkinRestTemplateSender$RestTemplateHttpPostCall.doExecute(ZipkinRestTemplateSender.java:48) ~[spring-boot-actuator-autoconfigure-3.2.4.jar:3.2.4]
+	at zipkin2.Call$Base.execute(Call.java:391) ~[zipkin-2.23.2.jar:na]
+	at zipkin2.reporter.AsyncReporter$BoundedAsyncReporter.flush(AsyncReporter.java:299) ~[zipkin-reporter-2.16.3.jar:na]
+	at zipkin2.reporter.AsyncReporter$Flusher.run(AsyncReporter.java:378) ~[zipkin-reporter-2.16.3.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:9411 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:752) ~[na:na]
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.lambda$connectSocket$0(PlainConnectionSocketFactory.java:91) ~[httpclient5-5.2.3.jar:5.2.3]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[na:na]
+	at org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:90) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.socket.ConnectionSocketFactory.connectSocket(ConnectionSocketFactory.java:123) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:184) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:447) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:162) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:172) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:142) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:96) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:115) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183) ~[httpclient5-5.2.3.jar:5.2.3]
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:95) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.5.jar:6.1.5]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889) ~[spring-web-6.1.5.jar:6.1.5]
+	... 8 common frames omitted
+
+2024-06-21T13:26:54.678+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-3] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: false
+2024-06-21T13:27:13.156+05:30  INFO 5264 --- [movie-service] [nio-8081-exec-2] [                                                 ] c.c.movieservice.aspects.LoggingAspect   : Method returned: false
+2024-06-21T13:29:22.190+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:34:22.208+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:39:22.218+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:44:22.234+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:49:22.248+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:54:22.260+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:59:22.266+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:04:22.278+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:09:22.293+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:14:22.299+05:30  INFO 5264 --- [movie-service] [trap-executor-0] [                                                 ] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:23 min
-[INFO] Finished at: 2024-05-25T06:49:23+05:30
+[INFO] Total time:  52:31 min
+[INFO] Finished at: 2024-06-21T14:16:44+05:30
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.4:run (default-cli) on project movie-service: Process terminated with exit code: 1 -> [Help 1]
 [ERROR] 

@@ -10,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -84,7 +87,6 @@ class WishlistControllerTestMvc {
     }
 
     @Test
-    @WithMockUser(roles = "MEMBER", username = "user")
     void testAddWishlist() throws Exception {
         String username = "user";
         MovieDto movieDto = new MovieDto();
@@ -95,13 +97,22 @@ class WishlistControllerTestMvc {
 
         when(wishlistService.addWishlist(username, movieDto)).thenReturn(wishlistDto);
 
+        // Mock authentication principal
+        UsernamePasswordAuthenticationToken authentication =
+                new UsernamePasswordAuthenticationToken(username, "password", List.of(new SimpleGrantedAuthority("ROLE_MEMBER")));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1.0/private/wishlist/{username}", username)
                         .header(HttpHeaders.AUTHORIZATION, "Bearer testtoken")
                         .content("{\"id\":\"1\",\"title\":\"Movie 1\"}")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.movies[0].title").value("Movie 1"));
+
+        // Clear the context after the test
+        SecurityContextHolder.clearContext();
     }
+
 
     @Test
     @WithMockUser(roles = "MEMBER", username = "user")

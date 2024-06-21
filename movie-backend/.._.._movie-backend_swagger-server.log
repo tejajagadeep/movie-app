@@ -34,50 +34,60 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2024-05-25T06:48:03.606+05:30  INFO 2924 --- [swagger-server] [           main] c.c.s.SwaggerServerApplication           : Starting SwaggerServerApplication using Java 22.0.1 with PID 2924 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\swagger-server\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\swagger-server)
-2024-05-25T06:48:03.606+05:30  INFO 2924 --- [swagger-server] [           main] c.c.s.SwaggerServerApplication           : No active profile set, falling back to 1 default profile: "default"
-2024-05-25T06:48:03.668+05:30  INFO 2924 --- [swagger-server] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
-2024-05-25T06:48:03.668+05:30  INFO 2924 --- [swagger-server] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=swagger-server, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
-2024-05-25T06:48:04.405+05:30  INFO 2924 --- [swagger-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=abc12c63-d9f5-3765-a835-2d92b718718b
-2024-05-25T06:48:04.436+05:30  WARN 2924 --- [swagger-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-05-25T06:48:04.452+05:30  WARN 2924 --- [swagger-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2024-05-25T06:48:04.579+05:30  INFO 2924 --- [swagger-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8769 (http)
-2024-05-25T06:48:04.594+05:30  INFO 2924 --- [swagger-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-05-25T06:48:04.594+05:30  INFO 2924 --- [swagger-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-05-25T06:48:04.642+05:30  INFO 2924 --- [swagger-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-05-25T06:48:04.642+05:30  INFO 2924 --- [swagger-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 974 ms
-2024-05-25T06:48:05.292+05:30  INFO 2924 --- [swagger-server] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
-2024-05-25T06:48:05.316+05:30  WARN 2924 --- [swagger-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2024-05-25T06:48:05.327+05:30  INFO 2924 --- [swagger-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
-2024-05-25T06:48:05.355+05:30  INFO 2924 --- [swagger-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2024-05-25T06:48:05.436+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2024-05-25T06:48:05.436+05:30  INFO 2924 --- [swagger-server] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-05-25T06:48:05.452+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-05-25T06:48:05.625+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2024-05-25T06:48:05.640+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
-2024-05-25T06:48:05.640+05:30  INFO 2924 --- [swagger-server] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2024-05-25T06:48:05.640+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1716599885640 with initial instances count: 6
-2024-05-25T06:48:05.640+05:30  INFO 2924 --- [swagger-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application SWAGGER-SERVER with eureka with status UP
-2024-05-25T06:48:05.640+05:30  INFO 2924 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1716599885640, current=UP, previous=STARTING]
-2024-05-25T06:48:05.640+05:30  INFO 2924 --- [swagger-server] [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SWAGGER-SERVER/KJagadeep:swagger-server:8769: registering service...
-2024-05-25T06:48:05.658+05:30  INFO 2924 --- [swagger-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8769 (http) with context path ''
-2024-05-25T06:48:05.658+05:30  INFO 2924 --- [swagger-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8769
-2024-05-25T06:48:05.669+05:30  INFO 2924 --- [swagger-server] [           main] c.c.s.SwaggerServerApplication           : Started SwaggerServerApplication in 3.909 seconds (process running for 4.178)
-2024-05-25T06:48:05.669+05:30  INFO 2924 --- [swagger-server] [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SWAGGER-SERVER/KJagadeep:swagger-server:8769 - registration status: 204
-2024-05-25T06:48:13.355+05:30  INFO 2924 --- [swagger-server] [nio-8769-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-05-25T06:48:13.355+05:30  INFO 2924 --- [swagger-server] [nio-8769-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-05-25T06:48:13.355+05:30  INFO 2924 --- [swagger-server] [nio-8769-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-21T13:24:48.138+05:30  INFO 16068 --- [swagger-server] [           main] c.c.s.SwaggerServerApplication           : Starting SwaggerServerApplication using Java 22.0.1 with PID 16068 (C:\Users\tejaj\Videos\git\movie-app\movie-backend\swagger-server\target\classes started by tejaj in C:\Users\tejaj\Videos\git\movie-app\movie-backend\swagger-server)
+2024-06-21T13:24:48.139+05:30  INFO 16068 --- [swagger-server] [           main] c.c.s.SwaggerServerApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-06-21T13:24:48.181+05:30  INFO 16068 --- [swagger-server] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
+2024-06-21T13:24:48.181+05:30  INFO 16068 --- [swagger-server] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=swagger-server, profiles=[default], label=null, version=e7d376071f0b96cb16cdc42ba05f422ec7ee5cdf, state=null
+2024-06-21T13:24:48.899+05:30  INFO 16068 --- [swagger-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=abc12c63-d9f5-3765-a835-2d92b718718b
+2024-06-21T13:24:48.940+05:30  WARN 16068 --- [swagger-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-06-21T13:24:48.940+05:30  WARN 16068 --- [swagger-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-06-21T13:24:49.100+05:30  INFO 16068 --- [swagger-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8769 (http)
+2024-06-21T13:24:49.109+05:30  INFO 16068 --- [swagger-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-21T13:24:49.109+05:30  INFO 16068 --- [swagger-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-21T13:24:49.169+05:30  INFO 16068 --- [swagger-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-21T13:24:49.169+05:30  INFO 16068 --- [swagger-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 988 ms
+2024-06-21T13:24:49.909+05:30  INFO 16068 --- [swagger-server] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-06-21T13:24:49.929+05:30  WARN 16068 --- [swagger-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-06-21T13:24:49.943+05:30  INFO 16068 --- [swagger-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2024-06-21T13:24:49.989+05:30  INFO 16068 --- [swagger-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-06-21T13:24:50.070+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-06-21T13:24:50.070+05:30  INFO 16068 --- [swagger-server] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-06-21T13:24:50.089+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-06-21T13:24:50.280+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-06-21T13:24:50.282+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-06-21T13:24:50.284+05:30  INFO 16068 --- [swagger-server] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-06-21T13:24:50.287+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1718956490287 with initial instances count: 3
+2024-06-21T13:24:50.288+05:30  INFO 16068 --- [swagger-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application SWAGGER-SERVER with eureka with status UP
+2024-06-21T13:24:50.289+05:30  INFO 16068 --- [swagger-server] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1718956490289, current=UP, previous=STARTING]
+2024-06-21T13:24:50.289+05:30  INFO 16068 --- [swagger-server] [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SWAGGER-SERVER/KJagadeep:swagger-server:8769: registering service...
+2024-06-21T13:24:50.303+05:30  INFO 16068 --- [swagger-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8769 (http) with context path ''
+2024-06-21T13:24:50.303+05:30  INFO 16068 --- [swagger-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8769
+2024-06-21T13:24:50.315+05:30  INFO 16068 --- [swagger-server] [           main] c.c.s.SwaggerServerApplication           : Started SwaggerServerApplication in 4.156 seconds (process running for 4.488)
+2024-06-21T13:24:50.323+05:30  INFO 16068 --- [swagger-server] [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SWAGGER-SERVER/KJagadeep:swagger-server:8769 - registration status: 204
+2024-06-21T13:26:37.430+05:30  INFO 16068 --- [swagger-server] [nio-8769-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-21T13:26:37.430+05:30  INFO 16068 --- [swagger-server] [nio-8769-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-21T13:26:37.432+05:30  INFO 16068 --- [swagger-server] [nio-8769-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-21T13:29:50.102+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:34:50.107+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:39:50.124+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:44:50.126+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:49:50.130+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:54:50.136+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T13:59:50.138+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:04:50.139+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:09:50.153+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-06-21T14:14:50.166+05:30  INFO 16068 --- [swagger-server] [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:21 min
-[INFO] Finished at: 2024-05-25T06:49:21+05:30
+[INFO] Total time:  52:00 min
+[INFO] Finished at: 2024-06-21T14:16:43+05:30
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.5:run (default-cli) on project swagger-server: Process terminated with exit code: 1 -> [Help 1]
 [ERROR] 
